@@ -1,3 +1,4 @@
+![SlamData Logo](/images/white-logo.png)
 
 # SQL² Reference Guide
 
