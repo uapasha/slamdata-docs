@@ -624,7 +624,7 @@ By default, the `_id` field will not appear in a result set. However, you can sp
 `_id` field. For example:
 
 ```
-SELECT _id AS email FROM `/users`
+SELECT _id AS cust_id FROM `/users`
 ```
 
 MongoDB has special rules about fields called `_id`. For example, they must remain unique, which
@@ -639,11 +639,3 @@ by using the `OID` function. For example:
 SELECT * FROM `/foo` WHERE _id = OID("abc123")
 ```
 
-To list the `_id` field with the results an alias must be given to the `_id` field.  For example:
-
-```
-SELECT
-    _id as cust_id,
-    first_name || ' ' || last_name AS name
-FROM `/users`
-```
