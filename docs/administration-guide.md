@@ -4,11 +4,11 @@
 
 # Administration Guide
 
-This Administration Guide can assist with installing and configuring SlamData.  For information on how to use SlamData from a user perspective see the [SlamData User Guide](users-guide.md).
-
-Please see the [project license](license.md) for further details.
+This Administration Guide can assist with installing and configuring SlamData.  For information on how to use SlamData from a user perspective see the SlamData User Guide.
 
 ---
+
+<a name="prerequisites"></a> 
 
 ## Prerequisites
 
@@ -21,11 +21,15 @@ Please see the [project license](license.md) for further details.
 
 ---
 
+<a name="limitations"></a> 
+
 ## Limitations
 
 * When using MongoDB, version 2.6 or newer is required
 
 ---
+
+<a name="installing-slamdata"></a> 
 
 ## Installing SlamData
 
@@ -60,6 +64,8 @@ SlamData has been tested and runs on Windows 7 Desktop and newer and Windows Ser
 
 ---
 
+<a name="launching-slamdata"></a> 
+
 ## Launching SlamData
 
 SlamData is comprised of a frontend interface and a backend analytics engine.  Launching the SlamData application will start both.
@@ -86,6 +92,7 @@ Some Linux systems may not launch a browser automatically. If this is the case, 
 
 ---
 
+<a name="connecting-to-a-database"></a> 
 
 ## Connecting to a Database
 
@@ -96,13 +103,17 @@ Connecting to a database is the first step to analyzing data.  SlamData does not
 Note: 
 > Only MongoDB versions 2.6 and newer are supported by SlamData.
 
-1. To connect to a database click on the mount icon: <img src="/images/icon-mount.png" width=30 border=1 alt="mount">
+To connect to MongoDB click on the mount icon:
 
-2. A mount dialog will be presented: <img src="/images/screenshots/mount-dialog-start.png" width=400 alt="mount-dialog">
+![SlamData Mount Icon](/images/icon-mount.png)
+
+A mount dialog will be presented:
+
+![SlamData Mount Dialog](/images/screenshots/mount-dialog-start.png)
 
 Enter a name for the database mount.  This name is used in the SlamData UI as well as SQL² query paths.  Use a name that makes sense for the environment.  For instance if this database were hosted on Amazon AWS/EC2 it might be named ```aws``` or ```aws-1```.
 
-For this example select **MongoDB** as the Mount type.  Other mount types will be discussed later.  Once a Mount type is selected additional fields will appear in the dialog based on the mount type selected.
+Select **MongoDB** as the mount type.  Other mount types will be discussed later.  Once a Mount type is selected additional fields will appear in the dialog based on the mount type selected.
 
 Use the following table to assist in providing example values for the remaining fields:
 
@@ -117,17 +128,23 @@ Use the following table to assist in providing example values for the remaining 
 
 An example form might look like this:
 
-<img src="/images/screenshots/mount-mongodb.png" width=400 alt="mount-dialog">
+![SlamData MongoDB Dialog](/images/screenshots/mount-mongodb.png)
 
 **Note**
 > When using MongoDB the database field value should be the database the username and password will authenticate against. This value will depend on which database the user was created in; as such it could be ```admin```, the name of the user or something completely different.
 
 Click **Mount** to mount the database in SlamData.
 
+### Several Mounts
+
 After mounting several databases the SlamData UI might look like the following image.  In this image there are three separate mounts named ```aws```, ```kirk``` and ```macbook```, the last likely representing a locally mounted database.
 
-<img src="/images/screenshots/mount-all-mounts.png" width=400 alt="mount-dialog">
+![SlamData Multiple Mounts](/images/screenshots/mount-all-mounts.png)
 
+**Note**:
+> Keep in mind that with <a href="http://slamdata.com/get-slamdata/" target=_blank>SlamData Advanced</a> you can limit which databases, collections and charts can be seen based on OAuth authentication and the SlamData authorization model.
+
+<a name="advanced-configuration"></a> 
 
 ## Advanced Configuration
 
@@ -176,7 +193,7 @@ The mount dialog will display the appropriate fields based on the mount type sel
 
 #### MongoDB
 
-For MongoDB the values listed in the [Connection Options](https://docs.mongodb.org/manual/reference/connection-string/#connection-options) on the MongoDB web site are supported. As of MongoDB 2.6 these options are listed below.
+For MongoDB the values listed in the <a href="https://docs.mongodb.org/manual/reference/connection-string/#connection-options" target=_blank>Connection Options</a> on the MongoDB web site are supported. As of MongoDB 2.6 these options are listed below.
 
 | Options          | Example | Description                                                                                    |
 |------------------|---------|------------------------------------------------------------------------------------------------|
@@ -228,9 +245,3 @@ The example contents of the file may look something like this:
 ```
 
 The first two lines specify that 1GB and 4GB of physical memory should be reserved as a minimum and maximum memory usage guideline, respectively.
-
-## Troubleshooting
-
-This is covered in the Troubleshooting FAQ.
-
-
