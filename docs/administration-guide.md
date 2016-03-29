@@ -4,7 +4,9 @@
 
 # Administration Guide
 
-This Administration Guide can assist with installing and configuring SlamData.  For information on how to use SlamData from a user perspective see the SlamData User Guide.
+This Administration Guide can assist with installing and configuring SlamData.  For information on how to use SlamData from a user perspective see the [SlamData User Guide](users-guide.md).
+
+Please see the [project license](license.md) for further details.
 
 ---
 
