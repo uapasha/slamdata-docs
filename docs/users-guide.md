@@ -1,4 +1,4 @@
-<img src="/images/white-logo.png" width=80%>
+<img src="../images/white-logo.png" width=80%>
 
 # Users Guide
 
