@@ -1,4 +1,4 @@
-<img src="../images/white-logo.png" width=80%>
+![SlamData Logo](/images/white-logo.png)
 
 # Users Guide
 
