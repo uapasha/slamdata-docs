@@ -1,4 +1,4 @@
-<img src="images/white-logo.png" width=80%>
+<img src="/images/white-logo.png" width=80%>
 
 # Administration Guide
 
@@ -191,9 +191,11 @@ Support for other relational and NoSQL databases is coming in 2016.
 
 ### Enabling SSL
 
+If you have trouble following the steps below you may also view our [SSL tutorial video](https://www.youtube.com/watch?v=FWdAMyZnOMM).
+
 If a database connection supports SSL encryption, which is to say encryption between a client and server such as SlamData and the database, additional configuration is necessary.
 
-SlamData is written in [Scala](http://www.scala-lang.org/) and executes within a Java Virtual Machine (JVM).  To enable SSL encryption several options must be passed to the JVM when running SlamData.  SlamData simplifies this by allowing these options to be listed in a text file that the SlamData launcher will reference when executed.  The file location for each operating system is listed below:
+The backend engine of SlamData is written in [Scala](http://www.scala-lang.org/) and executes within a Java Virtual Machine (JVM).  To enable SSL encryption several options must be passed to the JVM when running SlamData.  SlamData simplifies this by allowing these options to be listed in a text file that the SlamData launcher will reference when executed.  The file location for each operating system is listed below:
 
 | Operating System        | File Location                                               |
 | ------------------------|-------------------------------------------------------------|
@@ -201,7 +203,7 @@ SlamData is written in [Scala](http://www.scala-lang.org/) and executes within a
 | Microsoft Windows       | C:\Programs Files (x86)\slamdata-version\SlamData.vmoptions |
 | Linux (various vendors) | $HOME/slamdata-version/SlamData.vmoptions                   |
 
-There are four important options that must be passed to the JVM at startup. These options point the JVM to a Java Trust Store and a Java Key Store.  Adding certificates and keys to these files are not covered in this guide and it is assumed your security or network administrator has provided you with the appropriate information.
+There are four important options that must be passed to the JVM at startup to enable SSL. These options point the JVM to a Java Trust Store and a Java Key Store.  Adding certificates and keys to these files are not covered in this guide and it is assumed your security or network administrator has provided you with the appropriate information.
 
 | JVM Optiosn                      | Purpose                                               |
 |----------------------------------|-------------------------------------------------------|
@@ -222,7 +224,6 @@ The example contents of the file may look something like this:
 ```
 
 The first two lines specify that 1GB and 4GB of physical memory should be reserved as a minimum and maximum memory usage guideline, respectively.
-
 
 ## Troubleshooting
 
