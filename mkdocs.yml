@@ -7,4 +7,5 @@ theme: readthedocs
 pages:
 - Home: index.md
 - Administration Guide : administration-guide.md
+- Users Guide : users-guide.md
 - SQL² Reference Guide : sql-squared-reference.md

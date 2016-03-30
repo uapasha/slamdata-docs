@@ -2,19 +2,150 @@
 
 # Users Guide
 
-This Users Guide can assist with daily usage of SlamData.  For information on how to install and configure SlamData see the SlamData Administration Guide.
+## Introduction
+
+This Users Guide can assist with daily usage of SlamData.  For information on how to install and configure SlamData see the [SlamData Administration Guide](administration-guide.md)
+
+
+<a name="launching-slamdata"></a>
+
+## Launching SlamData
+
+Starting SlamData on a local system will automatically open a new browser window or tab with this URL: `http://localhost:20223/slamdata/index.html`
+
+If SlamData is not installed locally but instead is on a remote system it can be accessed with a similar URL: `http://servername:20223/slamdata/index.html` where **servername** is the DNS name or IP address of the server.
 
 ---
 
-## Exploring
+<a name="key-concepts"></a>
+
+## Key Concepts
+
+It is useful to understand the following key concepts when using SlamData.
+
+| Feature Name   |  Image                                 | Description                             |
+|----------------|:--------------------------------------:|-----------------------------------------|
+| Cluster        | ![Cluster](/images/icon-mount.png)     | A cluster represents a database server  |
+| Folder         | ![Folder](/images/icon-folder.png)     | A folder represents a database          |
+| File           | ![File](/images/icon-file.png)         | A file represents a table or collection |
+| Notebook       | ![Notebook](/images/icon-notebook.png) | A notebook contains a user's work       |
+
+A Cluster (server) may contain 0, 1 or more Folders (databases).
+
+A Folder (database) may contain 0, 1 or more Files (tables or collections).
+
+Clicking on a Cluster, Folder, File or Notebook will display its contents.
 
 ---
 
-## Importing Data
+## Notebooks
 
---
+Notebooks capture data workflows in a visual fashion that allows you to query data, transform and visualize it in the form of charts and reports.
 
-## Searching
+Each stage in a Notebook's workflow is called a *cell* or *card*.  Cells can rely on data from previous cells or exist independent of other cells.
+
+A Notebook can be created in one of two ways:
+
+1. By clicking on the Notebook icon in the upper right of the SlamData UI.
+2. Clicking on a collection and renaming the subsequently displayed Notebook something other than `Untitled Notebook`.
+
+Whenever an existing Notebook is changed it is automatically saved and can be referred to in the future.  For instance if a Notebook contains an exploration cell followed by a query cell, the query can be changed and executed and the Notebook is then automatically saved.  This allows a user to work in a Notebook without fear of losing work or data.
+
+---
+
+<a name="cell-types"></a>
+
+## Cell Types
+
+To add a new cell to a Notebook click on the ![Plus](/images/icon-plus.png) icon and select one of the following cell types
+
+| Cell Type   |  Image                                   | Description                                             |
+|-------------|:----------------------------------------:|---------------------------------------------------------|
+| Exploration | ![Exploration](/images/icon-explore.png) | Browse data in a table or collection                    |
+| Query       | ![Query](/images/icon-query.png)         | Leverage SQL² for powerful queries                      |
+| Search      | ![Search](/images/icon-search.png)       | Simple searching for non-technical users                |
+| SlamDown    | ![SlamDown](/images/icon-slamdown.png)   | Create static or interactive forms                      |
+| API         | ![API](/images/icon-api.png)             | Developers pass values into queries for dynamic results |
+
+
+
+### Exploration Cell
+
+An example exploration cell is shown below.  Refer to the table below the image for the function of each icon surrounding the cell.
+
+![Exploration Cell](/images/screenshots/cell-exploration-annotated-with-numbers.png)
+
+| Icon # | Purpose                                                                         |
+|:------:|---------------------------------------------------------------------------------|
+| 1      | Download the cell in CSV or JSON format                                         |
+| 2      | Create a graphical chart based on this cell's data                              |
+| 3      | Simple search on this cell's data                                               |
+| 4      | Create a query on this cell's data                                              |
+| 5      | Execute or 'Play' the cell again                                                |
+| 6      | Go one level up or one level back                                               |
+| 7      | Double click to rename this Notebook                                            |
+| 8      | Hide the element which displays the path (useful when publishing Notebooks)     |
+| 9      | Delete this cell and all subsequent cells                                       |
+| 10     | Drop-down to select a different file path                                       |
+| 11     | Refresh the cell's data                                                         |
+| 12     | Get HTML and JavaScript code to embed this cell in another web application      |
+| 13     | Displays the schema of the collection or table being viewed                     |
+
+
+Below is an example of what a nested schema would look like within the exploration cell. In
+this instance we have an array called `previous_addresses` with several documents, each
+containing fields `city`, `county`, `latitude`, `longitude`, `state` and `zip_code`.
+
+![Exploration Cell Nested](/images/screenshots/cell-exploration-nested.png)
+
+The corresponding JSON would appears like this in the database:
+
+```
+...
+"previous_addresses": [
+    {
+      "city": "NEW ORLEANS",
+      "longitude": -89.882564,
+      "county": "ORLEANS",
+      "state": "LA",
+      "latitude": 30.032997,
+      "zip_code": 70157
+    },
+    {
+      "city": "WEST ALTON",
+      "longitude": -90.403416,
+      "county": "SAINT CHARLES",
+      "state": "MO",
+      "latitude": 38.83275,
+      "zip_code": 63386
+    },
+    {
+      "city": "OAKESDALE",
+      "longitude": -117.41146,
+      "county": "WHITMAN",
+      "state": "WA",
+      "latitude": 47.079658,
+      "zip_code": 99158
+    }
+...
+```
+
+---
+
+### SlamDown Cell
+
+Reports and forms are created with a subset of <a href="http://daringfireball.net/projects/markdown">Markdown</a> called SlamDown.  SlamDown allows a relatively non-technical user to create interactive forms, charts and reports without understanding HTML or other complicated markup.
+
+For specific syntax see the [SlamDown Reference Guide](slamdown-reference.md) and the [Cheat Sheet](http://slamdata.com/wp-content/uploads/2016/03/slamdata-cheatsheet-20160329-2.pdf).
+
+Below is an image of both a SlamDown cell and it's rendering  directly below it.  As a reminder when you publish a Notebook you can include SlamDown cells along with it, providing users with interactive forms that can directly affect a query and resulting report or chart.
+
+![Exploration Cell Nested](/images/screenshots/cell-slamdown.png)
+
+
+---
+
+### Search Cell
 
 ---
 
@@ -34,7 +165,24 @@ This Users Guide can assist with daily usage of SlamData.  For information on ho
 
 --
 
-## 
+## Importing Data
+
+SlamData allows users to import files in both JSON and CSV format.
+
+JSON files may be formatted either as multiple single documents or within a JSON array.
+
+The first line of CSV files will be used as a *header* line creating the schema that the remaining rows will adhere to.
+
+To upload a file into SlamData, follow these steps:
+
+1. Navigate to the database where the data should be imported.
+
+2. At the top of the page click the Upload File ![Upload File](/images/icon-upload.png) icon.
+
+3. Select a file from your file system.  Large files may take a few moments to upload.  After data has been imported a new collection will be created with the same name as the file.
+
+4. A new Untitled Notebook will be created that displays the new collection's data.
+
 
 ---
 

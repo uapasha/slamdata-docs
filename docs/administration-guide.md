@@ -1,9 +1,9 @@
 
 ![SlamData Logo](/images/white-logo.png)
 
-# Administration Guide
+# Administration Guide - Community Edition
 
-This Administration Guide can assist with installing and configuring SlamData.  For information on how to use SlamData from a user perspective see the SlamData User Guide.
+This Administration Guide can assist with installing and configuring SlamData.  For information on how to use SlamData from a user perspective see the [SlamData User Guide](users-guide.md)
 
 ---
 
