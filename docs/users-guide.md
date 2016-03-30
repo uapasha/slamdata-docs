@@ -149,29 +149,22 @@ Below is an image of both a SlamDown cell and it's rendering  directly below it.
 
 ---
 
-## Querying
-
---
-
-### SQL​​² Overview
+### Query Cell
 
 ---
 
-## Downloading Data
+## SQL​​² Overview
 
---
-
-## SlamDown Cells
-
---
+---
 
 ## Importing Data
 
-SlamData allows users to import files in both JSON and CSV format.
+SlamData allows users to import files in both **JSON** and **CSV** format.
 
 JSON files may be formatted either as multiple single documents or within a JSON array.
 
-The first line of CSV files will be used as a *header* line creating the schema that the remaining rows will adhere to.
+Note:
+> The first line of CSV files will be used as a *header* line creating the schema that the remaining rows will adhere to.
 
 To upload a file into SlamData, follow these steps:
 
@@ -183,7 +176,108 @@ To upload a file into SlamData, follow these steps:
 
 4. A new Untitled Notebook will be created that displays the new collection's data.
 
+---
+
+## Downloading Data
+
+SlamData allows users to export refined result sets, collections and entire databases.
+
+### Result Sets
+
+Once a result set has been refined either through query cells or search cells it may then be downloaded in **JSON** or **CSV** formats.
+
+1. From an exploration cell or results set cell click the Download cell ![Download Cell](/images/icon-download-cell.png) icon to the left of the cell.
+
+2. In the newly created Download cell select either the CSV ![CSV Icon](/images/icon-csv.png) or JSON ![JSON Icon](/images/icon-json.png) icon on the left.
+
+3. Select the appropriate options in the cell.
+
+4. Click Download.
+
+See the example image below of a query cell followed by the results cell.
+
+![Query Cell Results](/images/screenshots/cell-query-and-results.png)
+
+Downloading the data from this **Results Cell** provides the following JSON export file:
+
+```
+[
+  {
+    "gender": "male",
+    "name": "Tory Escobar",
+    "addresses": [
+      {
+        "city": "OROFINO",
+        "longitude": -116.184848,
+        "county": "CLEARWATER",
+        "state": "ID",
+        "latitude": 46.4976,
+        "zip_code": 83544
+      },
+      {
+        "city": "ARRIBA",
+        "longitude": -103.323143,
+        "county": "LINCOLN",
+        "state": "CO",
+        "latitude": 39.316461,
+        "zip_code": 80804
+      },
+      {
+        "city": "OLGA",
+        "longitude": -122.983742,
+        "county": "SAN JUAN",
+        "state": "WA",
+        "latitude": 48.557824,
+        "zip_code": 98279
+      },
+      {
+        "city": "DELRAY BEACH",
+        "longitude": -80.13473,
+        "county": "PALM BEACH",
+        "state": "FL",
+        "latitude": 26.454218,
+        "zip_code": 33484
+      },
+      {
+        "city": "LYONS",
+        "longitude": -122.594993,
+        "county": "LINN",
+        "state": "OR",
+        "latitude": 44.749921,
+        "zip_code": 97358
+      }
+    ]
+  },
+  {
+    "gender": "female",
+    "name": "Damaris Savage",
+    "addresses": [
+      {
+        "city": "CROSSROADS",
+        "longitude": -103.209405,
+        "county": "LEA",
+        "state": "NM",
+        "latitude": 32.690034,
+        "zip_code": 88114
+      }
+    ]
+  },
+  {
+    "gender": "female",
+    "name": "See Harrison",
+    "addresses": []
+  }
+]
+
+```
+
+### Collections and Tables
+
+Collections and tables can also be exported in their entirety.  When browsing a folder (database) within the SlamData UI simply hover over the file (table or collection) and notice the icons that appear to the right.  Click on the Download ![Download Icon](/images/icon-download.png) icon.  See the image below with the highlighted icon.
+
+![Download Collection](/images/screenshots/download-collection.png)
+
+
 
 ---
 
-## 
