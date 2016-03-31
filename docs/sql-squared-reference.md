@@ -542,6 +542,8 @@ ORDER BY age % 10 DESC, firstName + lastName ASC
 
 Use the `JOIN` operator to join different collections.
 
+The `JOIN` operator is a powerful way to implement joins in non-relational databases such as MongoDB.  There is no enforced limit to how many collections or tables can be joined in a query but common sense should prevail based on the size of collections.
+
 Examples:
 
 This example returns the names of employees and the names of the departments they belong to by

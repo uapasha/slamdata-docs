@@ -46,7 +46,7 @@ Each stage in a Notebook's workflow is called a *cell* or *card*.  Cells can rel
 
 A Notebook can be created in one of two ways:
 
-1. By clicking on the Notebook icon in the upper right of the SlamData UI.
+1. By clicking on the Notebook ![Notebook](/images/icon-notebook.png) icon in the upper right of the SlamData UI.
 2. Clicking on a collection and renaming the subsequently displayed Notebook something other than `Untitled Notebook`.
 
 Whenever an existing Notebook is changed it is automatically saved and can be referred to in the future.  For instance if a Notebook contains an exploration cell followed by a query cell, the query can be changed and executed and the Notebook is then automatically saved.  This allows a user to work in a Notebook without fear of losing work or data.
@@ -138,22 +138,129 @@ Reports and forms are created with a subset of <a href="http://daringfireball.ne
 
 For specific syntax see the [SlamDown Reference Guide](slamdown-reference.md) and the [Cheat Sheet](http://slamdata.com/wp-content/uploads/2016/03/slamdata-cheatsheet-20160329-2.pdf).
 
-Below is an image of both a SlamDown cell and it's rendering  directly below it.  As a reminder when you publish a Notebook you can include SlamDown cells along with it, providing users with interactive forms that can directly affect a query and resulting report or chart.
+Below is an image of both a SlamDown cell and it's rendering directly following it.  As a reminder when you publish a Notebook you can include SlamDown cells, providing users with interactive forms that can directly affect a query and resulting report or chart.
 
 ![Exploration Cell Nested](/images/screenshots/cell-slamdown.png)
-
 
 ---
 
 ### Search Cell
 
+The Search cell allows users to search through entire collections as well as previous search results resulting in a very refined data set.  In other words a user can use a search cell to refine results and then use another search cell to refine those results even further; this process can continue until the appropriate results are found.
+
+#### Default Search
+
+1. Create a new Search cell:
+    * Click on the Search ![Search Icon](/images/icon-gray-search.png) icon on the left side of an existing exploration cell, or
+    * Click the Plus ![Plus Icon](/images/icon-plus.png) icon and then select the Search ![Search Icon](/images/icon-search.png) icon.
+2. In the new Search cell, type in a search term and click the Play ![Play Icon](/images/icon-play.png) icon beneath it.
+
+In the example image below notice the term `USA` was searched for.  Also note that the field name was not specified.  By default **SlamData will search all fields in all documents**.  For very large collections and tables, especially those without proper indexes assigned, this could take some time to complete; however this also provides a very powerful feature to find data that exists but the location is unknown.
+
+![Search and Results](/images/screenshots/search-and-results.png)
+
+#### Field Specific Search
+
+To limit a search to a specific field prefix the search term with the field name, for example:
+
+```
+country:USA
+```
+
+#### Multiple Field Values ####
+
+To limit a search with multiple fields list them in the search field.  For example to find all women who won gold medals in a data set it may appear like this:
+
+```
+gender:W  type:Gold
+```
+
+
+#### Mandatory Search
+
+To search all documents that do **not** contain a value the value should be prefixed with the (`-`) symbol as follows:
+
+```
+-Skating
+```
+
+#### Numeric Searches
+
+To search on fields containing numeric values use the following examples.
+
+##### Range Search
+
+Search for a field `year` whose value is between `1928` and `1932`:
+
+```
+year:1928..1932
+```
+
+##### NOT Range Search
+
+The opposite of the previous example, this searches for field `year` whose value is **not** between `1928` and `1932`:
+
+```
+-year:1928..1932
+```
+
+##### Comparison Search
+
+Search for a field `year` whose value is less than 1948.  Below we use the `<` symbol for `less than` but the `>` can also be used for `greater than`:
+
+```
+year < 1948
+```
+
+#### Starts With Search
+
+Search for a field `name` whose value starts with `Jen`:
+
+```
+name:Jen*
+```
+
+#### Nested Search
+
+Search all documents which contain a `foo` field which contains a `bar` field which contains the text `baz`:
+
+```
+foo:bar:baz
+```
+
+Note:
+>A concise set of search examples can also be found in the [SlamData CheatSheet](http://slamdata.com/wp-content/uploads/2016/03/slamdata-cheatsheet-20160329-2.pdf)
+
 ---
 
 ### Query Cell
 
----
+The Query cell allows users to utilize SQL² to directly query one or more collections or tables.  This is the equivalent of a SQL command line console.
 
-## SQL​​² Overview
+To create a query cell:
+
+* From an empty Notebook click the Plus ![Plus Icon](/images/icon-plus.png) icon then click the Query ![Query](/images/icon-query.png) icon
+
+OR
+
+* From an existing cell click the Query ![Query](/images/icon-gray-query.png) icon to the left of the cell.
+
+If the first option is selected the user will be presented with an empty Query cell.  If the second option is selected the user will be presented with a Query cell that contains a default query, highlighted with colored syntax as shown below:
+
+![Query Highlighted](/images/screenshots/query-highlighted.png)
+
+The query can be manipulated in this alternate form but the highlighted text cannot be modified or removed.  If the user prefers more control the first option above may be preferred.  The Query cell also provides query completion at certain parts of your query as shown below:
+
+![Query Completion](/images/screenshots/query-completion.png)
+
+The Query cell will also automatically highlight SQL² keywords as shown the image above.  The query itself can be written on a single line (which will not word wrap) or on multiple lines.
+
+When a query is executed by clicking the Play ![Play Icon](/images/icon-play.png) icon the cell beneath the query cell will show a icon indicating the query is running.  When complete the query's results will display below the query.
+
+Note:
+> If a query takes longer than 30 seconds to execute SlamData considers it a timed out query and will result in an error.
+
+For a complete review of SQL² and example see the [SQL² Reference Guide](sql-squared-reference.md).
 
 ---
 
@@ -178,7 +285,7 @@ To upload a file into SlamData, follow these steps:
 
 ---
 
-## Downloading Data
+## Exporting Data
 
 SlamData allows users to export refined result sets, collections and entire databases.
 

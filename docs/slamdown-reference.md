@@ -1,29 +1,22 @@
+
+
+![SlamData Logo](/images/white-logo.png)
+
+# SlamDown Reference Guide
+
+This SlamDown Reference Guide can assist with the proper formatting of SlamDown code to produce static and interactive forms within SlamData.
+
 ---
-layout: support
-title:  "SlamDown Reference"
----
 
-> ***Read This First!***
-> We recently released SlamData 2.5 — it was a major release. We're in a tear to get all of our documentation updated but we have not finished. So, before you scroll down and start reading please check out the latest blog from our CTO, John De Goes — it outlines key changes that you'll want to follow: [SlamData 2.5 Released: A Bold New Step Into the World of Post-Relational Analytics](/releases/2016/02/19/slamdata-2-5-released-a-bold-new-step-into-the-world-of-post-relational-analytics.html)
+## Introduction
 
+SlamData contains its own markup language called SlamDown, which is useful for creating reports and forms. SlamDown is a subset of [CommonMark](http://commonmark.org/), a specification for a highly compatible implementation of [Markdown](https://en.wikipedia.org/wiki/Markdown).
 
-SlamData contains its own markup language called SlamDown, which is
-useful for creating reports and forms.
-SlamDown is a subset of [CommonMark](http://commonmark.org/),
-a specification for a highly compatible implementation of
-[Markdown](https://en.wikipedia.org/wiki/Markdown).
-
-In addition, SlamDown also includes two extensions to CommonMark:
-[form fields](#form) and [evaluated SQL<sup>2</sup> queries](#query-eval).
+In addition, SlamDown also includes two extensions to CommonMark: [form fields](#form) and [evaluated SQL<sup>2</sup> queries](#query-eval).
 
 This reference contains the following sections:
 
-* [Block elements](#blocks)
-* [Inline elements](#inline)
-* [Form elements](#form)
-
-
-
+<a name="block-elements"></a>
 
 ## Block Elements
 
@@ -50,7 +43,6 @@ More text here
 
 
 
-
 ### Headers
 
 Use hash marks (`#`) for [ATX headers](http://spec.commonmark.org/0.22/#atx-header), with one hashmark
@@ -62,9 +54,8 @@ for each level.
 
 results in a first, second, and third level heading:
 
-# Top level  
-## Second level
-### Third level
+![Headers](/images/screenshots/fake-levels.png)
+
 
 ### Code Blocks
 
@@ -74,8 +65,10 @@ You can create blocks of code (that is, literal content in monospace font) in tw
 
 Indent by four spaces.
 
+<pre>
         for (int i =0; i < 10; i++)
             sum += myArray[i];
+</pre>
 
 **Fenced code blocks**
 
@@ -86,7 +79,7 @@ Start and end with three or more backtick (\`) characters.
         sum += myArray[i];
     ```
 
-Both of these result in:
+Both Indented Code Blocks and Fenced Code Blocks result in:
 
 ```
 for (int i =0; i < 10; i++)
@@ -124,13 +117,13 @@ In the end, they will be displayed with ascending indices.
 
     1. First item
     2. Second item
-    1. Third item
+    3. Third item
 
 results in:
 
 1. First item
 2. Second item
-1. Third item
+3. Third item
 
 Unordered lists start with either asterisks (`*`), dashes (`-`), or pluses (`+`). They are
 interchangeable.
@@ -145,7 +138,9 @@ results in:
 * Second item
 * Third item
 
-<a id="inline"></a>
+
+<a id="inline-elements"></a>
+
 ## Inline Elements
 
 The following inline elements are supported in SlamDown. In addition to standard Markdown
@@ -193,7 +188,7 @@ Images start with an explanation mark (`!`), followed by the image description i
 
 results in:
 
-![SlamData Logo](https://media.licdn.com/media/p/6/005/088/002/039b9f8.png)
+<img src="https://media.licdn.com/media/p/6/005/088/002/039b9f8.png" width=400>
 
 ### Inline code formatting
 
@@ -206,28 +201,34 @@ results in:
 
 Start SQL statements with `SELECT * FROM`
 
-<a id="query-eval"></a>
 ### Evaluated SQL Query
 
 SlamDown extends CommonMark by allowing you to evaluate a SQL query and insert
 the results into the rendered content. Start the query with an exclamation point
-and then contain the SQL query between backtick (\`) characters.
+and then contain the SQL query between double backtick (\`) characters.
+
+Note:
+> Notice how the path to the query below has a space between the backtick that
+ends the path and the double backticks that end the query.  This is a necessary
+space because three backticks in a row start a Fenced Code Block as stated above.
 
 In the example below, if there are 20 documents in the `/col` file, then
 
-    There are !`SELECT COUNT(*) FROM "/col"` documents inside the collection.
+```
+There are !``SELECT COUNT(*) FROM `/col` `` documents inside the collection.
+```
 
 results in:
 
-There are 20 documents inside the collection.
+There are `20` documents inside the collection.
 
-<a id="form"></a>
+
+<a id="form-elements"></a>
+
 ## Form Elements
 
-SQL<sup>2</sup> contains a significant addition to CommonMark, which are form elements.
-This allows for the creation of interactive reports. See
-[How to Create an Interactive Report](how-to-interactive.html) for a tutorial
-on how to use form fields to create such a report.
+SlamDown contains a significant addition to CommonMark, which are form elements.
+This allows for the creation of interactive reports.
 
 ### Text Field
 
@@ -245,6 +246,13 @@ This line creates an input file for spouse name with a default value of
 
     spouse = ________ (none)
 
+By default input fields are evaluated as String types.  To enforce a numeric type
+prefix the underscores with the (`#`) symbol.  For example:
+
+
+    year = #________
+
+
 ### Radio Buttons
 
 Use parentheses followed by text to indicate radio buttons. A set of radio buttons has
@@ -256,6 +264,10 @@ and "bike", where "car" is marked as the default. The result is stored in the st
 variable named `commute` for later use.
 
     commute = (x) car () bus () bike
+
+This results in:
+
+![Radio Buttons](/images/screenshots/radio-buttons.png)
 
 **Note:** Currently, the default value must be the first value.
 
@@ -273,7 +285,9 @@ and "Blackberry". The result is stored in the string variable named `phones` for
 
 If left as the default, the `phones` variable will have the value: `['iPhone', 'Blackberry']`.
 
-**Note:** Checkboxes are not currently functional.
+This results in:
+
+![Check Boxes](/images/screenshots/checkboxes.png)
 
 ### Dropdown
 
@@ -287,3 +301,40 @@ Optionally, include a default value by listing it in parentheses at the end.
 In this line, NYC is set as the default.
 
     city = {BOS, SFO, NYC} (NYC)
+
+This results in:
+
+![Dropdown](/images/screenshots/dropdown.png)
+
+### Dates and Times
+
+Provide a date, time or both date & time selector for users by implementing the following syntax.
+
+#### Date
+
+For example the following line creates a date selector element and stores the value in a variable called `start`:
+
+```
+start = __ - __ - ____ (04-19-2016)
+```
+
+#### Time
+
+The following lines creates a time selector element:
+
+```
+start = __ : __ (12:30 PM)
+```
+
+#### Date & Time
+
+The following line creates both a date and time selector element:
+
+```
+start = __ - __ - ____ __ : __ (06-06-2015 12:00 PM)
+```
+
+This results in:
+
+![Date and Time Selector](/images/screenshots/date-and-time.png)
+

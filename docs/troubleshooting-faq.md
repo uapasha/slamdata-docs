@@ -1,11 +1,11 @@
----
-layout: support
-title: Troubleshooting FAQ
+
+![SlamData Logo](/images/white-logo.png)
+
+# Troubleshooting FAQ
+
 ---
 
-> ***Read This First!***
-> We recently released SlamData 2.5 — it was a major release. We're in a tear to get all of our documentation updated but we have not finished. So, before you scroll down and start reading please check out the latest blog from our CTO, John De Goes — it outlines key changes that you'll want to follow: [SlamData 2.5 Released: A Bold New Step Into the World of Post-Relational Analytics](/releases/2016/02/19/slamdata-2-5-released-a-bold-new-step-into-the-world-of-post-relational-analytics.html)
-
+<a name="configuration-file-locations"></a>
 
 ## Configuration File Locations
 
@@ -26,9 +26,9 @@ Linux:
 
 Note: Do not modify this file by hand unless you have first made a backup.  If you modify this file while SlamData is running, your changes may be overwritten.
 
+---
 
-
-
+<a name="log-file-locations"></a>
 
 ## Log File Locations
 
@@ -46,18 +46,19 @@ Mac OS X:
 
     /Applications/SlamData <version>.app/Contents/java/app/slamdata-<version>.log
 
+---
 
 
-
-
+<a name="slamdata-wont-start"></a>
 
 ## SlamData Won't Start
 
 This is typically caused by an invalid database mount.  Either the database is not currently available, or a previously configured mount is no longer valid.  Locate the [configuration file](#installing-config-file-locations) and if necessary modify the file by hand, or if you wish to erase all previously configured mounts, you may simply rename or delete the file and restart SlamData.
 
 
+---
 
-
+<a name="slamdata-url"></a>
 
 ## SlamData URL
 
@@ -66,15 +67,18 @@ When SlamData starts on Windows and Mac OS X, a browser window (or new tab) shou
     http://servername:20223/slamdata/index.html
 
 
+---
 
+<a name="slamdata-version"></a>
 
 ## How do I see which version I'm running?
 
 You can simply look at your title bar in your browser window.  The title of the web page should include it.
 
 
+---
 
-
+<a name="slamdata-on-aws"></a>
 
 ## SlamData on Amazon EC2 / Microsoft Azure, etc.
 
@@ -93,8 +97,9 @@ If you are still unable to connect to your hosted database:
  * Next connect with a standard database client from the same system SlamData is running on.
 
 
+---
 
-
+<a name="slamdata-notebook-wont-delete"></a>
 
 ## SlamData Notebook Won't Delete
 
