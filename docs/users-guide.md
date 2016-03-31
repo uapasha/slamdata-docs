@@ -385,6 +385,12 @@ Collections and tables can also be exported in their entirety.  When browsing a 
 ![Download Collection](/images/screenshots/download-collection.png)
 
 
+### Databases
+
+Databases can be exported in their entirety as well.  Simply ensure the appropriate database and its underlying collections are displayed in the UI and click on the Download ![Download Icon](/images/icon-download.png) icon in the **top menu bar** as shown in the image below.  A dialog will appear providing several options for the download and will result in a compress zip file containing all of the database's collections as separate files.
+
+![Download Database](/images/screenshots/download-database.png)
+
 
 ---
 
