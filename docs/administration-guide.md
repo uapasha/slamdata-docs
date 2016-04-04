@@ -16,7 +16,7 @@ This Administration Guide can assist with installing and configuring SlamData.  
 * Credentials to one or more databases
 * Latest version of Chrome, Firefox, Safari or Internet Explorer
 * Java 1.8 if using Linux *(Java Runtime is included with OS X and Windows installers)*
-* We recomment the latest version of [SlamData Community Edition](http://slamdata.com/get-slamdata/download-slamdata-community-edition/)
+* We recommend the latest version of [SlamData Community Edition](http://slamdata.com/get-slamdata/download-slamdata-community-edition/)
 
 ---
 
