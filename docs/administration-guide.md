@@ -102,9 +102,7 @@ Connecting to a database is the first step to analyzing data.  SlamData does not
 Note: 
 > Only MongoDB versions 2.6 and newer are supported by SlamData.
 
-To connect to MongoDB click on the mount icon:
-
-![SlamData Mount Icon](/images/icon-mount.png)
+To connect to MongoDB click on the Mount ![Mount Icon](/images/icon-mount.png) icon in the upper right.
 
 A mount dialog will be presented:
 
