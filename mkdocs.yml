@@ -9,6 +9,7 @@ pages:
 - Administration Guide : administration-guide.md
 - Users Guide : users-guide.md
 - Securing SlamData : securing-slamdata.md
-- SQL² Reference Guide : sql-squared-reference.md
-- SlamDown Reference Guide : slamdown-reference.md
 - Troubleshooting FAQ : troubleshooting-faq.md
+- Reference (SQL²) : sql-squared-reference.md
+- Reference (SlamDown) : slamdown-reference.md
+- Reference (API) : api-reference.md

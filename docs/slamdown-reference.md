@@ -2,9 +2,9 @@
 
 ![SlamData Logo](/images/white-logo.png)
 
-# SlamDown Reference Guide
+# SlamDown Reference
 
-This SlamDown Reference Guide can assist with the proper formatting of SlamDown code to produce static and interactive forms within SlamData.
+This SlamDown Reference can assist with the proper formatting of SlamDown code to produce static and interactive forms within SlamData.
 
 ---
 

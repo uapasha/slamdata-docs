@@ -15,7 +15,7 @@ This guide can assist with configuring NGINX (or other proxy service) and SlamDa
 
 SlamData is an all-in-one NoSQL visual analytics system.  You can get started right away by simply downloading the software and running it on your local system, or install it on a dedicated server.  There is no need to follow this guide if you do not need to limit access to SlamData.  If you need to restrict access to the SlamData application to certain users, then read on!
 
-Watching our YouTube <a href="https://youtu.be/uNMVHIMQ5ZQ" target="_blank">video</a> (~24 minutes) may help as well. The video is based off the instructions in this guide.
+Watching our YouTube <a href="https://www.youtube.com/watch?v=ZCzv8WCVvRM" target="_blank">video</a> (~24 minutes) may help as well. The video is based off the instructions in this guide.
 
 There are several methods of restricting access to SlamData.  This Quick Guide focuses on configuring SlamData to run under Nginx providing basic http authorization, then forwarding requests to the backend either on the same host or a separate host.
 
@@ -48,7 +48,7 @@ If your IP addresses differ, change as appropriate.
 
 ## Architecture Overview
 
-![Architecture Overview](/images//restrict-slamdata.png)
+![Architecture Overview](/images/restrict-slamdata.png)
 
 As can be noted from the above diagram, the network communications path is straight forward:
 
@@ -56,11 +56,9 @@ As can be noted from the above diagram, the network communications path is strai
 
 2. Nginx authenticates the user via standard http auth.
 
-3. After appropriate authentication, Nginx allows the user into the SlamData application, which
-   communicates directly to the Backend's web API.
+3. After appropriate authentication, Nginx allows the user into the SlamData application, which communicates directly to the Backend's web API.
 
-4. The backend runs the appropriate tasks on the data source, MongoDB in this case, and
-   returns the results back upstream, through Nginx to the client.
+4. The backend runs the appropriate tasks on the data source, MongoDB in this case, and returns the results back upstream, through Nginx to the client.
 
 For increased security, this configuration assumes the reader has setup appropriate network or OS-level restrictions that will deny access to requests other than the system upstream from it.  For instance, the MongoDB server should only allow requests to port 27017 from IP 192.168.138.210 (the Backend host).  Similarly, the Backend should only allow requests to port 8080 from IP 192.168.138.200 (the SlamData / Nginx host).  This setup is not covered in this guide and is left to the reader to implement.
 
@@ -125,27 +123,29 @@ Once launched, a [REPL](https://en.wikipedia.org/wiki/Read–eval–print_loop) 
 
 Notice how the the OS-like file system commands and SQL commands are executed directly after the $ prompt:
 
-    💪 $ ls
-    local@
-    💪 $ cd local
-    💪 $ ls
-    local/
-    testdb/
-    💪 $ cd testdb
-    💪 $ ls
-    coll1
-    💪 $ select * from coll1;
-    Mongo
-    db.coll1.find();
+```
+💪 $ ls
+local@
+💪 $ cd local
+💪 $ ls
+local/
+testdb/
+💪 $ cd testdb
+💪 $ ls
+coll1
+💪 $ select * from coll1;
+Mongo
+db.coll1.find();
 
 
-    Query time: 0.0s
-     name    | age   | gender  | minor  |
-    ---------|-------|---------|--------|
-     Johnny  |  42.0 | male    |  false |
-     Jenny   |  27.0 | female  |  false |
-     Deb     |  33.0 | female  |  false |
-     Billy   |  15.0 | male    |   true |
+Query time: 0.0s
+ name    | age   | gender  | minor  |
+---------|-------|---------|--------|
+ Johnny  |  42.0 | male    |  false |
+ Jenny   |  27.0 | female  |  false |
+ Deb     |  33.0 | female  |  false |
+ Billy   |  15.0 | male    |   true |
+```
 
 <a name="slamdata-start-the-web-jar-file"></a>
 
@@ -153,7 +153,9 @@ Notice how the the OS-like file system commands and SQL commands are executed di
 
 Once you have verified proper connectivity between the Backend and MongoDB, stop the Core jar file and now start the Web jar file with a slightly different syntax to point to the configuration file:
 
-    java -jar ~/quasar/web/target/scala-2.11/web_2.11-2.2.1-SNAPSHOT-one-jar.jar -c ~/quasar-config.json
+```
+java -jar ~/quasar/web/target/scala-2.11/web_2.11-2.2.1-SNAPSHOT-one-jar.jar -c ~/quasar-config.json
+```
 
 Congratulations!  You now have two of the three necessary systems up and running for this configuration.
 
@@ -194,8 +196,10 @@ Now that npm, node, bower, gulp and PureScript are installed, download the SlamD
 
 When gulp completes, you should have a full application under the 'public' directory:
 
-    [/Users/me/slamdata]$ ls public
-    css           fonts         img           index.html    js            notebook.html
+```
+[/Users/me/slamdata]$ ls public
+css           fonts         img           index.html    js            notebook.html
+```
 
 It may be safest to copy this directory and place it under a directory with separate permissions for a more secure environment.  Whatever directory you use will be considered your web root directory in future steps.
 
@@ -297,7 +301,7 @@ Save the configuration and start or restart Nginx:
 
 If your network firewall is setup properly, the Backend should be shielded from all requests except those coming directly from the Nginx host.  Additionally all requests coming from the Nginx host should only originate from authenticated users via http authentication. You may test the SlamData / Nginx HTTP authorization by going to the URL:
 
-    http://192.168.138.200
+```http://192.168.138.200```
 
 You should be immediately prompted for a username and password.  Upon successful authorization you should see the SlamData UI:
 

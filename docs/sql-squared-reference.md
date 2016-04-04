@@ -1,6 +1,6 @@
 ![SlamData Logo](/images/white-logo.png)
 
-# SQL² Reference Guide
+# SQL² Reference
 
 <a name="introduction"></a> 
 
