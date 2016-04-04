@@ -8,7 +8,6 @@ pages:
 - Home : index.md
 - Administration Guide : administration-guide.md
 - Users Guide : users-guide.md
-- Tutorial : tutorial.md
 - Securing SlamData : securing-slamdata.md
 - SQL² Reference Guide : sql-squared-reference.md
 - SlamDown Reference Guide : slamdown-reference.md
