@@ -140,7 +140,7 @@ Headers:
 
 ## Executing a Large Query
 
-Executes a SQL² query where the results or computation are expected to be relatively large. The results are stored in an output path that is specified in the `Destination` header. Pagination and some filtering are supported.
+Executes a SQL<sup>2</sup> query where the results or computation are expected to be relatively large. The results are stored in an output path that is specified in the `Destination` header. Pagination and some filtering are supported.
 
 ### URL
 
@@ -332,7 +332,7 @@ Compiles, but does not execute a SQL<sup>2</sup> query.
 
 where `{path}` is an optional path to the data. If included, then all paths used in the query are relative to the `{path}` parameter, unless they begin with a `/`.
 
-The GET method has the SQL² query as a query parameter and the POST method has the SQL² query in the POST body.
+The GET method has the SQL<sup>2</sup> query as a query parameter and the POST method has the SQL<sup>2</sup> query in the POST body.
 
 ### Method
 

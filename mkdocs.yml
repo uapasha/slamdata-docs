@@ -2,7 +2,7 @@ site_name: SlamData Docs
 site_url: http://docs.slamdata.com
 site_description: SlamData Documentation
 site_favicon: favicon.png
-use_directory_urls: true
+use_directory_urls: false
 theme: readthedocs
 pages:
 - Home : index.md

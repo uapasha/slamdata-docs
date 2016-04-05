@@ -1,14 +1,14 @@
 ![SlamData Logo](/images/white-logo.png)
 
-# SQL² Reference
+# SQL<sup>2</sup> Reference
 
 <a name="introduction"></a> 
 
 ## Introduction
 
-SQL² is a subset of ANSI SQL, designed for queries into NoSQL databases.
+SQL<sup>2</sup> is a subset of ANSI SQL, designed for queries into NoSQL databases.
 
-SQL² has support for every major SQL SELECT clause, such as `AS`, `WHERE`, `JOIN`,
+SQL<sup>2</sup> has support for every major SQL SELECT clause, such as `AS`, `WHERE`, `JOIN`,
 `GROUP BY`, `HAVING`, `LIMIT`, `OFFSET`, `CROSS`, etc. It also contains many standard
 SQL functions and operators. It follows <a href="http://www.postgresql.org/" target=_blank>PostgreSQL</a>
 where SQL dialects diverge.
@@ -19,7 +19,7 @@ where SQL dialects diverge.
 
 ## Data Types
 
-The following data types are used by SQL².
+The following data types are used by SQL<sup>2</sup>.
 
 **Note:**
 > Some data types are not natively supported by all databases.
@@ -107,7 +107,7 @@ The following functions are supported:
 
 ## Syntax Changes in Version 2.5
 
-When SlamData 2.5 was released in early 2016 the SQL² syntax changed slightly.  Please
+When SlamData 2.5 was released in early 2016 the SQL<sup>2</sup> syntax changed slightly.  Please
 make note of the following syntax to avoid problems in queries:
 
 Query paths must be surrounded by backward-ticks <code>`</code> on both ends of the path.
@@ -356,7 +356,7 @@ SELECT * FROM `/log/events` AS c WHERE c.ts > TO_TIMESTAMP(1446335999)
 
 ## Grouping
 
-SQL² allows you to group data by fields and by date parts.
+SQL<sup>2</sup> allows you to group data by fields and by date parts.
 
 ### Group based on a single field
 
@@ -575,7 +575,7 @@ JOIN `/departments` AS dept ON dept._id = OID(emp.departmentId)
 
 ### Conditionals
 
-Use the `CASE` expression to provide if-then-else logic to SQL². The `CASE` sytax is:
+Use the `CASE` expression to provide if-then-else logic to SQL<sup>2</sup>. The `CASE` sytax is:
 
 ```
 SELECT (CASE <field>

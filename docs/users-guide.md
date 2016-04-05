@@ -62,7 +62,7 @@ To add a new cell to a Notebook click on the ![Plus](/images/icon-plus.png) icon
 | Cell Type   |  Image                                   | Description                                             |
 |-------------|:----------------------------------------:|---------------------------------------------------------|
 | Exploration | ![Exploration](/images/icon-explore.png) | Browse data in a table or collection                    |
-| Query       | ![Query](/images/icon-query.png)         | Leverage SQL² for powerful queries                      |
+| Query       | ![Query](/images/icon-query.png)         | Leverage SQL<sup>2</sup> for powerful queries                      |
 | Search      | ![Search](/images/icon-search.png)       | Simple searching for non-technical users                |
 | SlamDown    | ![SlamDown](/images/icon-slamdown.png)   | Create static or interactive forms                      |
 | API         | ![API](/images/icon-api.png)             | Developers pass values into queries for dynamic results |
@@ -235,7 +235,7 @@ Note:
 
 ### Query Cell
 
-The Query cell allows users to utilize SQL² to directly query one or more collections or tables.  This is the equivalent of a SQL command line console.
+The Query cell allows users to utilize SQL<sup>2</sup> to directly query one or more collections or tables.  This is the equivalent of a SQL command line console.
 
 To create a query cell:
 
@@ -253,14 +253,14 @@ The query can be manipulated in this alternate form but the highlighted text can
 
 ![Query Completion](/images/screenshots/query-completion.png)
 
-The Query cell will also automatically highlight SQL² keywords as shown the image above.  The query itself can be written on a single line (which will not word wrap) or on multiple lines.
+The Query cell will also automatically highlight SQL<sup>2</sup> keywords as shown the image above.  The query itself can be written on a single line (which will not word wrap) or on multiple lines.
 
 When a query is executed by clicking the Play ![Play Icon](/images/icon-play.png) icon the cell beneath the query cell will show a icon indicating the query is running.  When complete the query's results will display below the query.
 
 Note:
 > If a query takes longer than 30 seconds to execute SlamData considers it a timed out query and will result in an error.
 
-For a complete review of SQL² and example see the [SQL² Reference Guide](sql-squared-reference.md).
+For a complete review of SQL<sup>2</sup> and example see the [SQL<sup>2</sup> Reference Guide](sql-squared-reference.md).
 
 ---
 

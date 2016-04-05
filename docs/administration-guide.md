@@ -108,7 +108,7 @@ A mount dialog will be presented:
 
 ![SlamData Mount Dialog](/images/screenshots/mount-dialog-start.png)
 
-Enter a name for the database mount.  This name is used in the SlamData UI as well as SQL² query paths.  Use a name that makes sense for the environment.  For instance if this database were hosted on Amazon AWS/EC2 it might be named ```aws``` or ```aws-1```.
+Enter a name for the database mount.  This name is used in the SlamData UI as well as SQL<sup>2</sup> query paths.  Use a name that makes sense for the environment.  For instance if this database were hosted on Amazon AWS/EC2 it might be named ```aws``` or ```aws-1```.
 
 Select **MongoDB** as the mount type.  Other mount types will be discussed later.  Once a Mount type is selected additional fields will appear in the dialog based on the mount type selected.
 
@@ -199,9 +199,9 @@ For MongoDB the values listed in the <a href="https://docs.mongodb.org/manual/re
 | socketTimeoutMS  | 10000   | The time in milliseconds to attempt a send or receive on a socket before the attempt times out |
 
 
-#### SQL² View
+#### SQL<sup>2</sup> View
 
-SQL² Views are covered in detail in the SlamData Users Guide.
+SQL<sup>2</sup> Views are covered in detail in the SlamData Users Guide.
 
 #### Other Databases
 

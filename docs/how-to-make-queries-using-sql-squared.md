@@ -1,13 +1,13 @@
 ---
 layout: support
-title:  "How to Make Queries Using SQL²"
+title:  "How to Make Queries Using SQL<sup>2</sup>"
 ---
 
 > ***Read This First!***
 > We recently released SlamData 2.5 — it was a major release. We're in a tear to get all of our documentation updated but we have not finished. So, before you scroll down and start reading please check out the latest blog from our CTO, John De Goes — it outlines key changes that you'll want to follow: [SlamData 2.5 Released: A Bold New Step Into the World of Post-Relational Analytics](/releases/2016/02/19/slamdata-2-5-released-a-bold-new-step-into-the-world-of-post-relational-analytics.html)
 
 
-This is a short tutorial on how to use SQL<sup>2</sup> to make queries. For more details on SQL<sup>2</sup>, read the [SQL<sup>2</sup> reference guide](/documentation/reference/#sql²reference).
+This is a short tutorial on how to use SQL<sup>2</sup> to make queries. For more details on SQL<sup>2</sup>, read the [SQL<sup>2</sup> reference guide](/documentation/reference/#sql<sup>2</sup>reference).
 
 For this tutorial you will be using a sample file that is provided by MongoDB and contains latitude, longitude, and population data for various cities in the United States. If you haven't already uploaded the file as part of the Getting Started instructions, please follow these steps to do so:
 
