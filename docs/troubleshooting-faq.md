@@ -32,7 +32,7 @@ Note: Do not modify this file by hand unless you have first made a backup.  If y
 
 ## Log File Locations
 
-SlamData has a single log file whose location depends upon the OS.  Replace &lt;version&gt; below with the actual version number that is running.
+SlamData has a single log file whose location depends upon the OS.  Replace `version` below with the actual version number that is running.
 
 Windows:
 
@@ -64,8 +64,9 @@ This is typically caused by an invalid database mount.  Either the database is n
 
 When SlamData starts on Windows and Mac OS X, a browser window (or new tab) should open with the appropriate URL based on the port defined in the configuration file. Unless the port has been modified, the URL will likely be as follows, replacing servername with the actual host name:
 
-    http://servername:20223/slamdata/index.html
-
+```
+http://servername:20223/slamdata/index.html
+```
 
 ---
 
@@ -74,7 +75,6 @@ When SlamData starts on Windows and Mac OS X, a browser window (or new tab) shou
 ## How do I see which version I'm running?
 
 You can simply look at your title bar in your browser window.  The title of the web page should include it.
-
 
 ---
 

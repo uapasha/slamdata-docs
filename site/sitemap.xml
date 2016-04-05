@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+    
+    <url>
+     <loc>http://docs.slamdata.com/</loc>
+     <lastmod>2016-04-05</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>http://docs.slamdata.com/administration-guide/</loc>
+     <lastmod>2016-04-05</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>http://docs.slamdata.com/users-guide/</loc>
+     <lastmod>2016-04-05</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>http://docs.slamdata.com/securing-slamdata/</loc>
+     <lastmod>2016-04-05</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>http://docs.slamdata.com/troubleshooting-faq/</loc>
+     <lastmod>2016-04-05</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>http://docs.slamdata.com/sql-squared-reference/</loc>
+     <lastmod>2016-04-05</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>http://docs.slamdata.com/slamdown-reference/</loc>
+     <lastmod>2016-04-05</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+    
+    <url>
+     <loc>http://docs.slamdata.com/api-reference/</loc>
+     <lastmod>2016-04-05</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+    
+
+</urlset>

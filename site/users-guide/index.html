@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <title>Users Guide - SlamData Docs</title>
+  
+
+  <link rel="shortcut icon" href="../favicon.png">
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Users Guide";
+    var mkdocs_page_input_path = "users-guide.md";
+    var mkdocs_page_url = "/users-guide/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> SlamData Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../administration-guide/">Administration Guide</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Users Guide</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#users-guide">Users Guide</a></li>
+                
+                    <li><a class="toctree-l4" href="#introduction">Introduction</a></li>
+                
+                    <li><a class="toctree-l4" href="#launching-slamdata">Launching SlamData</a></li>
+                
+                    <li><a class="toctree-l4" href="#key-concepts">Key Concepts</a></li>
+                
+                    <li><a class="toctree-l4" href="#notebooks">Notebooks</a></li>
+                
+                    <li><a class="toctree-l4" href="#cell-types">Cell Types</a></li>
+                
+                    <li><a class="toctree-l4" href="#importing-data">Importing Data</a></li>
+                
+                    <li><a class="toctree-l4" href="#exporting-data">Exporting Data</a></li>
+                
+            
+            </ul>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../securing-slamdata/">Securing SlamData</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../troubleshooting-faq/">Troubleshooting FAQ</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../sql-squared-reference/">Reference (SQL²)</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../slamdown-reference/">Reference (SlamDown)</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../api-reference/">Reference (API)</a>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">SlamData Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Users Guide</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p><img alt="SlamData Logo" src="../images/white-logo.png" /></p>
+<h1 id="users-guide">Users Guide</h1>
+<h2 id="introduction">Introduction</h2>
+<p>This Users Guide can assist with daily usage of SlamData.  For information on how to install and configure SlamData see the <a href="../administration-guide/">SlamData Administration Guide</a></p>
+<p><a name="launching-slamdata"></a></p>
+<h2 id="launching-slamdata">Launching SlamData</h2>
+<p>Starting SlamData on a local system will automatically open a new browser window or tab with this URL: <code>http://localhost:20223/slamdata/index.html</code></p>
+<p>If SlamData is not installed locally but instead is on a remote system it can be accessed with a similar URL: <code>http://servername:20223/slamdata/index.html</code> where <strong>servername</strong> is the DNS name or IP address of the server.</p>
+<hr />
+<p><a name="key-concepts"></a></p>
+<h2 id="key-concepts">Key Concepts</h2>
+<p>It is useful to understand the following key concepts when using SlamData.</p>
+<table>
+<thead>
+<tr>
+<th>Feature Name</th>
+<th align="center">Image</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cluster</td>
+<td align="center"><img alt="Cluster" src="../images/icon-mount.png" /></td>
+<td>A cluster represents a database server</td>
+</tr>
+<tr>
+<td>Folder</td>
+<td align="center"><img alt="Folder" src="../images/icon-folder.png" /></td>
+<td>A folder represents a database</td>
+</tr>
+<tr>
+<td>File</td>
+<td align="center"><img alt="File" src="../images/icon-file.png" /></td>
+<td>A file represents a table or collection</td>
+</tr>
+<tr>
+<td>Notebook</td>
+<td align="center"><img alt="Notebook" src="../images/icon-notebook.png" /></td>
+<td>A notebook contains a user's work</td>
+</tr>
+</tbody>
+</table>
+<p>A Cluster (server) may contain 0, 1 or more Folders (databases).</p>
+<p>A Folder (database) may contain 0, 1 or more Files (tables or collections).</p>
+<p>Clicking on a Cluster, Folder, File or Notebook will display its contents.</p>
+<hr />
+<h2 id="notebooks">Notebooks</h2>
+<p>Notebooks capture data workflows in a visual fashion that allows you to query data, transform and visualize it in the form of charts and reports.</p>
+<p>Each stage in a Notebook's workflow is called a <em>cell</em> or <em>card</em>.  Cells can rely on data from previous cells or exist independent of other cells.</p>
+<p>A Notebook can be created in one of two ways:</p>
+<ol>
+<li>By clicking on the Notebook <img alt="Notebook" src="../images/icon-notebook.png" /> icon in the upper right of the SlamData UI.</li>
+<li>Clicking on a collection and renaming the subsequently displayed Notebook something other than <code>Untitled Notebook</code>.</li>
+</ol>
+<p>Whenever an existing Notebook is changed it is automatically saved and can be referred to in the future.  For instance if a Notebook contains an exploration cell followed by a query cell, the query can be changed and executed and the Notebook is then automatically saved.  This allows a user to work in a Notebook without fear of losing work or data.</p>
+<hr />
+<p><a name="cell-types"></a></p>
+<h2 id="cell-types">Cell Types</h2>
+<p>To add a new cell to a Notebook click on the <img alt="Plus" src="../images/icon-plus.png" /> icon and select one of the following cell types</p>
+<table>
+<thead>
+<tr>
+<th>Cell Type</th>
+<th align="center">Image</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Exploration</td>
+<td align="center"><img alt="Exploration" src="../images/icon-explore.png" /></td>
+<td>Browse data in a table or collection</td>
+</tr>
+<tr>
+<td>Query</td>
+<td align="center"><img alt="Query" src="../images/icon-query.png" /></td>
+<td>Leverage SQL² for powerful queries</td>
+</tr>
+<tr>
+<td>Search</td>
+<td align="center"><img alt="Search" src="../images/icon-search.png" /></td>
+<td>Simple searching for non-technical users</td>
+</tr>
+<tr>
+<td>SlamDown</td>
+<td align="center"><img alt="SlamDown" src="../images/icon-slamdown.png" /></td>
+<td>Create static or interactive forms</td>
+</tr>
+<tr>
+<td>API</td>
+<td align="center"><img alt="API" src="../images/icon-api.png" /></td>
+<td>Developers pass values into queries for dynamic results</td>
+</tr>
+</tbody>
+</table>
+<h3 id="exploration-cell">Exploration Cell</h3>
+<p>An example exploration cell is shown below.  Refer to the table below the image for the function of each icon surrounding the cell.</p>
+<p><img alt="Exploration Cell" src="../images/screenshots/cell-exploration-annotated-with-numbers.png" /></p>
+<table>
+<thead>
+<tr>
+<th align="center">Icon #</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">1</td>
+<td>Download the cell in CSV or JSON format</td>
+</tr>
+<tr>
+<td align="center">2</td>
+<td>Create a graphical chart based on this cell's data</td>
+</tr>
+<tr>
+<td align="center">3</td>
+<td>Simple search on this cell's data</td>
+</tr>
+<tr>
+<td align="center">4</td>
+<td>Create a query on this cell's data</td>
+</tr>
+<tr>
+<td align="center">5</td>
+<td>Execute or 'Play' the cell again</td>
+</tr>
+<tr>
+<td align="center">6</td>
+<td>Go one level up or one level back</td>
+</tr>
+<tr>
+<td align="center">7</td>
+<td>Double click to rename this Notebook</td>
+</tr>
+<tr>
+<td align="center">8</td>
+<td>Hide the element which displays the path (useful when publishing Notebooks)</td>
+</tr>
+<tr>
+<td align="center">9</td>
+<td>Delete this cell and all subsequent cells</td>
+</tr>
+<tr>
+<td align="center">10</td>
+<td>Drop-down to select a different file path</td>
+</tr>
+<tr>
+<td align="center">11</td>
+<td>Refresh the cell's data</td>
+</tr>
+<tr>
+<td align="center">12</td>
+<td>Get HTML and JavaScript code to embed this cell in another web application</td>
+</tr>
+<tr>
+<td align="center">13</td>
+<td>Displays the schema of the collection or table being viewed</td>
+</tr>
+</tbody>
+</table>
+<p>Below is an example of what a nested schema would look like within the exploration cell. In
+this instance we have an array called <code>previous_addresses</code> with several documents, each
+containing fields <code>city</code>, <code>county</code>, <code>latitude</code>, <code>longitude</code>, <code>state</code> and <code>zip_code</code>.</p>
+<p><img alt="Exploration Cell Nested" src="../images/screenshots/cell-exploration-nested.png" /></p>
+<p>The corresponding JSON would appears like this in the database:</p>
+<pre><code>...
+&quot;previous_addresses&quot;: [
+    {
+      &quot;city&quot;: &quot;NEW ORLEANS&quot;,
+      &quot;longitude&quot;: -89.882564,
+      &quot;county&quot;: &quot;ORLEANS&quot;,
+      &quot;state&quot;: &quot;LA&quot;,
+      &quot;latitude&quot;: 30.032997,
+      &quot;zip_code&quot;: 70157
+    },
+    {
+      &quot;city&quot;: &quot;WEST ALTON&quot;,
+      &quot;longitude&quot;: -90.403416,
+      &quot;county&quot;: &quot;SAINT CHARLES&quot;,
+      &quot;state&quot;: &quot;MO&quot;,
+      &quot;latitude&quot;: 38.83275,
+      &quot;zip_code&quot;: 63386
+    },
+    {
+      &quot;city&quot;: &quot;OAKESDALE&quot;,
+      &quot;longitude&quot;: -117.41146,
+      &quot;county&quot;: &quot;WHITMAN&quot;,
+      &quot;state&quot;: &quot;WA&quot;,
+      &quot;latitude&quot;: 47.079658,
+      &quot;zip_code&quot;: 99158
+    }
+...
+</code></pre>
+
+<hr />
+<h3 id="slamdown-cell">SlamDown Cell</h3>
+<p>Reports and forms are created with a subset of <a href="http://daringfireball.net/projects/markdown">Markdown</a> called SlamDown.  SlamDown allows a relatively non-technical user to create interactive forms, charts and reports without understanding HTML or other complicated markup.</p>
+<p>For specific syntax see the <a href="../slamdown-reference/">SlamDown Reference Guide</a> and the <a href="http://slamdata.com/wp-content/uploads/2016/03/slamdata-cheatsheet-20160329-2.pdf">Cheat Sheet</a>.</p>
+<p>Below is an image of both a SlamDown cell and it's rendering directly following it.  As a reminder when you publish a Notebook you can include SlamDown cells, providing users with interactive forms that can directly affect a query and resulting report or chart.</p>
+<p><img alt="Exploration Cell Nested" src="../images/screenshots/cell-slamdown.png" /></p>
+<hr />
+<h3 id="search-cell">Search Cell</h3>
+<p>The Search cell allows users to search through entire collections as well as previous search results resulting in a very refined data set.  In other words a user can use a search cell to refine results and then use another search cell to refine those results even further; this process can continue until the appropriate results are found.</p>
+<h4 id="default-search">Default Search</h4>
+<ol>
+<li>Create a new Search cell:<ul>
+<li>Click on the Search <img alt="Search Icon" src="../images/icon-gray-search.png" /> icon on the left side of an existing exploration cell, or</li>
+<li>Click the Plus <img alt="Plus Icon" src="../images/icon-plus.png" /> icon and then select the Search <img alt="Search Icon" src="../images/icon-search.png" /> icon.</li>
+</ul>
+</li>
+<li>In the new Search cell, type in a search term and click the Play <img alt="Play Icon" src="../images/icon-play.png" /> icon beneath it.</li>
+</ol>
+<p>In the example image below notice the term <code>USA</code> was searched for.  Also note that the field name was not specified.  By default <strong>SlamData will search all fields in all documents</strong>.  For very large collections and tables, especially those without proper indexes assigned, this could take some time to complete; however this also provides a very powerful feature to find data that exists but the location is unknown.</p>
+<p><img alt="Search and Results" src="../images/screenshots/search-and-results.png" /></p>
+<h4 id="field-specific-search">Field Specific Search</h4>
+<p>To limit a search to a specific field prefix the search term with the field name, for example:</p>
+<pre><code>country:USA
+</code></pre>
+
+<h4 id="multiple-field-values">Multiple Field Values</h4>
+<p>To limit a search with multiple fields list them in the search field.  For example to find all women who won gold medals in a data set it may appear like this:</p>
+<pre><code>gender:W  type:Gold
+</code></pre>
+
+<h4 id="mandatory-search">Mandatory Search</h4>
+<p>To search all documents that do <strong>not</strong> contain a value the value should be prefixed with the (<code>-</code>) symbol as follows:</p>
+<pre><code>-Skating
+</code></pre>
+
+<h4 id="numeric-searches">Numeric Searches</h4>
+<p>To search on fields containing numeric values use the following examples.</p>
+<h5 id="range-search">Range Search</h5>
+<p>Search for a field <code>year</code> whose value is between <code>1928</code> and <code>1932</code>:</p>
+<pre><code>year:1928..1932
+</code></pre>
+
+<h5 id="not-range-search">NOT Range Search</h5>
+<p>The opposite of the previous example, this searches for field <code>year</code> whose value is <strong>not</strong> between <code>1928</code> and <code>1932</code>:</p>
+<pre><code>-year:1928..1932
+</code></pre>
+
+<h5 id="comparison-search">Comparison Search</h5>
+<p>Search for a field <code>year</code> whose value is less than 1948.  Below we use the <code>&lt;</code> symbol for <code>less than</code> but the <code>&gt;</code> can also be used for <code>greater than</code>:</p>
+<pre><code>year &lt; 1948
+</code></pre>
+
+<h4 id="starts-with-search">Starts With Search</h4>
+<p>Search for a field <code>name</code> whose value starts with <code>Jen</code>:</p>
+<pre><code>name:Jen*
+</code></pre>
+
+<h4 id="nested-search">Nested Search</h4>
+<p>Search all documents which contain a <code>foo</code> field which contains a <code>bar</code> field which contains the text <code>baz</code>:</p>
+<pre><code>foo:bar:baz
+</code></pre>
+
+<p>Note:</p>
+<blockquote>
+<p>A concise set of search examples can also be found in the <a href="http://slamdata.com/wp-content/uploads/2016/03/slamdata-cheatsheet-20160329-2.pdf">SlamData CheatSheet</a></p>
+</blockquote>
+<hr />
+<h3 id="query-cell">Query Cell</h3>
+<p>The Query cell allows users to utilize SQL² to directly query one or more collections or tables.  This is the equivalent of a SQL command line console.</p>
+<p>To create a query cell:</p>
+<ul>
+<li>From an empty Notebook click the Plus <img alt="Plus Icon" src="../images/icon-plus.png" /> icon then click the Query <img alt="Query" src="../images/icon-query.png" /> icon</li>
+</ul>
+<p>OR</p>
+<ul>
+<li>From an existing cell click the Query <img alt="Query" src="../images/icon-gray-query.png" /> icon to the left of the cell.</li>
+</ul>
+<p>If the first option is selected the user will be presented with an empty Query cell.  If the second option is selected the user will be presented with a Query cell that contains a default query, highlighted with colored syntax as shown below:</p>
+<p><img alt="Query Highlighted" src="../images/screenshots/query-highlighted.png" /></p>
+<p>The query can be manipulated in this alternate form but the highlighted text cannot be modified or removed.  If the user prefers more control the first option above may be preferred.  The Query cell also provides query completion at certain parts of your query as shown below:</p>
+<p><img alt="Query Completion" src="../images/screenshots/query-completion.png" /></p>
+<p>The Query cell will also automatically highlight SQL² keywords as shown the image above.  The query itself can be written on a single line (which will not word wrap) or on multiple lines.</p>
+<p>When a query is executed by clicking the Play <img alt="Play Icon" src="../images/icon-play.png" /> icon the cell beneath the query cell will show a icon indicating the query is running.  When complete the query's results will display below the query.</p>
+<p>Note:</p>
+<blockquote>
+<p>If a query takes longer than 30 seconds to execute SlamData considers it a timed out query and will result in an error.</p>
+</blockquote>
+<p>For a complete review of SQL² and example see the <a href="../sql-squared-reference/">SQL² Reference Guide</a>.</p>
+<hr />
+<h2 id="importing-data">Importing Data</h2>
+<p>SlamData allows users to import files in both <strong>JSON</strong> and <strong>CSV</strong> format.</p>
+<p>JSON files may be formatted either as multiple single documents or within a JSON array.</p>
+<p>Note:</p>
+<blockquote>
+<p>The first line of CSV files will be used as a <em>header</em> line creating the schema that the remaining rows will adhere to.</p>
+</blockquote>
+<p>To upload a file into SlamData, follow these steps:</p>
+<ol>
+<li>
+<p>Navigate to the database where the data should be imported.</p>
+</li>
+<li>
+<p>At the top of the page click the Upload File <img alt="Upload File" src="../images/icon-upload.png" /> icon.</p>
+</li>
+<li>
+<p>Select a file from your file system.  Large files may take a few moments to upload.  After data has been imported a new collection will be created with the same name as the file.</p>
+</li>
+<li>
+<p>A new Untitled Notebook will be created that displays the new collection's data.</p>
+</li>
+</ol>
+<hr />
+<h2 id="exporting-data">Exporting Data</h2>
+<p>SlamData allows users to export refined result sets, collections and entire databases.</p>
+<h3 id="result-sets">Result Sets</h3>
+<p>Once a result set has been refined either through query cells or search cells it may then be downloaded in <strong>JSON</strong> or <strong>CSV</strong> formats.</p>
+<ol>
+<li>
+<p>From an exploration cell or results set cell click the Download cell <img alt="Download Cell" src="../images/icon-download-cell.png" /> icon to the left of the cell.</p>
+</li>
+<li>
+<p>In the newly created Download cell select either the CSV <img alt="CSV Icon" src="../images/icon-csv.png" /> or JSON <img alt="JSON Icon" src="../images/icon-json.png" /> icon on the left.</p>
+</li>
+<li>
+<p>Select the appropriate options in the cell.</p>
+</li>
+<li>
+<p>Click Download.</p>
+</li>
+</ol>
+<p>See the example image below of a query cell followed by the results cell.</p>
+<p><img alt="Query Cell Results" src="../images/screenshots/cell-query-and-results.png" /></p>
+<p>Downloading the data from this <strong>Results Cell</strong> provides the following JSON export file:</p>
+<pre><code>[
+  {
+    &quot;gender&quot;: &quot;male&quot;,
+    &quot;name&quot;: &quot;Tory Escobar&quot;,
+    &quot;addresses&quot;: [
+      {
+        &quot;city&quot;: &quot;OROFINO&quot;,
+        &quot;longitude&quot;: -116.184848,
+        &quot;county&quot;: &quot;CLEARWATER&quot;,
+        &quot;state&quot;: &quot;ID&quot;,
+        &quot;latitude&quot;: 46.4976,
+        &quot;zip_code&quot;: 83544
+      },
+      {
+        &quot;city&quot;: &quot;ARRIBA&quot;,
+        &quot;longitude&quot;: -103.323143,
+        &quot;county&quot;: &quot;LINCOLN&quot;,
+        &quot;state&quot;: &quot;CO&quot;,
+        &quot;latitude&quot;: 39.316461,
+        &quot;zip_code&quot;: 80804
+      },
+      {
+        &quot;city&quot;: &quot;OLGA&quot;,
+        &quot;longitude&quot;: -122.983742,
+        &quot;county&quot;: &quot;SAN JUAN&quot;,
+        &quot;state&quot;: &quot;WA&quot;,
+        &quot;latitude&quot;: 48.557824,
+        &quot;zip_code&quot;: 98279
+      },
+      {
+        &quot;city&quot;: &quot;DELRAY BEACH&quot;,
+        &quot;longitude&quot;: -80.13473,
+        &quot;county&quot;: &quot;PALM BEACH&quot;,
+        &quot;state&quot;: &quot;FL&quot;,
+        &quot;latitude&quot;: 26.454218,
+        &quot;zip_code&quot;: 33484
+      },
+      {
+        &quot;city&quot;: &quot;LYONS&quot;,
+        &quot;longitude&quot;: -122.594993,
+        &quot;county&quot;: &quot;LINN&quot;,
+        &quot;state&quot;: &quot;OR&quot;,
+        &quot;latitude&quot;: 44.749921,
+        &quot;zip_code&quot;: 97358
+      }
+    ]
+  },
+  {
+    &quot;gender&quot;: &quot;female&quot;,
+    &quot;name&quot;: &quot;Damaris Savage&quot;,
+    &quot;addresses&quot;: [
+      {
+        &quot;city&quot;: &quot;CROSSROADS&quot;,
+        &quot;longitude&quot;: -103.209405,
+        &quot;county&quot;: &quot;LEA&quot;,
+        &quot;state&quot;: &quot;NM&quot;,
+        &quot;latitude&quot;: 32.690034,
+        &quot;zip_code&quot;: 88114
+      }
+    ]
+  },
+  {
+    &quot;gender&quot;: &quot;female&quot;,
+    &quot;name&quot;: &quot;See Harrison&quot;,
+    &quot;addresses&quot;: []
+  }
+]
+
+</code></pre>
+
+<h3 id="collections-and-tables">Collections and Tables</h3>
+<p>Collections and tables can also be exported in their entirety.  When browsing a folder (database) within the SlamData UI simply hover over the file (table or collection) and notice the icons that appear to the right.  Click on the Download <img alt="Download Icon" src="../images/icon-download.png" /> icon.  See the image below with the highlighted icon.</p>
+<p><img alt="Download Collection" src="../images/screenshots/download-collection.png" /></p>
+<h3 id="databases">Databases</h3>
+<p>Databases can be exported in their entirety as well.  Simply ensure the appropriate database and its underlying collections are displayed in the UI and click on the Download <img alt="Download Icon" src="../images/icon-download.png" /> icon in the <strong>top menu bar</strong> as shown in the image below.  A dialog will appear providing several options for the download and will result in a compress zip file containing all of the database's collections as separate files.</p>
+<p><img alt="Download Database" src="../images/screenshots/download-database.png" /></p>
+<hr />
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../securing-slamdata/" class="btn btn-neutral float-right" title="Securing SlamData">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../administration-guide/" class="btn btn-neutral" title="Administration Guide"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../administration-guide/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../securing-slamdata/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <title>Reference (SlamDown) - SlamData Docs</title>
+  
+
+  <link rel="shortcut icon" href="../favicon.png">
+  
+
+  
+  <link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700' rel='stylesheet' type='text/css'>
+
+  <link rel="stylesheet" href="../css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../css/theme_extra.css" type="text/css" />
+  <link rel="stylesheet" href="../css/highlight.css">
+
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Reference (SlamDown)";
+    var mkdocs_page_input_path = "slamdown-reference.md";
+    var mkdocs_page_url = "/slamdown-reference/";
+  </script>
+  
+  <script src="../js/jquery-2.1.1.min.js"></script>
+  <script src="../js/modernizr-2.8.3.min.js"></script>
+  <script type="text/javascript" src="../js/highlight.pack.js"></script>
+  <script src="../js/theme.js"></script> 
+
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+      <div class="wy-side-nav-search">
+        <a href=".." class="icon icon-home"> SlamData Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        <ul class="current">
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="..">Home</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../administration-guide/">Administration Guide</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../users-guide/">Users Guide</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../securing-slamdata/">Securing SlamData</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../troubleshooting-faq/">Troubleshooting FAQ</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../sql-squared-reference/">Reference (SQL²)</a>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 current">
+        <a class="current" href="./">Reference (SlamDown)</a>
+        
+            <ul>
+            
+                <li class="toctree-l3"><a href="#slamdown-reference">SlamDown Reference</a></li>
+                
+                    <li><a class="toctree-l4" href="#introduction">Introduction</a></li>
+                
+                    <li><a class="toctree-l4" href="#block-elements">Block Elements</a></li>
+                
+                    <li><a class="toctree-l4" href="#inline-elements">Inline Elements</a></li>
+                
+                    <li><a class="toctree-l4" href="#form-elements">Form Elements</a></li>
+                
+            
+            </ul>
+        
+    </li>
+<li>
+          
+            <li>
+    <li class="toctree-l1 ">
+        <a class="" href="../api-reference/">Reference (API)</a>
+        
+    </li>
+<li>
+          
+        </ul>
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="..">SlamData Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="..">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Reference (SlamDown)</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <p><img alt="SlamData Logo" src="../images/white-logo.png" /></p>
+<h1 id="slamdown-reference">SlamDown Reference</h1>
+<p>This SlamDown Reference can assist with the proper formatting of SlamDown code to produce static and interactive forms within SlamData.</p>
+<hr />
+<h2 id="introduction">Introduction</h2>
+<p>SlamData contains its own markup language called SlamDown, which is useful for creating reports and forms. SlamDown is a subset of <a href="http://commonmark.org/">CommonMark</a>, a specification for a highly compatible implementation of <a href="https://en.wikipedia.org/wiki/Markdown">Markdown</a>.</p>
+<p>In addition, SlamDown also includes two extensions to CommonMark: <a href="#form">form fields</a> and <a href="#query-eval">evaluated SQL<sup>2</sup> queries</a>.</p>
+<p>This reference contains the following sections:</p>
+<p><a name="block-elements"></a></p>
+<h2 id="block-elements">Block Elements</h2>
+<p>The following SlamDown elements create blocks of content.</p>
+<h3 id="horizontal-rules">Horizontal Rules</h3>
+<p>Three dashes or more create a horizontal line. Put a blank line above and below the dashes.</p>
+<pre><code>Text here
+
+---
+
+More text here
+</code></pre>
+<p>results in:</p>
+<p>Text here</p>
+<hr />
+<p>More text here</p>
+<h3 id="headers">Headers</h3>
+<p>Use hash marks (<code>#</code>) for <a href="http://spec.commonmark.org/0.22/#atx-header">ATX headers</a>, with one hashmark
+for each level.</p>
+<pre><code># Top level  
+## Second level
+### Third level
+</code></pre>
+<p>results in a first, second, and third level heading:</p>
+<p><img alt="Headers" src="../images/screenshots/fake-levels.png" /></p>
+<h3 id="code-blocks">Code Blocks</h3>
+<p>You can create blocks of code (that is, literal content in monospace font) in two ways:</p>
+<p><strong>Indented code blocks</strong></p>
+<p>Indent by four spaces.</p>
+<pre>
+        for (int i =0; i < 10; i++)
+            sum += myArray[i];
+</pre>
+
+<p><strong>Fenced code blocks</strong></p>
+<p>Start and end with three or more backtick (`) characters.</p>
+<pre><code>```
+for (int i =0; i &lt; 10; i++)
+    sum += myArray[i];
+```
+</code></pre>
+<p>Both Indented Code Blocks and Fenced Code Blocks result in:</p>
+<pre><code>for (int i =0; i &lt; 10; i++)
+   sum += myArray[i];
+</code></pre>
+
+<h3 id="paragraphs">Paragraphs</h3>
+<p>Paragraphs are separated by a blank line.</p>
+<pre><code>This is paragraph 1.
+
+This is paragraph 2.
+</code></pre>
+<p>results in:</p>
+<p>This is paragraph 1.</p>
+<p>This is paragraph 2.</p>
+<h3 id="block-quotes">Block quotes</h3>
+<p>Start with a greater than sign (<code>&gt;</code>) to create a block quote.</p>
+<pre><code>&gt; This is a block quote.
+</code></pre>
+<p>results in:</p>
+<blockquote>
+<p>This is a block quote.  </p>
+</blockquote>
+<h3 id="lists">Lists</h3>
+<p>Ordrered lists start with numbers followed by periods. The actual numbers in the SlamDown do not matter.
+In the end, they will be displayed with ascending indices.</p>
+<pre><code>1. First item
+2. Second item
+3. Third item
+</code></pre>
+<p>results in:</p>
+<ol>
+<li>First item</li>
+<li>Second item</li>
+<li>Third item</li>
+</ol>
+<p>Unordered lists start with either asterisks (<code>*</code>), dashes (<code>-</code>), or pluses (<code>+</code>). They are
+interchangeable.</p>
+<pre><code>* First item
+* Second item
+* Third item
+</code></pre>
+<p>results in:</p>
+<ul>
+<li>First item</li>
+<li>Second item</li>
+<li>Third item</li>
+</ul>
+<p><a id="inline-elements"></a></p>
+<h2 id="inline-elements">Inline Elements</h2>
+<p>The following inline elements are supported in SlamDown. In addition to standard Markdown
+elements, there is also the ability to <a href="#query-eval">evaluate a SQL query</a> and put the
+result into the content.</p>
+<h3 id="emphasis-and-strong-emphasis">Emphasis and Strong Emphasis</h3>
+<p>Surround content with asterisks (<code>*</code>) for emphasis and surround it with double asterisks (<code>**</code>)
+for strong emphasis.</p>
+<pre><code>This is *important*. This is **more important**.
+</code></pre>
+<p>results in:</p>
+<p>This is <em>important</em>. This is <strong>more important</strong>.</p>
+<h3 id="links">Links</h3>
+<p>Links contain the link title in square brackets (<code>[]</code>) and the link destination in
+parentheses (<code>()</code>).</p>
+<pre><code>[SlamData](http://slamdata.com)
+</code></pre>
+<p>results in:</p>
+<p><a href="http://slamdata.com">SlamData</a></p>
+<p>If the link title and destination are the same, you can use an autolink, where the URI
+is contained in angle brackets (<code>&lt;&gt;</code>).</p>
+<pre><code>&lt;http://slamdata.com&gt;
+</code></pre>
+<p>results in:</p>
+<p><a href="http://slamdata.com">http://slamdata.com</a></p>
+<h3 id="images">Images</h3>
+<p>Images start with an explanation mark (<code>!</code>), followed by the image description in square brackets
+(<code>[]</code>) and the image URI in parentheses (<code>()</code>).</p>
+<pre><code>![SlamData Logo](https://media.licdn.com/media/p/6/005/088/002/039b9f8.png)
+</code></pre>
+<p>results in:</p>
+<p><img src="https://media.licdn.com/media/p/6/005/088/002/039b9f8.png" width=400></p>
+<h3 id="inline-code-formatting">Inline code formatting</h3>
+<p>To add code formatting (literal content with monospace font) inline, put the content between
+backtick (`) characters.</p>
+<pre><code>Start SQL statements with `SELECT * FROM`
+</code></pre>
+<p>results in:</p>
+<p>Start SQL statements with <code>SELECT * FROM</code></p>
+<h3 id="evaluated-sql-query">Evaluated SQL Query</h3>
+<p>SlamDown extends CommonMark by allowing you to evaluate a SQL query and insert
+the results into the rendered content. Start the query with an exclamation point
+and then contain the SQL query between double backtick (`) characters.</p>
+<p>Note:</p>
+<blockquote>
+<p>Notice how the path to the query below has a space between the backtick that
+ends the path and the double backticks that end the query.  This is a necessary
+space because three backticks in a row start a Fenced Code Block as stated above.</p>
+</blockquote>
+<p>In the example below, if there are 20 documents in the <code>/col</code> file, then</p>
+<pre><code>There are !``SELECT COUNT(*) FROM `/col` `` documents inside the collection.
+</code></pre>
+
+<p>results in:</p>
+<p>There are <code>20</code> documents inside the collection.</p>
+<p><a id="form-elements"></a></p>
+<h2 id="form-elements">Form Elements</h2>
+<p>SlamDown contains a significant addition to CommonMark, which are form elements.
+This allows for the creation of interactive reports.</p>
+<h3 id="text-field">Text Field</h3>
+<p>Use one or more underscores (<code>_</code>) to create a text input field where a user
+can add text.</p>
+<p>For example, this line creates an input file for a name. You can then refer to the user value with the string variable name <code>name</code>.</p>
+<pre><code>name = ________
+</code></pre>
+<p>Optionally, you can pre-fill the input field with a default value by having
+it after the underscores in parentheses.
+This line creates an input file for spouse name with a default value of
+"none". You can then refer to the user value with the string variable name <code>spouse</code>.</p>
+<pre><code>spouse = ________ (none)
+</code></pre>
+<p>By default input fields are evaluated as String types.  To enforce a numeric type
+prefix the underscores with the (<code>#</code>) symbol.  For example:</p>
+<pre><code>year = #________
+</code></pre>
+<h3 id="radio-buttons">Radio Buttons</h3>
+<p>Use parentheses followed by text to indicate radio buttons. A set of radio buttons has
+only one button selected at a time. Indicate which button is selected by putting an <code>x</code>
+in the parentheses.</p>
+<p>For example, this line creates a set of radio buttons with the values "car", "bus",
+and "bike", where "car" is marked as the default. The result is stored in the string
+variable named <code>commute</code> for later use.</p>
+<pre><code>commute = (x) car () bus () bike
+</code></pre>
+<p>This results in:</p>
+<p><img alt="Radio Buttons" src="../images/screenshots/radio-buttons.png" /></p>
+<p><strong>Note:</strong> Currently, the default value must be the first value.</p>
+<h3 id="checkboxes">Checkboxes</h3>
+<p>Use square brackets followed by text to indicate checkboxes. In a set of checkboxes,
+each checkbox operates independently. Use an <code>x</code> in the square brackets to indicate
+that the checkbox should be checked by default.
+The string value returned will be an array of strings in square brackets.</p>
+<p>For example, this line creates a set of checkboxes with the values "Android", "iPhone",
+and "Blackberry". The result is stored in the string variable named <code>phones</code> for later use.</p>
+<pre><code>phones = [] Android [x] iPhone [x] Blackberry
+</code></pre>
+<p>If left as the default, the <code>phones</code> variable will have the value: <code>['iPhone', 'Blackberry']</code>.</p>
+<p>This results in:</p>
+<p><img alt="Check Boxes" src="../images/screenshots/checkboxes.png" /></p>
+<h3 id="dropdown">Dropdown</h3>
+<p>Use a comma-separated list in curly brackets to indicate a dropdown element.</p>
+<p>For example, this line creates a dropdown element with BOS, SFO, and NYC entries.  The result is stored in the string variable named <code>city</code> for later use.</p>
+<pre><code>city = {BOS, SFO, NYC}
+</code></pre>
+<p>Optionally, include a default value by listing it in parentheses at the end.
+In this line, NYC is set as the default.</p>
+<pre><code>city = {BOS, SFO, NYC} (NYC)
+</code></pre>
+<p>This results in:</p>
+<p><img alt="Dropdown" src="../images/screenshots/dropdown.png" /></p>
+<h3 id="dates-and-times">Dates and Times</h3>
+<p>Provide a date, time or both date &amp; time selector for users by implementing the following syntax.</p>
+<h4 id="date">Date</h4>
+<p>For example the following line creates a date selector element and stores the value in a variable called <code>start</code>:</p>
+<pre><code>start = __ - __ - ____ (04-19-2016)
+</code></pre>
+
+<h4 id="time">Time</h4>
+<p>The following lines creates a time selector element:</p>
+<pre><code>start = __ : __ (12:30 PM)
+</code></pre>
+
+<h4 id="date-time">Date &amp; Time</h4>
+<p>The following line creates both a date and time selector element:</p>
+<pre><code>start = __ - __ - ____ __ : __ (06-06-2015 12:00 PM)
+</code></pre>
+
+<p>This results in:</p>
+<p><img alt="Date and Time Selector" src="../images/screenshots/date-and-time.png" /></p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../api-reference/" class="btn btn-neutral float-right" title="Reference (API)">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+        <a href="../sql-squared-reference/" class="btn btn-neutral" title="Reference (SQL²)"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="http://www.mkdocs.org">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+	  
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+<div class="rst-versions" role="note" style="cursor: pointer">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+        <span><a href="../sql-squared-reference/" style="color: #fcfcfc;">&laquo; Previous</a></span>
+      
+      
+        <span style="margin-left: 15px"><a href="../api-reference/" style="color: #fcfcfc">Next &raquo;</a></span>
+      
+    </span>
+</div>
+
+</body>
+</html>
