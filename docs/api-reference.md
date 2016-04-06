@@ -93,7 +93,7 @@ Accept: text/csv; columnDelimiter="|"&rowDelimiter=";"&quoteChar="'"&escapeChar=
 The following example returns data for the query:
 
 ```
-SELECT * from "//data/SampleJSON" WHERE state='WA'
+SELECT * from `/data/SampleJSON` WHERE state="WA"
 ```
 
 **Note**:
@@ -102,7 +102,7 @@ SELECT * from "//data/SampleJSON" WHERE state='WA'
 #### Request
 
 ```
-GET http://localhost:20223/query/fs?q=SELECT * from `//data/SampleJSON` WHERE state="WA"
+GET http://localhost:20223/query/fs?q=SELECT * from `/data/SampleJSON` WHERE state="WA"
 
 Headers:
   Accept: application/json
@@ -543,7 +543,7 @@ If unsuccessful, then JSON is returned with two elements: `error`, which contain
   "error": "some uploaded value(s) could not be processed",
   "details": [
     {
-      "detail": "JSON contains invalid suffix content: , value: Str(parse error: { \"city\": \"NEVERLAND\", \"state\": \"ZZ\", \"pop\": 2354, \"loc\": [ -73.658, 41.443 ] },)"
+      "detail": "JSON contains invalid suffix content: , value: Str(parse error: { "city": "NEVERLAND", "state": "ZZ", "pop": 2354, "loc": [ -73.658, 41.443 ] },)"
     }
   ]
 }
@@ -604,7 +604,7 @@ If unsuccessful, then JSON is returned with two elements: `error`, which contain
   "error": "some uploaded value(s) could not be processed",
   "details": [
     {
-      "detail": "JSON contains invalid suffix content: ,; value: Str(parse error: { \"city\": \"UTOPIA\", \"state\": \"ZZ\", \"pop\": 2354, \"loc\": [ -75.757, 40.941 ] },)"
+      "detail": "JSON contains invalid suffix content: ,; value: Str(parse error: { "city": "UTOPIA", "state": "ZZ", "pop": 2354, "loc": [ -75.757, 40.941 ] },)"
     }
   ]
 }
