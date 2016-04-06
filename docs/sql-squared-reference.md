@@ -31,20 +31,20 @@ as if they were supported by the database.
 **XYZ** = Native XYZ DB Support (example for future databases)
 
 
-| Type        | Description                                         | Examples                          | MDB | XYZ |
-|-------------|-----------------------------------------------------|-----------------------------------|-----|-----|
-| Null        | Indicates missing information.                      | `null`                            | Yes | ??? |
-| Boolean     | true or false                                       | `true`, `false`                   | Yes | ??? |
-| Integer     | Whole numbers (no fractional component)             | `1`, `-2`                         | Yes | ??? |
-| Decimal     | Decimal numbers (optional fractional components)    | `1.0`, `-2.19743`                 | Yes | ??? |
-| String      | Text                                                | `"221B Baker Street"`             | Yes | ??? |
-| DateTime    | Date and time, in ISO8601 format                    | `TIMESTAMP("2004-10-19 10:23:54")`| Yes | ??? |
-| Time        | Time in the format HH:MM:SS.                        | `TIME("10:23:54")`                | No  | ??? |
-| Date        | Date in the format YYYY-MM-DD                       | `DATE("2004-10-19)"`              | No  | ??? |
-| Interval    | Time interval, in ISO8601 format                    | `INTERVAL("P3DT4H5M6S")`          | No  | ??? |
-| Object ID   | Unique object identifier.                           | `OID("507f1f77bcf86cd799439011")` | Yes | ??? |
-| Ordered Set | Ordered list with no duplicates allowed             | `(1, 2, 3)`                       | No  | ??? |
-| Array       | Ordered list with duplicates allowed                | `[1, 2, 2]`                       | Yes | ??? |
+| Type        | Description                                         | Examples                           | MDB | XYZ |
+|-------------|-----------------------------------------------------|------------------------------------|-----|-----|
+| Null        | Indicates missing information.                      | `null`                             | Yes | ??? |
+| Boolean     | true or false                                       | `true`, `false`                    | Yes | ??? |
+| Integer     | Whole numbers (no fractional component)             | `1`, `-2`                          | Yes | ??? |
+| Decimal     | Decimal numbers (optional fractional components)    | `1.0`, `-2.19743`                  | Yes | ??? |
+| String      | Text                                                | `"221B Baker Street"`              | Yes | ??? |
+| DateTime    | Date and time, in ISO8601 format                    | `TIMESTAMP("2004-10-19T10:23:54Z")`| Yes | ??? |
+| Time        | Time in the format HH:MM:SS.                        | `TIME("10:23:54")`                 | No  | ??? |
+| Date        | Date in the format YYYY-MM-DD                       | `DATE("2004-10-19")`               | No  | ??? |
+| Interval    | Time interval, in ISO8601 format                    | `INTERVAL("P3DT4H5M6S")`           | No  | ??? |
+| Object ID   | Unique object identifier.                           | `OID("507f1f77bcf86cd799439011")`  | Yes | ??? |
+| Ordered Set | Ordered list with no duplicates allowed             | `(1, 2, 3)`                        | No  | ??? |
+| Array       | Ordered list with duplicates allowed                | `[1, 2, 2]`                        | Yes | ??? |
 
 ---
 

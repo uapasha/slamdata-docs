@@ -255,7 +255,7 @@ The query can be manipulated in this alternate form but the highlighted text can
 
 The Query cell will also automatically highlight SQL<sup>2</sup> keywords as shown the image above.  The query itself can be written on a single line (which will not word wrap) or on multiple lines.
 
-When a query is executed by clicking the Play ![Play Icon](/images/icon-play.png) icon the cell beneath the query cell will show a icon indicating the query is running.  When complete the query's results will display below the query.
+When a query is executed by clicking the Play ![Play Icon](/images/icon-play.png) icon the cell beneath the query cell will show an icon indicating the query is running.  When complete the query's results will display below the query.
 
 Note:
 > If a query takes longer than 30 seconds to execute SlamData considers it a timed out query and will result in an error.

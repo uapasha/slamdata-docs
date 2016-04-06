@@ -5,11 +5,12 @@ site_favicon: favicon.png
 site_dir: site
 docs_dir: docs
 use_directory_urls: true
-theme: cosmo
+theme: readthedocs
 pages:
 - Home : index.md
 - Administration Guide : administration-guide.md
 - Users Guide : users-guide.md
+- Tutorial : tutorial.md
 - Securing SlamData : securing-slamdata.md
 - Troubleshooting FAQ : troubleshooting-faq.md
 - Reference (SQL²) : sql-squared-reference.md
