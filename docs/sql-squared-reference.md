@@ -567,6 +567,14 @@ FROM `/employees` AS emp
 JOIN `/departments` AS dept ON dept._id = OID(emp.departmentId)
 ```
 
+<a name="join-considerations"></a>
+
+### Join Considerations
+
+On `JOIN`s with more than two collections or tables, the standard rule of thumb is to place the tables in order from smallest to largest.  If the collections `a`, `b`, and `c` have `4`, `8`, and `16` documents respectively, then ordering ```FROM `/a`, `/b`, `/c` ``` is most efficient with ```WHERE a._id = b._id```.
+
+If, however, the filter condition is ```WHERE b._id = c._id``` then the appropriate ordering would be ```FROM `/b`, `/c`, `/a` WHERE b._id = c._id```.  This is because without the filter |a ⨯ b| = 32 which is less than |b ⨯ c| = 128, but with the filter, |b ⨯ c| is limited to the number of documents in b, which is 8 (and which is lower than the unconstrained |a ⨯ b|).
+
 ---
 
 <a name="conditionals-and-nulls"></a>
