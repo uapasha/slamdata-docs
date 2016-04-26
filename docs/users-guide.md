@@ -264,6 +264,38 @@ For a complete review of SQL<sup>2</sup> and example see the [SQL<sup>2</sup> Re
 
 ---
 
+<a name="custom-styling"></a>
+
+## Custom Styling
+
+Users can add custom styles to notebooks by adding a query parameter to the URI.
+For example, to add a stylesheet located in `css/foo.css` to
+```
+http://slamdata.instance.com/notebook.html#/db/Folder/Notebook.slam/view
+```
+one should modify the route to
+```
+http://slamdata.instance.com/notebook.html?cssStyleSheets=css/foo.css#/db/Folder/Notebook.slam/view
+```
+The values of `cssStyleSheets` are decoded and then split by `,`, so to add two stylesheets one could use
+
++ `cssStyleSheets=css/foo.css,http%3A%2F%2Ffoo.com%2Fstyles.css`
++ `cssStyleSheets=css%2Ffoo.css,http%3A%2F%2Ffoo.com%2Fstyles.css`
++ `cssStyleSheets=css%2Ffoo.css%2Chttp%3A%2F%2Ffoo.com%2Fstyles.css`
+
+These URIs are checked and, if they are valid, corresponding `link` elements are added to the `head`
+
+Here it would be
+
+```html
+<link type="text/css" rel="stylesheet" href="css/foo.css">
+<link type="text/css" rel="stylesheet" href="http://foo.com/style.css">
+```
+
+---
+
+<a name="importing-data"></a>
+
 ## Importing Data
 
 SlamData allows users to import files in both **JSON** and **CSV** format.
