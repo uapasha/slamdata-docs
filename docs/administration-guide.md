@@ -221,24 +221,36 @@ The backend engine of SlamData is written in [Scala](http://www.scala-lang.org/)
 | Microsoft Windows       | C:\Programs Files (x86)\slamdata-version\SlamData.vmoptions |
 | Linux (various vendors) | $HOME/slamdata-version/SlamData.vmoptions                   |
 
-There are four important options that must be passed to the JVM at startup to enable SSL. These options point the JVM to a Java Trust Store and a Java Key Store.  Adding certificates and keys to these files are not covered in this guide and it is assumed your security or network administrator has provided you with the appropriate information.
+There are two important options that must be passed to the JVM at startup to enable SSL. These options point the JVM to a Java key store (JKS).
 
-| JVM Optiosn                      | Purpose                                               |
+| JVM Options                      | Purpose                                               |
 |----------------------------------|-------------------------------------------------------|
 | javax.net.ssl.trustStore         | The location of the encrypted trust store file        |
-| javax.net.ssl.keyStore           | The location of the encrypted key store file          |
 | javax.net.ssl.trustStorePassword | The password required to decrypt the trust store file |
-| javax.net.ssl.keyStorePassword   | The password required to decryp the key store file    |
 
 The example contents of the file may look something like this:
 
 ```
--Xms1g
--Xmx4g
 -Djavax.net.ssl.trustStore=/Users/me/ssl/truststore.jks
--Djavax.net.ssl.keyStore=/Users/me/ssl/keystore.jks
 -Djavax.net.ssl.trustStorePassword=mySecretPassword
--Djavax.net.ssl.keyStorePassword=mySecretPassword
 ```
 
-The first two lines specify that 1GB and 4GB of physical memory should be reserved as a minimum and maximum memory usage guideline, respectively.
+This guide does not provide exhaustive steps to create a Java key store in every scenario, but we hope the following simple example is helpful.  Assuming you are hosting MongoDB with a service provider, that provider might make a signed (or self-signed) certificate available so that MongoDB can connect securely via SSL.  Also assuming this is in the form a ```your_provider.crt``` text file, you might follow these steps based on the JKS configuration above:
+
+**First** - import the certificate into your Java trust store:
+
+```
+keytool -import -alias "your_providers_name" -file your_provider.crt \
+-keystore /users/me/ssl/truststore.jks -noprompt -storepass mySecretPassword
+```
+
+**Second** - ensure you've made the appropriate changes to the JVM options file referenced above.
+
+**Third** - restart SlamData so it reloads the JVM options file and picks up the new certificate in the JKS.
+
+**Fourth** - Mount the database with SSL as shown in the attached screenshot:
+
+
+![SlamData SSL Mounts](/images/screenshots/mount-ssl.png)
+
+
