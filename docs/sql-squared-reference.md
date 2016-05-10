@@ -260,7 +260,7 @@ SELECT c.firstName || ' ' || c.lastName AS name FROM `/users` AS c
 Filtering by fuzzy string comparison using the `LIKE` operator:
 
 ```
-SELECT * FROM `/users` AS c WHERE c.firstName LIKE = "%Joan%"
+SELECT * FROM `/users` AS c WHERE c.firstName LIKE "%Joan%"
 ```
 
 Filtering by regular expression:
