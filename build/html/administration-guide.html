@@ -1,0 +1,637 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Administration Guide - Community Edition &mdash; SlamData 2.5 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="SlamData 2.5 documentation" href="index.html"/>
+        <link rel="prev" title="Reference - SlamData API" href="api-reference.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> SlamData
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.5
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="users-guide.html">Users Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">SlamData Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="securing-slamdata.html">Securing SlamData Community Edition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting-faq.html">Troubleshooting FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sql-squared-reference.html">Reference - SQL²</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slamdown-reference.html">Reference - SlamDown</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api-reference.html">Reference - SlamData API</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Administration Guide - Community Edition</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#limitations">Limitations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installing-slamdata">Installing SlamData</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#mac-os-x">Mac OS X</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#linux">Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#windows">Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#launching-slamdata">Launching SlamData</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Mac OS X</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#connecting-to-a-database">Connecting to a Database</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#mongodb">MongoDB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#several-mounts">Several Mounts</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#advanced-configuration">Advanced Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#configuration-file">Configuration File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mount-options">Mount Options</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">MongoDB</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sql2-view">SQL2 View</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#other-databases">Other Databases</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#enabling-ssl">Enabling SSL</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">SlamData</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Administration Guide - Community Edition</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/administration-guide.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="figure">
+<img alt="SlamData Logo" src="_images/white-logo.png" />
+</div>
+<div class="section" id="administration-guide-community-edition">
+<h1>Administration Guide - Community Edition<a class="headerlink" href="#administration-guide-community-edition" title="Permalink to this headline">¶</a></h1>
+<p>This Administration Guide can assist with installing and configuring
+SlamData. For information on how to use SlamData from a user perspective
+see the <a class="reference external" href="users-guide.md">SlamData User Guide</a></p>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>2 GB available memory</li>
+<li>300 MB disk space</li>
+<li>Credentials to one or more databases</li>
+<li>Latest version of Chrome, Firefox, Safari or Internet Explorer</li>
+<li>Java 1.8 if using Linux <em>(Java Runtime is included with OS X and
+Windows installers)</em></li>
+<li>We recommend the latest version of <a class="reference external" href="http://slamdata.com/get-slamdata/download-slamdata-community-edition/">SlamData Community
+Edition</a></li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="limitations">
+<h2>Limitations<a class="headerlink" href="#limitations" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>When using MongoDB, version 2.6 or newer is required</li>
+</ul>
+</div>
+<hr class="docutils" />
+<div class="section" id="installing-slamdata">
+<h2>Installing SlamData<a class="headerlink" href="#installing-slamdata" title="Permalink to this headline">¶</a></h2>
+<p>SlamData may be installed on a workstation or a server. Workstation
+installation is typically best for Administrator or Business Analyst
+work and only needs to run when something must be configured or changed.
+Server installation is best for providing services for a larger group of
+users (or SaaS environment) and should remain running at all times for
+end user access.</p>
+<div class="section" id="mac-os-x">
+<h3>Mac OS X<a class="headerlink" href="#mac-os-x" title="Permalink to this headline">¶</a></h3>
+<p>SlamData has been tested and runs on OS X versions 10.10 and newer. It
+may run on older versions but has not been tested and is not yet
+supported.</p>
+<ol class="arabic simple">
+<li><a class="reference external" href="http://slamdata.com/get-slamdata/download-slamdata-community-edition/">Download
+SlamData</a></li>
+<li>Open the downloaded disk image (.dmg file)</li>
+<li>Double-click the installer. You may need to adjust &#8216;Security &amp;
+Privacy&#8217; settings to allow downloaded apps from Anywhere.</li>
+<li>Complete the installation setup program</li>
+</ol>
+</div>
+<div class="section" id="linux">
+<h3>Linux<a class="headerlink" href="#linux" title="Permalink to this headline">¶</a></h3>
+<p>SlamData has been tested and runs on Ubuntu version 14.04 and newer and
+CentOS verion 7 and newer. It may run on different Linux distributions
+and versions but has not been tested and is not yet supported.</p>
+<ol class="arabic simple">
+<li><a class="reference external" href="http://slamdata.com/get-slamdata/download-slamdata-community-edition/">Download
+SlamData</a></li>
+<li>Ensure you have the <a class="reference external" href="http://www.oracle.com/technetwork/java/javase/downloads/index.html">Java 8 JRE or Java 8
+JDK</a>
+installed.</li>
+<li>Make the installer executable: <code class="docutils literal"><span class="pre">chmod</span> <span class="pre">+x</span> <span class="pre">slamdata_unix_version.sh</span></code></li>
+<li>Run the installer, providing answers to the
+prompts:<code class="docutils literal"><span class="pre">./slamdata_unix_version.sh</span></code></li>
+</ol>
+</div>
+<div class="section" id="windows">
+<h3>Windows<a class="headerlink" href="#windows" title="Permalink to this headline">¶</a></h3>
+<p>SlamData has been tested and runs on Windows 7 Desktop and newer and
+Windows Server 2008 and newer. It may run on older versions but has not
+been tested and is not yet supported.</p>
+<ol class="arabic simple">
+<li><a class="reference external" href="http://slamdata.com/get-slamdata/download-slamdata-community-edition/">Download
+SlamData</a></li>
+<li>Run the installer</li>
+<li>Complete the installation setup program.</li>
+</ol>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="launching-slamdata">
+<h2>Launching SlamData<a class="headerlink" href="#launching-slamdata" title="Permalink to this headline">¶</a></h2>
+<p>SlamData is comprised of a frontend interface and a backend analytics
+engine. Launching the SlamData application will start both.</p>
+<div class="section" id="id1">
+<h3>Mac OS X<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Open the Applications folder</li>
+<li>Double-click on the SlamData icon</li>
+</ol>
+<p>A new browser window or tab will open displaying the SlamData interface.
+The SlamData icon will appear in the OS X dock. As with other dock
+applications the SlamData icon may be right-clicked and the application
+terminated.</p>
+</div>
+<div class="section" id="id2">
+<h3>Linux<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Change directory to the location of the SlamData executable:
+<code class="docutils literal"><span class="pre">cd</span> <span class="pre">SlamData-version</span></code></li>
+<li>Execute the SlamData executable: <code class="docutils literal"><span class="pre">./SlamData</span></code></li>
+</ol>
+<p>Some Linux systems may not launch a browser automatically. If this is
+the case, open a browser and point it to the following URL:
+<a class="reference external" href="http://localhost:20223/slamdata">http://localhost:20223/slamdata</a></p>
+</div>
+<div class="section" id="id3">
+<h3>Windows<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li>Open the Start menu</li>
+<li>Click on the newly installed SlamData icon or use the app search bar
+and type <code class="docutils literal"><span class="pre">slamdata</span></code> and press return to launch it. Select
+appropriate network security settings if prompted.</li>
+</ol>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="connecting-to-a-database">
+<h2>Connecting to a Database<a class="headerlink" href="#connecting-to-a-database" title="Permalink to this headline">¶</a></h2>
+<p>Connecting to a database is the first step to analyzing data. SlamData
+does not provide a database to connect to. As more databases are
+supported by SlamData they will be listed below.</p>
+<div class="section" id="mongodb">
+<h3>MongoDB<a class="headerlink" href="#mongodb" title="Permalink to this headline">¶</a></h3>
+<p><strong>Note:</strong> Only MongoDB versions 2.6 and newer are supported by SlamData.</p>
+<p>To connect to MongoDB click on the Mount <img alt="Mount Icon" src="_images/icon-mount.png" /> icon in the upper
+right.</p>
+<p>A mount dialog will be presented:</p>
+<div class="figure" id="id5">
+<img alt="SlamData Mount Dialog" src="_images/mount-dialog-start.png" />
+<p class="caption"><span class="caption-text">SlamData Mount Dialog</span></p>
+</div>
+<p>Enter a name for the database mount. This name is used in the SlamData
+UI as well as SQL2 query paths. Use a name that makes sense for the
+environment. For instance if this database were hosted on Amazon AWS/EC2
+it might be named <code class="docutils literal"><span class="pre">aws</span></code> or <code class="docutils literal"><span class="pre">aws-1</span></code>.</p>
+<p>Select <strong>MongoDB</strong> as the mount type. Other mount types will be
+discussed later. Once a Mount type is selected additional fields will
+appear in the dialog based on the mount type selected.</p>
+<p>Use the following table to assist in providing example values for the
+remaining fields:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="40%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Example</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Host</td>
+<td>db.example.com</td>
+</tr>
+<tr class="row-odd"><td>Port</td>
+<td>27017</td>
+</tr>
+<tr class="row-even"><td>Username</td>
+<td>joe</td>
+</tr>
+<tr class="row-odd"><td>Password</td>
+<td>*******</td>
+</tr>
+<tr class="row-even"><td>Database</td>
+<td>joesdb</td>
+</tr>
+<tr class="row-odd"><td>Settings</td>
+<td>&nbsp;</td>
+</tr>
+</tbody>
+</table>
+<p>An example form might look like this:</p>
+<div class="figure" id="id6">
+<img alt="SlamData MongoDB Dialog" src="_images/mount-mongodb.png" />
+<p class="caption"><span class="caption-text">SlamData MongoDB Dialog</span></p>
+</div>
+<p><strong>Note:</strong> When using MongoDB the database field value should be the
+database the username and password will authenticate against. This value
+will depend on which database the user was created in; as such it could
+be <code class="docutils literal"><span class="pre">admin</span></code>, the name of the user or something completely different.</p>
+<p>Click <strong>Mount</strong> to mount the database in SlamData.</p>
+</div>
+<div class="section" id="several-mounts">
+<h3>Several Mounts<a class="headerlink" href="#several-mounts" title="Permalink to this headline">¶</a></h3>
+<p>After mounting several databases the SlamData UI might look like the
+following image. In this image there are three separate mounts named
+<code class="docutils literal"><span class="pre">aws</span></code>, <code class="docutils literal"><span class="pre">kirk</span></code> and <code class="docutils literal"><span class="pre">macbook</span></code>, the last likely representing a
+locally mounted database.</p>
+<div class="figure" id="id7">
+<img alt="SlamData Multiple Mounts" src="_images/mount-all-mounts.png" />
+<p class="caption"><span class="caption-text">SlamData Multiple Mounts</span></p>
+</div>
+<p><strong>Note:</strong> Keep in mind that with SlamData Advanced you can limit which
+databases, collections and charts can be seen based on OAuth
+authentication and the SlamData authorization model.</p>
+</div>
+</div>
+<div class="section" id="advanced-configuration">
+<h2>Advanced Configuration<a class="headerlink" href="#advanced-configuration" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="configuration-file">
+<h3>Configuration File<a class="headerlink" href="#configuration-file" title="Permalink to this headline">¶</a></h3>
+<p>The SlamData configuration file allows an administrator to change
+settings such as the port number SlamData listens on, the mounts
+available and more. The location of the configuration file depends upon
+the operating system being used.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Operating System</th>
+<th class="head">Configuration File Location</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Apple OS X</td>
+<td>$HOME/Library/Application Support/quasar/quasar-config.json</td>
+</tr>
+<tr class="row-odd"><td>Microsoft Windows</td>
+<td>%HOMEDIR%AppDataLocalquasarquasar-config.json</td>
+</tr>
+<tr class="row-even"><td>Linux (various vendors)</td>
+<td>$HOME/.config/quasar/quasar-config.json</td>
+</tr>
+</tbody>
+</table>
+<p>SlamData Advanced edition has an extended format of the configuration
+file which is not covered in this document. Please refer to the SlamData
+Advanced Administration Guide that you were given after purchase of the
+Advanced edition.</p>
+<p>An example configuration file might appear like this:</p>
+<div class="code json highlight-python"><div class="highlight"><pre><span class="p">{</span>
+  <span class="s">&quot;server&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s">&quot;port&quot;</span><span class="p">:</span> <span class="mi">8080</span>
+  <span class="p">},</span>
+  <span class="s">&quot;mountings&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="s">&quot;/aws/&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s">&quot;mongodb&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;connectionUri&quot;</span><span class="p">:</span> <span class="s">&quot;mongodb://myUser:myPass@aws-box.example.com:27017/admin&quot;</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s">&quot;/kirk/&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s">&quot;mongodb&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;connectionUri&quot;</span><span class="p">:</span> <span class="s">&quot;mongodb://myUser2:myPass@win-box.example.com:27017/admin?ssl=true&quot;</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="s">&quot;/macbook/&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="s">&quot;mongodb&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;connectionUri&quot;</span><span class="p">:</span> <span class="s">&quot;mongodb://localhost:27017&quot;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="mount-options">
+<h3>Mount Options<a class="headerlink" href="#mount-options" title="Permalink to this headline">¶</a></h3>
+<p>The mount dialog will display the appropriate fields based on the mount
+type selected. For each database type that SlamData supports a section
+below explains the options available.</p>
+<div class="section" id="id4">
+<h4>MongoDB<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<p>For MongoDB the values listed in the Connection Options on the MongoDB
+web site are supported. As of MongoDB 2.6 these options are listed
+below.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="9%" />
+<col width="75%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Options</th>
+<th class="head">Examp
+le</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ssl</td>
+<td>true</td>
+<td>Enable SSL encryption</td>
+</tr>
+<tr class="row-odd"><td>connectTim
+eoutMS</td>
+<td>15000</td>
+<td>The time in milliseconds to attempt a connection before
+timing out</td>
+</tr>
+<tr class="row-even"><td>socketTime
+outMS</td>
+<td>10000</td>
+<td>The time in milliseconds to attempt a send or receive
+on a socket before the attempt times out</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="sql2-view">
+<h4>SQL2 View<a class="headerlink" href="#sql2-view" title="Permalink to this headline">¶</a></h4>
+<p>SQL2 Views are covered in detail in the SlamData Users Guide.</p>
+</div>
+<div class="section" id="other-databases">
+<h4>Other Databases<a class="headerlink" href="#other-databases" title="Permalink to this headline">¶</a></h4>
+<p>Support for other relational and NoSQL databases is coming in 2016.</p>
+</div>
+</div>
+<div class="section" id="enabling-ssl">
+<h3>Enabling SSL<a class="headerlink" href="#enabling-ssl" title="Permalink to this headline">¶</a></h3>
+<p>If you have trouble following the steps below you may also view our <a class="reference external" href="https://www.youtube.com/watch?v=FWdAMyZnOMM">SSL
+tutorial video</a>.</p>
+<p>If a database connection supports SSL encryption, which is to say
+encryption between a client and server such as SlamData and the
+database, additional configuration is necessary.</p>
+<p>The backend engine of SlamData is written in
+<a class="reference external" href="http://www.scala-lang.org/">Scala</a> and executes within a Java
+Virtual Machine (JVM). To enable SSL encryption several options must be
+passed to the JVM when running SlamData. SlamData simplifies this by
+allowing these options to be listed in a text file that the SlamData
+launcher will reference when executed. The file location for each
+operating system is listed below:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="21%" />
+<col width="79%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Operating System</th>
+<th class="head">File Location</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Apple OS X</td>
+<td>/Applications/SlamData-version.app/Contents/vmoptions.txt</td>
+</tr>
+<tr class="row-odd"><td>Microsoft Windows</td>
+<td>C:Programs Files (x86)slamdata-versionSlamData.vmoptions</td>
+</tr>
+<tr class="row-even"><td>Linux (various vendors)</td>
+<td>$HOME/slamdata-version/SlamData.vmoptions</td>
+</tr>
+</tbody>
+</table>
+<p>There are two important options that must be passed to the JVM at
+startup to enable SSL. These options point the JVM to a Java key store
+(JKS).</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="39%" />
+<col width="61%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">JVM Options</th>
+<th class="head">Purpose</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>javax.net.ssl.trustStore</td>
+<td>The location of the encrypted trust store
+file</td>
+</tr>
+<tr class="row-odd"><td>javax.net.ssl.trustStorePas
+sword</td>
+<td>The password required to decrypt the trust
+store file</td>
+</tr>
+</tbody>
+</table>
+<p>The example contents of the file may look something like this:</p>
+<div class="highlight-python"><div class="highlight"><pre>-Djavax.net.ssl.trustStore=/Users/me/ssl/truststore.jks
+-Djavax.net.ssl.trustStorePassword=mySecretPassword
+</pre></div>
+</div>
+<p>This guide does not provide exhaustive steps to create a Java key store
+in every scenario, but we hope the following simple example is helpful.
+Assuming you are hosting MongoDB with a service provider, that provider
+might make a signed (or self-signed) certificate available so that
+MongoDB can connect securely via SSL. Also assuming this is in the form
+a <code class="docutils literal"><span class="pre">your_provider.crt</span></code> text file, you might follow these steps based on
+the JKS configuration above:</p>
+<p><strong>First</strong> - import the certificate into your Java trust store:</p>
+<div class="highlight-python"><div class="highlight"><pre>keytool -import -alias &quot;your_providers_name&quot; -file your_provider.crt \
+-keystore /users/me/ssl/truststore.jks -noprompt -storepass mySecretPassword
+</pre></div>
+</div>
+<p><strong>Second</strong> - ensure you&#8217;ve made the appropriate changes to the JVM
+options file referenced above.</p>
+<p><strong>Third</strong> - restart SlamData so it reloads the JVM options file and
+picks up the new certificate in the JKS.</p>
+<p><strong>Fourth</strong> - Mount the database with SSL as shown in the attached
+screenshot:</p>
+<div class="figure" id="id8">
+<img alt="SlamData SSL Mounts" src="_images/mount-ssl.png" />
+<p class="caption"><span class="caption-text">SlamData SSL Mounts</span></p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="api-reference.html" class="btn btn-neutral" title="Reference - SlamData API" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, SlamData.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'2.5',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

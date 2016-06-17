@@ -1,0 +1,1425 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Reference - SlamData API &mdash; SlamData 2.5 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="SlamData 2.5 documentation" href="index.html"/>
+        <link rel="next" title="Administration Guide - Community Edition" href="administration-guide.html"/>
+        <link rel="prev" title="Reference - SlamDown" href="slamdown-reference.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> SlamData
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.5
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="users-guide.html">Users Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">SlamData Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="securing-slamdata.html">Securing SlamData Community Edition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting-faq.html">Troubleshooting FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sql-squared-reference.html">Reference - SQL²</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slamdown-reference.html">Reference - SlamDown</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">Reference - SlamData API</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#assumptions">Assumptions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reference">Reference</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#executing-a-small-query">Executing a Small Query</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#url">URL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#method">Method</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#query-parameters">Query parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#headers">Headers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#request">Request</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#response">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#executing-a-large-query">Executing a Large Query</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">URL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Method</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Query parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#post-body">POST body</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Headers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">Response</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">Request</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#compiling-a-query">Compiling a Query</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id9">URL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">Method</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">Query parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">POST body</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id13">Response</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id14">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id15">Request</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id16">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#retrieving-data">Retrieving Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id17">URL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id18">Method</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id19">Headers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id20">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id21">Request</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id22">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#replacing-data">Replacing Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id23">URL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id24">Method</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id25">Headers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#put-body">PUT body</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id26">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id27">Request</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id28">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#appending-data">Appending Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id29">URL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id30">Method</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id31">Headers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id32">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id33">Request</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id34">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#deleting-data">Deleting Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id35">URL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id36">Method</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id37">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id38">Request</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id39">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#moving-data">Moving Data</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id40">URL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id41">Method</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id42">Headers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id43">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id44">Request</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id45">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#retrieving-a-mount">Retrieving a Mount</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id46">URL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id47">Method</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id48">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id49">Request</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id50">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#deleting-a-mount">Deleting a Mount</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id51">URL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id52">Method</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id53">Response</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id54">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id55">Request</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id56">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#changing-the-port">Changing the Port</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id57">URL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id58">Method</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id59">Response</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id60">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id61">Request</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id62">Response</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#setting-the-port-to-the-default-value">Setting the Port to the Default Value</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id63">URL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id64">Method</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id65">Response</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id66">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id67">Request</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="administration-guide.html">Administration Guide - Community Edition</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">SlamData</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Reference - SlamData API</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/api-reference.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="figure">
+<img alt="SlamData Logo" src="_images/white-logo.png" />
+</div>
+<div class="section" id="reference-slamdata-api">
+<h1>Reference - SlamData API<a class="headerlink" href="#reference-slamdata-api" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>This API Reference provides detailed information for developers to use
+when interacting with SlamData via the API.</div></blockquote>
+</div>
+<hr class="docutils" />
+<div class="section" id="assumptions">
+<h2>Assumptions<a class="headerlink" href="#assumptions" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div>Throughout this document examples of URLs might be given. These examples
+assume that SlamData is running locally on IP 127.0.0.1 with hostname
+<code class="docutils literal"><span class="pre">localhost</span></code> and running on the default port <code class="docutils literal"><span class="pre">20223</span></code></div></blockquote>
+</div>
+<hr class="docutils" />
+<div class="section" id="reference">
+<h2>Reference<a class="headerlink" href="#reference" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="executing-a-small-query">
+<h3>Executing a Small Query<a class="headerlink" href="#executing-a-small-query" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div>Executes a SQL2 query where the results and computation are expected to
+be relatively small. Pagination and some filtering are supported.</div></blockquote>
+<div class="section" id="url">
+<h4>URL<a class="headerlink" href="#url" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><p><code class="docutils literal"><span class="pre">/query/fs/{path}</span></code></p>
+<p>where <code class="docutils literal"><span class="pre">{path}</span></code> is an optional path to the data. If included, then all
+paths used in the query are relative to the <code class="docutils literal"><span class="pre">{path}</span></code> parameter, unless
+they begin with a <code class="docutils literal"><span class="pre">/</span></code>. A complete URL would appear as follows:</p>
+<p><a class="reference external" href="http://127.0.0.1:20223/query/fs">http://127.0.0.1:20223/query/fs</a>/{path}</p>
+</div></blockquote>
+</div>
+<div class="section" id="method">
+<h4>Method<a class="headerlink" href="#method" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><code class="docutils literal"><span class="pre">GET</span></code></div></blockquote>
+</div>
+<div class="section" id="query-parameters">
+<h4>Query parameters<a class="headerlink" href="#query-parameters" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="13%" />
+<col width="61%" />
+<col width="15%" />
+<col width="11%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Description</th>
+<th class="head">Required</th>
+<th class="head">Default</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>q</td>
+<td>The SQL query</td>
+<td>Required</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>offset</td>
+<td>The starting index of the results to return</td>
+<td>Optional</td>
+<td>0</td>
+</tr>
+<tr class="row-even"><td>limit</td>
+<td>The number of results to return | Optional</td>
+<td>All results</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-odd"><td>var</td>
+<td>Specifies variables in the query. See Note below.</td>
+<td>Optional</td>
+<td>None</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note:</strong> The <cite>var</cite> parameter takes the format:</p>
+<p><code class="docutils literal"><span class="pre">var.{name}={value}</span></code></p>
+<p>where <code class="docutils literal"><span class="pre">{name}</span></code> is the name of the variable and <code class="docutils literal"><span class="pre">{value}</span></code> is the value of the variable. For example, the query might contain the variable <code class="docutils literal"><span class="pre">cutoff</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * WHERE pop &gt; :cutoff
+</pre></div>
+</div>
+<p>Then the <code class="docutils literal"><span class="pre">cutoff</span></code> variable is assigned a value in the parameter <code class="docutils literal"><span class="pre">var.cutoff-1000</span></code>.</p>
+<p>Failure to specify valid values for all variables used inside a query will result in an error. These values use the same syntax as the query itself; notably, strings should be surrounded by single quotes. Some acceptable values are <code class="docutils literal"><span class="pre">123</span></code>, <code class="docutils literal"><span class="pre">&quot;CO&quot;</span></code>, and <code class="docutils literal"><span class="pre">DATE(&quot;2015-07-06&quot;)</span></code>.</p>
+</div></blockquote>
+</div>
+<div class="section" id="headers">
+<h4>Headers<a class="headerlink" href="#headers" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="43%" />
+<col width="9%" />
+<col width="32%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Header</th>
+<th class="head">Description</th>
+<th class="head">Required</th>
+<th class="head">Default</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Accept</td>
+<td>Specifies the format of the response body.</td>
+<td>Optional</td>
+<td><cite>application/ldjson;mode=precise</cite></td>
+</tr>
+<tr class="row-odd"><td>Accept-Encoding</td>
+<td>Use the value <cite>gzip</cite> to compress the output.</td>
+<td>Optional</td>
+<td>No compression</td>
+</tr>
+</tbody>
+</table>
+<p>The following values are supported for the <cite>Accept</cite> header:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Value</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>None</td>
+<td>&#8220;Human-Readable&#8221; results, one result per line. Note: not parseable as a single JSON object.</td>
+</tr>
+<tr class="row-odd"><td>application/json</td>
+<td>Nicely formatted JSON array</td>
+</tr>
+<tr class="row-even"><td>application/ldjson;mode=precise</td>
+<td>One result per line</td>
+</tr>
+<tr class="row-odd"><td>text/csv</td>
+<td>Comma-separated results. See Note below.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note:</strong> The formatting of CSV output can be controlled with an extended media type with parameters for <code class="docutils literal"><span class="pre">columnDelimeter</span></code>, <code class="docutils literal"><span class="pre">quoteChar</span></code> and <code class="docutils literal"><span class="pre">escapeChar</span></code>. For example:</p>
+<div class="highlight-python"><div class="highlight"><pre>Accept: text/csv;columnDelimiter=&quot;\|&quot;&amp;rowDelimiter=&quot;;&quot;&amp;quoteChar=&quot;&#39;&quot;&amp;escapeChar=&quot;&quot;.
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="example">
+<h4>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><p>The following example returns data for the query:</p>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * from `/data/SampleJSON` WHERE state=&quot;WA&quot;
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="request">
+<h4>Request<a class="headerlink" href="#request" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre>GET http://localhost:20223/query/fs?q=SELECT * from `/data/SampleJSON` WHERE state=&quot;WA&quot;
+</pre></div>
+</div>
+<p><strong>NOTE</strong>: The query shown in the above request must be HTML encoded.</p>
+<div class="highlight-python"><div class="highlight"><pre>Headers: Accept: application/json
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="response">
+<h4>Response<a class="headerlink" href="#response" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><div class="code json highlight-python"><div class="highlight"><pre>[
+    {
+        &quot;city&quot;: &quot;ALGONA&quot;,
+        &quot;state&quot;: &quot;WA&quot;,
+        &quot;pop&quot;: 22846,
+        &quot;loc&quot;: [ -122.270057, 47.316339 ]
+    },
+    {
+        &quot;city&quot;: &quot;AUBURN&quot;,
+        &quot;state&quot;: &quot;WA&quot;,
+        &quot;pop&quot;: 22846,
+        &quot;loc&quot;: [ -122.206741, 47.30503 ]
+    },
+...]
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="executing-a-large-query">
+<h3>Executing a Large Query<a class="headerlink" href="#executing-a-large-query" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div>Executes a SQL² query where the results or computation are expected to be relatively large. The results are stored in an output path that is specified in the <cite>Destination</cite> header. Pagination and some filtering are supported.</div></blockquote>
+<div class="section" id="id1">
+<h4>URL<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><p><code class="docutils literal"><span class="pre">/query/fs/{path}</span></code></p>
+<p>where <code class="docutils literal"><span class="pre">{path}</span></code> is an optional path to the data. If included, then all paths used in the query and the output path are relative to the <code class="docutils literal"><span class="pre">{path}</span></code> parameter, unless they begin with a <code class="docutils literal"><span class="pre">/</span></code>.</p>
+</div></blockquote>
+</div>
+<div class="section" id="id2">
+<h4>Method<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><code class="docutils literal"><span class="pre">POST</span></code></div></blockquote>
+</div>
+<div class="section" id="id3">
+<h4>Query parameters<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="11%" />
+<col width="52%" />
+<col width="13%" />
+<col width="10%" />
+<col width="14%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Description</th>
+<th class="head">Required</th>
+<th class="head">Default</th>
+<th class="head">Method</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>offset</td>
+<td>The starting index of the results to return</td>
+<td>0</td>
+<td>Optional</td>
+<td>GET</td>
+</tr>
+<tr class="row-odd"><td>limit</td>
+<td>The number of results to return</td>
+<td>All results</td>
+<td>GET</td>
+<td>&nbsp;</td>
+</tr>
+<tr class="row-even"><td>var</td>
+<td>Specifies variables in the query. See Note below.</td>
+<td>Optional</td>
+<td>None</td>
+<td>GET and POST</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note:</strong>
+The <cite>var</cite> parameter takes the format:</p>
+<div class="highlight-python"><div class="highlight"><pre>var.{name}={value}
+</pre></div>
+</div>
+<p>where <code class="docutils literal"><span class="pre">{name}</span></code> is the name of the variable and <code class="docutils literal"><span class="pre">{value}</span></code> is the value of the variable. For example, the query might contain the variable <code class="docutils literal"><span class="pre">cutoff</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * WHERE pop &gt; :cutoff
+</pre></div>
+</div>
+<p>Then the <code class="docutils literal"><span class="pre">cutoff</span></code> variable is assigned a value in the parameter <code class="docutils literal"><span class="pre">var.cutoff=1000</span></code>.</p>
+<p>Failure to specify valid values for all variables used inside a query will result in an error. These values use the same syntax as the query itself; notably, strings should be surrounded by single quotes. Some acceptable values are <code class="docutils literal"><span class="pre">123</span></code>, <code class="docutils literal"><span class="pre">&quot;CO&quot;</span></code>, and <code class="docutils literal"><span class="pre">DATE(&quot;2015-07-06&quot;)</span></code>.</p>
+</div></blockquote>
+</div>
+<div class="section" id="post-body">
+<h4>POST body<a class="headerlink" href="#post-body" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div>The POST body contains the query.</div></blockquote>
+</div>
+<div class="section" id="id4">
+<h4>Headers<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="74%" />
+<col width="11%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Header</th>
+<th class="head">Description</th>
+<th class="head">Required</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Destination</td>
+<td>The URL of the output path, where the results of the query will
+become available if this API successfully completes.</td>
+<td>Required</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="id5">
+<h4>Response<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><p>The following response elements are returned in JSON format:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="10%" />
+<col width="53%" />
+<col width="37%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Element</th>
+<th class="head">Description</th>
+<th class="head">Notes</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>out</td>
+<td>Path to the query results</td>
+<td>Element returned if request is
+successful</td>
+</tr>
+<tr class="row-odd"><td>error</td>
+<td>Error text</td>
+<td>Element is returned if request
+is not successful</td>
+</tr>
+<tr class="row-even"><td>phases</td>
+<td>An array containing a sequence of objects
+containing the result from each phase of the
+query compilation process</td>
+<td>See note below</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note:</strong> Phase objects have three possible forms. All phase objects have a &#8220;name&#8221; element with the phase name.</p>
+<p>A phase may contain a <cite>tree</cite> element with <cite>type</cite>, <cite>label</cite> and optional <cite>children</cite> elements, such as:</p>
+<div class="code json highlight-python"><div class="highlight"><pre>{..., &quot;phases&quot;: [..., {
+        &quot;name&quot;: &quot;Logical Plan&quot;,
+        &quot;tree&quot;: {
+            &quot;type&quot;: &quot;LogicalPlan/Let&quot;,
+            &quot;label&quot;: &quot;&#39;tmp0&quot;,
+            &quot;children&quot;: [{
+                &quot;type&quot;: &quot;LogicalPlan/Read&quot;,
+                &quot;label&quot;: &quot;./zips&quot;
+            }, ...]
+        }
+    }, ...]
+}
+</pre></div>
+</div>
+<p>Or a phase may contain a <code class="docutils literal"><span class="pre">detail</span></code> element with some kind of text, such as:</p>
+<div class="code json highlight-python"><div class="highlight"><pre>{...
+    &quot;phases&quot;: [..., {
+        &quot;name&quot;: &quot;Mongo&quot;,
+        &quot;detail&quot;: &quot;db.zips.aggregate([ { &quot;
+        $sort &quot; : { &quot;
+        pop &quot; : 1}}])&quot;
+    }]
+}
+</pre></div>
+</div>
+<p>If an error occurs, then the phase contains an <code class="docutils literal"><span class="pre">error</span></code> element with the error message.
+Typically the error phase is the last phase in the array. For example:</p>
+<div class="code json highlight-python"><div class="highlight"><pre>{...
+    &quot;phases&quot;: [..., {
+        &quot;name&quot;: &quot;Physical Plan&quot;,
+        &quot;error&quot;: &quot;Cannot compile...&quot;
+    }]
+}
+</pre></div>
+</div>
+<p><strong>Note:</strong> The error is also included at the top level of the response, as described in the elements table.</p>
+</div></blockquote>
+</div>
+<div class="section" id="id6">
+<h4>Example<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><p>The following example returns data for the query:</p>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * from ``/data/SampleJSON`` WHERE state=&quot;WA&quot;
+</pre></div>
+</div>
+<p>It puts the result in a new file called <code class="docutils literal"><span class="pre">SampleResult</span></code> in the path <cite>/data</cite>.</p>
+</div></blockquote>
+</div>
+<div class="section" id="id7">
+<h4>Request<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre>POST http://localhost:20223/query/fs
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>POST body: SELECT * FROM ``/data/SampleJSON`` WHERE state=&quot;WA&quot;
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>Headers: Destination: /data/sampleResults Accept: application/json
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id8">
+<h4>Response<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><div class="code json highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;out&quot;</span><span class="p">:</span> <span class="s">&quot;/data/sampleResults&quot;</span><span class="p">,</span>
+    <span class="s">&quot;phases&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="p">{</span>
+        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;SQL AST&quot;</span><span class="p">,</span>
+        <span class="s">&quot;tree&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s">&quot;type&quot;</span><span class="p">:</span> <span class="s">&quot;AST/Select&quot;</span><span class="p">,</span>
+            <span class="s">&quot;label&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+            <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="p">{</span>
+                <span class="s">&quot;type&quot;</span><span class="p">:</span> <span class="s">&quot;AST/Proj&quot;</span><span class="p">,</span>
+                <span class="s">&quot;label&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+                <span class="s">&quot;children&quot;</span><span class="p">:</span> <span class="p">[</span> <span class="p">{</span>
+                    <span class="s">&quot;type&quot;</span><span class="p">:</span> <span class="s">&quot;AST/Splice&quot;</span><span class="p">,</span>
+                    <span class="s">&quot;label&quot;</span><span class="p">:</span> <span class="n">null</span>
+                <span class="p">}</span> <span class="p">]</span>
+            <span class="p">},</span> <span class="o">...</span> <span class="p">]</span>
+        <span class="p">}</span>
+    <span class="p">},</span> <span class="o">...</span> <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="compiling-a-query">
+<h3>Compiling a Query<a class="headerlink" href="#compiling-a-query" title="Permalink to this headline">¶</a></h3>
+<p>Compiles, but does not execute a SQL² query.</p>
+<div class="section" id="id9">
+<h4>URL<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><p><code class="docutils literal"><span class="pre">/compile/fs/{path}</span></code></p>
+<p>where <code class="docutils literal"><span class="pre">{path}</span></code> is an optional path to the data. If included, then all paths used in the query are relative to the <code class="docutils literal"><span class="pre">{path}</span></code> parameter, unless they begin with a <code class="docutils literal"><span class="pre">/</span></code>.</p>
+<p>The GET method has the SQL² query as a query parameter and the POST method has the SQL² query in the POST body.</p>
+</div></blockquote>
+</div>
+<div class="section" id="id10">
+<h4>Method<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><code class="docutils literal"><span class="pre">GET</span></code> or <code class="docutils literal"><span class="pre">POST</span></code></div></blockquote>
+</div>
+<div class="section" id="id11">
+<h4>Query parameters<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="54%" />
+<col width="11%" />
+<col width="9%" />
+<col width="15%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Parameter</th>
+<th class="head">Description</th>
+<th class="head">Required</th>
+<th class="head">Default</th>
+<th class="head">Method</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>q</td>
+<td>The SQL query</td>
+<td>Required</td>
+<td>&nbsp;</td>
+<td>GET only</td>
+</tr>
+<tr class="row-odd"><td>var</td>
+<td>Specifies variables in the query. See Note below.</td>
+<td>Optional</td>
+<td>None</td>
+<td>GET and POST</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Note:</strong>  The <cite>var</cite> parameter takes the format:</p>
+<div class="highlight-python"><div class="highlight"><pre>var.{name}={value}
+</pre></div>
+</div>
+<p>where <code class="docutils literal"><span class="pre">{name}</span></code> is the name of the variable and <code class="docutils literal"><span class="pre">{value}</span></code> is the value of the variable. For example, the query might contain the variable <code class="docutils literal"><span class="pre">cutoff</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * WHERE pop &lt; :cutoff
+</pre></div>
+</div>
+<p>Then the <code class="docutils literal"><span class="pre">cutoff</span></code> variable is assigned a value in the parameter <code class="docutils literal"><span class="pre">var.cutoff=1000</span></code>.</p>
+<p>Failure to specify valid values for all variables used inside a query will result in an error. These values use the same syntax as the query itself; notably, strings should be surrounded by single quotes. Some acceptable values are <code class="docutils literal"><span class="pre">123</span></code>, <code class="docutils literal"><span class="pre">&quot;CO&quot;</span></code>, and <code class="docutils literal"><span class="pre">DATE(&quot;2015-07-06&quot;)</span></code>.</p>
+</div></blockquote>
+</div>
+<div class="section" id="id12">
+<h4>POST body<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div>For the POST request, use the SQL query as the POST body.</div></blockquote>
+</div>
+<div class="section" id="id13">
+<h4>Response<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><p>If the query compiles successfully, then the query plan is returned. If an error occurs, then JSON with an <code class="docutils literal"><span class="pre">error</span></code> element with message is returned, such as:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;error&quot;</span><span class="p">:</span> <span class="s">&quot;operator &#39;;&#39; expected; ErrorToken(unclosed string literal)&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id14">
+<h4>Example<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><p>The following example returns the plan for the query:</p>
+<div class="highlight-python"><div class="highlight"><pre>SELECT * FROM `/data/SampleJSON` WHERE state=&quot;WA&quot;
+</pre></div>
+</div>
+<p><strong>NOTE</strong>: The query shown in the above request must be HTML encoded.</p>
+</div></blockquote>
+</div>
+<div class="section" id="id15">
+<h4>Request<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre>GET http://localhost:20223/compile/fs?q=SELECT * FROM `/data/SampleJSON` WHERE state=&quot;WA&quot;
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id16">
+<h4>Response<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre>Mongo db.getCollection(&quot;SampleJSON&quot;).aggregate(
+[{
+    &quot;match&quot;: {
+        &quot;state&quot;: &quot;WA&quot;
+    }
+}, {
+    &quot;out&quot;: &quot;tmp.gen_0&quot;
+}], {
+    &quot;allowDiskUse&quot;: true
+});
+db.tmp.gen_0.find();
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="retrieving-data">
+<h3>Retrieving Data<a class="headerlink" href="#retrieving-data" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div>Retrieves data from the specified path. Pagination is supported.</div></blockquote>
+<div class="section" id="id17">
+<h4>URL<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><p><code class="docutils literal"><span class="pre">/data/fs/{path}</span></code></p>
+<p>where <code class="docutils literal"><span class="pre">{path}</span></code> is a path to the data to retreive.</p>
+</div></blockquote>
+</div>
+<div class="section" id="id18">
+<h4>Method<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><code class="docutils literal"><span class="pre">GET</span></code></div></blockquote>
+</div>
+<div class="section" id="id19">
+<h4>Headers<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="43%" />
+<col width="9%" />
+<col width="32%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Header</th>
+<th class="head">Description</th>
+<th class="head">Required</th>
+<th class="head">Default</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Accept
+Accept-Encoding</td>
+<td>Specifies the format of the response body.
+Use the value <cite>gzip</cite> to compress the output.</td>
+<td>Optional
+Optional</td>
+<td><cite>application/ldjson;mode=precise</cite>
+No compression</td>
+</tr>
+</tbody>
+</table>
+<p>The following values are supported for the <cite>Accept</cite> header:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="74%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Value</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>None</td>
+<td>&#8220;Human-Readable&#8221; results, one result per line. Note: not parseable as a single JSON object.</td>
+</tr>
+<tr class="row-odd"><td>application/json</td>
+<td>Nicely formatted JSON array</td>
+</tr>
+<tr class="row-even"><td>application/ldjson;mode=precise</td>
+<td>[Precise JSON]{#precise-json}, one result per line</td>
+</tr>
+<tr class="row-odd"><td>text/csv</td>
+<td>Comma-separated results. See Note below.</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="id20">
+<h4>Example<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div>The following example returns data at the path <cite>/data/SampleJSON</cite>. Data for the 10th and 11th items are returned.</div></blockquote>
+</div>
+<div class="section" id="id21">
+<h4>Request<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre>GET http://localhost:20223/data/fs/data/SampleJSON?offset=10&amp;limit=2
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>Headers: Accept: application/json
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id22">
+<h4>Response<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><div class="code json highlight-python"><div class="highlight"><pre><span class="p">[{</span>
+    <span class="s">&quot;city&quot;</span><span class="p">:</span> <span class="s">&quot;WESTOVER AFB&quot;</span><span class="p">,</span>
+    <span class="s">&quot;state&quot;</span><span class="p">:</span> <span class="s">&quot;MA&quot;</span><span class="p">,</span>
+    <span class="s">&quot;pop&quot;</span><span class="p">:</span> <span class="mi">1764</span><span class="p">,</span>
+    <span class="s">&quot;loc&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">72.558657</span><span class="p">,</span> <span class="mf">42.196672</span><span class="p">]</span>
+<span class="p">},</span> <span class="p">{</span>
+    <span class="s">&quot;city&quot;</span><span class="p">:</span> <span class="s">&quot;CUMMINGTON&quot;</span><span class="p">,</span>
+    <span class="s">&quot;state&quot;</span><span class="p">:</span> <span class="s">&quot;MA&quot;</span><span class="p">,</span>
+    <span class="s">&quot;pop&quot;</span><span class="p">:</span> <span class="mi">1484</span><span class="p">,</span>
+    <span class="s">&quot;loc&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">72.905767</span><span class="p">,</span> <span class="mf">42.435296</span><span class="p">]</span>
+<span class="p">}]</span>
+</pre></div>
+</div>
+<p><strong>Note</strong>: If you remove the <cite>Accept</cite> header, then you will receive Precise JSON,
+which is the default format. The response would then look like this:</p>
+<div class="code json highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;city&quot;</span><span class="p">:</span> <span class="s">&quot;WESTOVER AFB&quot;</span><span class="p">,</span>
+    <span class="s">&quot;state&quot;</span><span class="p">:</span> <span class="s">&quot;MA&quot;</span><span class="p">,</span>
+    <span class="s">&quot;pop&quot;</span><span class="p">:</span> <span class="mi">1764</span><span class="p">,</span>
+    <span class="s">&quot;loc&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">72.558657</span><span class="p">,</span> <span class="mf">42.196672</span><span class="p">]</span>
+<span class="p">},{</span>
+    <span class="s">&quot;city&quot;</span><span class="p">:</span> <span class="s">&quot;CUMMINGTON&quot;</span><span class="p">,</span>
+    <span class="s">&quot;state&quot;</span><span class="p">:</span> <span class="s">&quot;MA&quot;</span><span class="p">,</span>
+    <span class="s">&quot;pop&quot;</span><span class="p">:</span> <span class="mi">1484</span><span class="p">,</span>
+    <span class="s">&quot;loc&quot;</span><span class="p">:</span> <span class="p">[</span><span class="o">-</span><span class="mf">72.905767</span><span class="p">,</span> <span class="mf">42.435296</span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="replacing-data">
+<h3>Replacing Data<a class="headerlink" href="#replacing-data" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>Replaces data from the specified path.</p>
+<p>Data is placed in the PUT body in the format of one JSON object per line. If successful, it replaces the existing data with the new data. If unsuccessful, it returns an error and the existing data is unchanged.</p>
+<p><strong>Note:</strong> An error will be returned if the path is a path to a view rather than a file.</p>
+</div></blockquote>
+<div class="section" id="id23">
+<h4>URL<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><p><code class="docutils literal"><span class="pre">/data/fs/{path}</span></code></p>
+<p>where <code class="docutils literal"><span class="pre">{path}</span></code> is a path to the data to replace.</p>
+</div></blockquote>
+</div>
+<div class="section" id="id24">
+<h4>Method<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><code class="docutils literal"><span class="pre">PUT</span></code></div></blockquote>
+</div>
+<div class="section" id="id25">
+<h4>Headers<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="85%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td rowspan="2"><blockquote class="first">
+<div>Header</div></blockquote>
+<blockquote class="last">
+<div>Content-Type</div></blockquote>
+</td>
+<td rowspan="2"><blockquote class="first">
+<div>Description</div></blockquote>
+<blockquote class="last">
+<div>Specifies the format of the PUT body. Set to <cite>application/ldjson;mode=precise</cite></div></blockquote>
+</td>
+</tr>
+<tr class="row-even"></tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="put-body">
+<h4>PUT body<a class="headerlink" href="#put-body" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div>The data to replace, one JSON object per line.</div></blockquote>
+</div>
+<div class="section" id="id26">
+<h4>Example<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div>The following example replaces the data at the path <cite>/data/SampleJSON</cite> with two items.</div></blockquote>
+</div>
+<div class="section" id="id27">
+<h4>Request<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre>PUT http://localhost:20223/data/fs/data/SampleJSON
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>Headers: Content-Type: application/ldjson;mode=precise
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id28">
+<h4>Response<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><p>Status code 200 if successful. No response body.</p>
+<p>If unsuccessful, then JSON is returned with two elements: <cite>error</cite>, which contains a short description of the error, and <cite>detail</cite>, which contains more detailed information. For example:</p>
+<div class="code json highlight-python"><div class="highlight"><pre>{
+    &quot;error&quot;: &quot;some uploaded value(s) could not be processed&quot;,
+    &quot;details&quot;: [{
+        &quot;detail&quot;: &quot;JSON contains invalid suffix content: , value: Str(parseerror: {
+        &quot;city&quot;: &quot;NEVERLAND&quot;,
+        &quot;state&quot;: &quot;ZZ&quot;,
+        &quot;pop&quot;: 2354,
+        &quot;loc&quot;: [-73.658, 41.443]
+    }, )
+}]
+}
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="appending-data">
+<h3>Appending Data<a class="headerlink" href="#appending-data" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>Appends data at the specified path.</p>
+<p>Data is placed in the POST body in the format of one JSON object per line. If successful, it appends the existing data with the new data. If unsuccessful, it returns an error and the existing data is unchanged.</p>
+<p><strong>Note:</strong> An error will be returned if the path is a path to a view rather than a file.</p>
+</div></blockquote>
+<div class="section" id="id29">
+<h4>URL<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><p><code class="docutils literal"><span class="pre">/data/fs/{path}</span></code></p>
+<p>where <code class="docutils literal"><span class="pre">{path}</span></code> is a path to the data to be appended.</p>
+</div></blockquote>
+</div>
+<div class="section" id="id30">
+<h4>Method<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><code class="docutils literal"><span class="pre">POST</span></code></div></blockquote>
+</div>
+<div class="section" id="id31">
+<h4>Headers<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="15%" />
+<col width="85%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Header</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Content-Type</td>
+<td>Specifies the format of the PUT body. Set to <cite>application/ldjson;mode=precise</cite></td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="id32">
+<h4>Example<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div>The following example appends one item to the data at the path <cite>/data/SampleJSON</cite>.</div></blockquote>
+</div>
+<div class="section" id="id33">
+<h4>Request<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre>POST http://localhost:20223/data/fs/data/SampleJSON
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>Headers: Content-Type: application/ldjson;mode=precise
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id34">
+<h4>Response<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><p>Status code 200 if successful. No response body.</p>
+<p>If unsuccessful, then JSON is returned with two elements: <cite>error</cite>, which contains a short description of the error, and <cite>detail</cite>, which contains more detailed information. For example:</p>
+<div class="code json highlight-python"><div class="highlight"><pre>{
+    &quot;error&quot;: &quot;some uploaded value(s) could not be processed&quot;,
+    &quot;details&quot;: [{
+        &quot;detail&quot;: &quot;JSON contains invalid suffix content: ,; value: Str(parseerror: {
+        &quot;city&quot;: &quot;UTOPIA&quot;,
+        &quot;state&quot;: &quot;ZZ&quot;,
+        &quot;pop&quot;: 2354,
+        &quot;loc&quot;: [-75.757,
+            40.941
+        ]
+    }, )
+}]
+}
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="deleting-data">
+<h3>Deleting Data<a class="headerlink" href="#deleting-data" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>Removes all data at the specified path.</p>
+<p><strong>Note:</strong> An error will be returned if the path is a path to a view rather than a file.
+Views may be added or deleted using the <cite>/mount</cite> API requests.</p>
+<p>Single files are deleted atomically, meaning that the equivalent MongoDB collection is removed, rather than a collection&#8217;s documents being removed individually until the collection is empty.</p>
+</div></blockquote>
+<div class="section" id="id35">
+<h4>URL<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><p><code class="docutils literal"><span class="pre">/data/fs/{path}</span></code></p>
+<p>where <code class="docutils literal"><span class="pre">{path}</span></code> is a path to the data to be deleted.</p>
+</div></blockquote>
+</div>
+<div class="section" id="id36">
+<h4>Method<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><code class="docutils literal"><span class="pre">DELETE</span></code></div></blockquote>
+</div>
+<div class="section" id="id37">
+<h4>Example<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div>The following example deletes all data at the path <cite>/data/SampleJSON</cite>.</div></blockquote>
+</div>
+<div class="section" id="id38">
+<h4>Request<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre>DELETE http://localhost:20223/data/fs/data/SampleJSON
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id39">
+<h4>Response<a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><p>Status code 200 if successful. No response body.</p>
+<p>If unsuccessful, then JSON is returned with two elements: <cite>error</cite>, which contains a short description
+of the error, and optionally <cite>detail</cite>, which contains more detailed information. For example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span> <span class="s">&quot;error&quot;</span><span class="p">:</span> <span class="s">&quot;./BadPath: doesn&#39;t exist&quot;</span> <span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="moving-data">
+<h3>Moving Data<a class="headerlink" href="#moving-data" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>Moves data from one path to another. The origin path is specified in the URL and the desitnation path is specified in the <cite>Destination</cite> header. Single files are moved atomically.</p>
+<p><strong>Note:</strong> An error will be returned if either the origin or destination path is a path to a view rather than a file.
+Views may be moved using the <code class="docutils literal"><span class="pre">/mount</span></code> API requests.</p>
+<p>Single files are moved atomically, meaning that the equivalent MongoDB collection is moved, rather than a collection&#8217;s documents being moved individually.</p>
+</div></blockquote>
+<div class="section" id="id40">
+<h4>URL<a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><p><code class="docutils literal"><span class="pre">/data/fs/{path}</span></code></p>
+<p>where <code class="docutils literal"><span class="pre">{path}</span></code> is a path to the data to be moved.</p>
+</div></blockquote>
+</div>
+<div class="section" id="id41">
+<h4>Method<a class="headerlink" href="#id41" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><code class="docutils literal"><span class="pre">MOVE</span></code></div></blockquote>
+</div>
+<div class="section" id="id42">
+<h4>Headers<a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="25%" />
+<col width="75%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Header</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Destination</td>
+<td>Path to the new location of the data</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</div>
+<div class="section" id="id43">
+<h4>Example<a class="headerlink" href="#id43" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div>The following example moves all data at the path <cite>/data/SampleJSON</cite> to <cite>/data/SampleJSON2</cite>.</div></blockquote>
+</div>
+<div class="section" id="id44">
+<h4>Request<a class="headerlink" href="#id44" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre>MOVE http://localhost:20223/data/fs/data/SampleJSON
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>Headers: Destination: /data/SampleJSON2
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id45">
+<h4>Response<a class="headerlink" href="#id45" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div>Status code 200 if successful. No response body.</div></blockquote>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="retrieving-a-mount">
+<h3>Retrieving a Mount<a class="headerlink" href="#retrieving-a-mount" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div>Retrieves the configuration for the mount point at the specified path.</div></blockquote>
+<div class="section" id="id46">
+<h4>URL<a class="headerlink" href="#id46" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><p><code class="docutils literal"><span class="pre">/mount/fs/{path}/</span></code></p>
+<p>where <code class="docutils literal"><span class="pre">{path}</span></code> is a path for the mount to retrieve.</p>
+<p><strong>Note:</strong> Be sure to end with a slash.</p>
+</div></blockquote>
+</div>
+<div class="section" id="id47">
+<h4>Method<a class="headerlink" href="#id47" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><code class="docutils literal"><span class="pre">GET</span></code></div></blockquote>
+</div>
+<div class="section" id="id48">
+<h4>Example<a class="headerlink" href="#id48" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div>The following example returns mount at the path <cite>/</cite>.</div></blockquote>
+</div>
+<div class="section" id="id49">
+<h4>Request<a class="headerlink" href="#id49" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre>GET http://localhost:20223/mount/fs/
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id50">
+<h4>Response<a class="headerlink" href="#id50" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><div class="code json highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;mongodb&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s">&quot;connectionUri&quot;</span><span class="p">:</span> <span class="s">&quot;mongodb://myusername:mypassword@myserver.example.com:20223/data&quot;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="deleting-a-mount">
+<h3>Deleting a Mount<a class="headerlink" href="#deleting-a-mount" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>Deletes the MongoDB mount point at the specified path.</p>
+<p>If there is no mount at the specified path, the request succeeds, but with no response.</p>
+</div></blockquote>
+<div class="section" id="id51">
+<h4>URL<a class="headerlink" href="#id51" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><p><code class="docutils literal"><span class="pre">/mount/fs/{path}/</span></code></p>
+<p>where <code class="docutils literal"><span class="pre">{path}</span></code> is a path for the mount to delete.</p>
+<p><strong>Note:</strong> Be sure to end with a slash.</p>
+</div></blockquote>
+</div>
+<div class="section" id="id52">
+<h4>Method<a class="headerlink" href="#id52" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><code class="docutils literal"><span class="pre">DELETE</span></code></div></blockquote>
+</div>
+<div class="section" id="id53">
+<h4>Response<a class="headerlink" href="#id53" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div>Returns the text &#8220;<cite>deleted {path}</cite>&#8221;, where <cite>{path}</cite> is the path to the deleted mount.</div></blockquote>
+</div>
+<div class="section" id="id54">
+<h4>Example<a class="headerlink" href="#id54" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div>The following example deletes mount at the path <cite>/</cite>.</div></blockquote>
+</div>
+<div class="section" id="id55">
+<h4>Request<a class="headerlink" href="#id55" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><code class="docutils literal"><span class="pre">DELETE</span> <span class="pre">http://localhost:20223/mount/fs/</span></code></div></blockquote>
+</div>
+<div class="section" id="id56">
+<h4>Response<a class="headerlink" href="#id56" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div>deleted /</div></blockquote>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="changing-the-port">
+<h3>Changing the Port<a class="headerlink" href="#changing-the-port" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><p>Shuts down the running instance and restarts the server on the specified port.</p>
+<p>The port is specified in the PUT body.</p>
+</div></blockquote>
+<div class="section" id="id57">
+<h4>URL<a class="headerlink" href="#id57" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><code class="docutils literal"><span class="pre">/server/port</span></code></div></blockquote>
+</div>
+<div class="section" id="id58">
+<h4>Method<a class="headerlink" href="#id58" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><code class="docutils literal"><span class="pre">PUT</span></code></div></blockquote>
+</div>
+<div class="section" id="id59">
+<h4>Response<a class="headerlink" href="#id59" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div>Returns the text &#8220;<cite>changed port to {port-number}</cite>&#8221;, where <cite>{port-number}</cite> is the new port number.</div></blockquote>
+</div>
+<div class="section" id="id60">
+<h4>Example<a class="headerlink" href="#id60" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div>The following example changes the port number from 20223 to 20224.</div></blockquote>
+</div>
+<div class="section" id="id61">
+<h4>Request<a class="headerlink" href="#id61" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><div class="highlight-python"><div class="highlight"><pre>PUT http://localhost:20223/server/port
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre>PUT body: 20224
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id62">
+<h4>Response<a class="headerlink" href="#id62" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div>changed port to 20224</div></blockquote>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="setting-the-port-to-the-default-value">
+<h3>Setting the Port to the Default Value<a class="headerlink" href="#setting-the-port-to-the-default-value" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div>Shuts down the running instance and restarts the server on the default port, which is 20223.</div></blockquote>
+<div class="section" id="id63">
+<h4>URL<a class="headerlink" href="#id63" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><code class="docutils literal"><span class="pre">/server/port</span></code></div></blockquote>
+</div>
+<div class="section" id="id64">
+<h4>Method<a class="headerlink" href="#id64" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><code class="docutils literal"><span class="pre">DELETE</span></code></div></blockquote>
+</div>
+<div class="section" id="id65">
+<h4>Response<a class="headerlink" href="#id65" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div>None</div></blockquote>
+</div>
+<div class="section" id="id66">
+<h4>Example<a class="headerlink" href="#id66" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div>The following example sets the port number from 20224 back to the default.</div></blockquote>
+</div>
+<div class="section" id="id67">
+<h4>Request<a class="headerlink" href="#id67" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><code class="docutils literal"><span class="pre">DELETE</span> <span class="pre">http://localhost:20224/server/port</span> <span class="pre">\`\`\`</span></code></div></blockquote>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="administration-guide.html" class="btn btn-neutral float-right" title="Administration Guide - Community Edition" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="slamdown-reference.html" class="btn btn-neutral" title="Reference - SlamDown" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, SlamData.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'2.5',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

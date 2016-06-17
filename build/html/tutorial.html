@@ -1,0 +1,478 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>SlamData Tutorial &mdash; SlamData 2.5 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="SlamData 2.5 documentation" href="index.html"/>
+        <link rel="next" title="Securing SlamData Community Edition" href="securing-slamdata.html"/>
+        <link rel="prev" title="Users Guide" href="users-guide.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> SlamData
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.5
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="users-guide.html">Users Guide</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="">SlamData Tutorial</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#setup">Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-the-notebook">Create the Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#explore-the-data">Explore the Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-a-static-form">Create a Static Form</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-a-dynamic-form">Create a Dynamic form</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#query-based-on-a-form">Query Based on a Form</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#chart-the-results">Chart the Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#put-it-all-together">Put It All Together</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="securing-slamdata.html">Securing SlamData Community Edition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting-faq.html">Troubleshooting FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sql-squared-reference.html">Reference - SQL²</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slamdown-reference.html">Reference - SlamDown</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api-reference.html">Reference - SlamData API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="administration-guide.html">Administration Guide - Community Edition</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">SlamData</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>SlamData Tutorial</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/tutorial.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="figure">
+<img alt="SlamData Logo" src="_images/white-logo.png" />
+</div>
+<div class="section" id="slamdata-tutorial">
+<h1>SlamData Tutorial<a class="headerlink" href="#slamdata-tutorial" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>This tutorial will step the user through many of the features in
+SlamData within the context of a Notebook. The tutorial starts with
+providing the data needed to perform the steps and continues through the
+end where a chart will be generated based on a dynamic user form.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<p>The examples in the tutorial will reference the path
+<code class="docutils literal"><span class="pre">/local/demo/tutorial</span></code> which means a mount point of <code class="docutils literal"><span class="pre">/local</span></code> is
+created, which has a database called <code class="docutils literal"><span class="pre">demo</span></code> and a collection called
+<code class="docutils literal"><span class="pre">tutorial</span></code>.</p>
+<ol class="arabic simple">
+<li>Download the tutorial file. This file contains information about
+which countries won medals in the Olympics as far back as 1924.</li>
+<li>Rename the <code class="docutils literal"><span class="pre">tutorial.txt</span></code> file to just <code class="docutils literal"><span class="pre">tutorial</span></code>.</li>
+<li>Start the SlamData application</li>
+<li>Click on a server that has been configured. See the <a class="reference external" href="administration-guide.md#connecting-to-a-database">Connecting to a
+Database</a>
+section of the Administration Guide if no servers exist.</li>
+<li>Click the New Folder <img alt="New Folder" src="_images/icon-create-folder.png" /> icon in the upper right. A new
+folder called <code class="docutils literal"><span class="pre">Untitled</span> <span class="pre">Folder</span></code> now exists.</li>
+<li>Rename the folder to <code class="docutils literal"><span class="pre">demo</span></code> by hovering the mouse over the
+Untitled Folder and then clicking on the rename icon that appears
+seen here: <img alt="Rename Folder" src="_images/rename-folder.png" /></li>
+<li>Click on the renamed folder to open it.</li>
+<li>Click on the Upload <img alt="Upload Icon" src="_images/icon-upload.png" /> icon.</li>
+<li>Locate and select the <code class="docutils literal"><span class="pre">tutorial</span></code> file in step 1. After a few
+moments a new Exploration cell will be displayed.</li>
+<li>Click the Back <img alt="Back Icon" src="_images/icon-back.png" /> icon in the upper left to view the folder
+again.</li>
+</ol>
+<p>Your folder display should appear as follows:</p>
+<div class="figure">
+<img alt="Tutorial Folder Display" src="_images/tutorial-folder-display.png" />
+</div>
+<p>Depending on your server mount name the path to the newly created
+collection should be similar to <code class="docutils literal"><span class="pre">/local/demo/tutorial</span></code>.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="create-the-notebook">
+<h2>Create the Notebook<a class="headerlink" href="#create-the-notebook" title="Permalink to this headline">¶</a></h2>
+<p>From the <code class="docutils literal"><span class="pre">/local/demo</span></code> view, where the <code class="docutils literal"><span class="pre">tutorial</span></code> file can be seen:</p>
+<ol class="arabic simple">
+<li>Create a Notebook <img alt="New Notebook" src="_images/icon-notebook.png" /> and rename it <code class="docutils literal"><span class="pre">Tutorial</span> <span class="pre">Notebook</span></code>
+by double-clicking the title.</li>
+</ol>
+<p>Once the Notebook has been renamed it will be saved. At this point the
+Notebook can be shared in whatever form it currently is saved. Click on
+the Notebook menu in the top and select <code class="docutils literal"><span class="pre">Publish</span></code>. A new browser
+window will open displaying the contents of the Notebook. At this point
+nothing will be displayed as no cells have been added. The URL in the
+browser can be shared so others may see the results of the Notebook
+without modifying it.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="explore-the-data">
+<h2>Explore the Data<a class="headerlink" href="#explore-the-data" title="Permalink to this headline">¶</a></h2>
+<p>To get an idea of what the schema looks like and to become familiar with
+the data a new Exploration cell will now be created.</p>
+<ol class="arabic simple">
+<li>Click on the Plus <img alt="Plus" src="_images/icon-plus.png" /> icon and then click on the Explore <img alt="Explore" src="_images/icon-explore.png" />
+icon.</li>
+<li>Click on the <em>Select a file</em> drop-down menu and locate the
+<code class="docutils literal"><span class="pre">/local/demo/tutorial</span></code> file: <img alt="Drop Down" src="_images/select-a-file.png" />.</li>
+<li>Click the Play <img alt="Play" src="_images/icon-play.png" /> icon. Once clicked the exploration cell will
+appear as below:</li>
+</ol>
+<div class="figure">
+<img alt="Exploration Cell" src="_images/cell-exploration.png" />
+</div>
+<p>Take a moment to view what the published Notebook looks like now. The
+exploration cell is displayed but the drop-down file selector is not.
+Again - publishing a Notebook allows others to view the results without
+modifying anything (unless desired - which will be covered shortly)</p>
+<p>The schema shows several fields such as <code class="docutils literal"><span class="pre">city</span></code>, <code class="docutils literal"><span class="pre">country</span></code>,
+<code class="docutils literal"><span class="pre">event</span></code>, etc. and also has a numeric field <code class="docutils literal"><span class="pre">year</span></code>. Now that the
+schema has been viewed along with a sampling of data a SlamDown form
+will be created to show some of the reporting capabilities of SlamData.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="create-a-static-form">
+<h2>Create a Static Form<a class="headerlink" href="#create-a-static-form" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>Delete the exploration cell by clicking on the Trashcan <img alt="Trashcan icon" src="_images/icon-gray-trashcan.png" /> icon above the Explore cell.</li>
+<li>Now create a new SlamDown <img alt="SlamDown" src="_images/icon-slamdown.png" /> cell.</li>
+<li>Enter the following text into the SlamDown form and then click the
+Play <img alt="Play Icon" src="_images/icon-play.png" /> icon.</li>
+</ol>
+<div class="highlight-python"><div class="highlight"><pre># Olympics Report ![Olympics](https://raw.githubusercontent.com/damonLL/slamdemofiles/master/olympic-logo.jpg)
+
+There are !``SELECT COUNT(DISTINCT(country)) FROM `/local/demo/tutorial` `` unique countries in this data set.
+
+There are !``SELECT COUNT(DISTINCT(year)) FROM `/local/demo/tutorial` `` Olympiads in this data set.
+
+There are !``SELECT COUNT(DISTINCT(sport)) FROM `/local/demo/tutorial` `` unique sports in this data set
+comprised of !``SELECT COUNT(DISTINCT(event)) FROM `/local/demo/tutorial` `` unique events.
+</pre></div>
+</div>
+<ul class="simple">
+<li>See the SlamDown rendering similar to the following image:</li>
+</ul>
+<div class="figure">
+<img alt="Basic SlamDown Report" src="_images/olympics-slam1.png" />
+</div>
+<p>Again - take a moment to review the published version of this Notebook.
+And keep this important note in mind: <em>All of these queries and
+reports are executing against a live database. When the data underneath
+changes, this report will change the next time it is viewed.</em></p>
+<p>This section described how to create a static form and publish its
+results. There are many other SlamDown features you can read about in
+the <a class="reference external" href="/slamdown-reference.md">SlamDown Reference</a>.</p>
+<p>The next section describes how to publish a dynamic form that allows
+user interaction.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="create-a-dynamic-form">
+<h2>Create a Dynamic form<a class="headerlink" href="#create-a-dynamic-form" title="Permalink to this headline">¶</a></h2>
+<p>This section describes how to create a dynamic form that allows users to
+interact with the data and eventually results in a chart generated from
+data the user has selected.</p>
+<p>The existing Notebook can either be modified or a new Notebook can be
+created. This tutorial will modify the existing Notebook but users can
+choose either path.</p>
+<ol class="arabic simple">
+<li>Replace the Markdown code with the following code and click the Play
+<img alt="Play Icon" src="_images/icon-play.png" /> icon.</li>
+</ol>
+<div class="highlight-python"><div class="highlight"><pre># Olympics Report ![Olympics](https://raw.githubusercontent.com/damonLL/slamdemofiles/master/olympic-logo.jpg)
+
+Years in this dataset range from
+!``SELECT DISTINCT(year) FROM `/local/demo/tutorial` ORDER BY year ASC``
+to
+!``SELECT DISTINCT(year) FROM `/local/demo/tutorial` ORDER BY year DESC``
+
+### Enter start year and end year for report
+
+startyear = #____
+
+endyear = #____
+</pre></div>
+</div>
+<p>Note the pound or hashtag <code class="docutils literal"><span class="pre">#</span></code> symbol directly before the underscores
+<code class="docutils literal"><span class="pre">_</span></code>. This tells SlamData that the input field is for numbers. In
+SlamData input fields are String types by default. The data type is
+important as the query listed below would not work with String types
+against a numeric database field.</p>
+<p>This results in the following rendered Markdown:</p>
+<div class="figure">
+<img alt="Olympic Date Selectors" src="_images/olympics-slam2.png" />
+</div>
+<p>The rendered drop downs of <code class="docutils literal"><span class="pre">startyear</span></code> and <code class="docutils literal"><span class="pre">endyear</span></code> create
+variables that allow users to select data that is then used as query
+criteria in a query cell.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="query-based-on-a-form">
+<h2>Query Based on a Form<a class="headerlink" href="#query-based-on-a-form" title="Permalink to this headline">¶</a></h2>
+<p>In this section the variables defined in the previous section will be
+used to control the subsequent query.</p>
+<ol class="arabic simple">
+<li>Click on the gray Query <img alt="Query Icon" src="_images/icon-gray-query.png" /> icon to the left of the SlamDown
+rendered cell. This is <strong>important</strong> as it allows the created
+variables to bind to the query cell.</li>
+<li>Enter the following query into the Query cell and click the Play
+<img alt="Play Icon" src="_images/icon-play.png" /> icon.</li>
+</ol>
+<div class="highlight-python"><div class="highlight"><pre>SELECT
+  COUNT(*) as cnt,
+  country,
+  type
+FROM `/local/demo/tutorial`
+WHERE
+  year &gt;= :startyear AND
+  year &lt;= :endyear
+GROUP BY country, type
+ORDER BY cnt DESC
+</pre></div>
+</div>
+<p>It is important to group the results in the query above so the chart we
+create in the next section has valid data to work with.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="chart-the-results">
+<h2>Chart the Results<a class="headerlink" href="#chart-the-results" title="Permalink to this headline">¶</a></h2>
+<p>This section will display the results in the table from the previous
+section in chart form.</p>
+<ol class="arabic simple">
+<li>Next to the results cell, click the Visualize <img alt="Chart Icon" src="_images/icon-gray-chart.png" /> icon to
+create a new visualization cell.</li>
+<li>Select the Bar <img alt="Bar Chart" src="_images/icon-gray-bar.png" /> chart icon.</li>
+<li>Select or enter the values below in the configuration fields:</li>
+</ol>
+<table border="1" class="docutils">
+<colgroup>
+<col width="63%" />
+<col width="38%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Field</th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Category</td>
+<td>.country</td>
+</tr>
+<tr class="row-odd"><td>Measure</td>
+<td>.cnt</td>
+</tr>
+<tr class="row-even"><td>Series</td>
+<td>.type</td>
+</tr>
+<tr class="row-odd"><td>Height</td>
+<td>400</td>
+</tr>
+<tr class="row-even"><td>Width</td>
+<td>800</td>
+</tr>
+<tr class="row-odd"><td>Axis Label Angle</td>
+<td>45</td>
+</tr>
+<tr class="row-even"><td>Axis Font Size</td>
+<td>12</td>
+</tr>
+</tbody>
+</table>
+<p>This will result in the following chart:</p>
+<div class="figure" id="id1">
+<img alt="Olympics Chart" src="_images/olympics-chart.png" />
+<p class="caption"><span class="caption-text">Olympics Chart</span></p>
+</div>
+<p>The items in the legend at the top (<code class="docutils literal"><span class="pre">Bronze</span></code>, <code class="docutils literal"><span class="pre">Silver</span></code>, <code class="docutils literal"><span class="pre">Gold</span></code>)
+can be clicked to toggle viewing of that data series.</p>
+</div>
+<hr class="docutils" />
+<div class="section" id="put-it-all-together">
+<h2>Put It All Together<a class="headerlink" href="#put-it-all-together" title="Permalink to this headline">¶</a></h2>
+<p>You&#8217;ve learned how to create static and dynamic forms, add variables to
+queries and generate charts from user input. The only thing left is to
+publish the Notebook (or re-open the published link) and view how
+interactive the Notebook is. Because the SlamDown cell allows inputs
+this Notebook allows controlled input from users to create the charts.</p>
+<p>Beyond publishing the Notebook as a whole, each cell can be published or
+embedded into another web application. Simply click the Embed <img alt="Embed Icon" src="_images/icon-embed.png" /> icon and copy the contents (JavaScript and/or URL) and embed them
+directly into the HTML of the other web application. You can also view
+our YouTube video which demonstrates this functionality here.</p>
+<p>Note: &gt; To allow users to interact with data and have cells update other
+cells, the user must interact with the published Notebook, not the
+individual cells. When individual cells are embedded in applications the
+dynamic dependencies no longer work outside of the Notebook context.</p>
+<hr class="docutils" />
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="securing-slamdata.html" class="btn btn-neutral float-right" title="Securing SlamData Community Edition" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="users-guide.html" class="btn btn-neutral" title="Users Guide" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, SlamData.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'2.5',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

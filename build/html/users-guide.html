@@ -1,0 +1,790 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Users Guide &mdash; SlamData 2.5 documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="SlamData 2.5 documentation" href="index.html"/>
+        <link rel="next" title="SlamData Tutorial" href="tutorial.html"/>
+        <link rel="prev" title="Welcome to SlamData’s documentation!" href="index.html"/> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> SlamData
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                2.5
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">Users Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#launching-slamdata">Launching SlamData</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#key-concepts">Key Concepts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#notebooks">Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#cell-types">Cell Types</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#exploration-cell">Exploration Cell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#slamdown-cell">SlamDown Cell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#search-cell">Search Cell</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#default-search">Default Search</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#field-specific-search">Field Specific Search</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#multiple-field-values">Multiple Field Values</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mandatory-search">Mandatory Search</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numeric-searches">Numeric Searches</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#starts-with-search">Starts With Search</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#nested-search">Nested Search</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#query-cell">Query Cell</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#custom-styling">Custom Styling</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#importing-data">Importing Data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#exporting-data">Exporting Data</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#result-sets">Result Sets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#collections-and-tables">Collections and Tables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#databases">Databases</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">SlamData Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="securing-slamdata.html">Securing SlamData Community Edition</a></li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting-faq.html">Troubleshooting FAQ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="sql-squared-reference.html">Reference - SQL²</a></li>
+<li class="toctree-l1"><a class="reference internal" href="slamdown-reference.html">Reference - SlamDown</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api-reference.html">Reference - SlamData API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="administration-guide.html">Administration Guide - Community Edition</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">SlamData</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+      
+    <li>Users Guide</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/users-guide.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="figure">
+<img alt="SlamData Logo" src="_images/white-logo.png" />
+</div>
+<div class="section" id="users-guide">
+<h1>Users Guide<a class="headerlink" href="#users-guide" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>This Users Guide can assist with daily usage of SlamData. For
+information on how to install and configure SlamData see the <a class="reference external" href="administration-guide.md">SlamData
+Administration Guide</a></p>
+</div>
+<div class="section" id="launching-slamdata">
+<h2>Launching SlamData<a class="headerlink" href="#launching-slamdata" title="Permalink to this headline">¶</a></h2>
+<p>Starting SlamData on a local system will automatically open a new
+browser window or tab with this URL:
+<code class="docutils literal"><span class="pre">http://localhost:20223/slamdata/index.html</span></code></p>
+<p>If SlamData is not installed locally but instead is on a remote system
+it can be accessed with a similar URL:
+<code class="docutils literal"><span class="pre">http://servername:20223/slamdata/index.html</span></code> where <strong>servername</strong> is
+the DNS name or IP address of the server.</p>
+</div>
+<div class="section" id="key-concepts">
+<h2>Key Concepts<a class="headerlink" href="#key-concepts" title="Permalink to this headline">¶</a></h2>
+<p>It is useful to understand the following key concepts when using
+SlamData.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="22%" />
+<col width="19%" />
+<col width="59%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Feature Name</th>
+<th class="head">Image</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Cluster</td>
+<td><img alt="Cluster" src="_images/icon-mount.png" /></td>
+<td>A cluster represents a database server</td>
+</tr>
+<tr class="row-odd"><td>Folder</td>
+<td><img alt="Folder" src="_images/icon-folder.png" /></td>
+<td>A folder represents a database</td>
+</tr>
+<tr class="row-even"><td>File</td>
+<td><img alt="File" src="_images/icon-file.png" /></td>
+<td>A file represents a table or collection</td>
+</tr>
+<tr class="row-odd"><td>Notebook</td>
+<td><img alt="Notebook" src="_images/icon-notebook.png" /></td>
+<td>A notebook contains a user&#8217;s work</td>
+</tr>
+</tbody>
+</table>
+<p>A Cluster (server) may contain 0, 1 or more Folders (databases).</p>
+<p>A Folder (database) may contain 0, 1 or more Files (tables or
+collections).</p>
+<p>Clicking on a Cluster, Folder, File or Notebook will display its
+contents.</p>
+</div>
+<div class="section" id="notebooks">
+<h2>Notebooks<a class="headerlink" href="#notebooks" title="Permalink to this headline">¶</a></h2>
+<p>Notebooks capture data workflows in a visual fashion that allows you to
+query data, transform and visualize it in the form of charts and
+reports.</p>
+<p>Each stage in a Notebook&#8217;s workflow is called a <em>cell</em> or <em>card</em>. Cells
+can rely on data from previous cells or exist independent of other
+cells.</p>
+<p>A Notebook can be created in one of two ways:</p>
+<ol class="arabic simple">
+<li>By clicking on the Notebook <img alt="Notebook" src="_images/icon-notebook.png" /> icon in the upper right of the
+SlamData UI.</li>
+<li>Clicking on a collection and renaming the subsequently displayed
+Notebook something other than <code class="docutils literal"><span class="pre">Untitled</span> <span class="pre">Notebook</span></code>.</li>
+</ol>
+<p>Whenever an existing Notebook is changed it is automatically saved and
+can be referred to in the future. For instance if a Notebook contains an
+exploration cell followed by a query cell, the query can be changed and
+executed and the Notebook is then automatically saved. This allows a
+user to work in a Notebook without fear of losing work or data.</p>
+</div>
+<div class="section" id="cell-types">
+<h2>Cell Types<a class="headerlink" href="#cell-types" title="Permalink to this headline">¶</a></h2>
+<p>To add a new cell to a Notebook click on the <img alt="Plus" src="_images/icon-plus.png" /> icon and select one
+of the following cell types</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="16%" />
+<col width="19%" />
+<col width="65%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Cell Type</th>
+<th class="head">Image</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Exploration</td>
+<td><img alt="Exploration" src="_images/icon-explore.png" /></td>
+<td>Browse data in a table or collection</td>
+</tr>
+<tr class="row-odd"><td>Query</td>
+<td><img alt="Query" src="_images/icon-query.png" /></td>
+<td>Leverage SQL2 for powerful queries</td>
+</tr>
+<tr class="row-even"><td>Search</td>
+<td><img alt="Search" src="_images/icon-search.png" /></td>
+<td>Simple searching for non-technical users</td>
+</tr>
+<tr class="row-odd"><td>SlamDown</td>
+<td><img alt="SlamDown" src="_images/icon-slamdown.png" /></td>
+<td>Create static or interactive forms</td>
+</tr>
+<tr class="row-even"><td>API</td>
+<td><img alt="API" src="_images/icon-api.png" /></td>
+<td>Developers pass values into queries for dynamic results</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="exploration-cell">
+<h3>Exploration Cell<a class="headerlink" href="#exploration-cell" title="Permalink to this headline">¶</a></h3>
+<p>An example exploration cell is shown below. Refer to the table below the
+image for the function of each icon surrounding the cell.</p>
+<div class="figure">
+<img alt="Exploration Cell" src="_images/cell-exploration-annotated-with-numbers.png" />
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="12%" />
+<col width="88%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Icon #</th>
+<th class="head">Purpose</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>1</td>
+<td>Download the cell in CSV or JSON format</td>
+</tr>
+<tr class="row-odd"><td>2</td>
+<td>Create a graphical chart based on this cell&#8217;s data</td>
+</tr>
+<tr class="row-even"><td>3</td>
+<td>Simple search on this cell&#8217;s data</td>
+</tr>
+<tr class="row-odd"><td>4</td>
+<td>Create a query on this cell&#8217;s data</td>
+</tr>
+<tr class="row-even"><td>5</td>
+<td>Execute or &#8216;Play&#8217; the cell again</td>
+</tr>
+<tr class="row-odd"><td>6</td>
+<td>Go one level up or one level back</td>
+</tr>
+<tr class="row-even"><td>7</td>
+<td>Double click to rename this Notebook</td>
+</tr>
+<tr class="row-odd"><td>8</td>
+<td>Hide the element which displays the path (useful when publishing
+Notebooks)</td>
+</tr>
+<tr class="row-even"><td>9</td>
+<td>Delete this cell and all subsequent cells</td>
+</tr>
+<tr class="row-odd"><td>10</td>
+<td>Drop-down to select a different file path</td>
+</tr>
+<tr class="row-even"><td>11</td>
+<td>Refresh the cell&#8217;s data</td>
+</tr>
+<tr class="row-odd"><td>12</td>
+<td>Get HTML and JavaScript code to embed this cell in another web
+application</td>
+</tr>
+<tr class="row-even"><td>13</td>
+<td>Displays the schema of the collection or table being viewed</td>
+</tr>
+</tbody>
+</table>
+<p>Below is an example of what a nested schema would look like within the
+exploration cell. In this instance we have an array called
+<code class="docutils literal"><span class="pre">previous_addresses</span></code> with several documents, each containing fields
+<code class="docutils literal"><span class="pre">city</span></code>, <code class="docutils literal"><span class="pre">county</span></code>, <code class="docutils literal"><span class="pre">latitude</span></code>, <code class="docutils literal"><span class="pre">longitude</span></code>, <code class="docutils literal"><span class="pre">state</span></code> and
+<code class="docutils literal"><span class="pre">zip_code</span></code>.</p>
+<div class="figure">
+<img alt="Exploration Cell Nested" src="_images/cell-exploration-nested.png" />
+</div>
+<p>The corresponding JSON would appears like this in the database:</p>
+<div class="highlight-python"><div class="highlight"><pre>...
+&quot;previous_addresses&quot;: [
+    {
+      &quot;city&quot;: &quot;NEW ORLEANS&quot;,
+      &quot;longitude&quot;: -89.882564,
+      &quot;county&quot;: &quot;ORLEANS&quot;,
+      &quot;state&quot;: &quot;LA&quot;,
+      &quot;latitude&quot;: 30.032997,
+      &quot;zip_code&quot;: 70157
+    },
+    {
+      &quot;city&quot;: &quot;WEST ALTON&quot;,
+      &quot;longitude&quot;: -90.403416,
+      &quot;county&quot;: &quot;SAINT CHARLES&quot;,
+      &quot;state&quot;: &quot;MO&quot;,
+      &quot;latitude&quot;: 38.83275,
+      &quot;zip_code&quot;: 63386
+    },
+    {
+      &quot;city&quot;: &quot;OAKESDALE&quot;,
+      &quot;longitude&quot;: -117.41146,
+      &quot;county&quot;: &quot;WHITMAN&quot;,
+      &quot;state&quot;: &quot;WA&quot;,
+      &quot;latitude&quot;: 47.079658,
+      &quot;zip_code&quot;: 99158
+    }
+...
+</pre></div>
+</div>
+</div>
+<div class="section" id="slamdown-cell">
+<h3>SlamDown Cell<a class="headerlink" href="#slamdown-cell" title="Permalink to this headline">¶</a></h3>
+<p>Reports and forms are created with a subset of Markdown called SlamDown.
+SlamDown allows a relatively non-technical user to create interactive
+forms, charts and reports without understanding HTML or other
+complicated markup.</p>
+<p>For specific syntax see the <a class="reference external" href="slamdown-reference.md">SlamDown Reference
+Guide</a> and the <a class="reference external" href="http://slamdata.com/wp-content/uploads/2016/03/slamdata-cheatsheet-20160329-2.pdf">Cheat
+Sheet</a>.</p>
+<p>Below is an image of both a SlamDown cell and it&#8217;s rendering directly
+following it. As a reminder when you publish a Notebook you can include
+SlamDown cells, providing users with interactive forms that can directly
+affect a query and resulting report or chart.</p>
+<div class="figure">
+<img alt="SlamDown Cell" src="_images/cell-slamdown.png" />
+</div>
+</div>
+<div class="section" id="search-cell">
+<h3>Search Cell<a class="headerlink" href="#search-cell" title="Permalink to this headline">¶</a></h3>
+<p>The Search cell allows users to search through entire collections as
+well as previous search results resulting in a very refined data set. In
+other words a user can use a search cell to refine results and then use
+another search cell to refine those results even further; this process
+can continue until the appropriate results are found.</p>
+<div class="section" id="default-search">
+<h4>Default Search<a class="headerlink" href="#default-search" title="Permalink to this headline">¶</a></h4>
+<ol class="arabic simple">
+<li>Create a new Search cell:<ul>
+<li>Click on the gray Search <img alt="Search Gray Icon" src="_images/icon-gray-search.png" /> icon on the left side of an
+existing exploration cell, or</li>
+<li>Click the Plus <img alt="Plus Icon" src="_images/icon-plus.png" /> icon and then select the Search <img alt="Search Icon" src="_images/icon-search.png" /> icon.</li>
+</ul>
+</li>
+<li>In the new Search cell, type in a search term and click the Play
+<img alt="Play Icon" src="_images/icon-play.png" /> icon beneath it.</li>
+</ol>
+<p>In the example image below notice the term <code class="docutils literal"><span class="pre">USA</span></code> was searched for.
+Also note that the field name was not specified. By default <strong>SlamData
+will search all fields in all documents</strong>. For very large collections
+and tables, especially those without proper indexes assigned, this could
+take some time to complete; however this also provides a very powerful
+feature to find data that exists but the location is unknown.</p>
+<div class="figure" id="id1">
+<img alt="Search and Results" src="_images/search-and-results.png" />
+<p class="caption"><span class="caption-text">Search and Results</span></p>
+</div>
+</div>
+<div class="section" id="field-specific-search">
+<h4>Field Specific Search<a class="headerlink" href="#field-specific-search" title="Permalink to this headline">¶</a></h4>
+<p>To limit a search to a specific field prefix the search term with the
+field name, for example:</p>
+<div class="highlight-python"><div class="highlight"><pre>country:USA
+</pre></div>
+</div>
+</div>
+<div class="section" id="multiple-field-values">
+<h4>Multiple Field Values<a class="headerlink" href="#multiple-field-values" title="Permalink to this headline">¶</a></h4>
+<p>To limit a search with multiple fields list them in the search field.
+For example to find all women who won gold medals in a data set it may
+appear like this:</p>
+<div class="highlight-python"><div class="highlight"><pre>gender:W  type:Gold
+</pre></div>
+</div>
+</div>
+<div class="section" id="mandatory-search">
+<h4>Mandatory Search<a class="headerlink" href="#mandatory-search" title="Permalink to this headline">¶</a></h4>
+<p>To search all documents that do <strong>not</strong> contain a value the value should
+be prefixed with the (<code class="docutils literal"><span class="pre">-</span></code>) symbol as follows:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="o">-</span><span class="n">Skating</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="numeric-searches">
+<h4>Numeric Searches<a class="headerlink" href="#numeric-searches" title="Permalink to this headline">¶</a></h4>
+<p>To search on fields containing numeric values use the following
+examples.</p>
+<div class="section" id="range-search">
+<h5>Range Search<a class="headerlink" href="#range-search" title="Permalink to this headline">¶</a></h5>
+<p>Search for a field <code class="docutils literal"><span class="pre">year</span></code> whose value is between <code class="docutils literal"><span class="pre">1928</span></code> and
+<code class="docutils literal"><span class="pre">1932</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre>year:1928..1932
+</pre></div>
+</div>
+</div>
+<div class="section" id="not-range-search">
+<h5>NOT Range Search<a class="headerlink" href="#not-range-search" title="Permalink to this headline">¶</a></h5>
+<p>The opposite of the previous example, this searches for field <code class="docutils literal"><span class="pre">year</span></code>
+whose value is <strong>not</strong> between <code class="docutils literal"><span class="pre">1928</span></code> and <code class="docutils literal"><span class="pre">1932</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre>-year:1928..1932
+</pre></div>
+</div>
+</div>
+<div class="section" id="comparison-search">
+<h5>Comparison Search<a class="headerlink" href="#comparison-search" title="Permalink to this headline">¶</a></h5>
+<p>Search for a field <code class="docutils literal"><span class="pre">year</span></code> whose value is less than 1948. Below we use
+the <code class="docutils literal"><span class="pre">&lt;</span></code> symbol for <code class="docutils literal"><span class="pre">less</span> <span class="pre">than</span></code> but the <code class="docutils literal"><span class="pre">&gt;</span></code> can also be used for
+<code class="docutils literal"><span class="pre">greater</span> <span class="pre">than</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">year</span> <span class="o">&lt;</span> <span class="mi">1948</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="starts-with-search">
+<h4>Starts With Search<a class="headerlink" href="#starts-with-search" title="Permalink to this headline">¶</a></h4>
+<p>Search for a field <code class="docutils literal"><span class="pre">name</span></code> whose value starts with <code class="docutils literal"><span class="pre">Jen</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre>name:Jen*
+</pre></div>
+</div>
+</div>
+<div class="section" id="nested-search">
+<h4>Nested Search<a class="headerlink" href="#nested-search" title="Permalink to this headline">¶</a></h4>
+<p>Search all documents which contain a <code class="docutils literal"><span class="pre">foo</span></code> field which contains a
+<code class="docutils literal"><span class="pre">bar</span></code> field which contains the text <code class="docutils literal"><span class="pre">baz</span></code>:</p>
+<div class="highlight-python"><div class="highlight"><pre>foo:bar:baz
+</pre></div>
+</div>
+<p>Note: A concise set of search examples can also be found in the
+<a class="reference external" href="http://slamdata.com/wp-content/uploads/2016/03/slamdata-cheatsheet-20160329-2.pdf">SlamData
+CheatSheet</a></p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="query-cell">
+<h3>Query Cell<a class="headerlink" href="#query-cell" title="Permalink to this headline">¶</a></h3>
+<p>The Query cell allows users to utilize SQL2 to directly query one or
+more collections or tables. This is the equivalent of a SQL command line
+console.</p>
+<p>To create a query cell:</p>
+<ul class="simple">
+<li>From an empty Notebook click the Plus <img alt="Plus Icon" src="_images/icon-plus.png" /> icon then click the
+Query <img alt="Query" src="_images/icon-query.png" /> icon</li>
+</ul>
+<p>OR</p>
+<ul class="simple">
+<li>From an existing cell click the Query <img alt="Query" src="_images/icon-query.png" /> icon to the left of the
+cell.</li>
+</ul>
+<p>If the first option is selected the user will be presented with an empty
+Query cell. If the second option is selected the user will be presented
+with a Query cell that contains a default query, highlighted with
+colored syntax as shown below:</p>
+<div class="figure" id="id2">
+<img alt="Query Highlighted" src="_images/query-highlighted.png" />
+<p class="caption"><span class="caption-text">Query Highlighted</span></p>
+</div>
+<p>The query can be manipulated in this alternate form but the highlighted
+text cannot be modified or removed. If the user prefers more control the
+first option above may be preferred. The Query cell also provides query
+completion at certain parts of your query as shown below:</p>
+<div class="figure" id="id3">
+<img alt="Query Completion" src="_images/query-completion.png" />
+<p class="caption"><span class="caption-text">Query Completion</span></p>
+</div>
+<p>The Query cell will also automatically highlight SQL2 keywords as shown
+the image above. The query itself can be written on a single line (which
+will not word wrap) or on multiple lines.</p>
+<p>When a query is executed by clicking the Play <img alt="Play Icon" src="_images/icon-play.png" /> icon the cell
+beneath the query cell will show an icon indicating the query is
+running. When complete the query&#8217;s results will display below the query.</p>
+<p>Note: If a query takes longer than 30 seconds to execute SlamData
+considers it a timed out query and will result in an error.</p>
+<p>For a complete review of SQL2 and example see the <a class="reference external" href="sql-squared-reference.md">SQL2 Reference
+Guide</a>.</p>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="custom-styling">
+<h2>Custom Styling<a class="headerlink" href="#custom-styling" title="Permalink to this headline">¶</a></h2>
+<p>Users can add custom styles to notebooks by adding a query parameter to
+the URI. For example, to add a stylesheet located in <code class="docutils literal"><span class="pre">css/foo.css</span></code> to</p>
+<div class="highlight-python"><div class="highlight"><pre>http://slamdata.instance.com/notebook.html#/db/Folder/Notebook.slam/view
+</pre></div>
+</div>
+<p>one should modify the route to</p>
+<div class="highlight-python"><div class="highlight"><pre>http://slamdata.instance.com/notebook.html?cssStyleSheets=css/foo.css#/db/Folder/Notebook.slam/view
+</pre></div>
+</div>
+<p>The values of <code class="docutils literal"><span class="pre">cssStyleSheets</span></code> are decoded and then split by <code class="docutils literal"><span class="pre">,</span></code>, so
+to add two stylesheets one could use</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">cssStyleSheets=css/foo.css,http%3A%2F%2Ffoo.com%2Fstyles.css</span></code></li>
+<li><code class="docutils literal"><span class="pre">cssStyleSheets=css%2Ffoo.css,http%3A%2F%2Ffoo.com%2Fstyles.css</span></code></li>
+<li><code class="docutils literal"><span class="pre">cssStyleSheets=css%2Ffoo.css%2Chttp%3A%2F%2Ffoo.com%2Fstyles.css</span></code></li>
+</ul>
+<p>These URIs are checked and, if they are valid, corresponding <code class="docutils literal"><span class="pre">link</span></code>
+elements are added to the <code class="docutils literal"><span class="pre">head</span></code></p>
+<p>Here it would be</p>
+<div class="code html highlight-python"><div class="highlight"><pre>&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;css/foo.css&quot;&gt;
+&lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; href=&quot;http://foo.com/style.css&quot;&gt;
+</pre></div>
+</div>
+</div>
+<hr class="docutils" />
+<div class="section" id="importing-data">
+<h2>Importing Data<a class="headerlink" href="#importing-data" title="Permalink to this headline">¶</a></h2>
+<p>SlamData allows users to import files in both <strong>JSON</strong> and <strong>CSV</strong>
+format.</p>
+<p>JSON files may be formatted either as multiple single documents or
+within a JSON array.</p>
+<p>Note: The first line of CSV files will be used as a <em>header</em> line
+creating the schema that the remaining rows will adhere to.</p>
+<p>To upload a file into SlamData, follow these steps:</p>
+<ol class="arabic simple">
+<li>Navigate to the database where the data should be imported.</li>
+<li>At the top of the page click the Upload File <img alt="Upload File" src="_images/icon-upload.png" /> icon.</li>
+<li>Select a file from your file system. Large files may take a few
+moments to upload. After data has been imported a new collection will
+be created with the same name as the file.</li>
+<li>A new Untitled Notebook will be created that displays the new
+collection&#8217;s data.</li>
+</ol>
+</div>
+<hr class="docutils" />
+<div class="section" id="exporting-data">
+<h2>Exporting Data<a class="headerlink" href="#exporting-data" title="Permalink to this headline">¶</a></h2>
+<p>SlamData allows users to export refined result sets, collections and
+entire databases.</p>
+<div class="section" id="result-sets">
+<h3>Result Sets<a class="headerlink" href="#result-sets" title="Permalink to this headline">¶</a></h3>
+<p>Once a result set has been refined either through query cells or search
+cells it may then be downloaded in <strong>JSON</strong> or <strong>CSV</strong> formats.</p>
+<ol class="arabic simple">
+<li>From an exploration cell or results set cell click the Download cell
+<img alt="Download Cell" src="_images/icon-download-cell.png" /> icon to the left of the cell.</li>
+<li>In the newly created Download cell select either the CSV <img alt="CSV Icon" src="_images/icon-csv.png" />
+or JSON <img alt="JSON Icon" src="_images/icon-json.png" /> icon on the left.</li>
+<li>Select the appropriate options in the cell.</li>
+<li>Click Download.</li>
+</ol>
+<p>See the example image below of a query cell followed by the results
+cell.</p>
+<div class="figure">
+<img alt="Query Cell Results" src="_images/cell-query-and-results.png" />
+</div>
+<p>Downloading the data from this <strong>Results Cell</strong> provides the following
+JSON export file:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span>
+  <span class="p">{</span>
+    <span class="s">&quot;gender&quot;</span><span class="p">:</span> <span class="s">&quot;male&quot;</span><span class="p">,</span>
+    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Tory Escobar&quot;</span><span class="p">,</span>
+    <span class="s">&quot;addresses&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s">&quot;city&quot;</span><span class="p">:</span> <span class="s">&quot;OROFINO&quot;</span><span class="p">,</span>
+        <span class="s">&quot;longitude&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">116.184848</span><span class="p">,</span>
+        <span class="s">&quot;county&quot;</span><span class="p">:</span> <span class="s">&quot;CLEARWATER&quot;</span><span class="p">,</span>
+        <span class="s">&quot;state&quot;</span><span class="p">:</span> <span class="s">&quot;ID&quot;</span><span class="p">,</span>
+        <span class="s">&quot;latitude&quot;</span><span class="p">:</span> <span class="mf">46.4976</span><span class="p">,</span>
+        <span class="s">&quot;zip_code&quot;</span><span class="p">:</span> <span class="mi">83544</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s">&quot;city&quot;</span><span class="p">:</span> <span class="s">&quot;ARRIBA&quot;</span><span class="p">,</span>
+        <span class="s">&quot;longitude&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">103.323143</span><span class="p">,</span>
+        <span class="s">&quot;county&quot;</span><span class="p">:</span> <span class="s">&quot;LINCOLN&quot;</span><span class="p">,</span>
+        <span class="s">&quot;state&quot;</span><span class="p">:</span> <span class="s">&quot;CO&quot;</span><span class="p">,</span>
+        <span class="s">&quot;latitude&quot;</span><span class="p">:</span> <span class="mf">39.316461</span><span class="p">,</span>
+        <span class="s">&quot;zip_code&quot;</span><span class="p">:</span> <span class="mi">80804</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s">&quot;city&quot;</span><span class="p">:</span> <span class="s">&quot;OLGA&quot;</span><span class="p">,</span>
+        <span class="s">&quot;longitude&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">122.983742</span><span class="p">,</span>
+        <span class="s">&quot;county&quot;</span><span class="p">:</span> <span class="s">&quot;SAN JUAN&quot;</span><span class="p">,</span>
+        <span class="s">&quot;state&quot;</span><span class="p">:</span> <span class="s">&quot;WA&quot;</span><span class="p">,</span>
+        <span class="s">&quot;latitude&quot;</span><span class="p">:</span> <span class="mf">48.557824</span><span class="p">,</span>
+        <span class="s">&quot;zip_code&quot;</span><span class="p">:</span> <span class="mi">98279</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s">&quot;city&quot;</span><span class="p">:</span> <span class="s">&quot;DELRAY BEACH&quot;</span><span class="p">,</span>
+        <span class="s">&quot;longitude&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">80.13473</span><span class="p">,</span>
+        <span class="s">&quot;county&quot;</span><span class="p">:</span> <span class="s">&quot;PALM BEACH&quot;</span><span class="p">,</span>
+        <span class="s">&quot;state&quot;</span><span class="p">:</span> <span class="s">&quot;FL&quot;</span><span class="p">,</span>
+        <span class="s">&quot;latitude&quot;</span><span class="p">:</span> <span class="mf">26.454218</span><span class="p">,</span>
+        <span class="s">&quot;zip_code&quot;</span><span class="p">:</span> <span class="mi">33484</span>
+      <span class="p">},</span>
+      <span class="p">{</span>
+        <span class="s">&quot;city&quot;</span><span class="p">:</span> <span class="s">&quot;LYONS&quot;</span><span class="p">,</span>
+        <span class="s">&quot;longitude&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">122.594993</span><span class="p">,</span>
+        <span class="s">&quot;county&quot;</span><span class="p">:</span> <span class="s">&quot;LINN&quot;</span><span class="p">,</span>
+        <span class="s">&quot;state&quot;</span><span class="p">:</span> <span class="s">&quot;OR&quot;</span><span class="p">,</span>
+        <span class="s">&quot;latitude&quot;</span><span class="p">:</span> <span class="mf">44.749921</span><span class="p">,</span>
+        <span class="s">&quot;zip_code&quot;</span><span class="p">:</span> <span class="mi">97358</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="s">&quot;gender&quot;</span><span class="p">:</span> <span class="s">&quot;female&quot;</span><span class="p">,</span>
+    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;Damaris Savage&quot;</span><span class="p">,</span>
+    <span class="s">&quot;addresses&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="s">&quot;city&quot;</span><span class="p">:</span> <span class="s">&quot;CROSSROADS&quot;</span><span class="p">,</span>
+        <span class="s">&quot;longitude&quot;</span><span class="p">:</span> <span class="o">-</span><span class="mf">103.209405</span><span class="p">,</span>
+        <span class="s">&quot;county&quot;</span><span class="p">:</span> <span class="s">&quot;LEA&quot;</span><span class="p">,</span>
+        <span class="s">&quot;state&quot;</span><span class="p">:</span> <span class="s">&quot;NM&quot;</span><span class="p">,</span>
+        <span class="s">&quot;latitude&quot;</span><span class="p">:</span> <span class="mf">32.690034</span><span class="p">,</span>
+        <span class="s">&quot;zip_code&quot;</span><span class="p">:</span> <span class="mi">88114</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="s">&quot;gender&quot;</span><span class="p">:</span> <span class="s">&quot;female&quot;</span><span class="p">,</span>
+    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;See Harrison&quot;</span><span class="p">,</span>
+    <span class="s">&quot;addresses&quot;</span><span class="p">:</span> <span class="p">[]</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="collections-and-tables">
+<h3>Collections and Tables<a class="headerlink" href="#collections-and-tables" title="Permalink to this headline">¶</a></h3>
+<p>Collections and tables can also be exported in their entirety. When
+browsing a folder (database) within the SlamData UI simply hover over
+the file (table or collection) and notice the icons that appear to the
+right. Click on the Download <img alt="Download Icon" src="_images/icon-download.png" /> icon. See the image below
+with the highlighted icon.</p>
+<div class="figure">
+<img alt="Download Collection" src="_images/download-collection.png" />
+</div>
+</div>
+<div class="section" id="databases">
+<h3>Databases<a class="headerlink" href="#databases" title="Permalink to this headline">¶</a></h3>
+<p>Databases can be exported in their entirety as well. Simply ensure the
+appropriate database and its underlying collections are displayed in the
+UI and click on the Download <img alt="Download Icon" src="_images/icon-download.png" /> icon in the <strong>top menu
+bar</strong> as shown in the image below. A dialog will appear providing
+several options for the download and will result in a compress zip file
+containing all of the database&#8217;s collections as separate files.</p>
+<div class="figure">
+<img alt="Download Database" src="_images/download-database.png" />
+</div>
+<hr class="docutils" />
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="tutorial.html" class="btn btn-neutral float-right" title="SlamData Tutorial" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Welcome to SlamData’s documentation!" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, SlamData.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'./',
+            VERSION:'2.5',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="_static/jquery.js"></script>
+      <script type="text/javascript" src="_static/underscore.js"></script>
+      <script type="text/javascript" src="_static/doctools.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
