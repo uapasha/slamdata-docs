@@ -6,7 +6,7 @@ Administration Guide - Community Edition
 
 This Administration Guide can assist with installing and configuring
 SlamData. For information on how to use SlamData from a user perspective
-see the `SlamData User Guide <users-guide.md>`__
+see the `SlamData User Guide <users-guide.html>`__
 
 Prerequisites
 -------------

@@ -287,7 +287,7 @@ Numeric and String Operations
 -----------------------------
 
 You can use any of the operators or functions listed in the `Clauses,
-Operators, and Functions <#clauses-operators-functions>`__ section on
+Operators, and Functions <#clauses-operators-and-functions>`__ section on
 numbers and strings. Some common string operators and functions include:
 
 +------------------------+----------------------------+

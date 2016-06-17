@@ -9,7 +9,7 @@ Introduction
 
 This Users Guide can assist with daily usage of SlamData. For
 information on how to install and configure SlamData see the `SlamData
-Administration Guide <administration-guide.md>`__
+Administration Guide <administration-guide.html>`__
 
 Launching SlamData
 ------------------
@@ -188,7 +188,7 @@ forms, charts and reports without understanding HTML or other
 complicated markup.
 
 For specific syntax see the `SlamDown Reference
-Guide <slamdown-reference.md>`__ and the `Cheat
+Guide <slamdown-reference.html>`__ and the `Cheat
 Sheet <http://slamdata.com/wp-content/uploads/2016/03/slamdata-cheatsheet-20160329-2.pdf>`__.
 
 Below is an image of both a SlamDown cell and it's rendering directly
@@ -376,7 +376,7 @@ Note: If a query takes longer than 30 seconds to execute SlamData
 considers it a timed out query and will result in an error.
 
 For a complete review of SQL2 and example see the `SQL2 Reference
-Guide <sql-squared-reference.md>`__.
+Guide <sql-squared-reference.html>`__.
 
 --------------
 

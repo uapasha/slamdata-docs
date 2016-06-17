@@ -17,7 +17,7 @@ compatible implementation of
 `Markdown <https://en.wikipedia.org/wiki/Markdown>`__.
 
 In addition, SlamDown also includes two extensions to CommonMark: `form
-fields <#form>`__ and `evaluated SQL2 queries <#query-eval>`__.
+fields <#form-elements>`__ and `evaluated SQL2 queries <#evaluated-sql-query>`__.
 
 This reference contains the following sections:
 
@@ -172,7 +172,7 @@ Inline Elements
 
 The following inline elements are supported in SlamDown. In addition to
 standard Markdown elements, there is also the ability to `evaluate a SQL
-query <#query-eval>`__ and put the result into the content.
+query <#evaluated-sql-query>`__ and put the result into the content.
 
 Emphasis and Strong Emphasis
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~

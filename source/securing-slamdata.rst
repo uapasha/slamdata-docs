@@ -135,8 +135,7 @@ configuration file may be called quasar-config.json and look like this:
     }
 
 For further details on the format of the configuration file, please see
-the Backend
-`Configuration <http://slamdata.com/documentation/back-end-manual/#configuration>`__
+the `Configuration <https://github.com/quasar-analytics/quasar#configure>`__
 documentation.
 
 Testing the Backend

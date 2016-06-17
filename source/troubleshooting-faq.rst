@@ -70,7 +70,7 @@ SlamData Won't Start
 This is typically caused by an invalid database mount. Either the
 database is not currently available, or a previously configured mount is
 no longer valid. Locate the `configuration
-file <#installing-config-file-locations>`__ and if necessary modify the
+file <#configuration-file-locations>`__ and if necessary modify the
 file by hand, or if you wish to erase all previously configured mounts,
 you may simply rename or delete the file and restart SlamData.
 

@@ -22,23 +22,23 @@ The examples in the tutorial will reference the path
 created, which has a database called ``demo`` and a collection called
 ``tutorial``.
 
-1.  Download the tutorial file. This file contains information about
+1.  `Download <https://raw.githubusercontent.com/damonLL/tutorial_files/master/tutorial>`__
+    and save the tutorial file. This file contains information about
     which countries won medals in the Olympics as far back as 1924.
-2.  Rename the ``tutorial.txt`` file to just ``tutorial``.
-3.  Start the SlamData application
-4.  Click on a server that has been configured. See the `Connecting to a
-    Database <administration-guide.md#connecting-to-a-database>`__
+2.  Start the SlamData application
+3.  Click on a server that has been configured. See the `Connecting to a
+    Database <administration-guide.html#connecting-to-a-database>`__
     section of the Administration Guide if no servers exist.
-5.  Click the New Folder |New Folder| icon in the upper right. A new
+4.  Click the New Folder |New Folder| icon in the upper right. A new
     folder called ``Untitled Folder`` now exists.
-6.  Rename the folder to ``demo`` by hovering the mouse over the
+5.  Rename the folder to ``demo`` by hovering the mouse over the
     Untitled Folder and then clicking on the rename icon that appears
     seen here: |Rename Folder|
-7.  Click on the renamed folder to open it.
-8.  Click on the Upload |Upload Icon| icon.
-9.  Locate and select the ``tutorial`` file in step 1. After a few
+6.  Click on the renamed folder to open it.
+7.  Click on the Upload |Upload Icon| icon.
+8.  Locate and select the ``tutorial`` file in step 1. After a few
     moments a new Exploration cell will be displayed.
-10. Click the Back |Back Icon| icon in the upper left to view the folder
+9. Click the Back |Back Icon| icon in the upper left to view the folder
     again.
 
 Your folder display should appear as follows:
@@ -129,7 +129,7 @@ changes, this report will change the next time it is viewed.*
 
 This section described how to create a static form and publish its
 results. There are many other SlamDown features you can read about in
-the `SlamDown Reference </slamdown-reference.md>`__.
+the `SlamDown Reference <slamdown-reference.html>`__.
 
 The next section describes how to publish a dynamic form that allows
 user interaction.
