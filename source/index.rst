@@ -13,6 +13,7 @@ Contents:
 
    users-guide
    tutorial
+   developers-guide
    securing-slamdata
    troubleshooting-faq
    sql-squared-reference

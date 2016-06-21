@@ -1,79 +1,78 @@
 .. figure:: /images/white-logo.png
    :alt: SlamData Logo
 
-Users Guide
-===========
+Developers Guide
+================
 
 Introduction
 ------------
 
-This Users Guide can assist with daily usage of SlamData. For
-information on how to install and configure SlamData see the `SlamData
-Administration Guide <administration-guide.html>`__
+This Developers Guide steps developers through the complete process of
+utilizing SlamData from a developers perspective; from installation through
+completed project.
+
+For information on how to install and configure SlamData see the `SlamData
+Administration Guide <administration-guide.html>`__ and see the
+`SlamData Users Guide <users-guide.html>`__ for common operations.
+
+Overview
+--------
+
+SlamData allows developers, business analysts and all types of employees to
+easily search for data in semi-structured, nested data formats such as
+JSON and XML, as well as from traditional relational data stores.  Because
+SlamData natively understands NoSQL schema-less databases, there is no need
+to map fields from one data source format to another.  This provides a huge
+productivity increase for users and a significant reduction in error-prone
+human configuration.
+
+With an easy-to-use UI, integrated security, connectors for major database
+vendors and the ability to use a superset of SQL on top of NoSQL data, SlamData
+provides companies a one-stop-shop for their analytics needs.
+
+Objectives
+----------
+
+By reading through the sections in this guide a developer will come to the
+understanding of how SlamData is installed, how it works, and how best to use
+it from a developer's perspective.  The end of the book culminates in a complete
+project, end-to-end, where a developer has created an actual application that
+covers:
+
+* Security - Enforces authentication and authorization of users
+* User Context - controls access to charts and reports based on user permissions 
+* Embedding - Embeds charts and reports into a 3rd party application
+* API Cell Usage - Retrieves charts and reports via an ad-hoc method
+* Views - Ability to use simple or complex queries as a data source for other queries
+
+Assumptions
+-----------
+
+This guide makes the following assumptions about the reader:
+
+* a developer in at least one modern day language such
+  as Java, Python, Scala, .NET, etc.
+* understands JSON syntax
+* has an underlying supported database already installed
+* has read the `Users Guide <users-guide.html>`__,
+  understands `Key Concepts <users-guide.html#key-concepts>`__,
+  `Notebooks <users-guide.html#notebooks>`__
+  and `Cell Types <users-guide.html#cell-types>`__
+
+Installation
+------------
+
+Refer to the `Installation <administration-guide.html#installing-slamdata>`__ section
+of the Administration Guide.
+
 
 Launching SlamData
 ------------------
 
-Starting SlamData on a local system will automatically open a new
-browser window or tab with this URL:
-``http://localhost:20223/slamdata/index.html``
-
-If SlamData is not installed locally but instead is on a remote system
-it can be accessed with a similar URL:
-``http://servername:20223/slamdata/index.html`` where **servername** is
-the DNS name or IP address of the server.
+Refer to the `Launching SlamData <administration-guide.html#launching-slamdata>`__ section
+of the Administration Guide.
 
 
-Key Concepts
-------------
-
-It is useful to understand the following key concepts when using
-SlamData.
-
-+----------------+--------------+-------------------------------------------+
-| Feature Name   | Image        | Description                               |
-+================+==============+===========================================+
-| Cluster        | |Cluster|    | A cluster represents a database server    |
-+----------------+--------------+-------------------------------------------+
-| Folder         | |Folder|     | A folder represents a database            |
-+----------------+--------------+-------------------------------------------+
-| File           | |File|       | A file represents a table or collection   |
-+----------------+--------------+-------------------------------------------+
-| Notebook       | |Notebook|   | A notebook contains a user's work         |
-+----------------+--------------+-------------------------------------------+
-
-A Cluster (server) may contain 0, 1 or more Folders (databases).
-
-A Folder (database) may contain 0, 1 or more Files (tables or
-collections).
-
-Clicking on a Cluster, Folder, File or Notebook will display its
-contents.
-
-
-Notebooks
----------
-
-Notebooks capture data workflows in a visual fashion that allows you to
-query data, transform and visualize it in the form of charts and
-reports.
-
-Each stage in a Notebook's workflow is called a *cell* or *card*. Cells
-can rely on data from previous cells or exist independent of other
-cells.
-
-A Notebook can be created in one of two ways:
-
-1. By clicking on the Notebook |Notebook| icon in the upper right of the
-   SlamData UI.
-2. Clicking on a collection and renaming the subsequently displayed
-   Notebook something other than ``Untitled Notebook``.
-
-Whenever an existing Notebook is changed it is automatically saved and
-can be referred to in the future. For instance if a Notebook contains an
-exploration cell followed by a query cell, the query can be changed and
-executed and the Notebook is then automatically saved. This allows a
-user to work in a Notebook without fear of losing work or data.
 
 
 Cell Types

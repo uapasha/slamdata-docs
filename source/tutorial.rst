@@ -38,8 +38,7 @@ created, which has a database called ``demo`` and a collection called
 7.  Click on the Upload |Upload Icon| icon.
 8.  Locate and select the ``tutorial`` file in step 1. After a few
     moments a new Exploration cell will be displayed.
-9. Click the Back |Back Icon| icon in the upper left to view the folder
-    again.
+9.  Click the Back |Back Icon| icon in the upper left to view the folder again.
 
 Your folder display should appear as follows:
 
