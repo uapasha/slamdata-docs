@@ -10,6 +10,9 @@ Introduction
     This API Reference provides detailed information for developers to use
     when interacting with SlamData via the API.
 
+    **Note**: Some features are only available in SlamData Advanced and are
+    noted as such.
+
 ----
 
 

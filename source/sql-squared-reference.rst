@@ -364,7 +364,7 @@ Filter based on a timestamp (date and time)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Use the ``TIMESTAMP`` operator to convert a string into a date and time.
-The string should have the format ``YYYY-MM-DDTHH:MM:SS``.
+The string should have the format ``YYYY-MM-DDTHH:MM:SSZ``.
 
 Example:
 
