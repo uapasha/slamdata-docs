@@ -370,7 +370,7 @@ Example:
 
 ::
 
-    SELECT * FROM `/log/events` AS c WHERE c.ts > TIMESTAMP("2015-04-29T15:16:55")
+    SELECT * FROM `/log/events` AS c WHERE c.ts > TIMESTAMP("2015-04-29T15:16:55Z")
 
 Filter based on a time
 ~~~~~~~~~~~~~~~~~~~~~~
