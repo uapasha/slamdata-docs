@@ -1,4 +1,4 @@
-.. figure:: /images/white-logo.png
+.. figure:: images/white-logo.png
    :alt: SlamData Logo
 
 Users Guide
@@ -625,4 +625,3 @@ containing all of the database's collections as separate files.
 .. |Download Icon| image:: /images/icon-download.png
           :height: 25
           :width: 25
-
