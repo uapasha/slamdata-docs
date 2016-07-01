@@ -1,4 +1,4 @@
-.. figure:: /images/white-logo.png
+.. figure:: images/white-logo.png
    :alt: SlamData Logo
 
 Reference - SlamDown
@@ -63,7 +63,7 @@ hashmark for each level.
 
 results in a first, second, and third level heading:
 
-.. figure:: /images/screenshots/fake-levels.png
+.. figure:: images/screenshots/fake-levels.png
    :alt: Headers
 
    Headers
@@ -322,7 +322,7 @@ result is stored in the string variable named ``commute`` for later use.
 
 This results in:
 
-.. figure:: /images/screenshots/radio-buttons.png
+.. figure:: images/screenshots/radio-buttons.png
    :alt: Radio Buttons
 
    Radio Buttons
@@ -346,7 +346,7 @@ specific node to visualize in a chart:
 
 This results in:
 
-.. figure:: /images/screenshots/radio-buttons-dynamic.png
+.. figure:: images/screenshots/radio-buttons-dynamic.png
    :alt: Dynamic Radio Buttons
 
 **Note:** Currently, the default value must be the first value.
@@ -373,7 +373,7 @@ If left as the default, the ``phones`` variable will have the value:
 
 This results in:
 
-.. figure:: /images/screenshots/checkboxes.png
+.. figure:: images/screenshots/checkboxes.png
    :alt: Check Boxes
 
    Check Boxes
@@ -397,7 +397,7 @@ populates the remaining check boxes.
 
 This results in:
 
-.. figure:: /images/screenshots/checkboxes-dynamic.png
+.. figure:: images/screenshots/checkboxes-dynamic.png
    :alt: Dynamic Check Boxes
 
 Dropdown
@@ -423,7 +423,7 @@ end. In this line, NYC is set as the default.
 
 This results in:
 
-.. figure:: /images/screenshots/dropdown.png
+.. figure:: images/screenshots/dropdown.png
    :alt: Dropdown
 
 Dynamic Dropdown
@@ -441,7 +441,7 @@ allowing a user to select which industry to visualize in a chart:
 
 This results in:
 
-.. figure:: /images/screenshots/dropdown-dynamic.png
+.. figure:: images/screenshots/dropdown-dynamic.png
    :alt: Dynamic Dropdown
 
 Dates and Times
@@ -480,7 +480,7 @@ The following line creates both a date and time selector element:
 
 This results in:
 
-.. figure:: /images/screenshots/date-and-time.png
+.. figure:: images/screenshots/date-and-time.png
    :alt: Date and Time Selector
 
    Date and Time Selector

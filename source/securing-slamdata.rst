@@ -1,4 +1,4 @@
-.. figure:: /images/white-logo.png
+.. figure:: images/white-logo.png
    :alt: SlamData Logo
 
 Securing SlamData Community Edition
@@ -63,7 +63,7 @@ If your IP addresses differ, change as appropriate.
 Architecture Overview
 ---------------------
 
-.. figure:: /images/restrict-slamdata.png
+.. figure:: images/restrict-slamdata.png
    :alt: Architecture Overview
 
    Architecture Overview
@@ -397,7 +397,7 @@ the SlamData / Nginx HTTP authorization by going to the URL:
 You should be immediately prompted for a username and password. Upon
 successful authorization you should see the SlamData UI:
 
-.. figure:: /images/after-login.png
+.. figure:: images/after-login.png
    :alt: After Login
 
    After Login

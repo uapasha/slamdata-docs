@@ -1,4 +1,4 @@
-.. figure:: /images/white-logo.png
+.. figure:: images/white-logo.png
    :alt: SlamData Logo
 
 SlamData Tutorial
@@ -42,7 +42,7 @@ created, which has a database called ``demo`` and a collection called
 
 Your folder display should appear as follows:
 
-.. figure:: /images/screenshots/tutorial-folder-display.png
+.. figure:: images/screenshots/tutorial-folder-display.png
    :alt: Tutorial Folder Display
 
 Depending on your server mount name the path to the newly created
@@ -81,7 +81,7 @@ the data a new Exploration cell will now be created.
 3. Click the Play |Play| icon. Once clicked the exploration cell will
    appear as below:
 
-.. figure:: /images/screenshots/cell-exploration.png
+.. figure:: images/screenshots/cell-exploration.png
    :alt: Exploration Cell
 
 Take a moment to view what the published Notebook looks like now. The
@@ -118,7 +118,7 @@ Create a Static Form
 
 -  See the SlamDown rendering similar to the following image:
 
-.. figure:: /images/screenshots/olympics-slam1.png
+.. figure:: images/screenshots/olympics-slam1.png
    :alt: Basic SlamDown Report
 
 Again - take a moment to review the published version of this Notebook.
@@ -172,7 +172,7 @@ against a numeric database field.
 
 This results in the following rendered Markdown:
 
-.. figure:: /images/screenshots/olympics-slam2.png
+.. figure:: images/screenshots/olympics-slam2.png
    :alt: Olympic Date Selectors
 
 The rendered drop downs of ``startyear`` and ``endyear`` create
@@ -242,7 +242,7 @@ section in chart form.
 
 This will result in the following chart:
 
-.. figure:: /images/screenshots/olympics-chart.png
+.. figure:: images/screenshots/olympics-chart.png
    :alt: Olympics Chart
 
    Olympics Chart
@@ -274,20 +274,20 @@ dynamic dependencies no longer work outside of the Notebook context.
 
 --------------
 
-.. |New Folder| image:: /images/icon-create-folder.png
-.. |Rename Folder| image:: /images/screenshots/rename-folder.png
-.. |Upload Icon| image:: /images/icon-upload.png
-.. |Back Icon| image:: /images/icon-back.png
-.. |New Notebook| image:: /images/icon-notebook.png
-.. |Plus| image:: /images/icon-plus.png
-.. |Explore| image:: /images/icon-explore.png
-.. |Drop Down| image:: /images/screenshots/select-a-file.png
-.. |Play| image:: /images/icon-play.png
-.. |Trashcan icon| image:: /images/icon-gray-trashcan.png
-.. |SlamDown| image:: /images/icon-slamdown.png
-.. |Play Icon| image:: /images/icon-play.png
-.. |Query Icon| image:: /images/icon-gray-query.png
-.. |Chart Icon| image:: /images/icon-gray-chart.png
-.. |Bar Chart| image:: /images/icon-gray-bar.png
-.. |Embed Icon| image:: /images/icon-embed.png
+.. |New Folder| image:: images/icon-create-folder.png
+.. |Rename Folder| image:: images/screenshots/rename-folder.png
+.. |Upload Icon| image:: images/icon-upload.png
+.. |Back Icon| image:: images/icon-back.png
+.. |New Notebook| image:: images/icon-notebook.png
+.. |Plus| image:: images/icon-plus.png
+.. |Explore| image:: images/icon-explore.png
+.. |Drop Down| image:: images/screenshots/select-a-file.png
+.. |Play| image:: images/icon-play.png
+.. |Trashcan icon| image:: images/icon-gray-trashcan.png
+.. |SlamDown| image:: images/icon-slamdown.png
+.. |Play Icon| image:: images/icon-play.png
+.. |Query Icon| image:: images/icon-gray-query.png
+.. |Chart Icon| image:: images/icon-gray-chart.png
+.. |Bar Chart| image:: images/icon-gray-bar.png
+.. |Embed Icon| image:: images/icon-embed.png
 
