@@ -1,4 +1,4 @@
-.. figure:: /images/white-logo.png
+.. figure:: images/white-logo.png
    :alt: SlamData Logo
 
 Administration Guide - Community Edition
@@ -138,7 +138,7 @@ right.
 
 A mount dialog will be presented:
 
-.. figure:: /images/screenshots/mount-dialog-start.png
+.. figure:: images/screenshots/mount-dialog-start.png
    :alt: SlamData Mount Dialog
 
    SlamData Mount Dialog
@@ -173,7 +173,7 @@ remaining fields:
 
 An example form might look like this:
 
-.. figure:: /images/screenshots/mount-mongodb.png
+.. figure:: images/screenshots/mount-mongodb.png
    :alt: SlamData MongoDB Dialog
 
    SlamData MongoDB Dialog
@@ -193,7 +193,7 @@ following image. In this image there are three separate mounts named
 ``aws``, ``kirk`` and ``macbook``, the last likely representing a
 locally mounted database.
 
-.. figure:: /images/screenshots/mount-all-mounts.png
+.. figure:: images/screenshots/mount-all-mounts.png
    :alt: SlamData Multiple Mounts
 
    SlamData Multiple Mounts
@@ -365,10 +365,10 @@ picks up the new certificate in the JKS.
 **Fourth** - Mount the database with SSL as shown in the attached
 screenshot:
 
-.. figure:: /images/screenshots/mount-ssl.png
+.. figure:: images/screenshots/mount-ssl.png
    :alt: SlamData SSL Mounts
 
    SlamData SSL Mounts
 
-.. |Mount Icon| image:: /images/icon-mount.png
+.. |Mount Icon| image:: images/icon-mount.png
 

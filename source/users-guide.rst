@@ -102,7 +102,7 @@ Exploration Cell
 An example exploration cell is shown below. Refer to the table below the
 image for the function of each icon surrounding the cell.
 
-.. figure:: /images/screenshots/cell-exploration-annotated-with-numbers.png
+.. figure:: images/screenshots/cell-exploration-annotated-with-numbers.png
    :alt: Exploration Cell
 
 +---------+------------------------------------------------------------------+
@@ -143,7 +143,7 @@ exploration cell. In this instance we have an array called
 ``city``, ``county``, ``latitude``, ``longitude``, ``state`` and
 ``zip_code``.
 
-.. figure:: /images/screenshots/cell-exploration-nested.png
+.. figure:: images/screenshots/cell-exploration-nested.png
    :alt: Exploration Cell Nested
 
 The corresponding JSON would appears like this in the database:
@@ -196,7 +196,7 @@ following it. As a reminder when you publish a Notebook you can include
 SlamDown cells, providing users with interactive forms that can directly
 affect a query and resulting report or chart.
 
-.. figure:: /images/screenshots/cell-slamdown.png
+.. figure:: images/screenshots/cell-slamdown.png
    :alt: SlamDown Cell
 
 
@@ -229,7 +229,7 @@ and tables, especially those without proper indexes assigned, this could
 take some time to complete; however this also provides a very powerful
 feature to find data that exists but the location is unknown.
 
-.. figure:: /images/screenshots/search-and-results.png
+.. figure:: images/screenshots/search-and-results.png
    :alt: Search and Results
 
    Search and Results
@@ -349,7 +349,7 @@ Query cell. If the second option is selected the user will be presented
 with a Query cell that contains a default query, highlighted with
 colored syntax as shown below:
 
-.. figure:: /images/screenshots/query-highlighted.png
+.. figure:: images/screenshots/query-highlighted.png
    :alt: Query Highlighted
 
    Query Highlighted
@@ -359,7 +359,7 @@ text cannot be modified or removed. If the user prefers more control the
 first option above may be preferred. The Query cell also provides query
 completion at certain parts of your query as shown below:
 
-.. figure:: /images/screenshots/query-completion.png
+.. figure:: images/screenshots/query-completion.png
    :alt: Query Completion
 
    Query Completion
@@ -467,7 +467,7 @@ cells it may then be downloaded in **JSON** or **CSV** formats.
 See the example image below of a query cell followed by the results
 cell.
 
-.. figure:: /images/screenshots/cell-query-and-results.png
+.. figure:: images/screenshots/cell-query-and-results.png
    :alt: Query Cell Results
 
 Downloading the data from this **Results Cell** provides the following
@@ -552,7 +552,7 @@ the file (table or collection) and notice the icons that appear to the
 right. Click on the Download |Download Icon| icon. See the image below
 with the highlighted icon.
 
-.. figure:: /images/screenshots/download-collection.png
+.. figure:: images/screenshots/download-collection.png
    :alt: Download Collection
 
 Databases
@@ -565,63 +565,63 @@ bar** as shown in the image below. A dialog will appear providing
 several options for the download and will result in a compress zip file
 containing all of the database's collections as separate files.
 
-.. figure:: /images/screenshots/download-database.png
+.. figure:: images/screenshots/download-database.png
    :alt: Download Database
 
 --------------
 
-.. |Cluster| image:: /images/icon-mount.png
+.. |Cluster| image:: images/icon-mount.png
           :height: 25
           :width: 25
-.. |Folder| image:: /images/icon-folder.png
+.. |Folder| image:: images/icon-folder.png
           :height: 25
           :width: 25
-.. |File| image:: /images/icon-file.png
+.. |File| image:: images/icon-file.png
           :height: 25
           :width: 25
-.. |Notebook| image:: /images/icon-notebook.png
+.. |Notebook| image:: images/icon-notebook.png
           :height: 25
           :width: 25
-.. |Plus| image:: /images/icon-plus.png
+.. |Plus| image:: images/icon-plus.png
           :height: 25
           :width: 25
-.. |Exploration| image:: /images/icon-explore.png
+.. |Exploration| image:: images/icon-explore.png
           :height: 25
           :width: 25
-.. |Search| image:: /images/icon-search.png
+.. |Search| image:: images/icon-search.png
           :height: 25
           :width: 25
-.. |SlamDown| image:: /images/icon-slamdown.png
+.. |SlamDown| image:: images/icon-slamdown.png
           :height: 25
           :width: 25
-.. |API| image:: /images/icon-api.png
+.. |API| image:: images/icon-api.png
           :height: 25
           :width: 25
-.. |Search Gray Icon| image:: /images/icon-gray-search.png
+.. |Search Gray Icon| image:: images/icon-gray-search.png
           :height: 25
           :width: 25
-.. |Plus Icon| image:: /images/icon-plus.png
+.. |Plus Icon| image:: images/icon-plus.png
           :height: 25
           :width: 25
-.. |Search Icon| image:: /images/icon-search.png
+.. |Search Icon| image:: images/icon-search.png
           :height: 25
           :width: 25
-.. |Play Icon| image:: /images/icon-play.png
-.. |Query| image:: /images/icon-query.png
+.. |Play Icon| image:: images/icon-play.png
+.. |Query| image:: images/icon-query.png
           :height: 25
           :width: 25
-.. |Upload File| image:: /images/icon-upload.png
+.. |Upload File| image:: images/icon-upload.png
           :height: 25
           :width: 25
-.. |Download Cell| image:: /images/icon-download-cell.png
+.. |Download Cell| image:: images/icon-download-cell.png
           :height: 25
           :width: 25
-.. |CSV Icon| image:: /images/icon-csv.png
+.. |CSV Icon| image:: images/icon-csv.png
           :height: 25
           :width: 25
-.. |JSON Icon| image:: /images/icon-json.png
+.. |JSON Icon| image:: images/icon-json.png
           :height: 25
           :width: 25
-.. |Download Icon| image:: /images/icon-download.png
+.. |Download Icon| image:: images/icon-download.png
           :height: 25
           :width: 25
