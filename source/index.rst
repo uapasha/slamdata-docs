@@ -11,14 +11,7 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-   users-guide
    developers-guide
-   tutorial
-   securing-slamdata
-   troubleshooting-faq
-   sql-squared-reference
-   slamdown-reference
-   api-reference
    administration-guide
 
 
