@@ -317,8 +317,8 @@ screenshot:
 Configuring SlamData
 --------------------
 
-Configuration File
-~~~~~~~~~~~~~~~~~~
+Community Edition Configuration File
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The SlamData configuration file allows an administrator to change
 settings such as the port number SlamData listens on, the mounts
@@ -335,14 +335,21 @@ the operating system being used.
 | Linux (various vendors)   | $HOME/.config/quasar/quasar-config.json                       |
 +---------------------------+---------------------------------------------------------------+
 
-An example configuration file might appear like this:
+An example configuration file for SlamData Community Edition might appear like this:
 
-.. code:: json
+
+::
 
     {
       "server": {
-        "port": 8080
+        "port": 8080,
+        "ssl": {
+          "enabled": true,
+          "port": 9090,
+          "cert": "<base64 encoded pkcs12 cert file>"
+        }
       },
+
       "mountings": {
         "/aws/": {
           "mongodb": {
@@ -354,8 +361,88 @@ An example configuration file might appear like this:
             "connectionUri": "mongodb://localhost:27017"
           }
         }
+      },
+    }
+
+
+Advanced Edition Configuration File |Murray-Small|
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In addition to all Community Edition functionality, SlamData Advanced edition
+has additional configuration parameters to setup security, including the
+``authentication``, ``auditing`` and ``metastore`` directives.    An example
+configuration file for SlamData Advanced Edition might appear like this:
+
+::
+
+    {
+      "server": {
+        "port": 8080,
+        "ssl": {
+          "enabled": true,
+          "port": 9090,
+          "cert": "<base64 encoded pkcs12 cert file>"
+        }
+      },
+
+      "mountings": {
+        "/aws/": {
+          "mongodb": {
+            "connectionUri": "mongodb://myUser:myPass@aws-box.example.com:27017/admin"
+          }
+        },
+        "/macbook/": {
+          "mongodb": {
+            "connectionUri": "mongodb://localhost:27017"
+          }
+        }
+      },
+
+      "authentication": {
+        "openid_providers": [
+          {
+            "display_name": "Google",
+            "issuer": "https://accounts.google.com",
+            "client_id": "sdf987wetlkdflkj"
+          },
+          {
+            "display_name": "Our Company OP",
+            "client_id": "123455976",
+            "openid_configuration": {
+              "issuer": "https://op.ourcompany.com",
+              "authorization_endpoint": "https://op.ourcompany.com/authorize",
+              "token_endpoint": "https://op.ourcompany.com/token",
+              "userinfo_endpoint": "https://op.ourcompany.com/userinfo",
+              "jwks": [
+                {
+                  "kty": "RSA",
+                  "kid": "1234",
+                  "alg": "RS256",
+                  "use": "sig",
+                  "n": "2354098udw...2957835lkj"
+                },
+                {
+                  "kty": "RSA",
+                  "kid": "5678",
+                  "alg": "RS256",
+                  "use": "sig",
+                  "n": "skljhdfiugy...39587dlkjsd"
+                }
+              ]
+            }
+          }
+        ]
+      },
+
+      "auditing": {
+        "log_file": "/aws/logdb/slamdata-logs"
+      },
+
+      "metastore": {
+        "database": "<h2 config | postgresql config>"
       }
     }
+
 
 
 --------------
@@ -466,6 +553,14 @@ The ``X-Extra-Permissions`` header is formatted as follows:
 
 Auditing
 ~~~~~~~~
+
+.. attention:: File system definition
+
+  The SlamData product sometimes refers to virtual database paths
+  as file systems and tables or collections as file names.  In the
+  Auditing section below the **log file** path should be a
+  path to the collection or table you wish to save to.  This does
+  not equate to an operating system file name or directory path.
 
 When a log file is specified in the configuration file, all filesystem
 operations will be logged to that file. SlamData Advanced Edition logs the
