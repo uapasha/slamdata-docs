@@ -17,7 +17,7 @@ compatible implementation of
 `Markdown <https://en.wikipedia.org/wiki/Markdown>`__.
 
 In addition, SlamDown also includes two extensions to CommonMark: `form
-fields <#form-elements>`__ and `evaluated SQL2 queries <#evaluated-sql-query>`__.
+fields <#form-elements>`__ and `evaluated SQL² queries <#evaluated-sql-query>`__.
 
 This reference contains the following sections:
 

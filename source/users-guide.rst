@@ -87,7 +87,7 @@ of the following cell types
 +===============+=================+===========================================================+
 | Exploration   | |Exploration|   | Browse data in a table or collection                      |
 +---------------+-----------------+-----------------------------------------------------------+
-| Query         | |Query|         | Leverage SQL2 for powerful queries                        |
+| Query         | |Query|         | Leverage SQL² for powerful queries                        |
 +---------------+-----------------+-----------------------------------------------------------+
 | Search        | |Search|        | Simple searching for non-technical users                  |
 +---------------+-----------------+-----------------------------------------------------------+
@@ -330,7 +330,7 @@ CheatSheet <http://slamdata.com/wp-content/uploads/2016/03/slamdata-cheatsheet-2
 Query Cell
 ~~~~~~~~~~
 
-The Query cell allows users to utilize SQL2 to directly query one or
+The Query cell allows users to utilize SQL² to directly query one or
 more collections or tables. This is the equivalent of a SQL command line
 console.
 
@@ -364,7 +364,7 @@ completion at certain parts of your query as shown below:
 
    Query Completion
 
-The Query cell will also automatically highlight SQL2 keywords as shown
+The Query cell will also automatically highlight SQL² keywords as shown
 the image above. The query itself can be written on a single line (which
 will not word wrap) or on multiple lines.
 
@@ -375,7 +375,7 @@ running. When complete the query's results will display below the query.
 Note: If a query takes longer than 30 seconds to execute SlamData
 considers it a timed out query and will result in an error.
 
-For a complete review of SQL2 and example see the `SQL2 Reference
+For a complete review of SQL² and example see the `SQL² Reference
 Guide <sql-squared-reference.html>`__.
 
 --------------

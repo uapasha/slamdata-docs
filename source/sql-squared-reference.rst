@@ -9,9 +9,9 @@ Reference - SQL²
 Introduction
 ------------
 
-SQL2 is a subset of ANSI SQL, designed for queries into NoSQL databases.
+SQL² is a subset of ANSI SQL, designed for queries into NoSQL databases.
 
-SQL2 has support for every major SQL SELECT clause, such as ``AS``,
+SQL² has support for every major SQL SELECT clause, such as ``AS``,
 ``WHERE``, ``JOIN``, ``GROUP BY``, ``HAVING``, ``LIMIT``, ``OFFSET``,
 ``CROSS``, etc. It also contains many standard SQL functions and
 operators. It follows PostgreSQL where SQL dialects diverge.
@@ -21,7 +21,7 @@ operators. It follows PostgreSQL where SQL dialects diverge.
 Data Types
 ----------
 
-The following data types are used by SQL2.
+The following data types are used by SQL².
 
 **Note:** > Some data types are not natively supported by all databases.
 Instead, they are emulated by SlamData, meaning that you can use them as
@@ -148,7 +148,7 @@ The following functions are supported:
 Syntax Changes in Version 2.5
 -----------------------------
 
-When SlamData 2.5 was released in early 2016 the SQL2 syntax changed
+When SlamData 2.5 was released in early 2016 the SQL² syntax changed
 slightly. Please make note of the following syntax to avoid problems in
 queries:
 
@@ -425,7 +425,7 @@ Example:
 Grouping
 --------
 
-SQL2 allows you to group data by fields and by date parts.
+SQL² allows you to group data by fields and by date parts.
 
 Group based on a single field
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -683,7 +683,7 @@ Conditionals and Nulls
 Conditionals
 ~~~~~~~~~~~~
 
-Use the ``CASE`` expression to provide if-then-else logic to SQL2. The
+Use the ``CASE`` expression to provide if-then-else logic to SQL². The
 ``CASE`` sytax is:
 
 ::

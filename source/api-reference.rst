@@ -36,7 +36,7 @@ Reference
 Executing a Small Query
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-    Executes a SQL2 query where the results and computation are expected to
+    Executes a SQL² query where the results and computation are expected to
     be relatively small. Pagination and some filtering are supported.
 
 URL

@@ -149,7 +149,7 @@ A mount dialog will be presented:
    SlamData Mount Dialog
 
 Enter a name for the database mount. This name is used in the SlamData
-UI as well as SQL2 query paths. Use a name that makes sense for the
+UI as well as SQL² query paths. Use a name that makes sense for the
 environment. For instance if this database were hosted on Amazon AWS/EC2
 it might be named ``aws`` or ``aws-1``.
 
