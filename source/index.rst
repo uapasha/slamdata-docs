@@ -12,6 +12,7 @@ Contents:
    :maxdepth: 2
 
    users-guide
+   developers-guide
    tutorial
    securing-slamdata
    troubleshooting-faq

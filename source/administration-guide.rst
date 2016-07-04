@@ -1,107 +1,113 @@
 .. figure:: images/white-logo.png
    :alt: SlamData Logo
 
-Administration Guide - Community Edition
-========================================
+Administration Guide
+====================
 
 This Administration Guide can assist with installing and configuring
 SlamData. For information on how to use SlamData from a user perspective
-see the `SlamData User Guide <users-guide.html>`__
+see the `SlamData Users Guide <users-guide.html>`__
 
-Prerequisites
--------------
+.. attention:: SlamData Advanced Features
 
--  2 GB available memory
--  300 MB disk space
--  Credentials to one or more databases
--  Latest version of Chrome, Firefox, Safari or Internet Explorer
--  Java 1.8 if using Linux *(Java Runtime is included with OS X and
-   Windows installers)*
--  We recommend the latest version of `SlamData Community
-   Edition <http://slamdata.com/get-slamdata/download-slamdata-community-edition/>`__
+  Throughout this guide there are references to functionality available
+  only in SlamData Advanced Edition.  Sections that apply only to SlamData
+  Advanced Edition will be called out with the Murray (MRA)
+  icon. |Murray-Small|
 
---------------
 
-Limitations
------------
 
--  When using MongoDB, version 2.6 or newer is required
+Minimum System Requirements
+---------------------------
 
---------------
-
-Installing SlamData
--------------------
-
-SlamData may be installed on a workstation or a server. Workstation
-installation is typically best for Administrator or Business Analyst
-work and only needs to run when something must be configured or changed.
-Server installation is best for providing services for a larger group of
-users (or SaaS environment) and should remain running at all times for
-end user access.
-
-Mac OS X
-~~~~~~~~
-
-SlamData has been tested and runs on OS X versions 10.10 and newer. It
-may run on older versions but has not been tested and is not yet
-supported.
-
-1. `Download
-   SlamData <http://slamdata.com/get-slamdata/download-slamdata-community-edition/>`__
-2. Open the downloaded disk image (.dmg file)
-3. Double-click the installer. You may need to adjust 'Security &
-   Privacy' settings to allow downloaded apps from Anywhere.
-4. Complete the installation setup program
-
-Linux
-~~~~~
-
-SlamData has been tested and runs on Ubuntu version 14.04 and newer and
-CentOS verion 7 and newer. It may run on different Linux distributions
-and versions but has not been tested and is not yet supported.
-
-1. `Download
-   SlamData <http://slamdata.com/get-slamdata/download-slamdata-community-edition/>`__
-2. Ensure you have the `Java 8 JRE or Java 8
-   JDK <http://www.oracle.com/technetwork/java/javase/downloads/index.html>`__
-   installed.
-3. Make the installer executable: ``chmod +x slamdata_unix_version.sh``
-4. Run the installer, providing answers to the
-   prompts:\ ``./slamdata_unix_version.sh``
-
-Windows
-~~~~~~~
-
-SlamData has been tested and runs on Windows 7 Desktop and newer and
-Windows Server 2008 and newer. It may run on older versions but has not
-been tested and is not yet supported.
-
-1. `Download
-   SlamData <http://slamdata.com/get-slamdata/download-slamdata-community-edition/>`__
-2. Run the installer
-3. Complete the installation setup program.
+  * Minimum Memory:
+      * 2 GB memory
+      * Add 25 MB for each active user
+  * Disk:
+      * 300 MB for basic installation
+      * Additional space varies based on Workspace size, cached queries, etc.
+  * Java:
+      * Java 1.8
+      * Windows and Mac OS purchased installers include Java 8
+      * Linux requires separate Java 8 installation
+  * Browsers:
+      * Chrome v 51 or newer
+      * Safari v 9 or newer
+      * Internet Exlorer 10 or newer
+  * Target Datasources
+      * MongoDB 2.6 or newer
+  * Metastore Datasources (SlamData Advanced Edition only) |Murray-Small|
+      * PostgreSQL 9.x
+      * H2 Java SQL Database
 
 --------------
 
-Launching SlamData
+
+Obtaining SlamData
 ------------------
 
-SlamData is comprised of a frontend interface and a backend analytics
-engine. Launching the SlamData application will start both.
 
-Mac OS X
-~~~~~~~~
+Building SlamData from Source
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Users can choose to download the latest version of the SlamData source
+code from GitHub.  For more information on building SlamData from source
+see the README 
+`here <https://github.com/slamdata/slamdata#building-from-source>`__.
+
+
+Downloading the SlamData Installer
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A fully automated installer package can be purchased directly from the
+SlamData website `here <http://slamdata.com/get-slamdata/>`__.
+
+
+--------------
+
+
+Starting SlamData
+-----------------
+
+
+SlamData is comprised of a frontend interface and a backend analytics
+engine. Starting the SlamData application will start both.
+
+
+Starting SlamData from Source
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If SlamData was installed from source the launch process is the same
+on all operating systems.  After successfully building SlamData:
+
+1. Change directory to the directory created by ``git clone``
+2. Start SlamData:  ``java -jar ./jars/quasar.jar --content-path public``
+
+A message similar to the following should be displayed:
+
+::
+
+    Read config from /Users/user/Library/Application Support/quasar/quasar-config.json
+    Server started listening on port 20223
+    Press Enter to stop.
+
+
+Starting SlamData from the Installer Package
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Mac OS
+``````
 
 1. Open the Applications folder
 2. Double-click on the SlamData icon
 
 A new browser window or tab will open displaying the SlamData interface.
-The SlamData icon will appear in the OS X dock. As with other dock
+The SlamData icon will appear in the Mac OS dock. As with other dock
 applications the SlamData icon may be right-clicked and the application
 terminated.
 
 Linux
-~~~~~
+`````
 
 1. Change directory to the location of the SlamData executable:
    ``cd SlamData-version``
@@ -112,7 +118,7 @@ the case, open a browser and point it to the following URL:
 http://localhost:20223/slamdata
 
 Windows
-~~~~~~~
+```````
 
 1. Open the Start menu
 2. Click on the newly installed SlamData icon or use the app search bar
@@ -120,6 +126,7 @@ Windows
    appropriate network security settings if prompted.
 
 --------------
+
 
 Connecting to a Database
 ------------------------
@@ -131,14 +138,12 @@ supported by SlamData they will be listed below.
 MongoDB
 ~~~~~~~
 
-**Note:** Only MongoDB versions 2.6 and newer are supported by SlamData.
-
 To connect to MongoDB click on the Mount |Mount Icon| icon in the upper
 right.
 
 A mount dialog will be presented:
 
-.. figure:: images/screenshots/mount-dialog-start.png
+.. figure:: images/SD2/screenshots/mount-dialog-start.png
    :alt: SlamData Mount Dialog
 
    SlamData Mount Dialog
@@ -173,7 +178,7 @@ remaining fields:
 
 An example form might look like this:
 
-.. figure:: images/screenshots/mount-mongodb.png
+.. figure:: images/SD2/screenshots/mount-mongodb.png
    :alt: SlamData MongoDB Dialog
 
    SlamData MongoDB Dialog
@@ -189,71 +194,15 @@ Several Mounts
 ~~~~~~~~~~~~~~
 
 After mounting several databases the SlamData UI might look like the
-following image. In this image there are three separate mounts named
-``aws``, ``kirk`` and ``macbook``, the last likely representing a
+following image. In this image there are two separate mounts named
+``aws`` and ``macbook``, the latter representing a
 locally mounted database.
 
-.. figure:: images/screenshots/mount-all-mounts.png
+.. figure:: images/SD3/screenshots/mount-all-mounts.png
    :alt: SlamData Multiple Mounts
 
    SlamData Multiple Mounts
 
-**Note:** Keep in mind that with SlamData Advanced you can limit which
-databases, collections and charts can be seen based on OAuth
-authentication and the SlamData authorization model.
-
-Advanced Configuration
-----------------------
-
-Configuration File
-~~~~~~~~~~~~~~~~~~
-
-The SlamData configuration file allows an administrator to change
-settings such as the port number SlamData listens on, the mounts
-available and more. The location of the configuration file depends upon
-the operating system being used.
-
-+---------------------------+---------------------------------------------------------------------------------------------------------+
-| Operating System          | Configuration File Location                                                                             |
-+===========================+=========================================================================================================+
-| Apple OS X                | $HOME/Library/Application Support/quasar/quasar-config.json                                             |
-+---------------------------+---------------------------------------------------------------------------------------------------------+
-| Microsoft Windows         | %HOMEDIR%\AppData\Local\quasar\quasar-config.json                                                       |
-+---------------------------+---------------------------------------------------------------------------------------------------------+
-| Linux (various vendors)   | $HOME/.config/quasar/quasar-config.json                                                                 |
-+---------------------------+---------------------------------------------------------------------------------------------------------+
-
-SlamData Advanced edition has an extended format of the configuration
-file which is not covered in this document. Please refer to the SlamData
-Advanced Administration Guide that you were given after purchase of the
-Advanced edition.
-
-An example configuration file might appear like this:
-
-.. code:: json
-
-    {
-      "server": {
-        "port": 8080
-      },
-      "mountings": {
-        "/aws/": {
-          "mongodb": {
-            "connectionUri": "mongodb://myUser:myPass@aws-box.example.com:27017/admin"
-          }
-        },
-        "/kirk/": {
-          "mongodb": {
-            "connectionUri": "mongodb://myUser2:myPass@win-box.example.com:27017/admin?ssl=true"
-          }
-        },
-        "/macbook/": {
-          "mongodb": {
-            "connectionUri": "mongodb://localhost:27017"
-          }
-        }
-      }
-    }
 
 Mount Options
 ~~~~~~~~~~~~~
@@ -269,28 +218,21 @@ For MongoDB the values listed in the Connection Options on the MongoDB
 web site are supported. As of MongoDB 2.6 these options are listed
 below.
 
-+------------+-------+---------------------------------------------------------+
-| Options    | Examp | Description                                             |
-|            | le    |                                                         |
-+============+=======+=========================================================+
-| ssl        | true  | Enable SSL encryption                                   |
-+------------+-------+---------------------------------------------------------+
-| connectTim | 15000 | The time in milliseconds to attempt a connection before |
-| eoutMS     |       | timing out                                              |
-+------------+-------+---------------------------------------------------------+
-| socketTime | 10000 | The time in milliseconds to attempt a send or receive   |
-| outMS      |       | on a socket before the attempt times out                |
-+------------+-------+---------------------------------------------------------+
++------------------+---------+--------------------------------------------------------------------+
+| Options          | Example | Description                                                        |
++==================+=========+====================================================================+
+| ssl              | true    | Enable SSL encryption                                              |
++------------------+---------+--------------------------------------------------------------------+
+| connectTimeoutMS | 15000   | The time in milliseconds to attempt a connection before timing out |
++------------------+---------+--------------------------------------------------------------------+
+| socketTimeoutMS  | 10000   | The time in milliseconds to attempt a send or receive on a socket  |
+|                  |         | before the attempt times out                                       |
++------------------+---------+--------------------------------------------------------------------+
 
-SQL2 View
+SQL² View
 ^^^^^^^^^
 
-SQL2 Views are covered in detail in the SlamData Users Guide.
-
-Other Databases
-^^^^^^^^^^^^^^^
-
-Support for other relational and NoSQL databases is coming in 2016.
+SQL² Views are covered in detail in the SlamData Users Guide.
 
 Enabling SSL
 ~~~~~~~~~~~~
@@ -310,29 +252,27 @@ allowing these options to be listed in a text file that the SlamData
 launcher will reference when executed. The file location for each
 operating system is listed below:
 
-+---------------------------+------------------------------------------------------------------------------------------------------+
-| Operating System          | File Location                                                                                        |
-+===========================+======================================================================================================+
-| Apple OS X                | /Applications/SlamData-version.app/Contents/vmoptions.txt                                            |
-+---------------------------+------------------------------------------------------------------------------------------------------+
-| Microsoft Windows         | C:\Programs Files (x86)\slamdata-version\SlamData.vmoptions                                          |
-+---------------------------+------------------------------------------------------------------------------------------------------+
-| Linux (various vendors)   | $HOME/slamdata-version/SlamData.vmoptions                                                            |
-+---------------------------+------------------------------------------------------------------------------------------------------+
++-------------------------+-------------------------------------------------------------+
+| Operating System        | File Location                                               |
++=========================+=============================================================+
+| Mac OS                  | /Applications/SlamData-version.app/Contents/vmoptions.txt   |
++-------------------------+-------------------------------------------------------------+
+| Microsoft Windows       | C:\Programs Files (x86)\slamdata-version\SlamData.vmoptions |
++-------------------------+-------------------------------------------------------------+
+| Linux (various vendors) | $HOME/slamdata-version/SlamData.vmoptions                   |
++-------------------------+-------------------------------------------------------------+
 
 There are two important options that must be passed to the JVM at
 startup to enable SSL. These options point the JVM to a Java key store
 (JKS).
 
-+-----------------------------+----------------------------------------------+
-| JVM Options                 | Purpose                                      |
-+=============================+==============================================+
-| javax.net.ssl.trustStore    | The location of the encrypted trust store    |
-|                             | file                                         |
-+-----------------------------+----------------------------------------------+
-| javax.net.ssl.trustStorePas | The password required to decrypt the trust   |
-| sword                       | store file                                   |
-+-----------------------------+----------------------------------------------+
++----------------------------------+---------------------------------------------------------+
+| JVM Options                      | Purpose                                                 |
++==================================+=========================================================+
+| javax.net.ssl.trustStore         | The location of the encrypted trust store file          |
++----------------------------------+---------------------------------------------------------+
+| javax.net.ssl.trustStorePassword | The password required to decrypt the trust store file   |
++----------------------------------+---------------------------------------------------------+
 
 The example contents of the file may look something like this:
 
@@ -365,10 +305,701 @@ picks up the new certificate in the JKS.
 **Fourth** - Mount the database with SSL as shown in the attached
 screenshot:
 
-.. figure:: images/screenshots/mount-ssl.png
+.. figure:: images/SD2/screenshots/mount-ssl.png
    :alt: SlamData SSL Mounts
 
    SlamData SSL Mounts
 
-.. |Mount Icon| image:: images/icon-mount.png
 
+--------------
+
+
+Configuring SlamData
+--------------------
+
+Configuration File
+~~~~~~~~~~~~~~~~~~
+
+The SlamData configuration file allows an administrator to change
+settings such as the port number SlamData listens on, the mounts
+available and more. The location of the configuration file depends upon
+the operating system being used.
+
++---------------------------+---------------------------------------------------------------+
+| Operating System          | Configuration File Location                                   |
++===========================+===============================================================+
+| Mac OS                    | $HOME/Library/Application Support/quasar/quasar-config.json   |
++---------------------------+---------------------------------------------------------------+
+| Microsoft Windows         | %HOMEDIR%\AppData\Local\quasar\quasar-config.json             |
++---------------------------+---------------------------------------------------------------+
+| Linux (various vendors)   | $HOME/.config/quasar/quasar-config.json                       |
++---------------------------+---------------------------------------------------------------+
+
+An example configuration file might appear like this:
+
+.. code:: json
+
+    {
+      "server": {
+        "port": 8080
+      },
+      "mountings": {
+        "/aws/": {
+          "mongodb": {
+            "connectionUri": "mongodb://myUser:myPass@aws-box.example.com:27017/admin"
+          }
+        },
+        "/macbook/": {
+          "mongodb": {
+            "connectionUri": "mongodb://localhost:27017"
+          }
+        }
+      }
+    }
+
+
+--------------
+
+
+SlamData User Security |Murray-Small|
+-------------------------------------
+
+SlamData Advanced Edition provides user authorization, authentication,
+and auditing in addition to the features provided by the Community Edition.
+
+Initializing the SlamData Metastore
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+SlamData Advanced Edition uses a metastore for user security.  Before SlamData
+Advanced Edition can be started the metadata store must be initialized and
+initial administrator users defined.  The administrator users will be added
+to a group having complete, unrestricted access to the system allowing them
+to provision additional groups and roles as needed.
+
+To initialize the metadata store, run the ``bootstrap`` command and provide
+the name of the administrator group and e-mail addresses of initial members:
+
+::
+
+    java -jar slamdata-advanced.jar bootstrap --admin-group <name> --admin-users user1@example.com[,user2@example.com,...]
+
+
+Authentication
+~~~~~~~~~~~~~~
+
+SlamData Advanced Edition adds support for authenticated requests via the
+`OpenID Connect <http://openid.net/connect/>`__ protocol. A request to any
+SlamData or SlamData Advanced Edition API may be authenticated. If no
+credentials are included in a request, it is considered unauthenticated
+(or "anonymous") and may fail if the system is not configured to allow
+anonymous access for the given request.
+
+Making an Authenticated Request
+```````````````````````````````
+
+To make an authenticated request, clients first need to ensure their
+OpenID Provider (OP) has been configured in SlamData Advanced Edition along
+with the "Client Identifier" (CID) issued to the client by the OP, this
+allows the SlamData Advanced Edition administrator to specify which clients
+are permitted to access SlamData Advanced Edition. If an ID Token is received
+from a known provider but with an *unknown* CID, it will be rejected outright.
+
+Next the client should obtain the list of known providers from the
+``/security/oidc/providers`` endpoint (see details on this endpoint below)
+and authenticate the user against one of them, obtaining an
+`ID Token <http://openid.net/specs/openid-connect-core-1_0.html#IDToken/>`__
+The ID Token **MUST** be requested using at least the openid and email scopes and
+their claims must be included in the ID Token.
+
+Once in possession of a valid ID Token, the client includes it, verbatim,
+in the request to SlamData Advanced Edition via the ``Authorization`` header
+as a
+`bearer token <http://self-issued.info/docs/draft-ietf-oauth-v2-bearer.html/>`__
+using the ``Bearer`` scheme.
+
+If a request includes valid authentication and the identified subject is not
+permitted to perform the requested action per the authorization policy,
+a ``403 Forbidden`` response will be returned. If, however, a request which
+does not include any authentication information is denied due to the
+authorization policy a ``401 Unauthorized`` response will be returned to
+indicate that repeating the request with authentication may allow it to
+succeed.
+
+Authorization
+~~~~~~~~~~~~~
+
+SlamData Advanced adds support for authorization of service requests.
+Permissions for a request are derived from the union of permission tokens
+provided in the `X-Extra-Permissions` header and those configured for the
+authenticated user and anonymous user. Permissions are defined as an
+operation, its type, and a filesystem resource path. A permission token
+grants a set of permissions.
+
+The available operations and types are as follows:
+
+**Type**: Content, Structural, Mount
+
+**Operation**: Add, Read, Delete, Modify
+
++--------+----------------------+-------------------------+----------------------+
+|        | Content              | Structural              | Mount                |
++========+======================+=========================+======================+
+| Add    | append to file       | create resource         | create mount         |
++--------+----------------------+-------------------------+----------------------+
+| Read   | read file contents   | list directory          | retrieve mount info  |
++--------+----------------------+-------------------------+----------------------+
+| Delete | delete file contents | delete resource         | remove mount         |
++--------+----------------------+-------------------------+----------------------+
+| Modify | modify file contents | rename or move resource | N/A                  |
++--------+----------------------+-------------------------+----------------------+
+
+A permission on a parent resource is sufficient to authorize an action on a
+resource granted the nature and type of the operation are the same.
+
+A ``403 Forbidden`` is returned by the server when a request does not have
+sufficient permissions to perform the associated actions.
+
+The ``X-Extra-Permissions`` header is formatted as follows:
+
+``X-Extra-Permissions: [token1],[token2]``
+
+
+Auditing
+~~~~~~~~
+
+When a log file is specified in the configuration file, all filesystem
+operations will be logged to that file. SlamData Advanced Edition logs the
+operations as data in the filesystem where the path is located. This
+means that it is then possible to use SlamData Advanced Edition itself to
+analyze the log data.
+
+
+Additional APIs
+~~~~~~~~~~~~~~~
+
+SlamData Advanced Edition provides additional APIs to control user access.
+
+Security API
+````````````
+
+Actions and permissions are central concepts to the security api. An action
+is any operation a subject can perform on a given resource in the system.
+A permission represents the capability of a subject (group, user, token)
+in the system to perform a given action. All permissions have a lineage
+which represents by which authority a permission was granted to a subject.
+Any subject in the system has the authority to grant a new permission which
+is a subset of one of their own permissions. This new permission is said to
+have been derived from the relevant permission(s) of the grantor and
+that/those relevant permission(s) are said to be the parent(s) of that
+permission.
+
+Permissions can be revoked. If a permission is revoked, that permission as
+well as all permissions derived from it become invalid and can no longer be
+used to perform operations in the system. It is possible however for one of
+those derived permissions to have been derived from more than one permission,
+i.e. another permission than the one being revoked. In such a case, that
+permission will not become invalid. It will only become invalid once all
+its parents have been revoked. The permission being revoked however, will
+be revoked, no matter how many sources of authority it possess.
+
+Actions and permissions are found throughout the following api endpoints
+and are represented as follows in JSON:
+
+**Action**:
+
+.. code:: json
+
+    {
+      "operation": "ADD|READ|MODIFY|DELETE",
+      "resource": "<filesystem_path>|<group_path>",
+      "accessType": "Structural|Content|Mount",
+    }
+
+**Permission**:
+
+.. code:: json
+
+    {
+      "id": "<permission_id>",
+      "action": {
+        "operation": "ADD|READ|MODIFY|DELETE",
+        "resource": "<filesystem_path>|<group_path>",
+        "accessType": "Structural|Content|Mount",
+      },
+      "grantedTo": "<user_id>|<group_path>|<token_id>",
+      "grantedBy": ["<user_id>", "<group_path>", "<token_id>", "..."]
+    }
+
+* **<filesystem_path>** is a path in the quasar virtual filesystem such as
+  ``data:/foo/bar`` for a file and ``data:/foo/bar/`` for a directory
+
+* **<group_path>** is a path uniquely identifying a group and its location
+  in the group hierarchy such as ``group:/engineering/backend``
+
+* **<grantedBy>** The sources of authority by which this permission was
+  granted. In reality, the sources are the parent permissions; here we are
+  simply surfacing the subjects which possess the permissions by which this
+  permission was granted.
+
+* **<user_id>** is an email prefixed with the "user" string such as
+  ``user:bob@example.com``
+
+* **<token_id>** is a string identifier prefixed by the "token" string such
+  as ``token:786549382``
+
+.. note:: The Mount value of accessType is only valid if the resource is a
+          filesystem path, it is not a valid value for a group resource.
+
+In the following API endpoints descriptions, "your permissions" refers to
+the set of permissions associated with the HTTP request. In the case of an
+authenticated user this means all permissions directly associated with that
+user as well as all groups that user is a explicitly or implicitly a part
+of. Additionally, any permission associated with tokens present in the request
+headers are added to the permissions associated with the request.
+
+Whenever no return body is specified, a response with a ``2XX`` status can be
+expected along with an empty body.
+
+In any of the following endpoints, if the request does not "carry" sufficient
+permissions to satisfy the requirements of the particular endpoint, the server
+will return a ``403 Forbidden`` with an explanation of which permissions were
+missing in order to perform the operation. Certain endpoints will always
+succeed, but the results will be filtered based on what the user is
+permitted to see. In such case the endpoint will document how to determine
+what a user can and cannot see.
+
+Group Endpoint
+``````````````
+
+**GET /security/group/<path>**
+
+* Retrieves information about this group. The result of the query will depend
+  on your permissions according to the following rules:
+
+* If you have READ content group permission on this group, then your view is
+  unrestricted. (all fields are present)
+
+* If you have READ structural group permission on this group, then you can
+  know of the existence of this group and all of its sub-groups. (``subGroups``
+  field is present in response)
+
+* If you have ANY OTHER group permission on this group, you can know of the
+  existence of this group, but nothing else. (response is empty)
+
+* If you have READ content group permission on one of this group's sub-groups,
+  then you can see that subgroup as well as any of its own subgroups. You can
+  see all members of that group and sub-groups. (``allMembers`` and ``subGroups``
+  fields are present in response)
+
+* If you have READ structural group permission on one of this group's sub-groups,
+  then you can see that subgroup as well as any of its own sub-groups. You
+  cannot see any of the members of those groups however. (``subGroups`` field is
+  present in response)
+
+* If you have ANY OTHER group permission on one of this group's sub-groups,
+  then you can see that subgroup.
+
+These rules are cumulative, so if more than one rule applies, you will see the
+combined result. If none of the rules apply, the query will result in a
+``403 Forbidden``. If certain fields do not apply to your view of this group,
+they will be omitted in order to clearly convey that they are not necessarily
+empty, you just don't have permission to see anything related to that field.
+
+* ``<path>`` is the path of the group in the group hierarchy
+
+.. note:: All users are members of the root group ("/") regardless of whether
+          they are a member of any other group. Permissions associated with the root
+          group represent the capabilities of any agent in the system.
+
+Response:
+
+The response body will vary depending on the rules outlined above. If you
+have some kind of relevant permission as outlined above and the group does
+not exist, the response will be a ``404 Not Found``.
+
+.. code::json
+
+    {
+      "members": ["<user_email>", "..."],
+      "allMembers": ["<user_email>", "..."],
+      "subGroups": ["<group_path>", "..."],
+    }
+
+* ``members`` All users explicitly a member of this group
+
+* ``allMembers`` All users explicitly and implicitly a member of this group.
+Implicit members of a group refer to the users that are explicit members
+of any of the sub-groups of this group
+
+* ``subGroups`` All descendants of this group in the group hierarchy.
+
+Example:
+
+Given the following groups exist in the system:
+
+/corporate -> "Alice" /corporate/engineering -> "Bob" /corporate/engineering/software -> /corporate/engineering/software/scala -> "Marcy" /corporate/engineering/hardware -> ("Tom", "Beth")
+
+``GET /security/group/corporate/engineering`` will return:
+
+::
+
+  {
+      "members": ["bob@example.com"],
+      "allMembers": [ "bob@example.com",
+          "marcy@example.com",
+          "tom@example.com",
+          "beth@example.com"
+      ],
+      "subGroups": [ "/corporate/engineering/software",
+          "/corporate/engineering/software/scala",
+          "/corporate/engineering/hardware"
+      ]
+  }
+
+**POST /security/group/<path>**
+
+Creates a new empty group. If any of the parent groups do not exist yet, they
+will be created.
+
+*Requires ADD or MODIFY structural group permission.*
+
+Response:
+
+If you have adequate permissions and the group already exists, will return
+a ``400 Bad Request``.
+
+**PATCH /security/group/<path>**
+
+Add or remove users of a group.
+
+*Requires ADD content group permission to add users. Requires DELETE
+content group permission to remove users. Alternatively, the MODIFY
+content group permission is sufficient to add and/or remove users.*
+
+Request:
+
+::
+
+  {
+    "addUsers": ["<user_email>"],
+    "removeUsers": ["<user_email>"]
+  }
+
+Response:
+
+If you have adequate permissions, but the group does not exist, the
+response will be a ``404 Not Found``. If a user found in the removeUsers
+field was not actually a member of the group, the request will
+succeed nevertheless and simply ignore that user.
+
+**DELETE /security/group/<path>**
+
+Delete this group and all of its sub-groups. All permissions associated
+with this group and subgroups as well as shared by this group and subgroups
+will immediately become invalid.
+
+*Requires DELETE or MODIFY structural group permission.*
+
+Response:
+
+If you have adequate permissions, but the group does not exist, the
+response will be a ``404 Not Found``
+
+
+Authority Endpoint
+``````````````````
+
+**GET /security/authority**
+
+Returns all permissions granted to you.
+
+Response:
+
+::
+
+  [<permission>]
+
+
+Permission Endpoint
+```````````````````
+
+**GET /security/permission[?transitive]**
+
+Returns all permissions granted by you. If the ``transitive`` query param
+is supplied, will also return all permissions which were derived from your own.
+
+We may add query parameters in the future in order to filter the result set.
+
+Response:
+
+::
+
+  [<permission>]
+
+
+**GET /security/permission/<permission_id>**
+
+Retrieve a permission by its unique identifier. You may only retrieve
+information about permissions shared with you or by you.
+
+If the permission does not exist or you do not have adequate permission
+to see it, the response will be a ``404 Not Found``.
+
+Response:
+
+::
+
+  <permission>
+
+
+**GET /security/permission/<permission_id>/children[?transitive]**
+
+Retrieve all permissions that were directly derived from this permission.
+If the ``transitive`` query param is supplied, will also include permissions
+which were indirectly derived. You may only retrieve information about
+permissions shared with you or by you.
+
+If the permission does not exist or you do not have adequate permission
+to see it, the response will be a ``404 Not Found``.
+
+Response:
+
+::
+
+  [<permission>]
+
+
+**POST /security/permission**
+
+Grant new permissions to a given set of users and/or groups.
+
+Request:
+
+::
+
+  {
+    "subjects" : ["<user_id>", "<group_id>", "..."],
+    "actions": []
+  }
+
+
+* **user_id** is a email prefixed with the "user" string such as ``user:bob@example.com``
+  representing the users to whom you wish to grant permissions. Users do not
+  need to exist in the system at the time the permission is granted. When a
+  user first logs into the system, they will be able to perform any action
+  associated with permissions granted to their email.
+
+* **group_id** a path prefixed with the "group" string such as
+  ``group:/engineering/backend``. Groups DO need to exist in the system prior to
+  granting them a permission. Providing a group path that points to a group
+  that does not yet exist in the system will result in a ``400 Bad Request`` and
+  no new permissions will have been granted to users or groups.
+
+* **actions** The actions that the new permissions will allow the subjects
+  to perform. All actions must be the same or a subset of actions found in
+  your permissions. If that is not the case a ``400 Bad Request`` with an appropriate
+  message will be returned and no new permissions will have been granted to users
+  or groups.
+
+Although all fields accept arrays, a permission is only ever granted to ONE
+subject to perform ONE action. Thus, many permissions will be created and
+returned by this endpoint.
+
+Response:
+
+::
+
+  [<permission>]
+
+
+**DELETE /security/permission/**
+
+Revoke a permission. In order to revoke a permission, you must have a
+permission which is a source of authority for the permission you wish
+to revoke.
+
+Refer to top-level api description for explanation on the process of revoking.
+
+Note: Revoking a permission does not guarantee that the subject associated
+with that permission no longer has the capability to perform that action as
+another subject in the system may have also granted a permission with the
+capability to perform the same action. Unless you possess the root authority
+(e.g. if you are a member of the "admin" group created when the metastore
+was initialized), it is impossible for you to know for sure whether or not
+a subject still has the ability to perform the action.
+
+If the permission does not exist or you do not have adequate permission to
+see it, the response will be a ``404 Not Found``. If you attempt to revoke
+one of your own permissions, the response will be a ``400 Bad Request``.
+
+
+Token Endpoint
+``````````````
+
+Here is the json representation of a token:
+
+::
+
+  {
+    "id": "<token_id>",
+    "secret": "<token_hash>",
+    "name": "<name>",
+    "grantedBy": ["<token_id>", "<user_id>", "<group_id>", "..."],
+    "actions": [{
+      "operation": "ADD|READ|MODIFY|DELETE",
+      "resource": "<filesystem_path>|<group_path>",
+      "accessType": "Structural|Content|Mount",
+    }]
+  }
+
+* **secret** is a cryptographically secure string whose possession
+  allows one to perform the action associated with the token.
+
+* **name** an optional field that may or may not have been provided
+  upon creation of the token
+
+* is a string identifier prefixed by the "token:" string
+
+* an email address prefixed with the "user:" string
+
+* a group path prefixed with the "group:" string
+
+.. note:: Once again, the ``Mount`` value for ``accessType`` is only valid
+          for a filesystem path.
+
+
+**GET /security/token**
+
+List tokens that you have created. Does not list tokens that were created by
+others based on your authority.
+
+The json representation of the tokens does not contain the ``secret`` field
+for this endpoint in order to reduce the chance of the secret leaking. The
+secret can be retrieved by using the ``id`` endpoint.
+
+Response:
+
+::
+
+  [<token>]
+
+
+**GET /security/token/<id>**
+
+Retrieve token for a given id.
+
+You may only retrieve information about a token that you created. If the token
+does not exist or was not created by you, the response will be a ``404 Not Found``.
+
+Response:
+
+::
+
+  <token>
+
+
+**POST /security/token**
+
+Create a new token granting the capability to perform the given actions. All
+actions must be a subset of your own capabilities. If the later condition is not
+satisfied, a ``400 Bad Request`` will be returned.
+
+Request:
+
+::
+
+  {
+    "name": "",
+    "actions": []
+  }
+
+* **name** is an optional field
+
+Response:
+
+::
+
+  <token>
+
+
+**DELETE /security/token/<id>**
+
+Delete a token. In order to delete a token, you must have a permission which
+is a source of authority of the token. If the token does not exist or was
+not created by you, a ``404 Not Found`` will be returned.
+
+
+**GET /security/oidc/providers**
+
+This endpoint allows clients to obtain the list of configured OpenID Providers
+(OPs). Responses will be a JSON array of configurations similar to the
+following:
+
+::
+
+  [
+    {
+      "display_name": "Google",
+      "client_id": "sdf9......dflkj",
+      "openid_configuration": {
+        "issuer": "https://accounts.google.com",
+        "authorization_endpoint": "https://accounts.google.com/o/oauth2/v2/auth",
+        "token_endpoint": "https://www.googleapis.com/oauth2/v4/token",
+        "userinfo_endpoint": "https://www.googleapis.com/oauth2/v3/userinfo",
+        "jwks": [
+          {
+            "kty": "RSA",
+            "alg": "RS256",
+            "use": "sig",
+            "kid": "1195d......6abd",
+            "n": "qy5D0......tJRJY02Qt0UKzJ2OquiPw",
+            "e": "AQAB"
+          },
+          {
+            "kty": "RSA",
+            "alg": "RS256",
+            "use": "sig",
+            "kid": "b0a61.....9ba8575712",
+            "n": "rvhjUe0..........n2IRNM8S8iJ36w",
+            "e": "AQAB"
+          }
+        ]
+      }
+    },
+    {
+      "display_name": "Our Company OP",
+      "client_id": "123455976",
+      "openid_configuration": {
+        "issuer": "https://op.ourcompany.com",
+        "authorization_endpoint": "https://op.ourcompany.com/authorize",
+        "token_endpoint": "https://op.ourcompany.com/token",
+        "userinfo_endpoint": "https://op.ourcompany.com/userinfo",
+        "jwks": [
+          {
+            "kty": "RSA",
+            "kid": "1234",
+            "alg": "RS256",
+            "use": "sig",
+            "n": "2354098udw...2957835lkj"
+          },
+          {
+            "kty": "RSA",
+            "kid": "5678",
+            "alg": "RS256",
+            "use": "sig",
+            "n": "skljhdfiugy...39587dlkjsd"
+          }
+        ]
+      }
+    }
+  ]
+
+
+
+
+
+.. |Mount Icon| image:: images/SD2/icon-mount.png
+
+.. |Murray| image:: images/SD3/murray.png
+
+.. |Murray-Small| image:: images/SD3/murray-small.png
