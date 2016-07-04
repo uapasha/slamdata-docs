@@ -1028,7 +1028,9 @@ not created by you, a ``404 Not Found`` will be returned.
 
 This endpoint allows clients to obtain the list of configured OpenID Providers
 (OPs). Responses will be a JSON array of configurations similar to the
-following:
+following.
+
+Response:
 
 ::
 
