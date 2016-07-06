@@ -11,7 +11,7 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-   developers-guide
+   developers-guide-pending
    administration-guide
 
 
