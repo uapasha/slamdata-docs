@@ -301,7 +301,8 @@ set is being used.
 You can download a data set with 10,000 documents by following these
 instructions:
 
-* Right click this link and save the file as ``patients``
+* Right click `this link <https://github.com/damonLL/tutorial_files/raw/master/patients>`__
+  and save the file as ``patients``.  This is a 9 MB JSON file.
 
 * If your operating system named the file something other than
   **patients** you can either rename it or you can rename it
@@ -310,7 +311,7 @@ instructions:
 * Ensure the SlamData UI is in the devdb database, and click
   the Upload icon.  |Upload|
 
-* In the next dialog find the patients file and submit it.
+* In the file dialog find the patients file and submit it.
 
 * After successful upload a new collection should appear in the UI
   like the following:
