@@ -431,7 +431,7 @@ The UI will now show the only remaining card in the deck which is the
 **Open Card**.  This card allows you to select which collection you wish
 to operate on with subsequent cards.  Let's leave this card in place.
 
-* Click and drag the right-hand grab slider and slide it to the left.
+* Click and drag the right-hand grip and slide it to the left.
 
 You'll be presented with the following card types to choose from:
 
@@ -574,7 +574,7 @@ Before we perform any real queries, leave the existing contents
 of the card as the default.  Let's create a **Table Card** to the right
 of this one so when the queries execute, we can see the results.
 
-* Click the right gripper.
+* Click the right grip.
 
 * Create a new **Show Table Card**
 
@@ -587,7 +587,7 @@ of this one so when the queries execute, we can see the results.
     SELECT * FROM `/devguide/devdb/patients`
 
 Notice how the path to the dataset is surrounded by
-back-ticks ( ` ) not apostrophes ( ' )
+back-ticks (`````) not apostrophes (``'``)
 
 * Slide over to the **Show Table Card** to see the results.
 
@@ -606,7 +606,7 @@ back-ticks ( ` ) not apostrophes ( ' )
         city="DALLAS"
 
 Note that the query can span multiple lines, and that strings
-are surrounded by quotation marks ( " ) on both ends.  This
+are surrounded by quotation marks (``"``) on both ends.  This
 is a requirement for all string data types.
 
 * Slide back to the **Show Table Card** to see the results.
@@ -632,8 +632,8 @@ Let's now create a query that formats the results a little cleaner:
 
 Notice in this query we are concatenating **last_name** and
 **first_name** fields together, separated by a comma.  The comma
-itself is surrounded by apostrophes ( ' ) because it is a single
-character.  If it were 2 or more characters it would be a string
+itself is surrounded by apostrophes (``'``) because it is a single
+character.  If it was more than one character it would be a string
 and would require full quotation marks around it.
 
 We have also given the results some aliases to display rather
@@ -652,8 +652,9 @@ that this data set stores nested data in the **codes** array, but
 it also contains **previous_addresses** and **previous_visits** arrays.
 
 Let's find out the total number of male and female patients
-from each state that have an illness related to an ulcer. Let's also
-limit the query to the top 20 results.
+from each state that have an illness related to an ulcer. This will
+require using the flattening operator (``[*]``) so SlamData
+can examine all of the documents in the **codes** array.
 
 * Slide to the **Query Card**
 
@@ -675,19 +676,18 @@ limit the query to the top 20 results.
 * Slide to the **Show Table Card** to see the results.
 
 SQL² allows for very complex queries.  You can find out more by
-reviewing the `SQL² Reference <sql-squared-reference.html>`__
-
+reviewing the `SQL² Reference <sql-squared-reference.html>`__.
 Additional features include using the **JOIN** command to combine data
 from two or more tables, utilizing variables within queries
 (as explained in Section 3), using standard math operations,
 retrieving not only field values but also field names
-dynamically, and more.
+dynamically, and much more.
 
 Now that you have a good idea of what can be accomplished with
 SQL² queries, let's create some forms that your users can
 interact with.  These forms can drive the results of the charts
 we'll use for visualization, which makes it easy for your users
-to find, report and chart on complex data without understanding
+to find, report and chart complex data without understanding
 the mechanics behind it!
 
 
@@ -812,7 +812,8 @@ Replace the text within the card with the following:
 
 Notice how much control you have over the presentation of
 the information.  You can also include links and images inside
-of Markdown as well.
+of Markdown as well.  For a full description of all fields
+and their behavior see the `SlamDown Reference <slamdown-reference.html>`__.
 
 * Click back to the **Setup Markdown Card**
 
@@ -836,8 +837,8 @@ to our use case:
 
 Notice that we populated some of the text with actual results from the database.
 Keep in mind that to print the results of a query in Markdown, the query must
-begin with an exclamation point ( ``!`` ) and two back-ticks ( `````` ) and end
-with two more back-ticks ( `````` ).
+begin with an exclamation point (``!``) and two back-ticks (``````) and end
+with two more back-ticks (``````).
 
 * Click back to the **Setup Markdown Card**
 
