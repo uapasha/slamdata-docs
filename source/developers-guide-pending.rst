@@ -165,13 +165,60 @@ Edition.  Note the numbers and their descriptions following the image.
 +--------+------------------------------------------------------------------------------+
 
 
-2.2 Creating a New Mount
+2.2 Workspaces, Decks and Cards
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Before we start looking at our data we need to discuss how to interact with
+it.  This is done through the use of a **Workspace**.  A Workspace is the
+primary method that users interact with data within SlamData.  A
+Workspace in turn is comprised of cards, and decks of cards.
+
+* **Root Deck** - Each Workspace must have a Root Deck in which all other unit types
+  are stored. A Root Deck is always present in a Workspace but never visible.
+
+* **Deck** - Each deck contains at least one or more cards that each perform a
+  specific action and build upon each other.  Decks can be mirrored which allows
+  easy creation of a new target deck that starts with the same functionality as
+  the origin deck.  Changes in each deck, up to the point where they were
+  mirrored, will impact each other.
+
+* **Draftboard Card** - A special card type that creates a visual area to arrange
+  multiple decks.
+
+* **Card** - A unit that performs a distinct action. Examples include:
+
+    * Query Card
+    * Show Table Card
+    * Show Cart Card
+    * and more...
+
++-----------------+---------------------------------------------------------------+
+| Unit Type       | May Contain:                                                  |
++=================+===============================================================+
+| Root Deck       | Either a single **Draftboard Card** or multiple normal cards. |
++-----------------+---------------------------------------------------------------+
+| Deck            | One or more cards, including one **Draftboard Card**          |
++-----------------+---------------------------------------------------------------+
+| Draftboard Card | One or more decks.                                            |
++-----------------+---------------------------------------------------------------+
+| Card            | N/A                                                           |
++-----------------+---------------------------------------------------------------+
+
+A visual example of the allowable nesting follows:
+
+|SD-Nesting|
+
+Don't worry!  You won't need to know any of this until section 3, and by then we
+will take you through it step by step.
+
+
+2.3 Creating a New Mount
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 In this guide the MongoDB database will be used in the examples; as such,
 the reader should download and run the latest stable version of MongoDB.
 
-Default MongoDB installations run on port ``27017`` and have no user
+Default MongoDB installations run on port **27017** and have no user
 authentication enabled.  This guide assumes this configuration in the following
 instructions.
 
@@ -191,7 +238,7 @@ Enter the values below and the dialog will expand.
 | Mount Type |  MongoDB  |
 +------------+-----------+
 
-In the expanded dialog enter the values below and click ``Mount``.
+In the expanded dialog enter the values below and click **Mount**.
 If a parameter in the table below has no value, leave that
 field empty in the interface.
 
@@ -215,25 +262,25 @@ field empty in the interface.
 |Mount-Dialog-Complete|
 
 
-2.3 Creating a Database
+2.4 Creating a Database
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-* Click on the newly created server named ``devguide``.  The interface now
+* Click on the newly created server named **devguide**.  The interface now
   shows the databases that reside within MongoDB.
 
   A new database will need to be created to follow along with the guide.
 
 * Click on the Create Folder icon.  |Create-Folder|
 
-  A new folder will appear titled ``Untitled Folder``.
+  A new folder will appear titled **Untitled Folder**.
 
-* Hover the mouse over the new ``Untitled Folder`` folder.
+* Hover the mouse over the new **Untitled Folder** folder.
 
 * Click the **Move/Rename** icon that appears to the right.  |Move-Rename|
 
-* Change the name from ``Untitled Folder`` to ``devdb`` and click **Rename**.
+* Change the name from **Untitled Folder** to ``devdb`` and click **Rename**.
 
-* Click on the newly renamed ``devdb`` folder.
+* Click on the newly renamed **devdb** folder.
 
 The interface should now look like this:
 
@@ -243,7 +290,7 @@ So far in this guide you've installed SlamData, mounted a database and
 created and renamed a folder.  Good progress.  Let's get some data into
 the database now and start exploring.
 
-2.4 Importing Example Data
+2.5 Importing Example Data
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This guide uses a data set of fictitious patient information that was
@@ -257,7 +304,7 @@ instructions:
 * Right click this link and save the file as ``patients``
 
 * If your operating system named the file something other than
-  ``patients`` you can either rename it or you can rename it
+  **patients** you can either rename it or you can rename it
   inside of SlamData once it has been uploaded.
 
 * Ensure the SlamData UI is in the devdb database, and click
@@ -314,11 +361,12 @@ Congratulations!  There is now a usable dataset in your database
 that is full of complex, nested data that you can explore.  Let's
 start!
 
-2.5 Exploring Data
+
+2.6 Exploring Data
 ~~~~~~~~~~~~~~~~~~
 
 To simply look around and explore data, you can click on any file
-(collection) that you see.  Start by clicking on the ``patients``
+(collection) that you see.  Start by clicking on the **patients**
 file.
 
 You'll be prompted to provide a name for a new Workspace.  A
@@ -349,25 +397,21 @@ Once you click Explore, the following screen should appear:
 
 Feel free to click around on the browse arrows at the bottom to flip through the pages of
 data.  It's easy to get an idea of the schema of this data set by looking at the top row.
-In this case you can also see that the ``codes`` field is not actually a simple field but
-an array of other documents!  Each of those documents in turn have a ``code`` and ``desc``
+In this case you can also see that the **codes** field is not actually a simple field but
+an array of other documents!  Each of those documents in turn have a **code** and **desc**
 field.
 
-What you're actually looking at is what is called a **Show Table Card** within a **Deck**
-in SlamData terminology.  By gripping the left slider (#3) and sliding it to the right, you can see
-that the previous card is an **Open Card**.
+.. hint:: Workspace Usage
 
-Normally when a user creates a new Workspace that Workspace is completely empty
-of any type of card; however, when you clicked on the patients file earlier, SlamData
-automatically created a Workspace with both an **Open Card** followed by a
-**Show Table Card** directly after.  This makes it easier to start browsing data
-without knowing much about decks or cards.
+  You may not know it, but you actually just created a Workspace and a Root Deck,
+  which contains an **Open Card** and an **Explore Card**!  SlamData did this
+  automatically to save you time.
 
-Any changes made to cards, decks, boards or Workspaces are saved automatically.
+Any changes made within a Workspace are saved automatically.
 At any time the user may zoom out of the current window.
 
 
-2.5 Searching Data
+2.7 Searching Data
 ~~~~~~~~~~~~~~~~~~
 
 Viewing and browsing the data is helpful but data becomes less useful if you can't
@@ -441,7 +485,7 @@ Let's search for any patients currently living in the city of Dallas.
 * Type the string ``city:Dallas`` and slide back to the **Table Card**
 
 The results should have appeared much faster than the previous search
-because we told SlamData to only look at the ``city`` field.
+because we told SlamData to only look at the **city** field.
 
 We can also search on non-string values such as numbers.  Let's find
 all of the patients who are between the ages of 45 and 50:
@@ -487,7 +531,7 @@ As you can see even users with no knowledge of SQL² can perform powerful
 searches within SlamData!  
 
 
-2.6 Querying Data with SQL²
+2.8 Querying Data with SQL²
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In addition to the **Search Card** SlamData provides a **Query Card** which
@@ -586,8 +630,8 @@ Let's now create a query that formats the results a little cleaner:
 
 * Slide to the **Show Table Card** to see the results.
 
-Notice in this query we are concatenating the ``last_name`` and
-``first_name`` fields together, separated by a comma.  The comma
+Notice in this query we are concatenating **last_name** and
+**first_name** fields together, separated by a comma.  The comma
 itself is surrounded by apostrophes ( ' ) because it is a single
 character.  If it were 2 or more characters it would be a string
 and would require full quotation marks around it.
@@ -595,8 +639,8 @@ and would require full quotation marks around it.
 We have also given the results some aliases to display rather
 than the actual field names.
 
-Finally we are ordering (``ORDER BY``) the results in ascending (``ASC``)
-order based on the ``zip_code`` field.
+Finally we are ordering (**ORDER BY**) the results in ascending (**ASC**)
+order based on the **zip_code** field.
 
 The results table should now look similar to the following image:
 
@@ -604,8 +648,8 @@ The results table should now look similar to the following image:
 
 Up to this point we have been using SQL² to query simple *top-level* fields,
 or those fields which are not nested.  We know from previous examples
-that this data set stores nested data in both the ``codes`` array, but 
-it also contains ``previous_addresses`` and ``previous_visits`` arrays.
+that this data set stores nested data in the **codes** array, but 
+it also contains **previous_addresses** and **previous_visits** arrays.
 
 Let's find out the total number of male and female patients
 from each state that have an illness related to an ulcer. Let's also
@@ -628,10 +672,12 @@ limit the query to the top 20 results.
     ORDER BY COUNT(*) DESC
     LIMIT 20
 
-SQL² allows even more complex queries.  You can find out more by
+* Slide to the **Show Table Card** to see the results.
+
+SQL² allows for very complex queries.  You can find out more by
 reviewing the `SQL² Reference <sql-squared-reference.html>`__
 
-Additional features include using the ``JOIN`` command to combine data
+Additional features include using the **JOIN** command to combine data
 from two or more tables, utilizing variables within queries
 (as explained in Section 3), using standard math operations,
 retrieving not only field values but also field names
@@ -651,14 +697,14 @@ Section 3 - Interactive Forms and Visualizations
 SlamData provides everything you need to create an interactive
 visual analytics environment for your users.
 
-From this point in the guide an onward we will assume that we
+From this point on in the guide we will assume that we
 are creating an environment for medical facilities to search
 through patient data for various reasons.  The Workspaces we
 create will be used by medical staff for this purpose.
 
 
-Static Markdown Forms
-~~~~~~~~~~~~~~~~~~~~~
+3.1 Static Markdown Forms
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 We will start this section with a new Workspace.  You can leave
 the existing Workspace alone or you can delete it if you wish.
@@ -668,11 +714,11 @@ To (optionally) delete the existing Workspace:
 * If you are still in the Workspace, click on the zoom-out
   icon |Zoom-Out|
 
-* Locate the ``My First Test`` Workspace and hover your mouse over it.
+* Locate the **My First Test** Workspace and hover your mouse over it.
 
 * Click on the trash can icon that appears to the right |Trash-Can|
 
-We'll create a new Workspace and call it ``Average Height by City``
+We'll create a new Workspace and call it **Average Weight by City**
 
 * Click the Create Workspace icon in the upper right |Create-Workspace|
 
@@ -688,14 +734,14 @@ back to rename it soon.
 Let's rename the Workspace now so it's obvious that we are working
 with it.
 
-* Hover over the new Workspace labeled ``Untitled Workspace.slam``
+* Hover over the new Workspace labeled **Untitled Workspace.slam**
 
 * Click the Move/Rename icon to the right |Move-Rename|
 
-* Replace ``Untitled Workspace`` with ``Average Height by City``
+* Replace **Untitled Workspace** with ``Average Weight by City``
   and click **Rename**
 
-* Click on the ``Average Height by City.slam`` Workspace again
+* Click on the **Average Weight by City.slam** Workspace again
 
 We are now back in the **Setup Markdown Card**.
 
@@ -741,9 +787,15 @@ Replace the text within the card with the following:
 
     ### Interactive Elements
 
+    #### Input Fields
+
     name = ____ (Sue)
 
     numberOnly = #____ (1984)
+
+    #### Selectors
+
+    city = {Austin, Dallas, Houston}
 
     favoriteColor = (x) red () blue () green
 
@@ -754,6 +806,7 @@ Replace the text within the card with the following:
     stopTime = __:__
 
     fullDateTime = ____-__-__ __:__
+
 
 * Click over to the **Show Markdown Card** to view the results.
 
@@ -783,29 +836,29 @@ to our use case:
 
 Notice that we populated some of the text with actual results from the database.
 Keep in mind that to print the results of a query in Markdown, the query must
-beging with an exclamation point ( ``!`` ) and two back-ticks ( `````` ) and end
+begin with an exclamation point ( ``!`` ) and two back-ticks ( `````` ) and end
 with two more back-ticks ( `````` ).
 
 * Click back to the **Setup Markdown Card**
 
-We will use very similar syntax to populate the elements of an
-interactive form in the next section.
+We will use similar syntax to populate the elements of an interactive form
+in the next section.
 
 
-Interactive Markdown Forms
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+3.2 Interactive Markdown Forms
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Here is where things get really fun for both you and your own users.
 Let's actually provide the functionality that we promise with the
-title of ``Average Weight by City``.
+title of **Average Weight by City**.
 
 First we want the user to select the state to report on.  This will
 then allow us to query the database for patients that reside in
 cities within that state.
 
 * Replace the contents of the current **Markdown Setup Card**
-  with the following code.  (Make sure to scroll to the right
-  to capture it all)
+  with the following code.
 
 ::
 
@@ -815,15 +868,8 @@ cities within that state.
 
 * Click over to the **Show Markdown Card** to see the results.
 
-* Click on the dropdown next to ``state`` to see that the element
+* Click on the dropdown next to **State** to see that the element
   was populated with the query we typed in.
-
-We need to pause for a moment here and discuss the Workspace we have been
-using.  The Workspace contains one or more cards, one or more decks and
-a board.  We have been working exclusively with a single deck with multiple
-cards.  At this point, to allow user interaction, we need to create
-additional decks.  More accurately, we need to **Wrap** the current deck and then
-**Mirror** it so we can then extend the use case.  We'll do this by example:
 
 * Flip the **Show Markdown Card** over by clicking the icon in the upper right |Icon-Flip|
 
@@ -869,40 +915,129 @@ affect other decks.
     GROUP BY
       city
     ORDER BY AVG(weight) DESC
-      
-One new feature we see here is the use of ``:state[_]``.  Whenever a
+
+One new feature we see here is the use of **:state[_]**.  Whenever a
 variable from a Markdown form is used in a query it must be
 preceded by a colon ( ``:`` ).  Some variables may also require special
 syntax after the name as well.  In this case since we are using an array of
 states we had to add the ``[_]`` suffix to the variable name.
 
-Also note that we can ``ORDER BY`` an aggregation value such as ``AVG``.
+Also note that we can **ORDER BY** an aggregation value such as **AVG**.
 
 * Click on the right grip to create a new card and select **Show Table Card**
 
+* Adjust the decks with their border controls until they look similar
+  to the following image:
+
+|MD-and-Show-Decks|
+
+* Select a different state in the first deck and watch the results
+  table update automatically.
+
+Viewing data in table form is useful but sometimes a graphical representation
+makes all the difference.  To prepare for that, let's go back and change
+query and limit the results to 20 cities so a bar chart doesn't appear as
+crowded.
+
+* Click the left grip to go back to the **Query Card**
+
+* Add the following line to the end of the query:
+
+::
+
+  LIMIT 20
+
+* Slide back over to the **Show Table Card**
+
+Now we are ready to add some visualizations!
 
 
+3.3 Creating a Chart
+~~~~~~~~~~~~~~~~~~~~
 
+Before creating an actual chart we need to set it up.  Remember earlier
+that decks can build off one another.  We need to now mirror the
+**Show Table Card**:
 
-Query Using SlamDown Variables
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+* Click on second deck to make it active
 
+* Click on the flip icon to flip the deck over |Icon-Flip|
 
-Advanced Queries with SQL²
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+* Select the Mirror option.
 
+* Drag the newly mirrored deck to the right and resize it so your interface
+ looks similar to the following image:
 
-Visualization Card
-~~~~~~~~~~~~~~~~~~
+|All-3-Decks|
 
+* Flip the new deck over and now select the **Setup Chart** option
 
-Creating a Chart
-~~~~~~~~~~~~~~~~
+* Select the Bar Chart icon on the left |Icon-Gray-Bar-Chart|
 
+The bar chart icon will change from gray to blue to show that it is active.
+
+* In the **Category** drop down select **.City** as the axis source
+
+* Slide to the right to create a new card and select the **Show Chart** option
+
+Your interface should now look like the following image:
+
+|All-3-With-Chart|
+
+* Select a new state in the first deck and watch both of the other
+  decks update dynamically.
+
+* Try hovering your mouse over the individual bars in the chart and you can
+  view the actual value.
+
+Setting up interactive forms and charts is as simple as that!  In the next
+section we'll go over how to share these charts with others.
 
 
 Section 4 - Publishing and Simple Embedding
 -------------------------------------------
+
+4.1 - Publishing
+~~~~~~~~~~~~~~~~
+
+SlamData makes it easy to take all the work you've done up to this
+point and publish it so that others can use it as well.
+
+* Click the flip icon on the **Draftboard Card**.  Note that this
+  is the card that contains all of the existing decks.  Just as
+  each deck has a back to it, each card does as well, including
+  the **Draftboard Card**.  Be sure not to flip any of the three
+  decks we've created - instead make sure it's the card that
+  surrounds all of the decks.
+
+* Select the **Publish deck** option.
+
+A URL will be presented to you that you can share with others.  If you
+have installed SlamData on a server then others can access it even
+when you're not running SlamData on your local system.  If, however,
+SlamData was installed on your laptop or individual workstation
+the URL will only be accessible when SlamData is running.
+
+The shared URL will allow others to view your Workspace and interact
+with the forms but will not allow modification of them.
+
+.. warning:: Published URLs
+
+  Anyone with access to the URL may be able to view this deck. They may also be able
+  to modify the link to view or edit any deck in this workspace. Please see
+  Securing SlamData Community Edition for more information.
+
+  **NOTE**: SlamData Advanced Edition provides complete security including
+  authorization, authentication and full auditing.  
+
+Publishing the URL to a Workspace to others will allow them to interact
+with the Workspace; however, as you can see, they can see the URL
+
+4.2 - Simple Embedding
+~~~~~~~~~~~~~~~~~~~~~~
+
+
+
 
 
 Publishing Reports and Charts
@@ -979,6 +1114,8 @@ Enabling Security with Roles
 
 .. |Icon-Flip| image:: images/SD3/icon-flip.png
 
+.. |Icon-Gray-Bar-Chart| image:: images/SD3/icon-gray-bar.png
+
 .. |In-Devdb| image:: images/SD3/screenshots/in-devdb-clean.png
 
 .. |After-Upload| image:: images/SD3/screenshots/after-upload.png
@@ -995,4 +1132,12 @@ Enabling Security with Roles
 
 .. |Card-Choices-1| image:: images/SD3/screenshots/new-card-choices-1.png
 
+.. |MD-and-Show-Decks| image:: images/SD3/screenshots/md-and-show-decks.png
+
+.. |All-3-Decks| image:: images/SD3/screenshots/all-3-decks.png
+
 .. |Zip-Results| image:: images/SD3/screenshots/zip-results.png
+
+.. |All-3-With-Chart| image:: images/SD3/screenshots/all-3-with-chart.png
+
+.. |SD-Nesting| image:: images/SD3/screenshots/sd-nesting.png
