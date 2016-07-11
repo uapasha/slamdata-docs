@@ -1276,6 +1276,58 @@ of **sample1/report1.html**, replacing the relevant values in
 saved as a JS file and included in the necessary pages within the application.
 
 
+4.2.3 - Sample Report 2
+'''''''''''''''''''''''
+
+This section will give you the relevant information for creating a new
+Workspace, Deck and report, but will not give you the full instructions.
+
+From your previous work you understand how to create a Workspace, rename
+it, add cards, etc.  The list below shows the necessary cards you'll need to create
+and their order.  Remember you'll need to **Wrap** everything to be able
+to move the individual decks around.
+
+**Initial Card Order**:
+
+    1. Query Card (wrap the deck here)
+
+    Query:
+
+        .. code-block:: sql
+
+            SELECT
+              COUNT(*) as Count,
+              state,
+              gender
+            FROM `/devguide/devdb/patients`
+            WHERE
+              codes[*].desc like "%ulcer%"
+            GROUP BY state, gender
+
+    2. Show Table Card (mirror the deck here)
+
+
+**Mirrored Deck Card Order**
+
+1. Setup Chart Card
+
+    * Bar Chart
+    * Category: .state
+    * Series: .gender
+
+2. Display Chart Card
+
+The results should look similar to the following image:
+
+|Report-2-Workspace|
+
+Copy all of the relevant data from the **Embed Deck** option and paste
+it into the **sample1/report2.html** file.  Once it is saved, you
+can click on the **Ulcer-related Illnesses by Gender** report in the
+mock-up app and see something similar to the following image.  Note that
+in this image the user would need to scroll right to see the full chart.
+
+|Sample-1-2-Full-Report|
 
 
 
@@ -1379,6 +1431,10 @@ Enabling Security with Roles
 .. |Embed-Code-3| image:: images/SD3/screenshots/embed-code-3.png
 
 .. |Sample-1-1-Full-Report| image:: images/SD3/screenshots/sample-1-1-full-report.png
+
+.. |Report-2-Workspace| image:: images/SD3/screenshots/report-2-workspace.png
+
+.. |Sample-1-2-Full-Report| image:: images/SD3/screenshots/sample-1-2-full-report.png
 
 .. |Repo-Link| raw:: html
 
