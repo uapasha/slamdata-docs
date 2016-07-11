@@ -501,7 +501,7 @@ their claims must be included in the ID Token.
 Once in possession of a valid ID Token, the client includes it, verbatim,
 in the request to SlamData Advanced Edition via the ``Authorization`` header
 as a
-`bearer token <http://self-issued.info/docs/draft-ietf-oauth-v2-bearer.html/>`__
+`bearer token <http://self-issued.info/docs/draft-ietf-oauth-v2-bearer.html>`__
 using the ``Bearer`` scheme.
 
 If a request includes valid authentication and the identified subject is not
