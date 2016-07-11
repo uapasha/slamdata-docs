@@ -15,10 +15,11 @@ see the `SlamData Users Guide <users-guide.html>`__
   Advanced Edition will be called out with the Murray (MRA)
   icon. |Murray-Small|
 
+Section 1 - Installation
+------------------------
 
-
-Minimum System Requirements
----------------------------
+1.1 Minimum System Requirements
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
   * Minimum Memory:
       * 2 GB memory
@@ -40,15 +41,14 @@ Minimum System Requirements
       * PostgreSQL 9.x
       * H2 Java SQL Database
 
---------------
 
 
-Obtaining SlamData
-------------------
+1.2 Obtaining SlamData
+~~~~~~~~~~~~~~~~~~~~~~
 
 
-Building SlamData from Source
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1.2.1 Building SlamData from Source
+'''''''''''''''''''''''''''''''''''
 
 Users can choose to download the latest version of the SlamData source
 code from GitHub.  For more information on building SlamData from source
@@ -56,26 +56,23 @@ see the README
 `here <https://github.com/slamdata/slamdata#building-from-source>`__.
 
 
-Downloading the SlamData Installer
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1.2.2 Downloading the SlamData Installer
+''''''''''''''''''''''''''''''''''''''''
 
 A fully automated installer package can be purchased directly from the
 SlamData website `here <http://slamdata.com/get-slamdata/>`__.
 
 
---------------
 
-
-Starting SlamData
------------------
-
+1.3 Starting SlamData
+~~~~~~~~~~~~~~~~~~~~~
 
 SlamData is comprised of a frontend interface and a backend analytics
 engine. Starting the SlamData application will start both.
 
 
-Starting SlamData from Source
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1.3.1 Starting SlamData from Source
+'''''''''''''''''''''''''''''''''''
 
 If SlamData was installed from source the launch process is the same
 on all operating systems.  After successfully building SlamData:
@@ -92,11 +89,10 @@ A message similar to the following should be displayed:
     Press Enter to stop.
 
 
-Starting SlamData from the Installer Package
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+1.3.2 Starting SlamData from the Installer Package
+''''''''''''''''''''''''''''''''''''''''''''
 
-Mac OS
-``````
+**Mac OS**
 
 1. Open the Applications folder
 2. Double-click on the SlamData icon
@@ -106,8 +102,7 @@ The SlamData icon will appear in the Mac OS dock. As with other dock
 applications the SlamData icon may be right-clicked and the application
 terminated.
 
-Linux
-`````
+**Linux**
 
 1. Change directory to the location of the SlamData executable:
    ``cd SlamData-version``
@@ -117,26 +112,30 @@ Some Linux systems may not launch a browser automatically. If this is
 the case, open a browser and point it to the following URL:
 http://localhost:20223/slamdata
 
-Windows
-```````
+**Windows**
 
 1. Open the Start menu
 2. Click on the newly installed SlamData icon or use the app search bar
    and type ``slamdata`` and press return to launch it. Select
    appropriate network security settings if prompted.
 
---------------
 
 
-Connecting to a Database
-------------------------
+Section 2 - Connecting to a Database
+------------------------------------
 
 Connecting to a database is the first step to analyzing data. SlamData
 does not provide a database to connect to. As more databases are
 supported by SlamData they will be listed below.
 
-MongoDB
-~~~~~~~
+2.1 Databases
+~~~~~~~~~~~~~
+
+Supported databases are listed in the following sections.  As new
+target data sources are released they will be listed here.
+
+2.1.1 MongoDB
+'''''''''''''
 
 To connect to MongoDB click on the Mount |Mount Icon| icon in the upper
 right.
@@ -190,8 +189,8 @@ be ``admin``, the name of the user or something completely different.
 
 Click **Mount** to mount the database in SlamData.
 
-Several Mounts
-~~~~~~~~~~~~~~
+2.2 Several Mounts
+~~~~~~~~~~~~~~~~~~
 
 After mounting several databases the SlamData UI might look like the
 following image. In this image there are two separate mounts named
@@ -204,8 +203,8 @@ locally mounted database.
    SlamData Multiple Mounts
 
 
-Mount Options
-~~~~~~~~~~~~~
+2.3 Mount Options
+~~~~~~~~~~~~~~~~~
 
 The mount dialog will display the appropriate fields based on the mount
 type selected. For each database type that SlamData supports a section
@@ -229,13 +228,13 @@ below.
 |                  |         | before the attempt times out                                       |
 +------------------+---------+--------------------------------------------------------------------+
 
-SQL² View
-^^^^^^^^^
+2.4 SQL² View
+~~~~~~~~~~~~~
 
 SQL² Views are covered in detail in the SlamData Users Guide.
 
-Enabling SSL
-~~~~~~~~~~~~
+2.5 Enabling SSL
+~~~~~~~~~~~~~~~~
 
 If you have trouble following the steps below you may also view our `SSL
 tutorial video <https://www.youtube.com/watch?v=FWdAMyZnOMM>`__.
@@ -311,14 +310,12 @@ screenshot:
    SlamData SSL Mounts
 
 
---------------
 
+Section 3 - Configuring SlamData
+--------------------------------
 
-Configuring SlamData
---------------------
-
-Community Edition Configuration File
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+3.1 Community Edition Configuration File
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The SlamData configuration file allows an administrator to change
 settings such as the port number SlamData listens on, the mounts
@@ -365,13 +362,24 @@ An example configuration file for SlamData Community Edition might appear like t
     }
 
 
-Advanced Edition Configuration File |Murray-Small|
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+3.2 Advanced Edition Configuration File
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In addition to all Community Edition functionality, SlamData Advanced edition
 has additional configuration parameters to setup security, including the
-``authentication``, ``auditing`` and ``metastore`` directives.    An example
-configuration file for SlamData Advanced Edition might appear like this:
+``authentication``, ``auditing`` and ``metastore`` directives.
+
+.. attention:: SlamData Advanced Required
+
+  The configuration file listed below is applicable only
+  to SlamData Advanced Edition and contains parameters and
+  values that are valid only in that version.
+  
+  |Murray-Small|
+
+
+An example configuration file for SlamData Advanced Edition might appear
+like this:
 
 ::
 
@@ -444,18 +452,108 @@ configuration file for SlamData Advanced Edition might appear like this:
     }
 
 
-
---------------
-
-
-SlamData User Security |Murray-Small|
--------------------------------------
+Section 4 - SlamData User Security
+----------------------------------
 
 SlamData Advanced Edition provides user authorization, authentication,
 and auditing in addition to the features provided by the Community Edition.
 
-Initializing the SlamData Metastore
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.. attention:: SlamData Advanced Required
+
+  SlamData User Security is available only with SlamData Advanced Edition.
+
+  |Murray-Small|
+
+
+4.1 Security Overview
+~~~~~~~~~~~~~~~~~~~~~
+
+SlamData Advanced Edition controls user security through the use of
+tokens, permissions, actions and groups.  Each is defined below.
+
++------------+----------------------------------------------------------------------------------+
+|            | Description                                                                      |
++============+==================================================================================+
+| Token      | Allows specific actions regardless of implicitly-assigned or explicitly-assigned |
+|            | permissions                                                                      |
++------------+----------------------------------------------------------------------------------+
+| Permission | Contains actions, users and groups                                               |
++------------+----------------------------------------------------------------------------------+
+| Group      | Contains users and other groups                                                  |
++------------+----------------------------------------------------------------------------------+
+| Action     | Distinct operation(s) that can be performed on a resource based on its type.     |
++------------+----------------------------------------------------------------------------------+
+| Type       | `Structural`, `Content`, or `Mount`                                              |
++------------+----------------------------------------------------------------------------------+
+
+4.1.1 Users
+'''''''''''
+
+Users are technically not objects stored in the SlamData metadata repository.
+Since SlamData relies on OAuth to authenticate users, it trusts the OpenID
+Provider to authenticate a user and state if the user is currently logged in.
+
+Once logged in a user may perform actions depending on the configuration of groups and
+permissions.  Users themselves are not created in the metadata store, but references
+to them are listed within Groups and Permissions.  So while *technically* a user does
+not have an object in the metadata store, *logically* a user can be thought of as
+an object with privileges provided by Groups, Permissions, and possibly
+Tokens (when supplied with a request).
+
+4.1.2 Groups
+''''''''''''
+
+Groups contain users and other groups which are in the path (subgroups).
+
+|SD-Group-Example|
+
+Since permissions may contain a group, and groups may contain users, then a user
+within a group inherits the permissions assigned to that group.
+
+In the example above, both users ``John`` and ``Jack`` would inherit all of the
+permissions that contain the ``/engineering`` group.  Those permissions would
+also apply to the subgroups for ``John`` and ``Jack``.
+
+The users ``Sayid``, ``Kate``, and ``Sawyer`` would inherit all of the permissions
+that contain the ``/engineering/frontend`` group, but would not inherit the
+permissions "above" from ``/engineering``.
+
+
+4.1.3 Permissions
+'''''''''''''''''
+
+|SD-Permission-Example-1|
+
+In the example above, permission 150 contains several actions and the user ``John``.  This
+allows John to perform all actions listed, which includes any operation under the ``/John`` path.
+
+|SD-Permission-Example-2|
+
+In the example above, both the user ``Damon`` and any other user within the ``/support``
+group may read data from the ``/customers`` path, but may not create, modify
+or delete anything.
+
+
+4.1.4 Tokens
+''''''''''''
+
+If a token is passed in a request to SlamData, and the token is valid, the request
+will proceed based on the permissions assigned to that token.
+
+In other words: if a user is trying to read from the ``/data`` mount, but does not
+have permissions through direct assignment or through group assignment, if the appropriate
+token with those permissions is passed into the same request, it will succeed.
+
+See the following image
+
+|SD-Token-Example|
+
+This this example, if a request included the token ``A1`` then any operation performed
+within ``/priv`` would succeed, despite what permissions the user actually has.
+
+
+4.2 Initializing the SlamData Metastore
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 SlamData Advanced Edition uses a metastore for user security.  Before SlamData
 Advanced Edition can be started the metadata store must be initialized and
@@ -471,8 +569,8 @@ the name of the administrator group and e-mail addresses of initial members:
     java -jar slamdata-advanced.jar bootstrap --admin-group <name> --admin-users user1@example.com[,user2@example.com,...]
 
 
-Authentication
-~~~~~~~~~~~~~~
+4.3 Authentication
+~~~~~~~~~~~~~~~~~~
 
 SlamData Advanced Edition adds support for authenticated requests via the
 `OpenID Connect <http://openid.net/connect/>`__ protocol. A request to any
@@ -481,8 +579,8 @@ credentials are included in a request, it is considered unauthenticated
 (or "anonymous") and may fail if the system is not configured to allow
 anonymous access for the given request.
 
-Making an Authenticated Request
-```````````````````````````````
+4.3.1 Making an Authenticated Request
+'''''''''''''''''''''''''''''''''''''
 
 To make an authenticated request, clients first need to ensure their
 OpenID Provider (OP) has been configured in SlamData Advanced Edition along
@@ -512,8 +610,8 @@ authorization policy a ``401 Unauthorized`` response will be returned to
 indicate that repeating the request with authentication may allow it to
 succeed.
 
-Authorization
-~~~~~~~~~~~~~
+4.4 Authorization
+~~~~~~~~~~~~~~~~~
 
 SlamData Advanced adds support for authorization of service requests.
 Permissions for a request are derived from the union of permission tokens
@@ -551,8 +649,8 @@ The ``X-Extra-Permissions`` header is formatted as follows:
 ``X-Extra-Permissions: [token1],[token2]``
 
 
-Auditing
-~~~~~~~~
+4.5 Auditing
+~~~~~~~~~~~~
 
 .. attention:: File system definition
 
@@ -569,13 +667,10 @@ means that it is then possible to use SlamData Advanced Edition itself to
 analyze the log data.
 
 
-Additional APIs
-~~~~~~~~~~~~~~~
+Section 5 - Security APIs
+-------------------------
 
 SlamData Advanced Edition provides additional APIs to control user access.
-
-Security API
-````````````
 
 Actions and permissions are central concepts to the security api. An action
 is any operation a subject can perform on a given resource in the system.
@@ -663,8 +758,8 @@ succeed, but the results will be filtered based on what the user is
 permitted to see. In such case the endpoint will document how to determine
 what a user can and cannot see.
 
-Group Endpoint
-``````````````
+5.1 - Group Endpoint
+~~~~~~~~~~~~~~~~~~~~
 
 **GET /security/group/<path>**
 
@@ -801,8 +896,8 @@ If you have adequate permissions, but the group does not exist, the
 response will be a ``404 Not Found``
 
 
-Authority Endpoint
-``````````````````
+5.2 - Authority Endpoint
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 **GET /security/authority**
 
@@ -815,8 +910,8 @@ Response:
   [<permission>]
 
 
-Permission Endpoint
-```````````````````
+5.3 - Permission Endpoint
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 **GET /security/permission[?transitive]**
 
@@ -928,8 +1023,8 @@ see it, the response will be a ``404 Not Found``. If you attempt to revoke
 one of your own permissions, the response will be a ``400 Bad Request``.
 
 
-Token Endpoint
-``````````````
+5.4 - Token Endpoint
+~~~~~~~~~~~~~~~~~~~~
 
 Here is the json representation of a token:
 
@@ -1100,3 +1195,11 @@ Response:
 .. |Murray| image:: images/SD3/murray.png
 
 .. |Murray-Small| image:: images/SD3/murray-small.png
+
+.. |SD-Group-Example| image:: images/SD3/screenshots/sd-group-example.png
+
+.. |SD-Token-Example| image:: images/SD3/screenshots/sd-token-example.png
+
+.. |SD-Permission-Example-1| image:: images/SD3/screenshots/sd-permission-example-1.png
+
+.. |SD-Permission-Example-2| image:: images/SD3/screenshots/sd-permission-example-2.png

@@ -1255,7 +1255,7 @@ Code:
 Now that the **sample1/report1.html** file has been saved, it can be loaded
 into the web browser.
 
-* Go back to the browser where **sample1/report1.html** is displayed,
+* Go back to the browser where **sample1/index.html** is displayed,
   or optionally re-open the file with the browser.
 
 * Click on the **Average Weight by City** link.  It should appear similar
@@ -1330,13 +1330,37 @@ in this image the user would need to scroll right to see the full chart.
 |Sample-1-2-Full-Report|
 
 
-
-Section 5 - Secure Embedding
+Section 5 - SlamData Security
 ----------------------------
 
 
-Introduction to User Security
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Section 6 - Secure Embedding
+----------------------------
+
+This section describes how to enable user authorization and authentication
+with examples.  This not only provides security when users are within
+the SlamData user interface but can also be used to control access
+from other web applications as well.
+
+.. attention:: SlamData Advanced Required
+
+  |Murray-Small| This section requires SlamData Advanced Edition
+
+
+5.1 - Security in SlamData Advanced Edition
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+
+|SD-Token-Example|
+
+|SD-Permission-Example-1|
+
+|SD-Permission-Example-2|
+
+|SD-Group-Example|
+
 
 
 Creating an OIDC Provider
