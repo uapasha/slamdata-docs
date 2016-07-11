@@ -1,4 +1,4 @@
-.. figure:: /images/white-logo.png
+.. figure:: images/white-logo.png
    :alt: SlamData Logo
 
 
@@ -968,7 +968,7 @@ that decks can build off one another.  We need to now mirror the
 * Select the Mirror option.
 
 * Drag the newly mirrored deck to the right and resize it so your interface
- looks similar to the following image:
+  looks similar to the following image:
 
 |All-3-Decks|
 
@@ -1009,19 +1009,13 @@ point and publish it so that others can use it as well.
   is the card that contains all of the existing decks.  Just as
   each deck has a back to it, each card does as well, including
   the **Draftboard Card**.  Be sure not to flip any of the three
-  decks we've created - instead make sure it's the card that
-  surrounds all of the decks.
+  decks we've created - click the icon in the white box border
+  surrounding the other decks.
 
 * Select the **Publish deck** option.
 
-A URL will be presented to you that you can share with others.  If you
-have installed SlamData on a server then others can access it even
-when you're not running SlamData on your local system.  If, however,
-SlamData was installed on your laptop or individual workstation
-the URL will only be accessible when SlamData is running.
-
-The shared URL will allow others to view your Workspace and interact
-with the forms but will not allow modification of them.
+A URL will be presented to you that you can share with others.
+The URL will only be accessible while SlamData is running.
 
 .. warning:: Published URLs
 
@@ -1032,22 +1026,39 @@ with the forms but will not allow modification of them.
   **NOTE**: SlamData Advanced Edition provides complete security including
   authorization, authentication and full auditing.  
 
-Publishing the URL to a Workspace to others will allow them to interact
-with the Workspace; however, as you can see, they can see the URL
 
 4.2 - Simple Embedding
 ~~~~~~~~~~~~~~~~~~~~~~
 
+SlamData allows content authors and developers to embed Decks into
+external web applications such as customer portals, dashboards, etc.
+
+For examples of how to do this go to this |Repo-Link|.  You can either download
+the zip file or clone the repository
+
+**Download Zip File**
+
+* Click the |Repo-Link|.
+
+* Click the green **Clone or download** button.
+
+* Select **Download ZIP**
+
+* Unzip the contents once downloaded
+
+**Clone the Repository**
+
+You will need to install `git <https://git-scm.com/downloads>`__ and then
+type the following in a command line terminal:
+
+::
+
+    git clone https://github.com/slamdata/slamdata-dev-examples.git
+    cd slamdata-dev-examples
+
+This section will be using **sample1** from that repository.
 
 
-
-
-Publishing Reports and Charts
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-
-Simple Embedding
-~~~~~~~~~~~~~~~~
 
 
 
@@ -1143,3 +1154,7 @@ Enabling Security with Roles
 .. |All-3-With-Chart| image:: images/SD3/screenshots/all-3-with-chart.png
 
 .. |SD-Nesting| image:: images/SD3/screenshots/sd-nesting.png
+
+.. |Repo-Link| raw:: html
+
+   <a href="https://github.com/slamdata/slamdata-dev-examples" target="_blank">repository link</a>
