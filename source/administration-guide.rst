@@ -409,35 +409,14 @@ like this:
       "authentication": {
         "openid_providers": [
           {
-            "display_name": "Google",
             "issuer": "https://accounts.google.com",
-            "client_id": "sdf987wetlkdflkj"
+            "client_id": "123...googleusercontent.com",
+            "display_name": "Google",
           },
           {
-            "display_name": "Our Company OP",
-            "client_id": "123455976",
-            "openid_configuration": {
-              "issuer": "https://op.ourcompany.com",
-              "authorization_endpoint": "https://op.ourcompany.com/authorize",
-              "token_endpoint": "https://op.ourcompany.com/token",
-              "userinfo_endpoint": "https://op.ourcompany.com/userinfo",
-              "jwks": [
-                {
-                  "kty": "RSA",
-                  "kid": "1234",
-                  "alg": "RS256",
-                  "use": "sig",
-                  "n": "2354098udw...2957835lkj"
-                },
-                {
-                  "kty": "RSA",
-                  "kid": "5678",
-                  "alg": "RS256",
-                  "use": "sig",
-                  "n": "skljhdfiugy...39587dlkjsd"
-                }
-              ]
-            }
+            "issuer": "https://accounts.google.com",
+            "client_id": "456...789.apps.googleusercontent.com",
+            "display_name": "OAuth 2.0 Playground"
           }
         ]
       },

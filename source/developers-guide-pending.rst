@@ -1330,12 +1330,7 @@ in this image the user would need to scroll right to see the full chart.
 |Sample-1-2-Full-Report|
 
 
-Section 5 - SlamData Security
-----------------------------
-
-
-
-Section 6 - Secure Embedding
+Section 5 - Secure Embedding
 ----------------------------
 
 This section describes how to enable user authorization and authentication
@@ -1347,51 +1342,360 @@ from other web applications as well.
 
   |Murray-Small| This section requires SlamData Advanced Edition
 
+This section assumes you understand the basics of SlamData
+Advanced Edition security
+`here <http://docs.slamdata.com/en/v3.0/administration-guide.html#security-overview>`__
 
-5.1 - Security in SlamData Advanced Edition
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+SlamData Advanced Edition utilizes `OpenID Connect <http://openid.net/connect/>`__,
+which is a simple identity layer on top of the OAuth 2.0 protocol.
+
+5.1 Bootstrapping Security
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you have already setup authentication for SlamData you may skip this section.
+
+To enable user security a default administrator group must be created along with
+a user email.  In the next step this user will be provided all permissions
+within SlamData.  This allows the user to perform administration tasks within
+the user interface as well as make calls via the SlamData API that require
+elevated privileges.
+
+From the SlamData Advanced Edition directory, type the following to bootstrap
+the SlamData Advanced Edition environment, replacing the email address with
+the user you wish to authenticate with.
+
+```
+java -jar jars/quasar.jar bootstrap -u you@example.com -g admin
+```
 
 
+5.2 Creating an OIDC Provider
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-|SD-Token-Example|
+If you have already setup an OIDC provider you may skip this section.
 
-|SD-Permission-Example-1|
+At least one OpenID Connect (OIDC) Provider must be listed in the configuration
+file for SlamData Advanced Edition.   This OpenID Connector Provider (OP) will be
+trusted by SlamData for authentication information. 
 
-|SD-Permission-Example-2|
+The remainder of this guide will assume that a Google OP will be used and the
+examples are configured based on this assumption; however,
+any OpenID Connect Provider can be used.
 
-|SD-Group-Example|
+5.2.1 Google OIDC Provider
+''''''''''''''''''''''''''
+
+The best method to create an OP is to follow instructions from the
+Google API Console project `here <https://developers.google.com/identity/sign-in/web/devconsole-project>`__
+
+Most of the fields should be self explanatory.  Once the project is created, go to the
+Credentials tab in the API Manager.  Under the **Authorized redirect URIs** enter the following
+value and save your changes, assuming hostname and port are correct for your environment:
+
+.. code-block:: shell
+
+http://localhost:8080/files/auth_redirect.html
 
 
+In SlamData's quasar-config.json file create a new entry similar based off the client_id,
+similar to to the highlighted portion in the image below:
 
-Creating an OIDC Provider
+|Config-Example|
+
+Restart SlamData Advanced Edition so the new provider will be active.
+
+5.3 Logging Into SlamData
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
+You should now be able to click on the application tab bar pull out at the top of the page.
 
-Configuring the Provider
-~~~~~~~~~~~~~~~~~~~~~~~~
+|Header-Grip|
+
+You can then click on the **Sign In** icon to the right.
+
+Once clicked it should display all of the OIDC Providers that are configured, similar
+to the image below:
+
+|Sign-In|
+
+Sign in with the user you specified in the bootstrap step above.  This user has
+complete access to all SlamData Advanced Edition functionality.
+
+5.4 New Decks for Secure Embedding
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In this section we're going to spend time setting up SlamData so that multiple
+customers can utilize it from an external web application.  This will require
+creating SQL² Views, new Workspaces and permission tokens.
+
+Additionally we'll configure SlamData so that reports and views are now stored
+in a separate directory structure for enhanced security.
+
+5.4.1 Setting up SQL² Views
+'''''''''''''''''''''''''''
+
+In this simulated application we will assume we are a national
+healthcare provider.  We also want to create some reports for
+our healthcare professionals; however, those reports must be limited
+to the states to which the healthcare professional is licensed.
+
+One option would be to create a report for each state, and specify access
+to that report for each of that state's healthcare professionals.  Now
+consider we would have to do that for **each report type**.  So if one report type was
+**Average Age by City**, we would have to create 50 of those reports, and
+then provide access to each professional in each state.
+Then if we wanted another report called **Most Diagnosed Disease**
+we would have to create yet another 50 reports, one for each state, and
+setup the professionals to view it again.
+
+The better answer to this is to create a single report, and change
+the source data set based on who is logged in.  This is accomplished
+through the use of a view.  Let's set one up as an example.
+
+In SlamData, navigate to the root folder.  We have primarily been
+working in the **/devguide/devdb** database which means we'll need
+to go up two levels.
+
+From the main Home page in SlamData, to the ``devguide`` mount,
+then into the ``devdb`` database where the previous Workspaces
+were created, similar to this image:
+
+|Navigate|
+
+* Click on the Create Folder icon |Create-Folder|
+
+* Hover over the **Untitled Folder** and click the Move-Rename icon to the right |Move-Rename|
+
+* Rename the folder to ``state-views``
+
+Now we have a folder which is specifically designed to hold views.  This makes
+it easier to manage.
+
+Now let's create our first view.
+
+* Click into the **state-views** folder
+
+* Click on the Mount icon |Icon-Mount|
+
+* In the mount dialog provide ``colorado`` as the name
+
+* Select ``SQL²`` as the mount type
+
+* Paste or type the following query into the **SQL² query** field:
+
+.. code-block:: sql
+
+    SELECT * FROM `/devguide/devdb/patients` WHERE state = "CO"
+
+* Click **Mount**
+
+Congratulations, you just created a view!  Now this view path can
+be used in queries.  When this view is used as the data source,
+the results will only be those documents where the ``state``
+field is ``CO``.
+
+What we just did can also be accomplished via the SlamData API
+quite easily.  This is covered in the SlamData API Reference.
+To create a view for each of the 50 states would take some time
+through the user interface (even with the API), so let's create
+just one more view to use.
+
+* Create another view named ``texas`` that queries against the
+  ``state`` field for the value of ``TX``
+
+We'll now use the **colorado** and **texas** views as the data
+sources for some of our reports.
 
 
-Testing the Provider
-~~~~~~~~~~~~~~~~~~~~
+5.4.2 Setting up the Reports
+''''''''''''''''''''''''''''
+
+Just like we setup a special folder for the state-views, we
+will now setup a special folder for the reports we wish
+to securely embed into third party web applications.
+
+* Navigate back to the **/devguide/devdb** location within SlamData
+
+* Create a new folder and rename it ``reports``
+
+* Click into the **reports** folder
+
+We are only going to create a single report but this process can
+of course be repeated for as many reports as you like.  This report
+will make use of the views we created previously.
+
+* Click on the Create Workspace icon |Create-Workspace|
+
+* Create a **Setup Variables Card**
+
+* Provide the values from the following table:
+
++---------------+-------------------------------------------+
+| Field         | Value                                     |
++===============+===========================================+
+| Name          | ``viewpath``                              |
++---------------+-------------------------------------------+
+| Type          | **SQL² Identifier**                       |
++---------------+-------------------------------------------+
+| Default value | ``/devguide/devdb/state-views/colorado``  |
++---------------+-------------------------------------------+
+
+* Create a **Query Card** with the following query:
+
+.. code-block:: sql
+
+    SELECT
+        count(codes[*]),
+        _id as id,
+        first_name,
+        last_name
+    FROM :viewpath
+    GROUP BY _id
+    ORDER BY count(codes[*]) DESC
+    LIMIT 20
+
+* Create a **Setup Chard Card** with the following settings:
+
++---------------+-------------------------------------------+
+| Field         | Value                                     |
++===============+===========================================+
+| Chart Type    | **Bar Chart**                             |
++---------------+-------------------------------------------+
+| Category      | **.City**                                 |
++---------------+-------------------------------------------+
+| Default value | ``/devguide/devdb/state-views/colorado``  |
++---------------+-------------------------------------------+
+
+* Create a **Show Chart Card**
+
+We've created an interesting chart.  Let's go back out and rename
+the Workspace now.
+
+* Zoom back out to the navigation screen
+
+* Rename the **Untitled Workspace.slam** Workspace to
+  ``Average Age by City``
+
+* Click into the **Average Age by City** Workspace again
+
+* Flip the deck |Icon-Flip|
+
+* Select the **Embed Deck** icon
+
+This screen should look familiar!  You'll notice that a few new entries
+are now residing in the code.  Specifically the ``viewpath`` variable is
+exposed.  We'll be able to change this value later to control which
+data set we're looking at.
+
+* Click on the **Include a permission token...** checkbox at the bottom
+  of the code window.
+
+Notice how the ``permissionTokens`` value is now populated within the code.
+Now we are ready to securely embed this deck into our simulated web application.
 
 
-Creating Administrators
-~~~~~~~~~~~~~~~~~~~~~~~
+5.4.3 - Setting up the Web Application
+''''''''''''''''''''''''''''''''''''''
+
+Now that we have the views and reports created we can move on to copying
+the provided code into the appropriate HTML files to simulate our
+healthcare web application.
 
 
-Creating Users
-~~~~~~~~~~~~~~
+5.4.3.1 Snippet 1 Code
+@@@@@@@@@@@@@@@@@@@@@@
+
+* Copy the highlighted part of the text (see image below).
+
+|Embed-Code-Secure-1|
+
+* Open the **sample2/report1.html** file in a text editor (note this is **sample2** now,
+  not **sample1**)
+
+* Paste the **Snippet 1 code** that SlamData provided into the HTML file's ``<HEAD>`` section,
+  just after the line that reads ``<!-- SLAMDATA SNIPPET 1 -->``.
+
+Let's refer to this section of code as **Snippet 1**.
+
+As before, this snippet is ideal for usage in an external JS file
+that can be included in multiple web pages.
 
 
-Enabling Security with Roles
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+5.4.3.2 Snippet 2 Code
+@@@@@@@@@@@@@@@@@@@@@@
+
+* Go back to the SlamData UI.  Scroll down until you see the next section of
+  sample code, highlighted in the image below.
+
+|Embed-Code-Secure-2|
+
+* Copy the ``id`` value from the <div> element. It starts with ``sd-deck-``.
+
+* Go back to your text editor, and replace the text ``REPLACE_ME``
+  with the copied value.  This should be in the section directly below
+  ``<!-- SLAMDATA SNIPPET 2 -->``.
+
+One important piece to note here is that the example **report1.html** file
+is formatted with some CSS and <div> tags already.  In your own application
+you can either paste the entire line of code that SlamData provides, or create
+your own <div> tag and programmatically insert the id as we did in this example.
 
 
+5.4.3.3 Snippet 3 Code
+@@@@@@@@@@@@@@@@@@@@@@
 
+* Go back to the SlamData UI.  Scroll down until you see the next section of
+  sample code, highlighted in the image below.
+
+|Embed-Code-Secure-3|
+
+* Copy the highlighted text as shown above.
+
+* Go back to your text editor, and paste the contents of **Snippet 3 code** directly
+  below the line that reads ``<!-- SLAMDATA SNIPPET 3 -->``.
+
+* Save your **sample2/report1.html** file to disk.
+
+* Now go to your browser and load **sample1/index.html**
+
+* Click on the **Average Age by City - Colorado** link
+
+Notice how the Deck is embedded securely inside of our simulated web application.
+
+Try changing the secret token in the **sample2/report1.html** file and reloading
+the page.  You'll notice that you receive an authentication error.
+
+We are now going to use the exact same report, and same code but provide this
+functionality to our Texas healthcare professionals as well.
+
+From the command line inside of the repository directory, type or paste the
+following command:
+
+.. code-block:: shell
+
+    cp sample2/report1.html sample2/report2.html
+
+* Open the **sample2/report2.html** file with a text editor.
+
+* Change the title of the page in the ``<H3>`` header to ``Average Age by City - Texas``
+
+* Change the **viewpath** value toward the bottom of this file to
+  ``/devguide/devdb/state-views/texas``
+
+* Save your changes
+
+* Open the **sample2/index.html** file again, and now click on the
+  **Average Age by City - Texas** report.
+
+Notice that with just the change of the viewpath we are able to provide this
+to our Texas professionals as well.
+
+In a real-world application we would generate the web pages represented by
+**report1.html** and **report2.html**, replacing the variables where
+necessary.
 
 
 .. _eCharts: https://ecomfe.github.io/echarts/index-en.html
-
 
 
 .. |Murray| image:: images/SD3/murray.png
@@ -1459,6 +1763,22 @@ Enabling Security with Roles
 .. |Report-2-Workspace| image:: images/SD3/screenshots/report-2-workspace.png
 
 .. |Sample-1-2-Full-Report| image:: images/SD3/screenshots/sample-1-2-full-report.png
+
+.. |Config-Example| image:: images/SD3/screenshots/config-example.png
+
+.. |Header-Grip| image:: images/SD3/screenshots/header-grip.png
+
+.. |Sign-In| image:: images/SD3/screenshots/sign-in.png
+
+.. |Navigate| image:: images/SD3/screenshots/navigate.png
+
+.. |Embed-Code-Secure-1| image:: images/SD3/screenshots/embed-code-secure-1.png
+
+.. |Embed-Code-Secure-2| image:: images/SD3/screenshots/embed-code-secure-2.png
+
+.. |Embed-Code-Secure-3| image:: images/SD3/screenshots/embed-code-secure-3.png
+
+.. |Sample-2-1-Full-Report| image:: images/SD3/screenshots/sample-2-1-full-report.png
 
 .. |Repo-Link| raw:: html
 
