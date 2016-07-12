@@ -65,10 +65,7 @@ hashmark for each level.
 
 results in a first, second, and third level heading:
 
-.. figure:: images/screenshots/fake-levels.png
-   :alt: Headers
-
-   Headers
+|Headers|
 
 
 2.3 Code Blocks
@@ -593,6 +590,8 @@ This results in:
 
 |Date-And-Time|
 
+
+.. |Headers| image:: images/SD3/screenshots/fake-levels.png
 
 .. |Radio-Buttons-Static| image:: images/SD3/screenshots/radio-buttons-static.png
 
