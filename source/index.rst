@@ -13,6 +13,8 @@ Contents:
 
    developers-guide
    administration-guide
+   sql-squared-reference
+   slamdown-reference
 
 
 Indices and tables

@@ -3,11 +3,13 @@
 
    SlamData Logo
 
+
 Reference - SQL²
 ================
 
-Introduction
-------------
+
+Section 1 - Introduction
+------------------------
 
 SQL² is a subset of ANSI SQL, designed for queries into NoSQL databases.
 
@@ -16,10 +18,9 @@ SQL² has support for every major SQL SELECT clause, such as ``AS``,
 ``CROSS``, etc. It also contains many standard SQL functions and
 operators. It follows PostgreSQL where SQL dialects diverge.
 
---------------
 
-Data Types
-----------
+1.1 Data Types
+~~~~~~~~~~~~~~
 
 The following data types are used by SQL².
 
@@ -63,10 +64,9 @@ if they were supported by the database.
 |          | allowed                           |                                       |     |     |
 +----------+-----------------------------------+---------------------------------------+-----+-----+
 
---------------
 
-Clauses, Operators, and Functions
----------------------------------
+1.2 Clauses, Operators, and Functions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The following clauses are supported:
 
@@ -143,40 +143,40 @@ The following functions are supported:
 | Identity      | ``SQUASH``                                                                |
 +---------------+---------------------------------------------------------------------------+
 
---------------
 
-
-Basic Selection
----------------
+Section 2 - Basic Selection
+---------------------------
 
 The ``SELECT`` statement returns a result set of records from one or
 more tables.
 
-Select all values from a path
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+2.1 Select all values from a path
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To select all values from a path, use the asterisk (``*``).
 
 Example:
 
-::
+.. code-block:: sql
 
     SELECT * FROM `/users`
 
-Select specific fields from a path
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+2.2 Select specific fields from a path
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To select specific fields from a path, use the field names, separated by
 commas.
 
 Example:
 
-::
+.. code-block:: sql
 
     SELECT name, age FROM `/users`
 
-Give a path an alias to refer to in the query
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2.3 Path Aliases
+~~~~~~~~~~~~~~~~
 
 Follow the path name with an ``AS`` and an alias name, and then you can
 use the alias name when specifying the fields. This is especially useful
@@ -184,14 +184,13 @@ when you have data from more than one source.
 
 Example:
 
-::
+.. code-block:: sql
 
     SELECT c.name, c.age FROM `/users` AS c
 
---------------
 
-Filtering a Result Set
-----------------------
+Section 3 - Filtering a Result Set
+----------------------------------
 
 You can filter a result set using the WHERE clause. The following
 operators are supported:
@@ -200,30 +199,33 @@ operators are supported:
    ``IN``, ``NOT IN``
 -  Boolean: ``AND``, ``OR``, ``NOT``
 
-Filtering using a numeric value:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+3.1 Filtering using a numeric value
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Example:
 
-::
+.. code-block:: sql
 
     SELECT c.name FROM `/users` AS c WHERE c.age > 40
 
-Filtering using a string value:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+3.2 Filtering using a string value
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Example:
 
-::
+.. code-block:: sql
 
     SELECT c.name FROM `/users` AS c WHERE c.name = "Sherlock Holmes"
 
-Filtering using multiple Boolean predicates:
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+3.3 Filtering using multiple Boolean predicates
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Example:
 
-::
+.. code-block:: sql
 
     SELECT
       c.name FROM `/users` AS c
@@ -231,10 +233,9 @@ Example:
       c.name = "Sherlock Holmes" AND
       c.street = "Baker Street"
 
---------------
 
-Numeric and String Operations
------------------------------
+Section 4 - Numeric and String Operations
+-----------------------------------------
 
 You can use any of the operators or functions listed in the `Clauses,
 Operators, and Functions <#clauses-operators-and-functions>`__ section on
@@ -254,36 +255,36 @@ numbers and strings. Some common string operators and functions include:
 | ``LENGTH``             | Returns length of string   |
 +------------------------+----------------------------+
 
-**Examples:**
+4.2 - Examples
+~~~~~~~~~~~~~~
 
 Using mathematical operations:
 
-::
+.. code-block:: sql
 
     SELECT c.age + 2 * 1 / 4 % 2 FROM `/users` AS c
 
 Concatenating strings:
 
-::
+.. code-block:: sql
 
     SELECT c.firstName || ' ' || c.lastName AS name FROM `/users` AS c
 
 Filtering by fuzzy string comparison using the ``LIKE`` operator:
 
-::
+.. code-block:: sql
 
     SELECT * FROM `/users` AS c WHERE c.firstName LIKE "%Joan%"
 
 Filtering by regular expression:
 
-::
+.. code-block:: sql
 
     SELECT * FROM `/users` AS c WHERE c.firstName ~ "[sS]h+""
 
---------------
 
-Dates and Times
----------------
+Section 5 - Dates and Times
+---------------------------
 
 Filter by dates and times using the ``TIMESTAMP``, ``TIME``, and
 ``DATE`` operators. The ``DATEPART`` operator can also be used
@@ -296,58 +297,62 @@ result, an expression like ``WHERE ts > "2015-02-10"`` compares
 string-valued ``ts`` fields with the string ``"2015-02-10"`` instead of
 a date comparison.
 
-    If you want to embed literal dates, timestamps, etc. into your SQL
-    queries, you should use the time conversion operators, which accept
-    a string and return value of the appropriate type. For example, the
-    above snippet could be converted to
-    ``WHERE ts > DATE("2015-02-10")``, which looks for date-valued
-    ``ts`` fields and compares them with the date ``2015-02-10``.
+If you want to embed literal dates, timestamps, etc. into your SQL
+queries, you should use the time conversion operators, which accept
+a string and return value of the appropriate type. For example, the
+above snippet could be converted to
+``WHERE ts > DATE("2015-02-10")``, which looks for date-valued
+``ts`` fields and compares them with the date ``2015-02-10``.
 
 *NOTE for MongoDB Users*:
 
-    If your MongoDB data does not use MongoDB's native date/time type,
-    and instead, you store your timestamps as epoch milliseconds in a
-    numeric value, then you should either compare numbers or use the
-    ``TO_TIMESTAMP`` function.
+If your MongoDB data does not use MongoDB's native date/time type,
+and instead, you store your timestamps as epoch milliseconds in a
+numeric value, then you should either compare numbers or use the
+``TO_TIMESTAMP`` function.
 
-Filter based on a timestamp (date and time)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+5.1 Filter based on a timestamp
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Use the ``TIMESTAMP`` operator to convert a string into a date and time.
 The string should have the format ``YYYY-MM-DDTHH:MM:SSZ``.
 
 Example:
 
-::
+.. code-block:: sql
 
     SELECT * FROM `/log/events` AS c WHERE c.ts > TIMESTAMP("2015-04-29T15:16:55Z")
 
-Filter based on a time
-~~~~~~~~~~~~~~~~~~~~~~
+
+5.2 Filter based on a time
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Use the ``TIME`` operator to convert a string into a time. The string
 should have the format ``HH:MM:SS``.
 
 Example:
 
-::
+.. code-block:: sql
 
     SELECT * FROM `/log/events` AS c WHERE c.ts > TIME("15:16:55")
 
-Filter based on a date
-~~~~~~~~~~~~~~~~~~~~~~
+
+5.3 Filter based on a date
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Use the ``DATE`` operator to convert a string into a date. The string
 should have the format ``YYYY-MM-DD``.
 
 Example:
 
-::
+.. code-block:: sql
 
     SELECT * FROM `/log/events` AS c WHERE c.ts > DATE("2015-04-29")
 
-Filter based on part of a date
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+5.4 Filter based on part of a date
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Use the ``DATE_PART`` function to select part of a date. ``DATE_PART``
 has two arguments: a string that indicates what part of the date or time
@@ -358,37 +363,38 @@ are century, day, decade, ``dow`` (day of week), ``doy`` (day of year),
 
 Example:
 
-::
+.. code-block:: sql
 
     SELECT DATE_PART("day", c.ts) FROM `/log/events` AS c
 
-Filter based on a Unix epoch
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+5.5 Filter based on a Unix epoch
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Use the ``TO_TIMESTAMP`` function to convert Unix epoch (milliseconds)
 to a timestamp.
 
 Example:
 
-::
+.. code-block:: sql
 
     SELECT * FROM `/log/events` AS c WHERE c.ts > TO_TIMESTAMP(1446335999)
 
---------------
 
-Grouping
---------
+Section 6 - Grouping
+--------------------
 
 SQL² allows you to group data by fields and by date parts.
 
-Group based on a single field
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+6.1 Group based on a single field
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Use ``GROUP BY`` to group results by a field.
 
 Example:
 
-::
+.. code-block:: sql
 
     SELECT
         c.age,
@@ -396,15 +402,16 @@ Example:
     FROM `/users` AS c
     GROUP BY c.age
 
-Group based on multiple fields
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+6.2 Group based on multiple fields
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You can group by multiple fields with a comma-separated list of fields
 after ``GROUP BY``.
 
 Example:
 
-::
+.. code-block:: sql
 
     SELECT
         c.age,
@@ -413,15 +420,16 @@ Example:
     FROM `/users` AS c
     GROUP BY c.age, c.gender
 
-Group based on date part
-~~~~~~~~~~~~~~~~~~~~~~~~
+
+6.3 Group based on date part
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Use the ``DATE_PART`` function to group by a part of a date, such as the
 month.
 
 Example:
 
-::
+.. code-block:: sql
 
     SELECT
         DATE_PART("day", c.ts) AS day,
@@ -429,15 +437,16 @@ Example:
     FROM `/log/events` AS c
     GROUP BY DATE_PART("day", c.ts)
 
-Filter within a group
-~~~~~~~~~~~~~~~~~~~~~
+
+6.4 Filter within a group
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Filter results within a group by adding a ``HAVING`` clause followed by
 a Boolean predicate.
 
 Example:
 
-::
+.. code-block:: sql
 
     SELECT
         DATE_PART("day", c.ts) AS day,
@@ -446,8 +455,9 @@ Example:
     GROUP BY DATE_PART("day", c.ts)
     HAVING c.gender = "female"
 
-Double grouping
-~~~~~~~~~~~~~~~
+
+6.5 Double grouping
+~~~~~~~~~~~~~~~~~~~
 
 Perform double-grouping operations by putting operators inside other
 operators. The inside operator will be performed on each group created
@@ -460,43 +470,45 @@ This query returns the average population of states. The outer
 aggregation function (AVG) operates on the results of the inner
 aggregation (``SUM``) and ``GROUP BY`` clause.
 
-::
+.. code-block:: sql
 
     SELECT AVG(SUM(pop)) FROM `/population` GROUP BY state
 
---------------
 
-Nested Data and Arrays
-----------------------
+Section 7 - Nested Data and Arrays
+----------------------------------
 
 Unlike a relational database many NoSQL databases allow data to be
 nested (that is, data can be objects) and to contain arrays.
 
-Nesting
-~~~~~~~
+
+7.1 Nesting
+~~~~~~~~~~~
 
 Nesting is represented by levels separated by a period (``.``).
 
 Example:
 
-::
+.. code-block:: sql
 
     SELECT c.profile.address.street.number FROM `/users` AS c
 
-Arrays
-~~~~~~
+
+7.2 Arrays
+~~~~~~~~~~
 
 Array elements are represented by the array index in square brackets
 (``[n]``).
 
 Example:
 
-::
+.. code-block:: sql
 
     SELECT c.profile.allAddress[0].street.number FROM `/users` AS c
 
-Flattening
-~~~~~~~~~~
+
+7.2.1 Flattening
+''''''''''''''''
 
 You can extract all elements of an array or all field values
 simultaneously, essentially removing levels and flattening the data. Use
@@ -504,7 +516,7 @@ the asterisk in square brackets (``[*]``) to extract all array elements.
 
 Example:
 
-::
+.. code-block:: sql
 
     SELECT c.profile.allAddresses[*] FROM `/users` AS c
 
@@ -513,29 +525,30 @@ values.
 
 Example:
 
-::
+.. code-block:: sql
 
     SELECT c.profile.{*} FROM `/users` AS c
 
-Filtering using arrays
-~~~~~~~~~~~~~~~~~~~~~~
+
+7.2.2 Filtering using arrays
+''''''''''''''''''''''''''''
 
 You can filter using data in all array elements by using the asterisk in
 square brackets (``[*]``) in a ``WHERE`` clause.
 
 Example:
 
-::
+.. code-block:: sql
 
     SELECT DISTINCT * FROM `/users` AS c WHERE c.profile.allAddresses[*].street.number = "221B"
 
---------------
 
-Pagination and Sorting
-----------------------
+Section 8 - Pagination and Sorting
+----------------------------------
 
-Pagination
-~~~~~~~~~~
+
+8.1 Pagination
+~~~~~~~~~~~~~~
 
 Pagination is used to break large return results into smaller chunks.
 Use the ``LIMIT`` operator to set the number of results to be returned
@@ -544,18 +557,19 @@ start.
 
 Example (Limit results to 20 entries):
 
-::
+.. code-block:: sql
 
     SELECT * FROM `/users` LIMIT 20
 
 Example (Return the 100th to 119th entry):
 
-::
+.. code-block:: sql
 
     SELECT * FROM `/users` OFFSET 100 LIMIT 20
 
-Sorting
-~~~~~~~
+
+8.2 Sorting
+~~~~~~~~~~~
 
 Use the ``ORDER BY`` clause to sort the results. You can specify one or
 more fields for sorting, and you can use operators in the ``ORDER BY``
@@ -564,22 +578,21 @@ sorting.
 
 Example (Sort users by ascending age):
 
-::
+.. code-block:: sql
 
     SELECT * FROM `/users` ORDER BY age ASC
 
 Example (Sort users by last digit in age, descending, and full name,
 ascending):
 
-::
+.. code-block:: sql
 
     SELECT * FROM `/users`
     ORDER BY age % 10 DESC, firstName + lastName ASC
 
---------------
 
-Joining Collections
--------------------
+Section 9 - Joining Collections
+-------------------------------
 
 Use the ``JOIN`` operator to join two or more different collections.
 
@@ -588,13 +601,14 @@ non-relational databases such as MongoDB. There is no enforced limit to
 how many collections or tables can be joined in a query but common sense
 should prevail based on the size of collections.
 
-Examples:
+9.1 Examples
+~~~~~~~~~~~~
 
 This example returns the names of employees and the names of the
 departments they belong to by matching up the employee deparment ID with
 the department's ID, where both IDs are ObjectID types.
 
-::
+.. code-block:: sql
 
     SELECT
         emp.name,
@@ -605,7 +619,7 @@ the department's ID, where both IDs are ObjectID types.
 If one of the IDs is a string, then use the ``OID`` operator to convert
 it to an ID.
 
-::
+.. code-block:: sql
 
     SELECT
         emp.name,
@@ -613,8 +627,8 @@ it to an ID.
     FROM `/employees` AS emp
     JOIN `/departments` AS dept ON dept._id = OID(emp.departmentId)
 
-Join Considerations
-~~~~~~~~~~~~~~~~~~~
+9.2 Join Considerations
+~~~~~~~~~~~~~~~~~~~~~~~
 
 On ``JOIN``\ s with more than two collections or tables, the standard
 rule of thumb is to place the tables in order from smallest to largest.
@@ -629,18 +643,18 @@ the filter \|a ⨯ b\| = 32 which is less than \|b ⨯ c\| = 128, but with
 the filter, \|b ⨯ c\| is limited to the number of documents in b, which
 is 8 (and which is lower than the unconstrained \|a ⨯ b\|).
 
---------------
 
-Conditionals and Nulls
-----------------------
+Section 10 - Conditionals and Nulls
+----------------------------------
 
-Conditionals
-~~~~~~~~~~~~
+
+10.1 Conditionals
+~~~~~~~~~~~~~~~~~
 
 Use the ``CASE`` expression to provide if-then-else logic to SQL². The
 ``CASE`` sytax is:
 
-::
+.. code-block:: sql
 
     SELECT (CASE <field>
         WHEN <value1> THEN <result1>
@@ -654,7 +668,7 @@ Example:
 
 The following example generates a code based on gender string values.
 
-::
+.. code-block:: sql
 
     SELECT (CASE c.gender
         WHEN "male" THEN 1
@@ -663,8 +677,8 @@ The following example generates a code based on gender string values.
         END) AS genderCode
     FROM `/users` AS c
 
-Nulls
-~~~~~
+10.2 Nulls
+~~~~~~~~~~
 
 Use the ``COALESCE`` function to evaluate the arguments in order and
 return the current value of the first expression that initially does not
@@ -675,25 +689,26 @@ Example:
 This example returns a full name, if not null, but returns the first
 name if the full name is null.
 
-::
+.. code-block:: sql
 
     SELECT COALESCE(c.fullName, c.firstName) AS name FROM `/users` AS c
 
---------------
 
-Database Specific Notes
------------------------
+Section 11 - Database Specific Notes
+------------------------------------
 
-MongoDB
-~~~~~~~
 
-The _id Field
-^^^^^^^^^^^^^^
+11.1 MongoDB
+~~~~~~~~~~~~
+
+
+11.1.1 The _id Field
+''''''''''''''''''''
 
 By default, the ``_id`` field will not appear in a result set. However,
 you can specify it by selecting the ``_id`` field. For example:
 
-::
+.. code-block:: sql
 
     SELECT _id AS cust_id FROM `/users`
 
@@ -707,6 +722,6 @@ special field.
 **Note:** To filter on ``_id``, you must first convert a string to an
 object ID, by using the ``OID`` function. For example:
 
-::
+.. code-block:: sql
 
     SELECT * FROM `/foo` WHERE _id = OID("abc123")
