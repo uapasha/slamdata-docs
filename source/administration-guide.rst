@@ -47,21 +47,81 @@ Section 1 - Installation
 ~~~~~~~~~~~~~~~~~~~~~~
 
 
-1.2.1 Building SlamData from Source
-'''''''''''''''''''''''''''''''''''
-
-Users can choose to download the latest version of the SlamData source
-code from GitHub.  For more information on building SlamData from source
-see the README 
-`here <https://github.com/slamdata/slamdata#building-from-source>`__.
-
-
-1.2.2 Downloading the SlamData Installer
+1.2.1 Downloading the SlamData Installer
 ''''''''''''''''''''''''''''''''''''''''
 
 A fully automated installer package can be purchased directly from the
 SlamData website `here <http://slamdata.com/get-slamdata/>`__.
 
+
+
+1.2.2 Building SlamData from Source
+'''''''''''''''''''''''''''''''''''
+
+
+1.2.2.1 Build Preparation
+@@@@@@@@@@@@@@@@@@@@@@@@@
+
+Before building SlamData some required software must be installed.
+
+1. Install
+   `Node.js <https://docs.npmjs.com/getting-started/installing-node>`__
+   which includes the ``npm`` package manager
+
+2. Install `PureScript 0.8.5 <http://www.purescript.org/download//>`__
+   or newer.
+
+.. code-block:: shell
+
+    npm install -g purescript
+
+3. Install Bower:
+
+.. code-block:: shell
+
+    npm install bower -g
+
+4. Install Glup:
+
+.. code-block:: shell
+
+    npm install -g gulp
+
+
+
+
+1.2.2.2 Building Process
+@@@@@@@@@@@@@@@@@@@@@@@@
+
+Note: If you wish to have the SlamData build process automatically
+download the required Quasar backend engine you will need to have
+a shell environment variable ``GITHUB_AUTH_TOKEN`` populated with
+the appropriate `authorization token <https://github.com/settings/tokens/>`__.
+
+1. Obtain the latest SlamData code:
+
+.. code-block:: shell
+
+    git clone https://github.com/slamdata/slamdata.git
+    cd slamdata
+
+2. Fetch dependencides.
+
+From within the slamdata directory:
+
+.. code-block:: shell
+
+    bower install
+    npm install
+
+3. Build
+
+.. code-block:: shell
+
+    npm i && bower i && gulp make && gulp bundle && gulp less
+
+After this task finishes the ``public`` directory will contain the complete
+SlamData front-end app.
 
 
 1.3 Starting SlamData
