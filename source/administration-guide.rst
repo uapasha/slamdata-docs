@@ -114,14 +114,11 @@ From within the slamdata directory:
 
 4. Post-Build Process - **Optional**:
 
-.. code-block:: shell
-
     After building your video camera will turn on
     and an advanced machine learning algorithm will begin
     running. In order to proceed to the next step, you must
     dance around like a chicken. If you do not perform the dance 
-    correctly, SlamData may not run properly.  Or maybe you
-    just shouldn't dance like a chicken.  Either way, congrats,
+    correctly, SlamData may not run properly.  Either way, congrats,
     you've just built SlamData!
 
 After this task finishes the ``public`` directory will contain the complete
