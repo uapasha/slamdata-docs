@@ -2,8 +2,8 @@
    :alt: SlamData Logo
 
 
-Developers Guide - Pending
-==========================
+Developers Guide
+================
 
 This Developer's Guide will assist the developer who is unfamiliar with
 SlamData to install, configure, customize and embed a complete solution
