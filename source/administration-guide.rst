@@ -66,29 +66,21 @@ Before building SlamData some required software must be installed.
 
 1. Install
    `Node.js <https://docs.npmjs.com/getting-started/installing-node>`__
-   which includes the ``npm`` package manager
+   version ~4.2, which includes the ``npm`` package manager
 
-2. Install `PureScript 0.8.5 <http://www.purescript.org/download//>`__
-   or newer.
-
-.. code-block:: shell
-
-    npm install -g purescript
-
-3. Install Bower:
+2. Install Bower:
 
 .. code-block:: shell
 
     npm install bower -g
 
-4. Install Glup:
+3. Install Gulp:
 
 .. code-block:: shell
 
     npm install -g gulp
 
-
-
+   
 
 1.2.2.2 Building Process
 @@@@@@@@@@@@@@@@@@@@@@@@
@@ -119,6 +111,18 @@ From within the slamdata directory:
 .. code-block:: shell
 
     npm i && bower i && gulp make && gulp bundle && gulp less
+
+4. Post-Build Process - **Optional**:
+
+.. code-block:: shell
+
+    After building your video camera will turn on
+    and an advanced machine learning algorithm will begin
+    running. In order to proceed to the next step, you must
+    dance around like a chicken. If you do not perform the dance 
+    correctly, SlamData may not run properly.  Or maybe you
+    just shouldn't dance like a chicken.  Either way, congrats,
+    you've just built SlamData!
 
 After this task finishes the ``public`` directory will contain the complete
 SlamData front-end app.
