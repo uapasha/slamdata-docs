@@ -408,8 +408,8 @@ is selected by default, the second defines the remaining values.  This results i
 |Radio-Buttons-Dynamic|
 
 
-5.3.3 Checkboxes
-''''''''''''''''
+5.4 Checkboxes
+~~~~~~~~~~~~~~
 
 Use brackets (``[]``) followed by text to indicate checkboxes.
 In a set of checkboxes each checkbox operates independently.
@@ -429,8 +429,8 @@ SQL² query.  An example query within a Query Card would look like this.
 	SELECT * FROM `/mydb/mytable` WHERE phone IN :phones[_]
 
 
-5.3.3.1 Static Check Boxes
-@@@@@@@@@@@@@@@@@@@@@@@@@@
+5.4.1 Static Check Boxes
+''''''''''''''''''''''''
 
 Use an ``x`` in the square brackets to indicate that the checkbox
 should be checked by default. The string value returned will be an
@@ -455,8 +455,8 @@ The selections above would result in the ``phones`` variable containing
 a value of the following array:  [``"iPhone"``, ``"Blackberry"``]
 
 
-5.3.3.2 Dynamic Check Boxes
-@@@@@@@@@@@@@@@@@@@@@@@@@@@
+5.4.2 Dynamic Check Boxes
+'''''''''''''''''''''''''
 
 As with all other form elements, checkboxes may be populated by
 means of an evaluated SQL² query.
@@ -478,8 +478,8 @@ The first query defines which value is selected by default, the second query
 populates the remaining checkboxes.
 
 
-5.3.4 Dropdowns
-'''''''''''''''
+5.5 Dropdowns
+~~~~~~~~~~~~~
 
 Dropdowns allow users to select one (and only one) value from a list
 of options, similar to radio buttons.  Unlike radio buttons, however,
@@ -504,8 +504,8 @@ SQL² query.  An example query within a Query Card would look like this.
 	SELECT * FROM `/mydb/mytable` WHERE city IN :mycity[_]
 
 
-5.3.4.1 Static Dropdown
-@@@@@@@@@@@@@@@@@@@@@@@
+5.5.1 Static Dropdown
+'''''''''''''''''''''
 
 Define a static dropdown element by placing the values of array
 elements within braces (``{}``).
@@ -530,8 +530,8 @@ end. In this line, NYC is set as the default.
     city = {BOS, SFO, NYC} (NYC)
 
 
-5.3.4.2 Dynamic Dropdown
-@@@@@@@@@@@@@@@@@@@@@@@@
+5.5.2 Dynamic Dropdown
+''''''''''''''''''''''
 
 As with all other form elements, dropdown elements may be populated by
 means of an evaluated SQL² query.
@@ -544,15 +544,15 @@ names of cities within a database:
 	mycity = {!``SELECT DISTINCT(city) FROM `/mydb/mytable` ORDER BY city ASC``}
 
 
-5.3.5 Dates and Times
-'''''''''''''''''''''
+5.6 Dates and Times
+~~~~~~~~~~~~~~~~~~~
 
 Provide a date, time or both date & time selector for users by
 implementing the following syntax.
 
 
-5.3.5.1 Date
-@@@@@@@@@@@@
+5.6.1 Date
+''''''''''
 
 The following example creates a date selector element and
 stores the value in a variable called ``start``:
@@ -566,8 +566,8 @@ This results in:
 |Date-Only|
 
 
-5.3.5.2 Time
-@@@@@@@@@@@@
+5.6.2 Time
+''''''''''
 
 The following lines creates a time selector element:
 
@@ -580,8 +580,8 @@ This results in:
 |Time-Only|
 
 
-5.3.5.3 Date & Time (TIMESTAMP)
-@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+5.6.3 Date & Time (TIMESTAMP)
+'''''''''''''''''''''''''''''
 
 The following line creates both a date and time selector element:
 
