@@ -454,19 +454,6 @@ like this:
         }
       },
 
-      "mountings": {
-        "/aws/": {
-          "mongodb": {
-            "connectionUri": "mongodb://myUser:myPass@aws-box.example.com:27017/admin"
-          }
-        },
-        "/macbook/": {
-          "mongodb": {
-            "connectionUri": "mongodb://localhost:27017"
-          }
-        }
-      },
-
       "authentication": {
         "openid_providers": [
           {
