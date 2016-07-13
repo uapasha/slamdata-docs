@@ -1,6 +1,7 @@
 .. figure:: images/white-logo.png
    :alt: SlamData Logo
 
+
 Administration Guide
 ====================
 
@@ -15,8 +16,10 @@ see the `SlamData Users Guide <users-guide.html>`__
   Advanced Edition will be called out with the Murray (MRA)
   icon. |Murray-Small|
 
+
 Section 1 - Installation
 ------------------------
+
 
 1.1 Minimum System Requirements
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -189,16 +192,18 @@ Connecting to a database is the first step to analyzing data. SlamData
 does not provide a database to connect to. As more databases are
 supported by SlamData they will be listed below.
 
+
 2.1 Databases
 ~~~~~~~~~~~~~
 
 Supported databases are listed in the following sections.  As new
 target data sources are released they will be listed here.
 
+
 2.1.1 MongoDB
 '''''''''''''
 
-To connect to MongoDB click on the Mount |Mount Icon| icon in the upper
+To connect to MongoDB click on the Mount |Mount-Icon| icon in the upper
 right.
 
 A mount dialog will be presented:
@@ -250,6 +255,7 @@ be ``admin``, the name of the user or something completely different.
 
 Click **Mount** to mount the database in SlamData.
 
+
 2.2 Several Mounts
 ~~~~~~~~~~~~~~~~~~
 
@@ -289,10 +295,12 @@ below.
 |                  |         | before the attempt times out                                       |
 +------------------+---------+--------------------------------------------------------------------+
 
+
 2.4 SQL² View
 ~~~~~~~~~~~~~
 
 SQL² Views are covered in detail in the SlamData Users Guide.
+
 
 2.5 Enabling SSL
 ~~~~~~~~~~~~~~~~
@@ -374,6 +382,7 @@ screenshot:
 
 Section 3 - Configuring SlamData
 --------------------------------
+
 
 3.1 Community Edition Configuration File
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -468,6 +477,32 @@ like this:
           }
         ]
       },
+      {
+        "display_name": "Our Company OP",
+        "client_id": "123455976",
+        "openid_configuration": {
+          "issuer": "https://op.ourcompany.com",
+          "authorization_endpoint": "https://op.ourcompany.com/authorize",
+          "token_endpoint": "https://op.ourcompany.com/token",
+          "userinfo_endpoint": "https://op.ourcompany.com/userinfo",
+          "jwks": [
+            {
+              "kty": "RSA",
+              "kid": "1234",
+              "alg": "RS256",
+              "use": "sig",
+              "n": "2354098udw...2957835lkj"
+            },
+            {
+              "kty": "RSA",
+              "kid": "5678",
+              "alg": "RS256",
+              "use": "sig",
+              "n": "skljhdfiugy...39587dlkjsd"
+            }
+          ]
+        }
+      },
 
       "auditing": {
         "log_file": "/aws/logdb/slamdata-logs"
@@ -513,6 +548,7 @@ tokens, permissions, actions and groups.  Each is defined below.
 | Type       | `Structural`, `Content`, or `Mount`                                              |
 +------------+----------------------------------------------------------------------------------+
 
+
 4.1.1 Users
 '''''''''''
 
@@ -526,6 +562,7 @@ to them are listed within Groups and Permissions.  So while *technically* a user
 not have an object in the metadata store, *logically* a user can be thought of as
 an object with privileges provided by Groups, Permissions, and possibly
 Tokens (when supplied with a request).
+
 
 4.1.2 Groups
 ''''''''''''
@@ -606,6 +643,7 @@ credentials are included in a request, it is considered unauthenticated
 (or "anonymous") and may fail if the system is not configured to allow
 anonymous access for the given request.
 
+
 4.3.1 Making an Authenticated Request
 '''''''''''''''''''''''''''''''''''''
 
@@ -636,6 +674,21 @@ does not include any authentication information is denied due to the
 authorization policy a ``401 Unauthorized`` response will be returned to
 indicate that repeating the request with authentication may allow it to
 succeed.
+
+
+4.3.1.1 Authentication and Performance
+''''''''''''''''''''''''''''''''''''''
+
+SlamData Advanced Edition requests require authentication before performing
+most actions.  When an OIDC Provider (OP) is configured with minimal
+information, and the Discovery process is used, each action will make
+a discovery request as well.  This can result in a noticable degradation
+in performance.
+
+To avoid this the OP can be configured with all attributes normally
+provided by the OIDC Discovery process within the configuration process
+itself.  See the "Our Company OP" example in Section 3.2.
+
 
 4.4 Authorization
 ~~~~~~~~~~~~~~~~~
@@ -784,6 +837,7 @@ missing in order to perform the operation. Certain endpoints will always
 succeed, but the results will be filtered based on what the user is
 permitted to see. In such case the endpoint will document how to determine
 what a user can and cannot see.
+
 
 5.1 - Group Endpoint
 ~~~~~~~~~~~~~~~~~~~~
@@ -1217,7 +1271,7 @@ Response:
 
 
 
-.. |Mount Icon| image:: images/SD2/icon-mount.png
+.. |Mount-Icon| image:: images/SD2/icon-mount.png
 
 .. |Murray| image:: images/SD3/murray.png
 
