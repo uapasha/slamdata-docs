@@ -15,6 +15,7 @@ Contents:
    administration-guide
    sql-squared-reference
    slamdown-reference
+   troubleshooting-faq
 
 
 Indices and tables
