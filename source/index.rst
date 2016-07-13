@@ -11,8 +11,8 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-   developers-guide
    administration-guide
+   developers-guide
    sql-squared-reference
    slamdown-reference
    troubleshooting-faq
