@@ -13,6 +13,7 @@ Contents:
 
    administration-guide
    developers-guide
+   helpful-tips
    sql-squared-reference
    slamdown-reference
    troubleshooting-faq
