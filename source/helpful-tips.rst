@@ -94,7 +94,7 @@ Section 1 - Basic Queries
 1.2 Concatenating Field Values
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Use the double-pipe (`||`) symbol to concatenate `char` and `string` values.
+Use the double-pipe (``||``) symbol to concatenate `char` and `string` values.
 
 **SQL Example**
 
@@ -158,7 +158,7 @@ SlamData provides the ability to convert between many data types:
 1.3.1 TO_STRING() Function
 ''''''''''''''''''''''''''
 
-Any data type can be turned into a string data type using the [``TO_STRING()``] function:
+Any data type can be turned into a string data type using the ``TO_STRING()`` function:
 
 **SQL Example**
 
@@ -209,7 +209,7 @@ Any data type can be turned into a string data type using the [``TO_STRING()``] 
 1.3.2 TO_TIMESTAMP() Function
 '''''''''''''''''''''''''''''
 
-An epoch data type can be converted into a TIMESTAMP data type using the [``TO_TIMESTAMP()``] function.
+An epoch data type can be converted into a TIMESTAMP data type using the ``TO_TIMESTAMP()`` function.
 
 Assuming a collection has documents which contain a field ``epoch`` with values such as ``1408255200000``:
 
