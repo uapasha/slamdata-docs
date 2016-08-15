@@ -11,6 +11,7 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
+   users-guide
    administration-guide
    developers-guide
    helpful-tips

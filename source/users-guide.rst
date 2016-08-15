@@ -79,778 +79,671 @@ For SlamData to run in an optimal environment see the
 section.
 
 
-Section 2 - Installation
-------------------------
+Section 2 - Cards
+-----------------
+
+2.1 Introduction to Cards
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Cards each have a distinct purpose and typically provide a single, unique action
+that can often be combined with the cards before and after it to create a workflow.
+This section describes the types of cards and the purpose of each.
 
 
-2.1 Installation
+2.2 - Cache Card
 ~~~~~~~~~~~~~~~~
 
-Instructions for installing SlamData Community Edition can be found
-`here <administration-guide.html#obtaining-slamdata>`__
+|Cache-Card|
 
-SlamData Advanced Edition is delivered with an automated installer.
+Description
+@@@@@@@@@@@
 
+The Cache Card will store results from a Query Card, an Open Card or a Search
+Card for faster retrieval while typically reducing database system load.
 
-2.2 Starting SlamData
-~~~~~~~~~~~~~~~~~~~~~
+Card Relationships
+@@@@@@@@@@@@@@@@@@
 
-Instructions for starting SlamData can be found
-`here <administration-guide.html#starting-slamdata>`__.
++-------------------+----------------------+
+| Required          | Allowable            |
+| Previous Cards    | Next Cards           |
++===================+======================+
+| Open Card         | Query Card           |
++-------------------+----------------------+
+| Query Card        | Search Card          |
++-------------------+----------------------+
+| Search Card       | Show Table Card      |
++-------------------+----------------------+
+|                   | Setup Download Card  |
++-------------------+----------------------+
+|                   | Setup Chart Card     |
++-------------------+----------------------+
+|                   | Troubleshoot Card    |
++-------------------+----------------------+
+|                   | Cache Card           |
++-------------------+----------------------+
 
+Behavior
+@@@@@@@@
 
-Section 3 - Key Concepts
-------------------------
+The Cache Card requires a location to store its results.  When a newly selected
+Cache Card becomes active, the user will be presented with a pre-populated text
+field and a **Confirm** button.  The value in this field can be edited directly
+to change the location of the cached information. The credentials provided to
+mount the original DB must have read and write privileges to the specified path
+or the cache card will not be created.
 
+Results stored in a Cache Card are updated when one of the following occurs:
 
-3.1 File System Components
-~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-SlamData allows users to navigate between data sources, databases
-and tables within a virtual file system. The table below describes these
-file system components:
-
-+----------------+-------------------+-----------------------------------------------------------------+
-| Feature Name   | Image             | Description                                                     |
-+================+===================+=================================================================+
-| Cluster        | |Icon-Cluster|    | A cluster represents a server or cluster of servers             |
-+----------------+-------------------+-----------------------------------------------------------------+
-| Folder         | |Icon-Folder|     | A folder represents a database                                  |
-+----------------+-------------------+-----------------------------------------------------------------+
-| File           | |Icon-File|       | A file represents a table or collection                         |
-+----------------+-------------------+-----------------------------------------------------------------+
-| Workspace      | |Icon-Workspace|  | A workspace contains user-created content, analysis and reports |
-+----------------+-------------------+-----------------------------------------------------------------+
-
-A Cluster (server) may contain 0, 1 or more Folders (databases).
-
-A Folder (database) may contain 0, 1 or more Files (tables or
-collections).
-
-Clicking on a Cluster, Folder, File or Workspace will display its contents.
-
-
-3.2 Interface Navigation
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-The image below shows the Home screen after starting SlamData Community
-Edition.  Note the numbers and their descriptions following the image.
-
-|Home-Annotated|
-
-+--------+------------------------------------------------------------------------------+
-| Number | Description                                                                  |
-+========+==============================================================================+
-|     1  |  Server or Mount names that have been configured.                            |
-+--------+------------------------------------------------------------------------------+
-|     2  |  The current path you are viewing. In this example it is the Home path (/).  |
-+--------+------------------------------------------------------------------------------+
-|     3  |  The eye icon toggles visibility of the trash can icon.                      |
-+--------+------------------------------------------------------------------------------+
-|     4  |  Download all data starting from this path.                                  |
-+--------+------------------------------------------------------------------------------+
-|     5  |  Mount a new database cluster.                                               |
-+--------+------------------------------------------------------------------------------+
-|     6  |  Create a new folder in the datasource virtual file system.                  |
-+--------+------------------------------------------------------------------------------+
-|     7  |  Upload a data file.                                                         |
-+--------+------------------------------------------------------------------------------+
-|     8  |  Create a new workspace.                                                     |
-+--------+------------------------------------------------------------------------------+
+* The table or collection in the Open Card is modified
+* The query in the Query Card is modified
+* The search parameters in the Search Card are modified
 
 
-3.3 Workspaces, Decks and Cards
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+2.3 - Open Card
+~~~~~~~~~~~~~~~
 
-A Workspace is the primary method that users interact with data within SlamData.
-A Workspace in turn is comprised of cards, and decks of cards.
+|Open-Card|
 
-* **Root Deck** - Each Workspace must have a Root Deck in which all other unit types
-  are stored. A Root Deck is always present in a Workspace but never visible.
+Description
+@@@@@@@@@@@
 
-* **Deck** - Each deck contains at least one or more cards that each perform a
-  specific action and build upon each other.  Decks can be mirrored which allows
-  easy creation of a new target deck that starts with the same functionality as
-  the origin deck.  Changes in each deck, up to the point where they were
-  mirrored, will impact each other.
+The Open Card can be used to specify a collection or table from which
+subsequent cards will operate from.
 
-* **Draftboard Card** - A special card type that creates a visual area to arrange
-  multiple decks.
+Card Relationships
+@@@@@@@@@@@@@@@@@@
 
-* **Card** - A unit that performs a distinct action. Examples include:
++-------------------+----------------------+
+| Required          | Allowable            |
+| Previous Cards    | Next Cards           |
++===================+======================+
+| N/A               | Query Card           |
++-------------------+----------------------+
+|                   | Search Card          |
++-------------------+----------------------+
+|                   | Show Table Card      |
++-------------------+----------------------+
+|                   | Setup Download Card  |
++-------------------+----------------------+
+|                   | Setup Chart Card     |
++-------------------+----------------------+
+|                   | Troubleshoot Card    |
++-------------------+----------------------+
+|                   | Cache Card           |
++-------------------+----------------------+
 
-    * Query Card
-    * Show Table Card
-    * Show Cart Card
-    * and more...
+Behavior
+@@@@@@@@
 
-+-----------------+---------------------------------------------------------------+
-| Unit Type       | May Contain:                                                  |
-+=================+===============================================================+
-| Root Deck       | Either a single **Draftboard Card** or multiple normal cards. |
-+-----------------+---------------------------------------------------------------+
-| Deck            | One or more cards, including one **Draftboard Card**          |
-+-----------------+---------------------------------------------------------------+
-| Draftboard Card | One or more decks.                                            |
-+-----------------+---------------------------------------------------------------+
-| Card            | N/A                                                           |
-+-----------------+---------------------------------------------------------------+
+The Open Card is typically the first card in a workflow if a query
+is not used as the source for subsequent cards.  By selecting a table
+or collection with the Open Card, the next card will have access to
+that collection or table as a whole.
 
-A visual example of the allowable nesting follows:
-
-|SD-Nesting|
-
-
-3.4 Card Types
-~~~~~~~~~~~~~~
-
-+------------------+--------------------------+--------------------------------------------------------+
-| Card Type        | Image (click to enlarge) | Description                                            |
-+==================+==========================+========================================================+
-| Cache            | |Card-Cache|             | Can store result sets of queries                       |
-+------------------+--------------------------+--------------------------------------------------------+
-| Open             | |Card-Open|              | Used prior to **Show Table** to define which table     |
-|                  |                          | or collection to view                                  |
-+------------------+--------------------------+--------------------------------------------------------+
-| Query            | |Card-Query|             | Allows custom SQL² queries to be written               |
-+------------------+--------------------------+--------------------------------------------------------+
-| Search           | |Card-Search|            | Allows users a simple search field to find data. Must  |
-|                  |                          | create an **Open Card** prior to this                  |
-+------------------+--------------------------+--------------------------------------------------------+
-| Setup Variables  | |Card-Setup-Variables|   | Allows developers to make requests for chart creation  |
-|                  |                          | by passing in variables to the REST API                |
-+------------------+--------------------------+--------------------------------------------------------+
-| Setup Markdown   | |Card-Setup-Markdown|    | Allows custom SlamDown code to be written that         |
-|                  |                          | controls the layout of text, images and UI elements    |
-+------------------+--------------------------+--------------------------------------------------------+
-| Show Table       | |Card-Show-Table|        | Shows the results of a **Query** or **Search** card    |
-+------------------+--------------------------+--------------------------------------------------------+
-| Show Markdown    | |Card-Show-Markdown|     | Displays (renders) the **Setup Markdown** card         |
-+------------------+--------------------------+--------------------------------------------------------+
-| Show Download    | |Card-Show-Download|     | Allows users to download this data set in JSON or CSV  |
-+------------------+--------------------------+--------------------------------------------------------+
-| Setup Download   | |Card-Setup-Download|    | Defines format of downloaded file from the             |
-|                  |                          | **Show Download** card                                 |
-+------------------+--------------------------+--------------------------------------------------------+
-| Setup Chart      | |Card-Setup-Chart|       | Defines the attribute choices of a chart               |
-+------------------+--------------------------+--------------------------------------------------------+
-| Show Chart       | |Card-Show-Chart|        | Shows the chart, defined by **Setup Chart**            |
-+------------------+--------------------------+--------------------------------------------------------+
-| Setup Draftboard | |Card-Setup-Draftboard|  | Creates a "wrapper" card which can hold multiple       |
-|                  |                          | decks at once with custom layout                       |
-+------------------+--------------------------+--------------------------------------------------------+
-| Troubleshoot     | |Card-Troubleshoot|      | Displays values of variables defined in the            |
-|                  |                          | **Setup Variables** card                               |
-+------------------+--------------------------+--------------------------------------------------------+
+Common scenarios leveraging the Open Card include following it with
+a Search Card or Show Table Card.
 
 
-
-
-To add a new card to a deck grab the right grip of the current card
-and slide it to the left.  Alternatively simply clicking on the right
-grip will automatically slide the card to the left.  This reveals
-a new screen which displays the valid card types that may be created
-based on the previous card type.
-
-
-
-
-
-Exploration Cell
+2.4 - Query Card
 ~~~~~~~~~~~~~~~~
 
-An example exploration cell is shown below. Refer to the table below the
-image for the function of each icon surrounding the cell.
-
-.. figure:: images/screenshots/cell-exploration-annotated-with-numbers.png
-   :alt: Exploration Cell
-
-+---------+------------------------------------------------------------------+
-| Icon #  | Purpose                                                          |
-+=========+==================================================================+
-| 1       | Download the cell in CSV or JSON format                          |
-+---------+------------------------------------------------------------------+
-| 2       | Create a graphical chart based on this cell's data               |
-+---------+------------------------------------------------------------------+
-| 3       | Simple search on this cell's data                                |
-+---------+------------------------------------------------------------------+
-| 4       | Create a query on this cell's data                               |
-+---------+------------------------------------------------------------------+
-| 5       | Execute or 'Play' the cell again                                 |
-+---------+------------------------------------------------------------------+
-| 6       | Go one level up or one level back                                |
-+---------+------------------------------------------------------------------+
-| 7       | Double click to rename this Notebook                             |
-+---------+------------------------------------------------------------------+
-| 8       | Hide the element which displays the path (useful when publishing |
-|         | Notebooks)                                                       |
-+---------+------------------------------------------------------------------+
-| 9       | Delete this cell and all subsequent cells                        |
-+---------+------------------------------------------------------------------+
-| 10      | Drop-down to select a different file path                        |
-+---------+------------------------------------------------------------------+
-| 11      | Refresh the cell's data                                          |
-+---------+------------------------------------------------------------------+
-| 12      | Get HTML and JavaScript code to embed this cell in another web   |
-|         | application                                                      |
-+---------+------------------------------------------------------------------+
-| 13      | Displays the schema of the collection or table being viewed      |
-+---------+------------------------------------------------------------------+
-
-Below is an example of what a nested schema would look like within the
-exploration cell. In this instance we have an array called
-``previous_addresses`` with several documents, each containing fields
-``city``, ``county``, ``latitude``, ``longitude``, ``state`` and
-``zip_code``.
-
-.. figure:: images/screenshots/cell-exploration-nested.png
-   :alt: Exploration Cell Nested
-
-The corresponding JSON would appears like this in the database:
-
-::
-
-    ...
-    "previous_addresses": [
-        {
-          "city": "NEW ORLEANS",
-          "longitude": -89.882564,
-          "county": "ORLEANS",
-          "state": "LA",
-          "latitude": 30.032997,
-          "zip_code": 70157
-        },
-        {
-          "city": "WEST ALTON",
-          "longitude": -90.403416,
-          "county": "SAINT CHARLES",
-          "state": "MO",
-          "latitude": 38.83275,
-          "zip_code": 63386
-        },
-        {
-          "city": "OAKESDALE",
-          "longitude": -117.41146,
-          "county": "WHITMAN",
-          "state": "WA",
-          "latitude": 47.079658,
-          "zip_code": 99158
-        }
-    ...
-
-
-SlamDown Cell
-~~~~~~~~~~~~~
-
-Reports and forms are created with a subset of Markdown called SlamDown.
-SlamDown allows a relatively non-technical user to create interactive
-forms, charts and reports without understanding HTML or other
-complicated markup.
+|Query-Card|
+
+Description
+@@@@@@@@@@@
+
+The Query Card allows a user to execute a SQL² query against one or
+more tables or collections.  If variables were defined from either
+a Setup Variables Card or a Markdown Card in previous cards then
+those variables may be used in the query.  For more information
+on SQL² syntax please see the
+`SQL² Reference Guide <sql-squared-reference.html>`__.
 
-For specific syntax see the `SlamDown Reference
-Guide <slamdown-reference.html>`__ and the `Cheat
-Sheet <http://slamdata.com/wp-content/uploads/2016/03/slamdata-cheatsheet-20160329-2.pdf>`__.
 
-Below is an image of both a SlamDown cell and it's rendering directly
-following it. As a reminder when you publish a Notebook you can include
-SlamDown cells, providing users with interactive forms that can directly
-affect a query and resulting report or chart.
+Card Relationships
+@@@@@@@@@@@@@@@@@@
 
-.. figure:: images/screenshots/cell-slamdown.png
-   :alt: SlamDown Cell
++-------------------+----------------------+
+| Required          | Allowable            |
+| Previous Cards    | Next Cards           |
++===================+======================+
+| N/A               | Cache Card           |
++-------------------+----------------------+
+|                   | Search Card          |
++-------------------+----------------------+
+|                   | Query Card           |
++-------------------+----------------------+
+|                   | Show Table Card      |
++-------------------+----------------------+
+|                   | Setup Download Card  |
++-------------------+----------------------+
+|                   | Setup Chart Card     |
++-------------------+----------------------+
+|                   | Troubleshoot Card    |
++-------------------+----------------------+
 
 
-Search Cell
-~~~~~~~~~~~
+Behavior
+@@@@@@@@
+
+If a Query Card follows a Show Table Card then the collection name
+will be automatically populated in the query and cannot be changed.
+
+A Query Card contains a ``Run Query`` button that is used when the user
+is finished entering a query.  If a query is not changed the query will
+execute automatically within a workflow.
 
-The Search cell allows users to search through entire collections as
-well as previous search results resulting in a very refined data set. In
-other words a user can use a search cell to refine results and then use
-another search cell to refine those results even further; this process
-can continue until the appropriate results are found.
 
+2.5 - Search Card
+~~~~~~~~~~~~~~~~~
 
-Default Search
-^^^^^^^^^^^^^^
+|Search-Card|
 
-1. Create a new Search cell:
+Description
+@@@@@@@@@@@
 
-   -  Click on the gray Search |Search Gray Icon| icon on the left side of an
-      existing exploration cell, or
-   -  Click the Plus |Plus Icon| icon and then select the Search |Search
-      Icon| icon.
+The Search Card allows users to search for entries from a data source.
+This data source can either be a specific collection or table designated
+via the Open Card or it can also be the result set from a Query Card.
 
-2. In the new Search cell, type in a search term and click the Play
-   |Play Icon| icon beneath it.
+Card Relationships
+@@@@@@@@@@@@@@@@@@
 
-In the example image below notice the term ``USA`` was searched for.
-Also note that the field name was not specified. By default **SlamData
-will search all fields in all documents**. For very large collections
-and tables, especially those without proper indexes assigned, this could
-take some time to complete; however this also provides a very powerful
-feature to find data that exists but the location is unknown.
++-------------------+----------------------+
+| Required          | Allowable            |
+| Previous Cards    | Next Cards           |
++===================+======================+
+| Open Card         | Query Card           |
++-------------------+----------------------+
+| Query Card        | Search Card          |
++-------------------+----------------------+
+|                   | Show Table Card      |
++-------------------+----------------------+
+|                   | Setup Download Card  |
++-------------------+----------------------+
+|                   | Setup Chart Card     |
++-------------------+----------------------+
+|                   | Troubleshoot Card    |
++-------------------+----------------------+
+|                   | Cache Card           |
++-------------------+----------------------+
 
-.. figure:: images/screenshots/search-and-results.png
-   :alt: Search and Results
+Behavior
+@@@@@@@@
 
-   Search and Results
+A Search Card is typically followed by a Show Table Card to display
+the result of the search.
 
+Values not preceded by a field name and
+colon, such as ``fieldName:``, will cause the database to search through
+all fields and may cause a delay in producing results from large tables
+or collections.  Additionally, specifying a field name before a value will
+typically result in a database leveraging an indexed query (if an appropriate
+index exists), resulting in a faster database response.
 
-Field Specific Search
-^^^^^^^^^^^^^^^^^^^^^
+Search parameters are "AND"ed together, so the more parameters that a user
+provides, the more selective the result will be.
 
-To limit a search to a specific field prefix the search term with the
-field name, for example:
+* Search for everything containing the text "foo":
 
-::
+    ``foo``
 
-    country:USA
+    ``+foo``
 
+* Search for everything *not* containing the text "foo":
 
-Multiple Field Values
-^^^^^^^^^^^^^^^^^^^^^
+    ``-foo``
 
-To limit a search with multiple fields list them in the search field.
-For example to find all women who won gold medals in a data set it may
-appear like this:
+* Search for everything that contains a "foo" field whose value is greater than 2:
 
-::
+    ``foo:>2``
 
-    gender:W  type:Gold
+* Search for everything containing a "foo" field whose value falls inside the range of 0..2:
 
+    ``foo:0..2``
 
-Mandatory Search
-^^^^^^^^^^^^^^^^
+* Search for everything that contains a "foo" field which contains a "bar" field which contains the text "baz":
 
-To search all documents that do **not** contain a value the value should
-be prefixed with the (``-``) symbol as follows:
+    ``foo:bar:baz``
 
-::
 
-    -Skating
+See the table below for some helpful search examples:
 
++---------------------------+---------------------------------------------------------------+
+| Example                   | Description                                                   |
++===========================+===============================================================+
+| ``colorado``              | Searches for the **substring** ``colorado`` in **all fields** |
++---------------------------+---------------------------------------------------------------+
+| ``=colorado``             | Searches for the **full word** ``colorado`` in **all fields** |
++---------------------------+---------------------------------------------------------------+
+| ``age:=50``               | Searches the field **age** for a value of 50                  |
++---------------------------+---------------------------------------------------------------+
+| ``age:>=50``              | Searches the field **age** for any value greater than or      |
+|                           | equal to 50                                                   |
++---------------------------+---------------------------------------------------------------+
+| ``age:50..60``            | Searches the field **age** for values between or equal to     |
+|                           | 50 and 60                                                     |
++---------------------------+---------------------------------------------------------------+
+| ``codes:"[*]":desc:flu``  | Performs a deep search through the **codes** array and        |
+|                           | examines each subdocument's **desc** field for the            |
+|                           | **substring** ``flu``                                         |
++---------------------------+---------------------------------------------------------------+
 
-Numeric Searches
-^^^^^^^^^^^^^^^^
 
-To search on fields containing numeric values use the following
-examples.
-
-
-Range Search
-''''''''''''
-
-Search for a field ``year`` whose value is between ``1928`` and
-``1932``:
-
-::
-
-    year:1928..1932
-
-
-NOT Range Search
-''''''''''''''''
-
-The opposite of the previous example, this searches for field ``year``
-whose value is **not** between ``1928`` and ``1932``:
-
-::
-
-    -year:1928..1932
-
-
-Comparison Search
-'''''''''''''''''
-
-Search for a field ``year`` whose value is less than 1948. Below we use
-the ``<`` symbol for ``less than`` but the ``>`` can also be used for
-``greater than``:
-
-::
-
-    year < 1948
-
-
-Starts With Search
-^^^^^^^^^^^^^^^^^^
-
-Search for a field ``name`` whose value starts with ``Jen``:
-
-::
-
-    name:Jen*
-
-
-Nested Search
-^^^^^^^^^^^^^
-
-Search all documents which contain a ``foo`` field which contains a
-``bar`` field which contains the text ``baz``:
-
-::
-
-    foo:bar:baz
-
-Note: A concise set of search examples can also be found in the
-`SlamData
-CheatSheet <http://slamdata.com/wp-content/uploads/2016/03/slamdata-cheatsheet-20160329-2.pdf>`__
-
-
-Query Cell
-~~~~~~~~~~
-
-The Query cell allows users to utilize SQL2 to directly query one or
-more collections or tables. This is the equivalent of a SQL command line
-console.
-
-To create a query cell:
-
--  From an empty Notebook click the Plus |Plus Icon| icon then click the
-   Query |Query| icon
-
-OR
-
--  From an existing cell click the Query |Query| icon to the left of the
-   cell.
-
-If the first option is selected the user will be presented with an empty
-Query cell. If the second option is selected the user will be presented
-with a Query cell that contains a default query, highlighted with
-colored syntax as shown below:
-
-.. figure:: images/screenshots/query-highlighted.png
-   :alt: Query Highlighted
-
-   Query Highlighted
-
-The query can be manipulated in this alternate form but the highlighted
-text cannot be modified or removed. If the user prefers more control the
-first option above may be preferred. The Query cell also provides query
-completion at certain parts of your query as shown below:
-
-.. figure:: images/screenshots/query-completion.png
-   :alt: Query Completion
-
-   Query Completion
-
-The Query cell will also automatically highlight SQL2 keywords as shown
-the image above. The query itself can be written on a single line (which
-will not word wrap) or on multiple lines.
-
-When a query is executed by clicking the Play |Play Icon| icon the cell
-beneath the query cell will show an icon indicating the query is
-running. When complete the query's results will display below the query.
-
-Note: If a query takes longer than 30 seconds to execute SlamData
-considers it a timed out query and will result in an error.
-
-For a complete review of SQL2 and example see the `SQL2 Reference
-Guide <sql-squared-reference.html>`__.
-
-
-Custom Styling
---------------
-
-Users can add custom styles to notebooks by adding a query parameter to
-the URI. For example, to add a stylesheet located in ``css/foo.css`` to
-
-::
-
-    http://slamdata.instance.com/notebook.html#/db/Folder/Notebook.slam/view
-
-one should modify the route to
-
-::
-
-    http://slamdata.instance.com/notebook.html?cssStyleSheets=css/foo.css#/db/Folder/Notebook.slam/view
-
-The values of ``cssStyleSheets`` are decoded and then split by ``,``, so
-to add two stylesheets one could use
-
--  ``cssStyleSheets=css/foo.css,http%3A%2F%2Ffoo.com%2Fstyles.css``
--  ``cssStyleSheets=css%2Ffoo.css,http%3A%2F%2Ffoo.com%2Fstyles.css``
--  ``cssStyleSheets=css%2Ffoo.css%2Chttp%3A%2F%2Ffoo.com%2Fstyles.css``
-
-These URIs are checked and, if they are valid, corresponding ``link``
-elements are added to the ``head``
-
-Here it would be
-
-.. code:: html
-
-    <link type="text/css" rel="stylesheet" href="css/foo.css">
-    <link type="text/css" rel="stylesheet" href="http://foo.com/style.css">
-
-
-Importing Data
---------------
-
-SlamData allows users to import files in both **JSON** and **CSV**
-format.
-
-JSON files may be formatted either as multiple single documents or
-within a JSON array.
-
-Note: The first line of CSV files will be used as a *header* line
-creating the schema that the remaining rows will adhere to.
-
-To upload a file into SlamData, follow these steps:
-
-1. Navigate to the database where the data should be imported.
-
-2. At the top of the page click the Upload File |Upload File| icon.
-
-3. Select a file from your file system. Large files may take a few
-   moments to upload. After data has been imported a new collection will
-   be created with the same name as the file.
-
-4. A new Untitled Notebook will be created that displays the new
-   collection's data.
-
-
-Exporting Data
---------------
-
-SlamData allows users to export refined result sets, collections and
-entire databases.
-
-
-Result Sets
-~~~~~~~~~~~
-
-Once a result set has been refined either through query cells or search
-cells it may then be downloaded in **JSON** or **CSV** formats.
-
-1. From an exploration cell or results set cell click the Download cell
-   |Download Cell| icon to the left of the cell.
-
-2. In the newly created Download cell select either the CSV |CSV Icon|
-   or JSON |JSON Icon| icon on the left.
-
-3. Select the appropriate options in the cell.
-
-4. Click Download.
-
-See the example image below of a query cell followed by the results
-cell.
-
-.. figure:: images/screenshots/cell-query-and-results.png
-   :alt: Query Cell Results
-
-Downloading the data from this **Results Cell** provides the following
-JSON export file:
-
-::
-
-    [
-      {
-        "gender": "male",
-        "name": "Tory Escobar",
-        "addresses": [
-          {
-            "city": "OROFINO",
-            "longitude": -116.184848,
-            "county": "CLEARWATER",
-            "state": "ID",
-            "latitude": 46.4976,
-            "zip_code": 83544
-          },
-          {
-            "city": "ARRIBA",
-            "longitude": -103.323143,
-            "county": "LINCOLN",
-            "state": "CO",
-            "latitude": 39.316461,
-            "zip_code": 80804
-          },
-          {
-            "city": "OLGA",
-            "longitude": -122.983742,
-            "county": "SAN JUAN",
-            "state": "WA",
-            "latitude": 48.557824,
-            "zip_code": 98279
-          },
-          {
-            "city": "DELRAY BEACH",
-            "longitude": -80.13473,
-            "county": "PALM BEACH",
-            "state": "FL",
-            "latitude": 26.454218,
-            "zip_code": 33484
-          },
-          {
-            "city": "LYONS",
-            "longitude": -122.594993,
-            "county": "LINN",
-            "state": "OR",
-            "latitude": 44.749921,
-            "zip_code": 97358
-          }
-        ]
-      },
-      {
-        "gender": "female",
-        "name": "Damaris Savage",
-        "addresses": [
-          {
-            "city": "CROSSROADS",
-            "longitude": -103.209405,
-            "county": "LEA",
-            "state": "NM",
-            "latitude": 32.690034,
-            "zip_code": 88114
-          }
-        ]
-      },
-      {
-        "gender": "female",
-        "name": "See Harrison",
-        "addresses": []
-      }
-    ]
-
-
-Collections and Tables
+2.6 - Setup Chart Card
 ~~~~~~~~~~~~~~~~~~~~~~
 
-Collections and tables can also be exported in their entirety. When
-browsing a folder (database) within the SlamData UI simply hover over
-the file (table or collection) and notice the icons that appear to the
-right. Click on the Download |Download Icon| icon. See the image below
-with the highlighted icon.
+|Setup-Chart-Card|
 
-.. figure:: images/screenshots/download-collection.png
-   :alt: Download Collection
+Description
+@@@@@@@@@@@
+
+The Setup Chart Card is required before using the Show Chart Card.  This
+card allows an author to specify the chart type and chart options of the
+subsequent Show Chart Card.
+
+Major Chart Types
+@@@@@@@@@@@@@@@@@
+
+* Area Chart
+* Bar Chart
+* Line Chart
+* Pie Chart
+* Radar Chart
+* Scatter Plot Chart
+
+Card Relationships
+@@@@@@@@@@@@@@@@@@
+
++-------------------+----------------------+
+| Required          | Allowable            |
+| Previous Cards    | Next Cards           |
++===================+======================+
+| Query Card or     | Show Chart Card      |
++-------------------+----------------------+
+| Show Table Card   |                      |
++-------------------+----------------------+
+
+Behavior
+@@@@@@@@
+
+The available chart types in the left column of a Setup Chart Card will
+vary depending on the result set returned from a preceding card.
+
+Each major chart type will have options that allows an author to control
+the look of the chart.  For instance an Area Chart will allow an author
+the choice to stack values or not.
 
 
-Databases
-~~~~~~~~~
+2.7 - Setup Download Card
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Databases can be exported in their entirety as well. Simply ensure the
-appropriate database and its underlying collections are displayed in the
-UI and click on the Download |Download Icon| icon in the **top menu
-bar** as shown in the image below. A dialog will appear providing
-several options for the download and will result in a compress zip file
-containing all of the database's collections as separate files.
+|Setup-Download-Card|
 
-.. figure:: images/screenshots/download-database.png
-   :alt: Download Database
+Description
+@@@@@@@@@@@
+
+The Setup Download Card precedes the Show Download Card.  An author can
+configure the format of the downloaded file, JSON or CSV, in addition
+to several other parameters.
+
+Card Relationships
+@@@@@@@@@@@@@@@@@@
+
++-------------------+----------------------+
+| Required          | Allowable            |
+| Previous Cards    | Next Cards           |
++===================+======================+
+| Query Card or     | Show Download Card   |
++-------------------+----------------------+
+| Open Card or      |                      |
++-------------------+----------------------+
+| Search Card       |                      |
++-------------------+----------------------+
+
+Behavior
+@@@@@@@@
+
+The Setup Download Card must always precede a Show Download Card.  Each
+file format (CSV/JSON) will have different export options available.  Once
+options are configured, they can be change by the workspace author but not
+by a user through a published or embedded workspace.
+
+
+2.8 - Setup Draftboard Card
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+|Setup-Draftboard-Card|
+
+Description
+@@@@@@@@@@@
+
+The Setup Draftboard Card may only be selected as the first card in the
+first deck inside of a workspace.  Creating a Setup Draftboard Card is
+similar to flipping a workspace that contains a single deck and
+choosing **Wrap**, except there is no existing deck and one must now
+be created.
+
+Card Relationships
+@@@@@@@@@@@@@@@@@@
+
++-------------------+----------------------+
+| Required          | Allowable            |
+| Previous Cards    | Next Cards           |
++===================+======================+
+| N/A               | N/A                  |
++-------------------+----------------------+
+
+Because the Setup Draftboard Card creates a workspace with no decks or
+cards, it must be the first card in the deck.  Additionally an author
+must now create a new deck inside of this Draftboard so the concept
+of an allowable next card is not applicable.
+
+
+2.9 - Setup Markdown Card
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+|Setup-Markdown-Card|
+
+Description
+@@@@@@@@@@@
+
+The Setup Markdown Card allows an author to write the Markdown code that
+will be rendered within a Show Markdown Card.
+
+Card Relationships
+@@@@@@@@@@@@@@@@@@
+
++-------------------+----------------------+
+| Required          | Allowable            |
+| Previous Cards    | Next Cards           |
++===================+======================+
+| N/A               | Show Markdown Card   |
++-------------------+----------------------+
+
+Behavior
+@@@@@@@@
+
+The Setup Markdown Card acts like a text editor to edit Markdown.  Valid
+Markdown code will typically be highlighted blue and line numbers are
+listed in the left column.
+
+For detailed information regarding SlamDown,
+the SlamData-enhanced version of Markdown, please see the
+`SlamDown Reference Guide <slamdown-reference.html>`__.  The reference
+guide describes how to create interactive UI elements such as drop
+downs, radio boxes, check boxes and more.
+
+
+2.10 - Setup Variables Card
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+|Setup-Variables-Card|
+
+Description
+@@@@@@@@@@@
+
+The Setup Variables Card allows an author to create a workspace where the
+results are controlled by parameters being programatically passed into it.
+
+Card Relationships
+@@@@@@@@@@@@@@@@@@
+
++--------------------------+----------------------+
+| Required                 | Allowable            |
+| Previous Cards           | Next Cards           |
++==========================+======================+
+| N/A - Must be first card | Query Card           |
++--------------------------+----------------------+
+|                          | Setup Markdown Card  |
++--------------------------+----------------------+
+|                          | Troubleshoot Card    |
++--------------------------+----------------------+
+
+Behavior
+@@@@@@@@
+
+Each variable in the Setup Variables Card is defined on a separate line.  A
+variable may be any data type listed in the Data Types section below.
+
+Note that following a Variables Card with a Troubleshoot Card is helpful in
+validating values passed into the Workspace.
+
+When embedding a Workspace that contains a Setup Variables Card into a third party
+application, the JavaScript and HTML that SlamData generates for the author
+will be slightly different than workspaces without a Setup Variables Card.
+
+For example, if two variables called ``state`` and ``city`` with values of
+``CO`` and ``DENVER``, respectively, are defined in a variables card, the
+resulting JavaScript will contain a ``vars`` section, similar to the following:
+
+.. code-block:: javascript
+
+      SlamData.embed({
+        deckPath: "/server/db/collection/MyWorkspace.slam/",
+        deckId: "deckid...abc...123...",
+        // An array of custom stylesheets URLs can be provided here
+        stylesheets: [],
+        // The variables for the deck(s), you can change their values here:
+        vars: {
+          "deckid...abc...123...": {
+            "state": "CO",
+            "city": "DENVER"
+          }
+        }
+      });
+
+Third party applications may generate this JavaScript programatically, changing
+the values of the ``state`` and ``city`` variables based on custom logic.
+
+
+Data Types
+@@@@@@@@@@
+
+Text
+!!!!
+
+An input field will appear when the Text data type is chosen.  Alphanumeric
+text may be entered.
+
+Example: ``My 123 value here``
+
+DateTime
+!!!!!!!!
+
+A date and time picker will appear when the Date data type is chosen.  Selecting a
+date and time will designate the default value.
+
+Date
+!!!!
+
+A date picker will appear when the Date data type is chosen.  Selecting a
+date from the date picker will designate the default value.
+
+Time
+!!!!
+
+A time picker will appear when the Time data type is chosen.  Selecting a time
+will designate the default value.
+
+Interval
+!!!!!!!!
+
+Pending
+
+Boolean
+!!!!!!!
+
+A checkbox will appear when the Boolean data type is chosen.  Checking
+the box will designate the default value to ``true``.
+
+Numeric
+!!!!!!!
+
+An input field will appear when the Numeric data type is chosen.  Only
+numeric values are allowed in this field.
+
+Example:  ``1`` or ``1.5``
+
+Object ID
+!!!!!!!!!
+
+An input field will appear when the Object ID data type is chosen.  Any
+valid Object ID can be entered here.  The subsequent query should not
+be preceded by the ``OID`` function in SQL² as this will be handled
+automatically.  For instance, if the value ``5792b247045175200c4fcd0f``
+is entered for the ``myoidvar`` variable, the resulting query would
+look similar to:
+
+.. code-block:: SQL
+
+    SELECT * FROM `/server/db/collection`
+    WHERE _id = :myoidvar
+
+Array
+!!!!!
+
+An input field will appear the Array data type is chosen.  A valid array
+should be entered as the default.
+
+Example:  ``["S1", "S2", "S3"]``
+
+The subsequent query should reference the values in the array appropriately.
+For example, if the variables ``sensors`` was defined in the Setup
+Variables Card, and we wanted a query to return all records containing
+a ``sensor`` field that matched any entry from the array, the query might
+look like this:
+
+.. code-block:: SQL
+
+    SELECT * FROM `/server/db/collection`
+    WHERE sensor IN :sensors[_]
+
+
+Object
+!!!!!!
+
+Pending
+
+SQL² Expression
+!!!!!!!!!!!!!!!
+
+Pending
+
+SQL² Identifier
+!!!!!!!!!!!!!!!
+
+An input field will appear when the SQL² Identifier data type is chosen.
+A valid query path should be entered as the default.  This allows a developer
+to pass in a specific query path while the remainder of the query remains
+unchanged.
+
+Example: mypath = ``/server/db/collection``
+
+The subsequent query would look like:
+
+.. code-block:: SQL
+
+    SELECT * FROM :mypath
 
 
 
-.. |SD-Nesting| image:: images/SD3/screenshots/sd-nesting.png
 
-.. |Card-Cache| image:: images/SD3/cards/card-cache.png
-		:height: 125
-		:width: 125
+2.11 - Show Chart Card
+~~~~~~~~~~~~~~~~~~~~~~
 
-.. |Card-Setup-Draftboard| image:: images/SD3/cards/card-setup-draftboard.png
-		:height: 125
-		:width: 125
+|Show-Chart-Card|
 
-.. |Card-Open| image:: images/SD3/cards/card-open.png
-		:height: 125
-		:width: 125
 
-.. |Card-Query| image:: images/SD3/cards/card-query.png
-		:height: 125
-		:width: 125
+2.12 - Show Download Card
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. |Card-Search| image:: images/SD3/cards/card-search.png
-		:height: 125
-		:width: 125
+|Show-Download-Card|
 
-.. |Card-Setup-Chart| image:: images/SD3/cards/card-setup-chart.png
-		:height: 125
-		:width: 125
 
-.. |Card-Setup-Download| image:: images/SD3/cards/card-setup-download.png
-		:height: 125
-		:width: 125
+2.13 - Show Markdown Card
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. |Card-Setup-Markdown| image:: images/SD3/cards/card-setup-markdown.png
-		:height: 125
-		:width: 125
+|Show-Markdown-Card|
 
-.. |Card-Setup-Variables| image:: images/SD3/cards/card-setup-variables.png
-		:height: 125
-		:width: 125
 
-.. |Card-Show-Chart| image:: images/SD3/cards/card-show-chart.png
-		:height: 125
-		:width: 125
+2.14 - Show Table Card
+~~~~~~~~~~~~~~~~~~~~~~
 
-.. |Card-Show-Download| image:: images/SD3/cards/card-show-download.png
-		:height: 125
-		:width: 125
+|Show-Table-Card|
 
-.. |Card-Show-Markdown| image:: images/SD3/cards/card-show-markdown.png
-		:height: 125
-		:width: 125
 
-.. |Card-Show-Table| image:: images/SD3/cards/card-show-table.png
-		:height: 125
-		:width: 125
+2.15 - Troubleshoot Card
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. |Card-Troubleshoot| image:: images/SD3/cards/card-troubleshoot.png
-		:height: 125
-		:width: 125
+|Troubleshoot-Card|
 
-.. |Home-Annotated| image:: images/SD3/screenshots/home-annotated-with-numbers.png
 
-.. |Icon-Cluster| image:: images/SD3/icon-mount.png
-          :height: 25
-          :width: 25
-.. |Icon-Folder| image:: images/SD3/icon-folder.png
-          :height: 25
-          :width: 25
-.. |Icon-File| image:: images/SD3/icon-file.png
-          :height: 25
-          :width: 25
-.. |Icon-Workspace| image:: images/SD3/icon-workspace.png
-          :height: 25
-          :width: 25
-.. |Plus| image:: images/icon-plus.png
-          :height: 25
-          :width: 25
-.. |Exploration| image:: images/icon-explore.png
-          :height: 25
-          :width: 25
-.. |Search| image:: images/icon-search.png
-          :height: 25
-          :width: 25
-.. |SlamDown| image:: images/icon-slamdown.png
-          :height: 25
-          :width: 25
-.. |API| image:: images/icon-api.png
-          :height: 25
-          :width: 25
-.. |Search Gray Icon| image:: images/icon-gray-search.png
-          :height: 25
-          :width: 25
-.. |Plus Icon| image:: images/icon-plus.png
-          :height: 25
-          :width: 25
-.. |Search Icon| image:: images/icon-search.png
-          :height: 25
-          :width: 25
-.. |Play Icon| image:: images/icon-play.png
-.. |Query| image:: images/icon-query.png
-          :height: 25
-          :width: 25
-.. |Upload File| image:: images/icon-upload.png
-          :height: 25
-          :width: 25
-.. |Download Cell| image:: images/icon-download-cell.png
-          :height: 25
-          :width: 25
-.. |CSV Icon| image:: images/icon-csv.png
-          :height: 25
-          :width: 25
-.. |JSON Icon| image:: images/icon-json.png
-          :height: 25
-          :width: 25
-.. |Download Icon| image:: images/icon-download.png
-          :height: 25
-          :width: 25
+
+
+Section 3 - Workflow Examples
+-----------------------------
+
+**COMING SOON**
+
+
+
+
+
+.. |Cache-Card| image:: images/SD3/cards/card-cache.png
+   :height: 150px
+   :width: 150px
+
+.. |Open-Card| image:: images/SD3/cards/card-open.png
+   :height: 150px
+   :width: 150px
+
+.. |Query-Card| image:: images/SD3/cards/card-query.png
+   :height: 150px
+   :width: 150px
+
+.. |Search-Card| image:: images/SD3/cards/card-search.png
+   :height: 150px
+   :width: 150px
+
+.. |Setup-Chart-Card| image:: images/SD3/cards/card-setup-chart.png
+   :height: 150px
+   :width: 150px
+
+.. |Setup-Download-Card| image:: images/SD3/cards/card-setup-download.png
+   :height: 150px
+   :width: 150px
+
+.. |Setup-Draftboard-Card| image:: images/SD3/cards/card-setup-draftboard.png
+   :height: 150px
+   :width: 150px
+
+.. |Setup-Markdown-Card| image:: images/SD3/cards/card-setup-markdown.png
+   :height: 150px
+   :width: 150px
+
+.. |Setup-Variables-Card| image:: images/SD3/cards/card-setup-variables.png
+   :height: 150px
+   :width: 150px
+
+.. |Show-Chart-Card| image:: images/SD3/cards/card-show-chart.png
+   :height: 150px
+   :width: 150px
+
+.. |Show-Download-Card| image:: images/SD3/cards/card-show-download.png
+   :height: 150px
+   :width: 150px
+
+.. |Show-Markdown-Card| image:: images/SD3/cards/card-show-markdown.png
+   :height: 150px
+   :width: 150px
+
+.. |Show-Table-Card| image:: images/SD3/cards/card-show-table.png
+   :height: 150px
+   :width: 150px
+
+.. |Troubleshoot-Card| image:: images/SD3/cards/card-troubleshoot.png
+   :height: 150px
+   :width: 150px
+
