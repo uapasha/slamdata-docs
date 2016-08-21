@@ -323,6 +323,9 @@ SlamData quickly.  The underlying database in this case is
 MongoDB.
 
 
+2.5.1 Indexing Your Database
+''''''''''''''''''''''''''''
+
 .. attention:: Indexing Your Database
 
   While this step is not exactly necessary, any database without
