@@ -17,6 +17,21 @@ This guide was written with the following assumptions in mind.  The reader:
 
 - Has a basic to moderate understanding of JSON or semistructured data
 - Has appropriate permissions to install the software
+- If using MongoDB the user should have read **and** write access to MongoDB.
+
+MongoDB has several limitations which SlamData must work with and around:
+
+* Users are not allowed to write to secondary nodes in a replica set
+* Queries that return large result sets or use the ``mapreduce`` and ``aggregate``
+  functions must use temporary workspace to store their results.
+
+Because of these limitations users have a few options:
+
+1. Connect to the MongoDB primary in a replica set with a user having
+   read and write privileges.
+2. Create a standalone MongoDB server which
+   `Tails the Oplog <https://docs.mongodb.com/manual/core/tailable-cursors/#tailable-cursors>`__
+   of a member of an existing replica set.
 
 
 1.2 Requirements
