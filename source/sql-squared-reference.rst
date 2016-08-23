@@ -694,15 +694,99 @@ name if the full name is null.
     SELECT COALESCE(c.fullName, c.firstName) AS name FROM `/users` AS c
 
 
-Section 11 - Database Specific Notes
+Section 11 - Variables and SQL²
+------------------------------
+
+SQL² has the ability to use variables in queries in addition to statically
+typed content.  Variables can be generated through the use of a Variables Card
+or through a combination of Setup Markdown Card / Show Markdown Card.  Both
+scenarios require that the variables be defined before the Query Card is
+executed.
+
+
+.. attention:: SlamData Version
+
+  The syntax for using variables within SQL² was changed slightly
+  in version 3.0.8.  This document assumes you are using a version
+  no older than 3.0.8.
+
+
+11.1 Single Values
+~~~~~~~~~~~~~~~~~~
+
+Single values are generated in Markdown through the following elements:
+
+* String text field
+* Numeric text field
+* Calendar Picker
+* Calendar / Time Picker
+* Radio Boxes
+* Drop Downs
+  
+For more information on Markdown / Slamdown and how to generate form
+elements see the
+`Form Elements Section <slamdown-reference.html#section-5-form-elements>`__
+of the Slamdown Reference Guide.
+
+Variables can be used in queries by prefixing the variable name with
+a colon (``:``).
+
+For example, if the following Markdown code was used:
+
+.. code-block:: markdown
+
+    ### Select year to report on
+
+    year = {2011,2012,2013,2014,2015,2016}
+
+
+The value selected by the user from the ``year`` dropdown can be referenced
+like this:
+
+.. code-block:: sql
+
+    SELECT * FROM `/users`
+    WHERE last_visit = :year
+
+
+11.2 Multiple Values
+~~~~~~~~~~~~~~~~~~~~
+
+Multiple values are generated in Markdown only through the Check Boxes
+UI element.
+
+For example, if the following Markdown code was used:
+
+.. code-block:: markdown
+
+    ### Select years to report on
+
+    years = [x] 2014 [] 2015 []2016 []2017
+
+
+The values selected by the user from the ``years`` set of Check Boxes
+should be referenced with the ``[_]`` option as well as the ``IN`` clause:
+
+.. code-block:: sql
+
+    SELECT * FROM `/users`
+    WHERE last_visit IN :years[_]
+
+
+This example would find all users who have a ``last_visit`` that matched
+one of the check boxes selected.
+
+
+
+Section 12 - Database Specific Notes
 ------------------------------------
 
 
-11.1 MongoDB
+12.1 MongoDB
 ~~~~~~~~~~~~
 
 
-11.1.1 The _id Field
+12.1.1 The _id Field
 ''''''''''''''''''''
 
 By default, the ``_id`` field will not appear in a result set. However,

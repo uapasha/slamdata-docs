@@ -609,3 +609,12 @@ This results in:
 .. |Time-Only| image:: images/SD3/screenshots/time-only.png
 
 .. |Date-And-Time| image:: images/SD3/screenshots/date-and-time.png
+
+
+Section 6 - Slamdown Variables in Queries
+-----------------------------------------
+
+SlamData has the ability to use values selected in Slamdown form elements
+to be used in a query.  For more information and examples, see
+`Section 11 <sql-squared-reference.html#section-11-variables-and-sql2>`__ of
+the SQL² Reference Guide.
