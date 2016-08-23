@@ -19,7 +19,10 @@ This guide was written with the following assumptions in mind.  The reader:
 - Has appropriate permissions to install the software
 - If using MongoDB the user should have read **and** write access to MongoDB.
 
-MongoDB has several limitations which SlamData must work with and around:
+.. warning:: MongoDB Limitations
+
+    MongoDB has several limitations which SlamData must work with and around
+    noted below.
 
 * Users are not allowed to write to secondary nodes in a replica set
 * Queries that return large result sets or use the ``mapreduce`` and ``aggregate``
@@ -50,8 +53,8 @@ See the
 of the Administrator's Guide for installation instructions.
 
 
-Section 2 - Quick Start (or "Read Me First!")
------------------------------------------------------
+Section 2 - Quick Start
+-----------------------
 
 The following two sections will take a new user from zero knowledge of the SlamData
 workflow to creating a basic Workspace with some suggestions.  This section is intended as a
@@ -127,8 +130,8 @@ as other browsers are less flexible and code fixes to support those browsers are
 as frequent.
 
 
-Section 3 - The Workspace (or "Don't Blow Yourself Up!")
--------------------------------------------------------
+Section 3 - The Workspace
+-------------------------
 
 
 3.1 Workspace Background
