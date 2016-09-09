@@ -42,13 +42,16 @@ Section 1 - Installation
       * MongoDB 2.6 or newer
         
 
-Both SlamData Standard Edition and SlamData Advanced Edition
-include metastore databases as part of the distribution,
-listed below. These do not need to be installed separately.
+SlamData Standard Edition and SlamData Advanced Edition store configuration
+data in a metastore database.  By default this is Java H2 but SlamData
+can be configured to use PostgreSQL.  The Open Source community versions
+do not have this requirement.
 
-  * Metastore Datasources (SlamData Standard and Advanced Editions)
-      * PostgreSQL 9.x
+  * Metastore Datasources (SlamData Standard and Advanced Editions only)
       * H2 Java SQL Database
+          * included with SlamData
+      * PostgreSQL 9.x
+          * must install and configure separately
 
 
 
