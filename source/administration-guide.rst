@@ -40,7 +40,13 @@ Section 1 - Installation
       * Internet Exlorer 10 or newer
   * Target Datasources
       * MongoDB 2.6 or newer
-  * Metastore Datasources (SlamData Advanced Edition only) |Murray-Small|
+        
+
+Both SlamData Standard Edition and SlamData Advanced Edition
+include metastore databases as part of the distribution,
+listed below. These do not need to be installed separately.
+
+  * Metastore Datasources (SlamData Standard and Advanced Editions)
       * PostgreSQL 9.x
       * H2 Java SQL Database
 
