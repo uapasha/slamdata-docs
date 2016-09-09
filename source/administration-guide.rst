@@ -38,16 +38,19 @@ Section 1 - Installation
       * Chrome v 51 or newer
       * Safari v 9 or newer
       * Internet Exlorer 10 or newer
-  * Target Datasources
+  * Target Datasources (for analytics)
       * MongoDB 2.6 or newer
         
 
 SlamData Standard Edition and SlamData Advanced Edition store configuration
-data in a metastore database.  By default this is Java H2 but SlamData
-can be configured to use PostgreSQL.  The Open Source community versions
-do not have this requirement.
+data in a metastore database.  This should not be confused with Target data
+sources.
 
-  * Metastore Datasources (SlamData Standard and Advanced Editions only)
+By default the metastore is Java H2 but SlamData can be configured to use 
+PostgreSQL.  The Open Source community versions use a file called
+``quasar-config.json`` to store server configuration data.
+
+  * Metastore Datasources (for server configuration data)
       * H2 Java SQL Database
           * included with SlamData
       * PostgreSQL 9.x
