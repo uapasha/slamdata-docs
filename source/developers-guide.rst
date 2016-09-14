@@ -13,7 +13,7 @@ For information on how to use SlamData from a user perspective
 see the `SlamData Administration Guide <administration-guide.html>`__
 
 For information on how to use SlamData from a user perspective
-see the `SlamData Users Guide <users-guide.html>`__  (not implemented yet)
+see the `SlamData Users Guide <users-guide.html>`__  
 
 
 .. attention:: SlamData Advanced Features
